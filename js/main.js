@@ -310,7 +310,7 @@ function initHeroBackgroundSwitcher() {
       hero.className = hero.className.replace(/hero-bg-[\w-]+/g, '');
       
       // Add new background class
-      if (bgType !== 'automobile') { // changed from 'default' to 'automobile' as that's our new default
+      if (bgType !== 'vladalex') { // vladalex ist jetzt der neue Standard
         hero.classList.add(`hero-bg-${bgType}`);
       }
       

@@ -407,8 +407,8 @@ nav ul li a.nav-link.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(10, 33, 74, 0.9), rgba(10, 33, 74, 0.85)),
-              var(--hero-bg-image, url('../images/heroBackground/automobile-1819161_1920.jpg')) no-repeat center/cover;
+  background: linear-gradient(rgba(15, 25, 45, 0.85), rgba(25, 35, 55, 0.8)),
+              var(--hero-bg-image, url('../images/heroBackground/pexels-vladalex94-1402787.jpg')) no-repeat center/cover;
   z-index: -1;
   transition: background 0.5s ease-in-out;
 }
@@ -438,15 +438,17 @@ nav ul li a.nav-link.active::after {
 
 .hero-badge {
   display: inline-block;
-  background: var(--accent);
-  color: var(--primary);
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--light);
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 500;
   margin-bottom: 30px;
   position: relative;
   z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .hero-title {
@@ -535,19 +537,20 @@ nav ul li a.nav-link.active::after {
   line-height: 0.9;
 }
 
-/* Eröffnungsrabatt Badge */
+/* Eröffnungsrabatt Badge - Seriöseres Design */
 .offer-badge-v2 {
   display: block;
-  background: var(--accent);
-  color: var(--primary);
-  border-radius: 18px;
-  border: 2.5px solid var(--accent-dark);
-  box-shadow: 0 6px 24px rgba(209, 177, 124, 0.18);
-  padding: 18px 38px 16px 38px;
-  margin: 38px auto 32px auto;
-  font-family: 'Montserrat', 'Inter', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--light);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 16px 32px;
+  margin: 32px auto 28px auto;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
   letter-spacing: 0.01em;
   text-align: center;
   max-width: 95vw;
@@ -555,11 +558,16 @@ nav ul li a.nav-link.active::after {
   width: fit-content;
   user-select: none;
   position: relative;
-  transition: box-shadow 0.2s, background 0.2s;
-  animation: pulse-offer 2.5s infinite ease-in-out;
+  transition: all 0.3s ease;
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
+}
+
+.offer-badge-v2:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
 }
 
 .offer-badge-v2 > * {
@@ -1470,24 +1478,25 @@ nav ul li a.nav-link.active::after {
   text-align: center;
 }
 
-/* Footer Logo - Professionelleres Design */
+/* Footer Logo - Optimiert für SVG */
 .footer-logo {
-  max-width: 160px;
+  max-width: 180px;
   height: auto;
   margin-bottom: 1rem;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  filter: brightness(1.1);
+  filter: brightness(1.05);
 }
 
 .footer-logo:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
   border-color: rgba(255, 255, 255, 0.2);
+  filter: brightness(1.1);
 }
 
 /* Social Media Icons - Professionelles einheitliches Design */
@@ -1712,21 +1721,6 @@ nav ul li a.nav-link.active::after {
 /*==================================
   14. ANIMATIONEN
 ==================================*/
-@keyframes pulse-offer {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 5px 15px rgba(209, 177, 124, 0.4);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(209, 177, 124, 0.6);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 5px 15px rgba(209, 177, 124, 0.4);
-  }
-}
-
 @keyframes floatArrow {
   0% {
     transform: translateY(-100%);
