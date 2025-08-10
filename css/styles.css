@@ -953,6 +953,19 @@ nav ul li a.nav-link.active::after {
   color: var(--accent);
 }
 
+.telefon-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.telefon-link:hover {
+  color: var(--accent);
+}
+
 .termin-button {
   display: inline-block;
   margin-top: 15px;
