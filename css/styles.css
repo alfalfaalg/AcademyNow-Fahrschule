@@ -914,6 +914,24 @@ nav ul li a.nav-link.active::after {
   transform: translateY(-2px);
 }
 
+/* Standort Container - Karte und Adresse zusammen schmaler */
+.standort-container {
+  max-width: 60%; /* 40% Reduktion von 100% */
+  margin: 0 auto;
+  background: white;
+  border-radius: var(--card-radius);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Google Maps Container */
+.google-maps-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
 /* Google Maps */
 .standort-maps {
   position: relative;
@@ -933,11 +951,9 @@ nav ul li a.nav-link.active::after {
 
 .standort-adresse-block {
   background: var(--light);
-  padding: 20px;
-  border-radius: var(--card-radius);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-  margin-bottom: 20px;
+  padding: 25px;
   text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .standort-titel {
@@ -1478,25 +1494,17 @@ nav ul li a.nav-link.active::after {
   text-align: center;
 }
 
-/* Footer Logo - Optimiert für SVG */
+/* Footer Logo - Direkt ohne Hintergrund wie die Icons */
 .footer-logo {
   max-width: 180px;
   height: auto;
   margin-bottom: 1rem;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  filter: brightness(1.05);
 }
 
 .footer-logo:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
-  filter: brightness(1.1);
+  transform: translateY(-3px);
+  opacity: 0.8;
 }
 
 /* Social Media Icons - Professionelles einheitliches Design */
@@ -2381,5 +2389,11 @@ html {
     padding: 10px;
     min-height: 44px;
     min-width: 44px;
+  }
+  
+  /* Standort Container auf Mobile volle Breite */
+  .standort-container {
+    max-width: 95%;
+    margin: 0 auto;
   }
 }
