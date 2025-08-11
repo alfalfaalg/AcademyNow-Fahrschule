@@ -242,32 +242,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: true });
   });
 
-  // 2. FAQ Accordion
+  // 2. FAQ Accordion mit verbesserter Accessibility
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
-    if (question) {
+    const answer = item.querySelector('.faq-answer');
+    
+    if (question && answer) {
+      // Keyboard-Unterstützung für FAQ
       question.addEventListener('click', function(e) {
         e.preventDefault();
-        faqItems.forEach(otherItem => {
-          if (otherItem !== item && otherItem.classList.contains('active')) {
-            otherItem.classList.remove('active');
-            const otherIcon = otherItem.querySelector('.faq-icon');
-            if (otherIcon) otherIcon.textContent = '+';
-          }
-        });
-        const isActive = item.classList.contains('active');
-        const icon = item.querySelector('.faq-icon');
-        if (isActive) {
-          item.classList.remove('active');
-          if (icon) icon.textContent = '+';
-        } else {
-          item.classList.add('active');
-          if (icon) icon.textContent = '−';
+        toggleFaqItem(item, question, answer);
+      });
+      
+      // Keyboard-Navigation (Enter und Space)
+      question.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggleFaqItem(item, question, answer);
         }
       });
+      
+      // Ensure button is focusable
+      if (question.tagName === 'BUTTON') {
+        question.setAttribute('tabindex', '0');
+      }
     }
   });
+  
+  function toggleFaqItem(item, question, answer) {
+    // Andere FAQ-Items schließen
+    faqItems.forEach(otherItem => {
+      if (otherItem !== item && otherItem.classList.contains('active')) {
+        const otherQuestion = otherItem.querySelector('.faq-question');
+        const otherAnswer = otherItem.querySelector('.faq-answer');
+        const otherIcon = otherItem.querySelector('.faq-icon');
+        
+        otherItem.classList.remove('active');
+        if (otherIcon) otherIcon.textContent = '+';
+        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
+        if (otherAnswer) otherAnswer.style.display = 'none';
+      }
+    });
+    
+    const isActive = item.classList.contains('active');
+    const icon = item.querySelector('.faq-icon');
+    
+    if (isActive) {
+      // FAQ schließen
+      item.classList.remove('active');
+      if (icon) icon.textContent = '+';
+      if (question) question.setAttribute('aria-expanded', 'false');
+      if (answer) answer.style.display = 'none';
+    } else {
+      // FAQ öffnen
+      item.classList.add('active');
+      if (icon) icon.textContent = '−';
+      if (question) question.setAttribute('aria-expanded', 'true');
+      if (answer) answer.style.display = 'block';
+    }
+  }
 
   // 3. Scroll Indicator
   const scrollIndicator = document.getElementById('scrollIndicator');

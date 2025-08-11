@@ -59,9 +59,6 @@
   <!-- Alternate Languages (falls später mehrsprachig) -->
   <link rel="alternate" hreflang="de" href="https://www.academynow-fahrschule.de/">
   <link rel="alternate" hreflang="x-default" href="https://www.academynow-fahrschule.de/">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="AcademyNow Fahrschule">
-  <link rel="canonical" href="https://www.academynow-fahrschule.de/">
   
   <!-- Open Graph Tags für Social Media & Google Suchergebnisse -->
   <meta property="og:type" content="website">
@@ -251,21 +248,30 @@
 </head>
 <body>
   <!-- =================================================================================
+       SKIP LINKS (Accessibility - für Screenreader und Keyboard-Navigation)
+       ================================================================================= -->
+  <nav aria-label="Skip links" class="skip-links">
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+    <a href="#main-navigation" class="skip-link">Zur Navigation springen</a>
+    <a href="#kontakt" class="skip-link">Zum Kontakt springen</a>
+  </nav>
+
+  <!-- =================================================================================
        HEADER BEREICH (Logo, Navigation, Buttons)
        ================================================================================= -->
   <header id="main-header">
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <a href="index.html" class="logo-link">
-            <img src="images/logo.PNG" alt="AcademyNow Logo">
+          <a href="index.html" class="logo-link" aria-label="AcademyNow Fahrschule Homepage">
+            <img src="images/logo.PNG" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg">
           </a>
         </div>
         <!-- Button für mobile Navigation (Burger-Menü) -->
         <button class="mobile-menu-btn" aria-expanded="false" aria-label="Menü öffnen">☰</button>
         
         <!-- Hauptnavigation -->
-        <nav aria-label="Hauptnavigation">
+        <nav id="main-navigation" aria-label="Hauptnavigation">
           <ul>
             <li><a href="#hero" class="nav-link active">Start</a></li>
             <li><a href="#preise" class="nav-link">Preise</a></li>
@@ -308,6 +314,7 @@
   <!-- =================================================================================
        HERO BEREICH (Haupt-Banner der Startseite)
        ================================================================================= -->
+  <main id="main-content">
   <section id="hero" class="hero hero-layout-1">
     <div class="hero-background"></div>
     <div class="hero-graphic-accent"></div> <!-- Neues Element für grafischen Akzent -->
@@ -641,12 +648,12 @@
         <div class="google-bewertungen-main">
           <div class="bewertung-score-container">
             <span class="bewertung-wert">4,9</span>
-            <div class="bewertung-sterne-container">
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" class="partial-star"><defs><linearGradient id="starGradient"><stop offset="90%" stop-color="#D1B17C"/><stop offset="90%" stop-color="#E0E0E0"/></linearGradient></defs><path fill="url(#starGradient)" d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+            <div class="bewertung-sterne-container" role="img" aria-label="Bewertung: 4,9 von 5 Sternen">
+              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" class="partial-star" aria-hidden="true"><defs><linearGradient id="starGradient"><stop offset="90%" stop-color="#D1B17C"/><stop offset="90%" stop-color="#E0E0E0"/></linearGradient></defs><path fill="url(#starGradient)" d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
             </div>
           </div>
           <span class="bewertung-anzahl"><strong>28</strong> Erfahrungsberichte</span>
@@ -673,47 +680,47 @@
         <p class="section-description">Antworten auf die wichtigsten Fragen rund um deinen Führerschein</p>
       </div>
       
-      <div class="faq-container">
+      <div class="faq-container" role="region" aria-labelledby="faq-heading">
         <!-- FAQ Item 1 - Struktur angepasst -->
         <div class="faq-item">
-          <div class="faq-question">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
             <h3>Was beinhaltet das Premium-Paket?</h3>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-1" aria-labelledby="faq-question-1" role="region">
             <p>Unser Premium-Paket umfasst den kompletten Theorieunterricht, alle erforderlichen Fahrstunden (Pflicht, Übungsfahrten, Sonderfahrten), kostenlose Prüfungssimulationen, Anmeldegebühren bei TÜV/Dekra sowie eine garantierte Prüfungstermin-Buchung innerhalb von 4 Wochen nach Abschluss deiner Ausbildung.</p>
           </div>
         </div>
         
         <!-- FAQ Item 2 -->
         <div class="faq-item">
-          <div class="faq-question">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
             <h3>Gibt es einen Rabatt, wenn ich mich mit einem Freund anmelde?</h3>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-2" aria-labelledby="faq-question-2" role="region">
             <p>Ja, wir bieten einen Freundschaftsbonus von 30€ für jeden von euch, wenn ihr euch gemeinsam anmeldet. Sprecht uns einfach beim ersten Termin darauf an.</p>
           </div>
         </div>
         
         <!-- FAQ Item 3 -->
         <div class="faq-item">
-          <div class="faq-question">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
             <h3>Wie lange dauert es, bis ich meinen Führerschein habe?</h3>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-3" aria-labelledby="faq-question-3" role="region">
             <p>Die Dauer bis zum Führerschein hängt von verschiedenen Faktoren ab, wie z.B. deiner Verfügbarkeit für Fahrstunden und deinem individuellen Lerntempo. Bei regelmäßiger Teilnahme und Übung können unsere Schüler den Führerschein oft innerhalb von 3-4 Monaten erlangen.</p>
           </div>
         </div>
         
         <!-- FAQ Item 4 -->
         <div class="faq-item">
-          <div class="faq-question">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
             <h3>Welche Zahlungsmöglichkeiten gibt es?</h3>
-            <span class="faq-icon">+</span>
-          </div>
-          <div class="faq-answer">
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer" id="faq-answer-4" aria-labelledby="faq-question-4" role="region">
             <p>Wir bieten verschiedene Zahlungsmöglichkeiten an: Barzahlung, EC-Karte, Überweisung oder auch Ratenzahlung. Sprich uns einfach an, wir finden gemeinsam die beste Lösung für dich.</p>
           </div>
         </div>
@@ -807,7 +814,7 @@
       
       <div class="kontakt-formular">
         <h3>Schreib uns eine Nachricht</h3>
-        <form action="https://formsubmit.co/kontakt@academynow-fahrschule.de" method="POST" id="kontaktForm" class="form">
+        <form action="https://formsubmit.co/kontakt@academynow-fahrschule.de" method="POST" id="kontaktForm" class="form" role="form" aria-labelledby="kontakt-heading">
           <!-- FormSubmit spezifische versteckte Felder -->
           <input type="hidden" name="_next" value="https://www.academynow-fahrschule.de/danke.html">
           <input type="hidden" name="_subject" value="Neue Anfrage von AcademyNow Webseite">
@@ -818,23 +825,26 @@
           <input type="hidden" name="_cc" value="kontakt2@academynow-fahrschule.de">
           
           <div class="form-group horizontal">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Dein Name" required>
+            <label for="name">Name <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Dein Name" required aria-required="true" aria-describedby="name-help">
+            <div id="name-help" class="sr-only">Dein vollständiger Name ist erforderlich</div>
           </div>
           
           <div class="form-group horizontal">
-            <label for="telefon">Telefon</label>
-            <input type="tel" id="telefon" name="telefon" placeholder="Deine Telefonnummer">
+            <label for="telefon">Telefon <span class="optional-indicator">(optional)</span></label>
+            <input type="tel" id="telefon" name="telefon" placeholder="Deine Telefonnummer" aria-describedby="telefon-help">
+            <div id="telefon-help" class="sr-only">Telefonnummer für Rückfragen - optional</div>
           </div>
           
           <div class="form-group horizontal">
-            <label for="email">E-Mail</label>
-            <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required>
+            <label for="email">E-Mail <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
+            <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required aria-required="true" aria-describedby="email-help">
+            <div id="email-help" class="sr-only">Deine E-Mail-Adresse für unsere Antwort</div>
           </div>
           
           <div class="form-group horizontal">
-            <label for="fuehrerscheinklasse">Führerscheinklasse</label>
-            <select id="fuehrerscheinklasse" name="fuehrerscheinklasse">
+            <label for="fuehrerscheinklasse">Führerscheinklasse <span class="optional-indicator">(optional)</span></label>
+            <select id="fuehrerscheinklasse" name="fuehrerscheinklasse" aria-describedby="klasse-help">
               <option value="">Bitte wählen</option>
               <option value="B">Klasse B (PKW)</option>
               <option value="A">Klasse A (Motorrad)</option>
@@ -845,23 +855,28 @@
               <option value="CE">Klasse CE (LKW mit Anhänger)</option>
               <option value="andere">Andere/Nicht sicher</option>
             </select>
+            <div id="klasse-help" class="sr-only">Wähle die gewünschte Führerscheinklasse - optional</div>
           </div>
           
           <div class="form-group horizontal textarea-group">
-            <label for="nachricht">Deine Nachricht</label>
-            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Wie können wir dir helfen?" required></textarea>
+            <label for="nachricht">Deine Nachricht <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
+            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Wie können wir dir helfen?" required aria-required="true" aria-describedby="nachricht-help"></textarea>
+            <div id="nachricht-help" class="sr-only">Beschreibe dein Anliegen ausführlich</div>
           </div>
           
           <div class="form-group checkbox-group">
-            <input type="checkbox" id="datenschutz" name="datenschutz" value="akzeptiert" required>
-            <label for="datenschutz">Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu, dass meine Daten zum Zweck der Kontaktaufnahme verarbeitet werden.*</label>
+            <input type="checkbox" id="datenschutz" name="datenschutz" value="akzeptiert" required aria-required="true" aria-describedby="datenschutz-help">
+            <label for="datenschutz">Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer" aria-label="Datenschutzerklärung in neuem Tab öffnen">Datenschutzerklärung</a> gelesen und stimme zu, dass meine Daten zum Zweck der Kontaktaufnahme verarbeitet werden. <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
+            <div id="datenschutz-help" class="sr-only">Zustimmung zur Datenverarbeitung ist erforderlich</div>
           </div>
           
-          <button type="submit" class="submit-btn">Nachricht senden</button>
+          <button type="submit" class="submit-btn" aria-describedby="submit-help">Nachricht senden</button>
+          <div id="submit-help" class="sr-only">Formular absenden - alle Pflichtfelder müssen ausgefüllt sein</div>
         </form>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- =================================================================================
        FOOTER BEREICH
@@ -871,7 +886,7 @@
       <div class="footer-columns">
         <!-- Spalte 1: Logo & Beschreibung -->
         <div class="footer-column">
-          <img src="images/logo.PNG" alt="Academy Now Logo" class="footer-logo">
+          <img src="images/logo.PNG" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg" class="footer-logo">
           <p>Mit uns kommst du ans Ziel!</p>
         </div>
 
