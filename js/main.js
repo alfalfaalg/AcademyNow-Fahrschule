@@ -281,71 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // =================================================================================
-  // HERO BACKGROUND SWITCHER FUNKTIONALITÄT
+  // INITALISIERUNG ABGESCHLOSSEN
   // =================================================================================
   
-  initHeroBackgroundSwitcher();
 });
-
-function initHeroBackgroundSwitcher() {
-  const toggle = document.getElementById('bgSwitcherToggle');
-  const switcher = document.getElementById('heroSwitcher');
-  const hero = document.getElementById('hero');
-  const options = document.querySelectorAll('.bg-option');
-
-  if (!toggle || !switcher || !hero) return;
-
-  // Toggle Switcher Panel
-  toggle.addEventListener('click', () => {
-    const isVisible = switcher.style.display !== 'none';
-    switcher.style.display = isVisible ? 'none' : 'block';
-  });
-
-  // Handle Background Changes
-  options.forEach(option => {
-    option.addEventListener('click', () => {
-      const bgType = option.dataset.bg;
-      
-      // Remove all existing background classes (improved regex for classes with dashes)
-      hero.className = hero.className.replace(/hero-bg-[\w-]+/g, '');
-      
-      // Add new background class
-      if (bgType !== 'vladalex') { // vladalex ist jetzt der neue Standard
-        hero.classList.add(`hero-bg-${bgType}`);
-      }
-      
-      // Update active state
-      options.forEach(opt => opt.classList.remove('active'));
-      option.classList.add('active');
-      
-      // Store preference
-      localStorage.setItem('heroBackground', bgType);
-      
-      // Optional: Console log for debugging
-      console.log(`Hero background changed to: ${bgType}`);
-    });
-  });
-
-  // Load saved background preference
-  const savedBg = localStorage.getItem('heroBackground');
-  if (savedBg) {
-    const savedOption = document.querySelector(`[data-bg="${savedBg}"]`);
-    if (savedOption) {
-      savedOption.click();
-    }
-  }
-
-  // Close switcher when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!switcher.contains(e.target) && !toggle.contains(e.target)) {
-      switcher.style.display = 'none';
-    }
-  });
-
-  // Keyboard support (ESC to close)
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && switcher.style.display !== 'none') {
-      switcher.style.display = 'none';
-    }
-  });
-}

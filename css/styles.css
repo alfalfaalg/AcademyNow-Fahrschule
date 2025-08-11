@@ -408,29 +408,11 @@ nav ul li a.nav-link.active::after {
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(15, 25, 45, 0.85), rgba(25, 35, 55, 0.8)),
-              var(--hero-bg-image, url('../images/heroBackground/pexels-vladalex94-1402787.jpg')) no-repeat center/cover;
+              url('../images/heroBackground/pexels-riccardo-maremmi-1630705481-28200237.jpg') no-repeat center/cover;
   z-index: -1;
-  transition: background 0.5s ease-in-out;
 }
 
-/* Hero Background Varianten - Alle verfügbaren Bilder in Ordner-Reihenfolge */
-.hero-bg-automobile { --hero-bg-image: url('../images/heroBackground/automobile-1819161_1920.jpg'); }
-.hero-bg-car-interior { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-104836.jpg'); }
-.hero-bg-country-road { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-248539.jpg'); }
-.hero-bg-driving-practice { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-248747.jpg'); }
-.hero-bg-highway { --hero-bg-image: url('../images/heroBackground/pexels-mikebirdy-120049.jpg'); }
-.hero-bg-industrial { --hero-bg-image: url('../images/heroBackground/pexels-tdcat-70912.jpg'); }
-.hero-bg-albinberlin { --hero-bg-image: url('../images/heroBackground/pexels-albinberlin-919073.jpg'); }
-.hero-bg-kaip { --hero-bg-image: url('../images/heroBackground/pexels-albinberlin-919073.jpg'); }
-.hero-bg-lynxexotics { --hero-bg-image: url('../images/heroBackground/pexels-lynxexotics-4141962.jpg'); }
-.hero-bg-mikebirdy { --hero-bg-image: url('../images/heroBackground/pexels-mikebirdy-120049.jpg'); }
-.hero-bg-pixabay1 { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-104836.jpg'); }
-.hero-bg-pixabay2 { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-248539.jpg'); }
-.hero-bg-pixabay3 { --hero-bg-image: url('../images/heroBackground/pexels-pixabay-248747.jpg'); }
-.hero-bg-riccardo1 { --hero-bg-image: url('../images/heroBackground/pexels-riccardo-maremmi-1630705481-28200237.jpg'); }
-.hero-bg-riccardo2 { --hero-bg-image: url('../images/heroBackground/pexels-riccardo-maremmi-1630705481-28200243.jpg'); }
-.hero-bg-tdcat { --hero-bg-image: url('../images/heroBackground/pexels-tdcat-70912.jpg'); }
-.hero-bg-vladalex { --hero-bg-image: url('../images/heroBackground/pexels-vladalex94-1402787.jpg'); }
+/* Hero Background - Festes Riccardo 1 Bild */
 
 .hero-content-wrapper {
   padding: 120px 0 60px;
@@ -2270,103 +2252,8 @@ html {
 }
 
 /*==================================
-  HERO BACKGROUND SWITCHER
+  MOBILE NAVIGATION
 ==================================*/
-
-.hero-bg-switcher {
-  position: fixed;
-  top: 120px;
-  right: 20px;
-  background: rgba(10, 33, 74, 0.95);
-  border-radius: 12px;
-  padding: 15px;
-  z-index: 1000;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  max-height: 80vh;
-  overflow-y: auto;
-  min-width: 200px;
-}
-
-.hero-bg-switcher h4 {
-  color: var(--accent);
-  margin: 0 0 15px 0;
-  font-size: 1rem;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-}
-
-.bg-option {
-  display: block;
-  width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 5px;
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  text-align: left;
-  font-family: 'Inter', sans-serif;
-}
-
-.bg-option:hover {
-  background: var(--accent);
-  color: var(--primary);
-  transform: translateX(3px);
-}
-
-.bg-option.active {
-  background: var(--accent);
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.bg-switcher-toggle {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  background: var(--accent);
-  color: var(--primary);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  z-index: 1001;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bg-switcher-toggle:hover {
-  background: var(--accent-dark);
-  transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .hero-bg-switcher {
-    right: 10px;
-    top: 100px;
-    min-width: 180px;
-    padding: 12px;
-  }
-  
-  .bg-switcher-toggle {
-    right: 10px;
-    top: 60px;
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
-  }
-}
 
 /* Immer ausblenden */
 .mobile-menu-btn {
