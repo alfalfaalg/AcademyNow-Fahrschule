@@ -79,8 +79,126 @@ function checkAuthentication() {
 }
 
 // =================================================================================
-// PROGRESSIVE IMAGE LOADING
+// INTERSECTION OBSERVER FÜR OPTIMIZED LOADING
 // =================================================================================
+
+function initIntersectionObserver() {
+  // Observer für Animationen
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        animationObserver.unobserve(entry.target);
+      }
+    });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Observer für Lazy Loading von Bildern
+  const imageObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          img.classList.add('loaded');
+        }
+        imageObserver.unobserve(img);
+      }
+    });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '50px 0px'
+  });
+
+  // Observer für Critical Content Preloading
+  const preloadObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        // Preload next section resources
+        preloadNextSectionResources(section);
+        preloadObserver.unobserve(section);
+      }
+    });
+  }, { 
+    threshold: 0.1,
+    rootMargin: '200px 0px'
+  });
+
+  // Animierbare Elemente beobachten
+  document.querySelectorAll('.section, .preis-card, .leistung-item, .stelle-card').forEach(el => {
+    animationObserver.observe(el);
+  });
+
+  // Lazy Load Bilder beobachten
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+  });
+
+  // Section Preloading beobachten
+  document.querySelectorAll('.section').forEach(section => {
+    preloadObserver.observe(section);
+  });
+}
+
+function preloadNextSectionResources(currentSection) {
+  const sectionId = currentSection.id;
+  // Preload resources based on upcoming sections
+  if (sectionId === 'preise') {
+    // Preload contact form resources
+    const link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = 'https://formsubmit.co/';
+    document.head.appendChild(link);
+  }
+}
+
+// =================================================================================
+// PERFORMANCE MONITORING
+// =================================================================================
+
+function initPerformanceMonitoring() {
+  // Web Vitals Tracking
+  if ('PerformanceObserver' in window) {
+    // Largest Contentful Paint
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      console.log('📊 LCP:', Math.round(lastEntry.startTime), 'ms');
+    }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+    // First Input Delay
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      entries.forEach(entry => {
+        console.log('📊 FID:', Math.round(entry.processingStart - entry.startTime), 'ms');
+      });
+    }).observe({ entryTypes: ['first-input'] });
+
+    // Cumulative Layout Shift
+    new PerformanceObserver((entryList) => {
+      let clsValue = 0;
+      const entries = entryList.getEntries();
+      entries.forEach(entry => {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+        }
+      });
+      console.log('📊 CLS:', clsValue.toFixed(4));
+    }).observe({ entryTypes: ['layout-shift'] });
+  }
+
+  // Page Load Performance
+  window.addEventListener('load', () => {
+    const perfData = performance.getEntriesByType('navigation')[0];
+    console.log('📊 Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+    console.log('📊 DOM Interactive:', Math.round(perfData.domInteractive - perfData.fetchStart), 'ms');
+  });
+}
 
 function initProgressiveImageLoading() {
   const heroBackground = document.querySelector('.hero-background');
@@ -148,8 +266,17 @@ function lazyLoadMaps() {
 
 document.addEventListener('DOMContentLoaded', function() {
   
+  // Performance monitoring
+  initPerformanceMonitoring();
+  
   // Progressive Image Loading for Hero Background
   initProgressiveImageLoading();
+  
+  // Initialize Intersection Observer
+  initIntersectionObserver();
+  
+  // Service Worker Registration
+  registerServiceWorker();
   
   // 1. Mobile Navigation
   const menuBtn = document.querySelector('.mobile-menu-btn');
@@ -356,7 +483,304 @@ document.addEventListener('DOMContentLoaded', function() {
   // INITALISIERUNG ABGESCHLOSSEN
   // =================================================================================
   
-});// Progressive Image Loading
+});
+
+// =================================================================================
+// SERVICE WORKER REGISTRATION
+// =================================================================================
+
+async function registerServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    try {
+      const registration = await navigator.serviceWorker.register('/sw.js');
+      console.log('✅ Service Worker registered successfully:', registration.scope);
+      
+      // Handle updates
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        newWorker.addEventListener('statechange', () => {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            // New update available
+            showUpdateNotification();
+          }
+        });
+      });
+      
+    } catch (error) {
+      console.log('❌ Service Worker registration failed:', error);
+    }
+  }
+}
+
+function showUpdateNotification() {
+  // Create elegant update notification
+  const notification = document.createElement('div');
+  notification.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10001;
+      max-width: 300px;
+      font-family: 'Inter', sans-serif;
+      animation: slideInRight 0.3s ease;
+    ">
+      <div style="font-weight: 600; margin-bottom: 8px;">Update verfügbar</div>
+      <div style="font-size: 0.9em; margin-bottom: 12px;">Eine neue Version der App ist verfügbar.</div>
+      <button onclick="updateApp()" style="
+        background: var(--accent);
+        color: var(--primary);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 8px;
+      ">Aktualisieren</button>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+      ">Später</button>
+    </div>
+  `;
+  document.body.appendChild(notification);
+}
+
+function updateApp() {
+  if (navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ type: 'SKIP_WAITING' });
+    window.location.reload();
+  }
+}
+
+// =================================================================================
+// ADVANCED SCROLL OPTIMIZATIONS
+// =================================================================================
+
+let ticking = false;
+let lastScrollY = window.scrollY;
+
+function optimizedScrollHandler() {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+      const scrollingDown = currentScrollY > lastScrollY;
+      
+      // Header hide/show logic
+      const header = document.getElementById('main-header');
+      if (header) {
+        if (scrollingDown && currentScrollY > 100) {
+          header.style.transform = 'translateY(-100%)';
+        } else {
+          header.style.transform = 'translateY(0)';
+        }
+      }
+      
+      // Scroll indicator fade
+      const scrollIndicator = document.getElementById('scrollIndicator');
+      if (scrollIndicator) {
+        const opacity = Math.max(0, 1 - (currentScrollY / (window.innerHeight * 0.3)));
+        scrollIndicator.style.opacity = opacity;
+        scrollIndicator.style.pointerEvents = opacity > 0.1 ? 'auto' : 'none';
+      }
+      
+      lastScrollY = currentScrollY;
+      ticking = false;
+    });
+    ticking = true;
+  }
+}
+
+// Use passive listeners for better performance
+window.addEventListener('scroll', optimizedScrollHandler, { passive: true });
+
+// =================================================================================
+// IMPROVED FORM HANDLING WITH VALIDATION
+// =================================================================================
+
+function initAdvancedFormHandling() {
+  const form = document.getElementById('kontaktForm');
+  if (!form) return;
+  
+  // Real-time validation
+  const inputs = form.querySelectorAll('input, textarea, select');
+  inputs.forEach(input => {
+    input.addEventListener('input', debounce(validateField, 300));
+    input.addEventListener('blur', validateField);
+  });
+  
+  // Enhanced form submission
+  form.addEventListener('submit', handleFormSubmission);
+}
+
+function validateField(event) {
+  const field = event.target;
+  const value = field.value.trim();
+  
+  // Remove existing validation classes
+  field.classList.remove('valid', 'invalid');
+  
+  let isValid = true;
+  
+  // Validation rules
+  switch (field.type) {
+    case 'email':
+      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      break;
+    case 'tel':
+      isValid = value === '' || /^[\d\s\-\+\(\)]+$/.test(value);
+      break;
+    default:
+      if (field.required) {
+        isValid = value.length > 0;
+      }
+  }
+  
+  // Apply validation class
+  field.classList.add(isValid ? 'valid' : 'invalid');
+  
+  // Show/hide error message
+  const errorElement = field.parentElement.querySelector('.error-message');
+  if (!isValid && field.required) {
+    if (!errorElement) {
+      const error = document.createElement('div');
+      error.className = 'error-message';
+      error.textContent = getErrorMessage(field);
+      field.parentElement.appendChild(error);
+    }
+  } else if (errorElement) {
+    errorElement.remove();
+  }
+}
+
+function getErrorMessage(field) {
+  switch (field.type) {
+    case 'email':
+      return 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+    case 'tel':
+      return 'Bitte geben Sie eine gültige Telefonnummer ein.';
+    default:
+      return 'Dieses Feld ist erforderlich.';
+  }
+}
+
+function handleFormSubmission(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const submitButton = form.querySelector('button[type="submit"]');
+  
+  // Show loading state
+  submitButton.textContent = 'Wird gesendet...';
+  submitButton.disabled = true;
+  
+  // Collect form data
+  const formData = new FormData(form);
+  
+  // Submit form (with potential offline queueing)
+  submitFormData(formData, form)
+    .then(() => {
+      showSuccessMessage();
+      form.reset();
+    })
+    .catch(error => {
+      console.error('Form submission failed:', error);
+      showErrorMessage();
+    })
+    .finally(() => {
+      submitButton.textContent = 'Nachricht senden';
+      submitButton.disabled = false;
+    });
+}
+
+async function submitFormData(formData, form) {
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    
+    return response;
+  } catch (error) {
+    // Queue for later if offline
+    if (!navigator.onLine) {
+      queueFormSubmission(formData);
+      throw new Error('Formular wurde für die spätere Übertragung gespeichert.');
+    }
+    throw error;
+  }
+}
+
+function queueFormSubmission(formData) {
+  const submissions = JSON.parse(localStorage.getItem('queuedSubmissions') || '[]');
+  submissions.push({
+    data: Object.fromEntries(formData),
+    timestamp: Date.now()
+  });
+  localStorage.setItem('queuedSubmissions', JSON.stringify(submissions));
+}
+
+function showSuccessMessage() {
+  showMessage('✅ Nachricht erfolgreich gesendet!', 'success');
+}
+
+function showErrorMessage() {
+  showMessage('❌ Fehler beim Senden. Bitte versuchen Sie es erneut.', 'error');
+}
+
+function showMessage(text, type) {
+  const message = document.createElement('div');
+  message.className = `form-message ${type}`;
+  message.textContent = text;
+  message.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 10002;
+    animation: slideInRight 0.3s ease;
+    background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+  `;
+  
+  document.body.appendChild(message);
+  
+  setTimeout(() => {
+    message.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => message.remove(), 300);
+  }, 5000);
+}
+
+// Utility function for debouncing
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// Initialize advanced form handling
+document.addEventListener('DOMContentLoaded', initAdvancedFormHandling);// Progressive Image Loading
 function initProgressiveImageLoading() {
   const heroBackground = document.querySelector('.hero-background');
   if (!heroBackground) return;

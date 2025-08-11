@@ -2025,7 +2025,7 @@ nav ul li a.nav-link.active::after {
 }
 
 /*==================================
-  14. ANIMATIONEN
+  14. ANIMATIONEN & PERFORMANCE
 ==================================*/
 @keyframes floatArrow {
   0% {
@@ -2073,6 +2073,171 @@ nav ul li a.nav-link.active::after {
   to {
     opacity: 1;
   }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 100% {
+    transform: translateY(0);
+  }
+  40%, 43% {
+    transform: translateY(-30px);
+  }
+  70% {
+    transform: translateY(-15px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Performance Optimized Animations */
+.animate-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+
+.section.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optimized transitions for better performance */
+.preis-card,
+.leistung-item,
+.stelle-card {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Form validation animations */
+.form-group input.valid,
+.form-group textarea.valid,
+.form-group select.valid {
+  border-color: #27ae60;
+  background-color: rgba(39, 174, 96, 0.05);
+  animation: validPulse 0.3s ease-out;
+}
+
+.form-group input.invalid,
+.form-group textarea.invalid,
+.form-group select.invalid {
+  border-color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.05);
+  animation: invalidShake 0.5s ease-out;
+}
+
+@keyframes validPulse {
+  0% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(39, 174, 96, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(39, 174, 96, 0); }
+}
+
+@keyframes invalidShake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+  20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85em;
+  margin-top: 5px;
+  animation: fadeInDown 0.3s ease-out;
+}
+
+/* Header scroll optimization */
+#main-header {
+  transition: transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Loading states */
+.loading-state {
+  pointer-events: none;
+  opacity: 0.6;
+  position: relative;
+}
+
+.loading-state::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Intersection Observer Performance Optimizations */
+.intersection-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0.0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.intersection-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* GPU Acceleration for smooth animations */
+.hero-background,
+.scroll-indicator,
+.mobile-menu-btn,
+.primary-btn,
+.outline-btn,
+.cta-btn {
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /*==================================

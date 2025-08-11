@@ -231,8 +231,31 @@
        ================================================================================= -->
   <link rel="preload" href="css/styles.css" as="style">
   <link rel="preload" href="js/main.js" as="script">
+  <link rel="preload" href="images/heroBackground/mercedes-hero-optimized.jpg" as="image">
+  <link rel="preload" href="images/logo.PNG" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link rel="preconnect" href="https://formsubmit.co">
+  <link rel="preconnect" href="https://fs0478.fso360-svc.de">
+  <link rel="preconnect" href="https://wa.me">
+  <link rel="dns-prefetch" href="https://www.google.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  
+  <!-- Critical CSS für Above-the-Fold Content -->
+  <style>
+    /* Critical CSS - Above the fold */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden}
+    .container{width:100%;max-width:1300px;padding:0 clamp(15px,3vw,30px);margin:0 auto}
+    #main-header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:8px 0;background:rgba(255,255,255,.98);box-shadow:0 2px 15px rgba(0,0,0,.1)}
+    .header-content{display:flex;justify-content:space-between;align-items:center}
+    .logo img{height:auto;width:220px;max-width:100%}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:80px;color:#fff}
+    .hero-background{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.8) 100%),linear-gradient(135deg,rgba(10,20,35,.92) 0%,rgba(15,25,40,.88) 50%,rgba(20,30,45,.85) 100%),url('images/heroBackground/mercedes-hero-placeholder.jpg') center/cover;z-index:-1;filter:blur(2px)}
+    .skip-links{position:absolute;top:-100px;left:0;z-index:10000}
+    .skip-link{position:absolute;left:-10000px;background:#0A214A;color:#fff;padding:12px 16px;text-decoration:none;font-weight:600}
+    .skip-link:focus{position:static;left:auto;width:auto;height:auto;overflow:visible;display:inline-block}
+  </style>
 
   <!-- =================================================================================
        SCHRIFTARTEN & STYLESHEETS
@@ -955,5 +978,81 @@
        JAVASCRIPT DATEIEN
        ================================================================================= -->
   <script src="js/main.js"></script>
+  
+  <!-- Service Worker Registration -->
+  <script>
+    // Service Worker registration wird durch main.js gehandhabt
+    // Zusätzliche PWA-Features
+    if ('beforeinstallprompt' in window) {
+      let deferredPrompt;
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        // Show install banner after user interaction
+        setTimeout(() => {
+          if (deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
+            showInstallPrompt(deferredPrompt);
+          }
+        }, 10000);
+      });
+    }
+    
+    function showInstallPrompt(prompt) {
+      const banner = document.createElement('div');
+      banner.innerHTML = `
+        <div style="
+          position: fixed;
+          bottom: 20px;
+          left: 20px;
+          right: 20px;
+          background: var(--primary);
+          color: white;
+          padding: 16px;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          z-index: 10000;
+          max-width: 400px;
+          margin: 0 auto;
+          text-align: center;
+          animation: slideInUp 0.3s ease;
+        ">
+          <div style="font-weight: 600; margin-bottom: 8px;">App installieren</div>
+          <div style="font-size: 0.9em; margin-bottom: 12px;">AcademyNow als App auf Ihrem Gerät installieren?</div>
+          <button onclick="installApp()" style="
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 8px;
+          ">Installieren</button>
+          <button onclick="this.parentElement.parentElement.remove()" style="
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+          ">Nicht jetzt</button>
+        </div>
+      `;
+      document.body.appendChild(banner);
+      
+      window.installApp = function() {
+        prompt.prompt();
+        prompt.userChoice.then((result) => {
+          if (result.outcome === 'accepted') {
+            console.log('✅ PWA installation accepted');
+          } else {
+            console.log('❌ PWA installation declined');
+          }
+          banner.remove();
+          deferredPrompt = null;
+        });
+      };
+    }
+  </script>
 </body>
 </html>
