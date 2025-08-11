@@ -79,6 +79,40 @@ function checkAuthentication() {
 }
 
 // =================================================================================
+// PROGRESSIVE IMAGE LOADING
+// =================================================================================
+
+function initProgressiveImageLoading() {
+  const heroBackground = document.querySelector('.hero-background');
+  if (!heroBackground) return;
+  
+  // Add loading class for shimmer effect
+  heroBackground.classList.add('loading');
+  
+  // Create high-res image
+  const highResImage = new Image();
+  highResImage.onload = function() {
+    // Remove loading class
+    heroBackground.classList.remove('loading');
+    
+    // Add loaded class with smooth transition
+    setTimeout(() => {
+      heroBackground.classList.add('loaded');
+    }, 100);
+    
+    console.log('✅ Hero image loaded successfully');
+  };
+  
+  highResImage.onerror = function() {
+    console.error('❌ Failed to load hero image');
+    heroBackground.classList.remove('loading');
+  };
+  
+  // Start loading the high-resolution image
+  highResImage.src = 'images/heroBackground/mercedes-hero-optimized.jpg';
+}
+
+// =================================================================================
 // FUNKTIONEN FÜR DIE HAUPTSEITE (UI-Interaktionen und Effekte)
 // =================================================================================
 
@@ -113,6 +147,10 @@ function lazyLoadMaps() {
 // ========== INITIALISIERUNG ==========
 
 document.addEventListener('DOMContentLoaded', function() {
+  
+  // Progressive Image Loading for Hero Background
+  initProgressiveImageLoading();
+  
   // 1. Mobile Navigation
   const menuBtn = document.querySelector('.mobile-menu-btn');
   const navMenu = document.querySelector('nav[aria-label="Hauptnavigation"] ul');
@@ -284,4 +322,72 @@ document.addEventListener('DOMContentLoaded', function() {
   // INITALISIERUNG ABGESCHLOSSEN
   // =================================================================================
   
-});
+});// Progressive Image Loading
+function initProgressiveImageLoading() {
+  const heroBackground = document.querySelector('.hero-background');
+  if (!heroBackground) return;
+  
+  // Add loading class for shimmer effect
+  heroBackground.classList.add('loading');
+  
+  // Create high-res image
+  const highResImage = new Image();
+  highResImage.onload = function() {
+    // Remove loading class
+    heroBackground.classList.remove('loading');
+    
+    // Add loaded class with smooth transition
+    setTimeout(() => {
+      heroBackground.classList.add('loaded');
+    }, 100);
+    
+    console.log('✅ Hero image loaded successfully');
+  };
+  
+  highResImage.onerror = function() {
+    console.error('❌ Failed to load hero image');
+    heroBackground.classList.remove('loading');
+  };
+  
+  // Start loading the high-resolution image
+  highResImage.src = 'images/heroBackground/mercedes-hero-optimized.jpg';
+}
+
+// Scroll Indicator functionality
+function initScrollIndicator() {
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  if (!scrollIndicator) return;
+  
+  scrollIndicator.addEventListener('click', function() {
+    // Scroll to the next section (about section)
+    const aboutSection = document.getElementById('about') || document.querySelector('.about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback: scroll down by viewport height
+      window.scrollBy({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
+  });
+  
+  // Hide scroll indicator when user scrolls down
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > window.innerHeight * 0.2) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+    } else {
+      scrollIndicator.style.opacity = '1';
+      scrollIndicator.style.pointerEvents = 'auto';
+    }
+    
+    lastScrollTop = scrollTop;
+  }, { passive: true });
+}
