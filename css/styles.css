@@ -407,12 +407,18 @@ nav ul li a.nav-link.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(15, 25, 45, 0.85), rgba(25, 35, 55, 0.8)),
-              url('../images/heroBackground/pexels-riccardo-maremmi-1630705481-28200237.jpg') no-repeat center/cover;
+  
+  /* Mercedes AMG GT mit sehr dunklem Overlay und starkem Vignette-Effekt */
+  background: 
+    radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%),
+    linear-gradient(135deg, rgba(10, 20, 35, 0.92) 0%, rgba(15, 25, 40, 0.88) 50%, rgba(20, 30, 45, 0.85) 100%),
+    url('../images/heroBackground/pexels-riccardo-maremmi-1630705481-28200240.png') no-repeat center/cover;
+  
   z-index: -1;
+  transition: background 0.5s ease-in-out;
 }
 
-/* Hero Background - Festes Riccardo 1 Bild */
+/* Hero Background - Sehr dunkles, dramatisches Design mit starker Vignette */
 
 .hero-content-wrapper {
   padding: 120px 0 60px;
