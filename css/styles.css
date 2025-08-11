@@ -431,7 +431,7 @@ input[type="checkbox"]:checked::after {
 
 .logo img {
   height: auto;
-  width: 220px;
+  width: 180px; /* LOGO GRÖSSE: Um 20% zu verkleinern ändere "220px" zu "176px" (220px * 0.8 = 176px) */
   max-width: 100%;
 }
 
