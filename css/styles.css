@@ -795,7 +795,7 @@ nav ul li a.nav-link.active::after {
   line-height: 0.9;
 }
 
-/* Eröffnungsrabatt Badge - Seriöseres Design */
+/* Sommerangebot Badge - Seriöseres Design */
 .offer-badge-v2 {
   display: block;
   background: rgba(255, 255, 255, 0.15);
@@ -1257,8 +1257,7 @@ nav ul li a.nav-link.active::after {
   8. PREISE SEKTION
 ==================================*/
 .preise-section {
-  background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
-              url('../images/pricing-bg.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(248, 249, 250, 0.95));
 }
 
 .preise-container {
@@ -1504,8 +1503,7 @@ nav ul li a.nav-link.active::after {
   10. KARRIERE SEKTION
 ==================================*/
 .karriere-section {
-  background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(255, 255, 255, 0.97)),
-              url('../images/karriere-bg.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(255, 255, 255, 0.97), rgba(248, 249, 250, 0.95));
 }
 
 .karriere-content {
