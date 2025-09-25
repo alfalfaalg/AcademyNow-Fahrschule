@@ -13,27 +13,27 @@
   "categories": ["education", "business"],
   "icons": [
     {
-      "src": "images/logo.PNG",
+      "src": "images/logo_neu.webp",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     },
     {
-      "src": "images/logo.PNG",
+      "src": "images/logo_neu.webp",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any maskable"
     },
     {
-      "src": "images/logo.PNG",
+      "src": "images/logo_neu.webp",
       "sizes": "144x144",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "images/logo.PNG",
+      "src": "images/logo_neu.webp",
       "sizes": "96x96",
-      "type": "image/png",
+      "type": "image/webp",
       "purpose": "any"
     }
   ],
@@ -45,9 +45,9 @@
       "url": "https://fs0478.fso360-svc.de/",
       "icons": [
         {
-          "src": "images/logo.PNG",
+          "src": "images/logo_neu.webp",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/webp"
         }
       ]
     },
@@ -58,9 +58,9 @@
       "url": "/#kontakt",
       "icons": [
         {
-          "src": "images/logo.PNG",
+          "src": "images/logo_neu.webp",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/webp"
         }
       ]
     },
@@ -71,9 +71,9 @@
       "url": "https://wa.me/4917631065840",
       "icons": [
         {
-          "src": "images/logo.PNG",
+          "src": "images/logo_neu.webp",
           "sizes": "96x96",
-          "type": "image/png"
+          "type": "image/webp"
         }
       ]
     }
