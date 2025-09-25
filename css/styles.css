@@ -634,7 +634,11 @@ input[type="checkbox"]:focus + label {
   .outline-btn:focus,
   .cta-btn:focus,
   .register-btn:focus,
-  .btn-preis:focus {
+  .btn-preis:focus,
+  .offer-badge-v2:focus,
+  .preis-card:focus,
+  .highlight-item:focus,
+  .leistung-item:focus {
     transform: none;
   }
   
@@ -646,7 +650,11 @@ input[type="checkbox"]:focus + label {
   .outline-btn:hover,
   .cta-btn:hover,
   .register-btn:hover,
-  .btn-preis:hover {
+  .btn-preis:hover,
+  .offer-badge-v2:hover,
+  .preis-card:hover,
+  .highlight-item:hover,
+  .leistung-item:hover {
     transform: none !important;
   }
 
@@ -794,18 +802,20 @@ input[type="checkbox"]:checked::after {
   border-radius: 5px;
   font-weight: 600;
   letter-spacing: 0.3px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease;
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   border: none;
   cursor: pointer;
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .cta-btn:hover {
   background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(209, 177, 124, 0.3);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 14px 30px rgba(209, 177, 124, 0.28);
 }
 
 .primary-btn {
@@ -815,36 +825,22 @@ input[type="checkbox"]:checked::after {
   padding: 14px 28px;
   border-radius: 5px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease, border-color 0.28s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
   border: 2px solid transparent;
-  position: relative;
-  overflow: hidden;
   letter-spacing: 0.3px;
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .primary-btn:hover {
   background: var(--accent-dark);
   color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(10, 33, 74, 0.22);
-}
-
-.primary-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 0.5s ease;
-  pointer-events: none;
-}
-
-.primary-btn:hover::after {
-  transform: translateX(130%);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 34px rgba(10, 33, 74, 0.25);
 }
 
 .outline-btn {
@@ -855,35 +851,21 @@ input[type="checkbox"]:checked::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease, color 0.28s ease, border-color 0.28s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 52px;
-  position: relative;
-  overflow: hidden;
   letter-spacing: 0.3px;
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .outline-btn:hover {
   background: rgba(209, 177, 124, 0.12);
   color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(10, 33, 74, 0.15);
-}
-
-.outline-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(209, 177, 124, 0.18) 50%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 0.5s ease;
-  pointer-events: none;
-}
-
-.outline-btn:hover::after {
-  transform: translateX(130%);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 14px 30px rgba(10, 33, 74, 0.2);
 }
 
 .whatsapp-icon {
@@ -1262,6 +1244,8 @@ nav ul li a.nav-link.active::after {
   flex: 1 1 220px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease;
+  will-change: transform, box-shadow;
 }
 
 .hero-buttons > a svg {
@@ -1318,15 +1302,17 @@ nav ul li a.nav-link.active::after {
   width: fit-content;
   user-select: none;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s ease;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 12px 30px rgba(10, 33, 74, 0.25);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .offer-badge-v2:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(10, 33, 74, 0.3);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 42px rgba(10, 33, 74, 0.32);
   border-color: rgba(209, 177, 124, 0.75);
 }
 
@@ -1356,22 +1342,23 @@ nav ul li a.nav-link.active::after {
   padding: 14px 28px;
   border-radius: 5px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease, border-color 0.28s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   position: relative;
-  overflow: hidden;
   min-height: 52px;
   border: 2px solid rgba(209, 177, 124, 0.6);
   box-shadow: 0 12px 30px rgba(10, 33, 74, 0.3);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .register-btn:hover {
   background: #132c5a;
-  transform: translateY(-2px);
-  box-shadow: 0 18px 38px rgba(10, 33, 74, 0.32);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 22px 45px rgba(10, 33, 74, 0.34);
   border-color: rgba(209, 177, 124, 0.85);
 }
 
@@ -1386,20 +1373,6 @@ nav ul li a.nav-link.active::after {
 
 .register-btn:hover .register-icon {
   transform: scale(1.1);
-}
-
-.register-btn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.25) 55%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 0.5s ease;
-  pointer-events: none;
-}
-
-.register-btn:hover::after {
-  transform: translateX(130%);
 }
 
 /* Scroll-Indikator */
@@ -1487,12 +1460,14 @@ nav ul li a.nav-link.active::after {
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .highlight-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
 }
 
 .highlight-icon {
@@ -1554,17 +1529,18 @@ nav ul li a.nav-link.active::after {
   text-align: center;
   padding: 30px 20px;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s ease;
   position: relative;
-  overflow: hidden;
   background: #fff;
   border: 1px solid rgba(209, 177, 124, 0.2);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .leistung-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
   border-color: var(--accent);
 }
 
@@ -1580,13 +1556,13 @@ nav ul li a.nav-link.active::after {
   border-radius: 50%;
   margin-bottom: 15px;
   font-size: 2rem;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease, color 0.28s ease;
 }
 
 .leistung-item:hover .leistung-icon {
   background: var(--accent);
   color: var(--primary);
-  transform: translateY(-5px);
+  transform: translateY(-4px) scale(1.05);
 }
 
 .leistung-titel {
@@ -1821,17 +1797,19 @@ nav ul li a.nav-link.active::after {
   border-radius: var(--card-radius);
   overflow: hidden;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.34s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s ease;
   position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   border: 1px solid rgba(10, 33, 74, 0.08);
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .preis-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(10, 33, 74, 0.15);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 48px rgba(10, 33, 74, 0.2);
 }
 
 .preis-card:hover .preis-header {
@@ -1844,8 +1822,8 @@ nav ul li a.nav-link.active::after {
 }
 
 .preis-card.featured:hover {
-  transform: scale(1.01) translateY(-6px);
-  box-shadow: 0 22px 48px rgba(10, 33, 74, 0.22);
+  transform: scale(1.02) translateY(-6px);
+  box-shadow: 0 28px 56px rgba(10, 33, 74, 0.24);
 }
 
 .preis-badge {
@@ -1900,7 +1878,7 @@ nav ul li a.nav-link.active::after {
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
-  transition: color 0.3s ease, padding-left 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .preis-features li:last-child {
@@ -1915,7 +1893,7 @@ nav ul li a.nav-link.active::after {
 
 .preis-features li:hover {
   color: var(--primary);
-  padding-left: 6px;
+  transform: translateX(4px);
 }
 
 .btn-preis {
@@ -1927,31 +1905,17 @@ nav ul li a.nav-link.active::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.28s ease;
   margin-top: auto;
   box-shadow: 0 6px 16px rgba(10, 33, 74, 0.2);
-  position: relative;
-  overflow: hidden;
+  transform: translateY(0) scale(1);
+  will-change: transform, box-shadow;
 }
 
 .btn-preis:hover {
   background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(10, 33, 74, 0.25);
-}
-
-.btn-preis::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
-  transform: translateX(-120%);
-  transition: transform 0.5s ease;
-  pointer-events: none;
-}
-
-.btn-preis:hover::after {
-  transform: translateX(130%);
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 16px 34px rgba(10, 33, 74, 0.26);
 }
 
 .preis-info {
