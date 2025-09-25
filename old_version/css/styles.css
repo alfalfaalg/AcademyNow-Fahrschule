@@ -659,21 +659,22 @@ input[type="checkbox"]:checked::after {
   3. HEADER & NAVIGATION
 ==================================*/
 #main-header {
-  background: var(--light);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(180deg, rgba(10, 33, 74, 0.04) 0%, rgba(255, 255, 255, 0.98) 70%);
+  box-shadow: 0 8px 24px rgba(10, 33, 74, 0.06);
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 15px 0;
-  transition: all 0.3s ease;
+  padding: 18px 0;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  backdrop-filter: blur(6px);
 }
 
 #main-header.scrolled {
-  padding: 8px 0;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
+  background: linear-gradient(180deg, rgba(10, 33, 74, 0.05) 0%, rgba(255, 255, 255, 0.97) 85%);
+  box-shadow: 0 6px 20px rgba(10, 33, 74, 0.08);
 }
 
 .header-content {
@@ -689,8 +690,14 @@ input[type="checkbox"]:checked::after {
 
 .logo img {
   height: auto;
-  width: 180px; /* LOGO GRÖSSE: Um 20% zu verkleinern ändere "220px" zu "176px" (220px * 0.8 = 176px) */
+  width: 210px;
   max-width: 100%;
+  filter: drop-shadow(0 4px 8px rgba(10, 33, 74, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: translateY(-2px);
 }
 
 .logo-link {
@@ -2062,6 +2069,13 @@ nav ul li a.nav-link.active::after {
 .footer-column .contact-info p {
   margin: 0.7rem 0;
   text-align: center;
+}
+
+.simple-footer .footer-logo + p {
+  margin-top: 0.4rem;
+  margin-bottom: 0.2rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
 }
 
 /* Footer Logo - Direkt ohne Hintergrund wie die Icons */
