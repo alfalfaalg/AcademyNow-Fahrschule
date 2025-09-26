@@ -168,6 +168,49 @@ function preloadNextSectionResources(currentSection) {
   }
 }
 
+// =================================================================================
+// PERFORMANCE MONITORING
+// =================================================================================
+
+function initPerformanceMonitoring() {
+  // Web Vitals Tracking
+  if ('PerformanceObserver' in window) {
+    // Largest Contentful Paint
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      const lastEntry = entries[entries.length - 1];
+      console.log('📊 LCP:', Math.round(lastEntry.startTime), 'ms');
+    }).observe({ entryTypes: ['largest-contentful-paint'] });
+
+    // First Input Delay
+    new PerformanceObserver((entryList) => {
+      const entries = entryList.getEntries();
+      entries.forEach(entry => {
+        console.log('📊 FID:', Math.round(entry.processingStart - entry.startTime), 'ms');
+      });
+    }).observe({ entryTypes: ['first-input'] });
+
+    // Cumulative Layout Shift
+    new PerformanceObserver((entryList) => {
+      let clsValue = 0;
+      const entries = entryList.getEntries();
+      entries.forEach(entry => {
+        if (!entry.hadRecentInput) {
+          clsValue += entry.value;
+        }
+      });
+      console.log('📊 CLS:', clsValue.toFixed(4));
+    }).observe({ entryTypes: ['layout-shift'] });
+  }
+
+  // Page Load Performance
+  window.addEventListener('load', () => {
+    const perfData = performance.getEntriesByType('navigation')[0];
+    console.log('📊 Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+    console.log('📊 DOM Interactive:', Math.round(perfData.domInteractive - perfData.fetchStart), 'ms');
+  });
+}
+
 function initProgressiveImageLoading() {
   const heroBackground = document.querySelector('.hero-background');
   if (!heroBackground) return;
@@ -185,6 +228,8 @@ function initProgressiveImageLoading() {
     setTimeout(() => {
       heroBackground.classList.add('loaded');
     }, 100);
+    
+    console.log('✅ Hero image loaded successfully');
   };
   
   highResImage.onerror = function() {
@@ -232,6 +277,9 @@ function lazyLoadMaps() {
 
 document.addEventListener('DOMContentLoaded', function() {
   
+  // Performance monitoring
+  initPerformanceMonitoring();
+  
   // Progressive Image Loading for Hero Background
   initProgressiveImageLoading();
   
@@ -252,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
       navMenu.classList.toggle('active');
       const isExpanded = navMenu.classList.contains('active');
       this.setAttribute('aria-expanded', isExpanded);
+      this.setAttribute('aria-label', isExpanded ? 'Menü schließen' : 'Menü öffnen');
     });
 
     // Schließen des Menüs beim Klicken außerhalb
@@ -261,7 +310,19 @@ document.addEventListener('DOMContentLoaded', function() {
           e.target !== menuBtn) {
         navMenu.classList.remove('active');
         menuBtn.setAttribute('aria-expanded', false);
+        menuBtn.setAttribute('aria-label', 'Menü öffnen');
       }
+    });
+
+    // Menü schließen beim Klick auf einen Navigation-Link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navMenu.classList.contains('active')) {
+          navMenu.classList.remove('active');
+          menuBtn.setAttribute('aria-expanded', false);
+          menuBtn.setAttribute('aria-label', 'Menü öffnen');
+        }
+      });
     });
   }
 
@@ -428,8 +489,19 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDeveloperLogin();
   }
 
-  // Erweiterte Formularfunktionen initialisieren
-  initAdvancedFormHandling();
+  // Kontaktformular Validierung
+  const kontaktForm = document.getElementById('kontaktForm');
+  if (kontaktForm) {
+    kontaktForm.addEventListener('submit', (e) => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('nachricht').value.trim();
+      if (!name || !email || !message) {
+        e.preventDefault();
+        alert('Bitte füllen Sie alle Pflichtfelder aus.');
+      }
+    });
+  }
 
   // =================================================================================
   // INITALISIERUNG ABGESCHLOSSEN
@@ -445,13 +517,11 @@ async function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js');
+      console.log('✅ Service Worker registered successfully:', registration.scope);
       
       // Handle updates
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing;
-        if (!newWorker) {
-          return;
-        }
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
             // New update available
@@ -461,56 +531,52 @@ async function registerServiceWorker() {
       });
       
     } catch (error) {
-      console.error('❌ Service Worker registration failed:', error);
+      console.log('❌ Service Worker registration failed:', error);
     }
   }
 }
 
 function showUpdateNotification() {
-  if (document.querySelector('.update-notification')) {
-    return;
-  }
-
+  // Create elegant update notification
   const notification = document.createElement('div');
-  notification.className = 'update-notification';
-  notification.setAttribute('role', 'status');
-  notification.setAttribute('aria-live', 'polite');
-
-  const container = document.createElement('div');
-  container.className = 'update-notification__container';
-
-  const title = document.createElement('div');
-  title.className = 'update-notification__title';
-  title.textContent = 'Update verfügbar';
-
-  const message = document.createElement('div');
-  message.className = 'update-notification__message';
-  message.textContent = 'Eine neue Version der App ist verfügbar.';
-
-  const actions = document.createElement('div');
-  actions.className = 'update-notification__actions';
-
-  const updateButton = document.createElement('button');
-  updateButton.type = 'button';
-  updateButton.className = 'update-notification__button update-notification__button--primary';
-  updateButton.textContent = 'Aktualisieren';
-  updateButton.addEventListener('click', () => {
-    updateApp();
-    notification.remove();
-  });
-
-  const laterButton = document.createElement('button');
-  laterButton.type = 'button';
-  laterButton.className = 'update-notification__button update-notification__button--secondary';
-  laterButton.textContent = 'Später';
-  laterButton.addEventListener('click', () => {
-    notification.remove();
-  });
-
-  actions.append(updateButton, laterButton);
-  container.append(title, message, actions);
-  notification.append(container);
-  document.body.append(notification);
+  notification.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 10001;
+      max-width: 300px;
+      font-family: 'Inter', sans-serif;
+      animation: slideInRight 0.3s ease;
+    ">
+      <div style="font-weight: 600; margin-bottom: 8px;">Update verfügbar</div>
+      <div style="font-size: 0.9em; margin-bottom: 12px;">Eine neue Version der App ist verfügbar.</div>
+      <button onclick="updateApp()" style="
+        background: var(--accent);
+        color: var(--primary);
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        margin-right: 8px;
+      ">Aktualisieren</button>
+      <button onclick="this.parentElement.parentElement.remove()" style="
+        background: transparent;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.3);
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+      ">Später</button>
+    </div>
+  `;
+  document.body.appendChild(notification);
 }
 
 function updateApp() {
@@ -580,13 +646,8 @@ function initAdvancedFormHandling() {
   form.addEventListener('submit', handleFormSubmission);
 }
 
-function validateField(eventOrElement) {
-  const field = eventOrElement && 'target' in eventOrElement
-    ? eventOrElement.target
-    : eventOrElement;
-  if (!field) {
-    return false;
-  }
+function validateField(event) {
+  const field = event.target;
   const value = field.value.trim();
   
   // Remove existing validation classes
@@ -623,8 +684,6 @@ function validateField(eventOrElement) {
   } else if (errorElement) {
     errorElement.remove();
   }
-
-  return isValid;
 }
 
 function getErrorMessage(field) {
@@ -643,25 +702,6 @@ function handleFormSubmission(event) {
   
   const form = event.target;
   const submitButton = form.querySelector('button[type="submit"]');
-
-  const fields = Array.from(form.querySelectorAll('input, textarea, select'));
-  let hasInvalidField = false;
-
-  fields.forEach(field => {
-    const result = validateField(field);
-    if (field.required && !result) {
-      hasInvalidField = true;
-    }
-  });
-
-  if (hasInvalidField) {
-    showMessage('Bitte füllen Sie alle Pflichtfelder korrekt aus.', 'error');
-    const firstInvalid = fields.find(field => field.classList.contains('invalid'));
-    if (firstInvalid) {
-      firstInvalid.focus();
-    }
-    return;
-  }
   
   // Show loading state
   submitButton.textContent = 'Wird gesendet...';
@@ -727,16 +767,26 @@ function showErrorMessage() {
 
 function showMessage(text, type) {
   const message = document.createElement('div');
-  message.className = `form-alert form-alert--${type}`;
+  message.className = `form-message ${type}`;
   message.textContent = text;
-
-  document.body.append(message);
-
+  message.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    z-index: 10002;
+    animation: slideInRight 0.3s ease;
+    background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+  `;
+  
+  document.body.appendChild(message);
+  
   setTimeout(() => {
-    message.classList.add('form-alert--exit');
-    message.addEventListener('animationend', () => {
-      message.remove();
-    }, { once: true });
+    message.style.animation = 'slideOutRight 0.3s ease';
+    setTimeout(() => message.remove(), 300);
   }, 5000);
 }
 
@@ -751,4 +801,75 @@ function debounce(func, wait) {
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
   };
+}
+
+// Initialize advanced form handling
+document.addEventListener('DOMContentLoaded', initAdvancedFormHandling);// Progressive Image Loading
+function initProgressiveImageLoading() {
+  const heroBackground = document.querySelector('.hero-background');
+  if (!heroBackground) return;
+  
+  // Add loading class for shimmer effect
+  heroBackground.classList.add('loading');
+  
+  // Create high-res image
+  const highResImage = new Image();
+  highResImage.onload = function() {
+    // Remove loading class
+    heroBackground.classList.remove('loading');
+    
+    // Add loaded class with smooth transition
+    setTimeout(() => {
+      heroBackground.classList.add('loaded');
+    }, 100);
+    
+    console.log('✅ Hero image loaded successfully');
+  };
+  
+  highResImage.onerror = function() {
+    console.error('❌ Failed to load hero image');
+    heroBackground.classList.remove('loading');
+  };
+  
+  // Start loading the high-resolution image
+  highResImage.src = 'images/heroBackground/mercedes-hero-optimized.jpg';
+}
+
+// Scroll Indicator functionality
+function initScrollIndicator() {
+  const scrollIndicator = document.getElementById('scrollIndicator');
+  if (!scrollIndicator) return;
+  
+  scrollIndicator.addEventListener('click', function() {
+    // Scroll to the next section (about section)
+    const aboutSection = document.getElementById('about') || document.querySelector('.about-section');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      // Fallback: scroll down by viewport height
+      window.scrollBy({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
+  });
+  
+  // Hide scroll indicator when user scrolls down
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > window.innerHeight * 0.2) {
+      scrollIndicator.style.opacity = '0';
+      scrollIndicator.style.pointerEvents = 'none';
+    } else {
+      scrollIndicator.style.opacity = '1';
+      scrollIndicator.style.pointerEvents = 'auto';
+    }
+    
+    lastScrollTop = scrollTop;
+  }, { passive: true });
 }

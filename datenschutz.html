@@ -6,9 +6,8 @@
   <title>Datenschutz | AcademyNow Fahrschule</title>
 
   <!-- Favicons -->
-  <link rel="icon" href="images/logo.PNG" sizes="any">
-  <link rel="icon" href="images/logo.PNG" type="image/png">
-  <link rel="apple-touch-icon" href="images/logo.PNG">
+  <link rel="icon" href="images/logo_neu.webp" sizes="any" type="image/webp">
+  <link rel="apple-touch-icon" href="images/logo_neu.webp">
   <meta name="theme-color" content="#0A214A">
 
   <!-- In den HEAD-Bereich aller HTML-Dateien für bessere Performance -->
@@ -67,13 +66,13 @@
         
         <p>Ihre auf unserer Website getroffene Cookie-Einwilligung können Sie jederzeit durch Löschen der Cookies in Ihrem Browser widerrufen. Beim nächsten Besuch wird Ihnen der Cookie-Banner erneut angezeigt.</p>
         
-        <div class="cookie-reset-box">
-          <h4>Cookie-Einstellungen verwalten</h4>
-          <p class="cookie-reset-description">Sie können Ihre Cookie-Einstellungen hier direkt zurücksetzen:</p>
-          <button id="cookieResetButton" class="cookie-reset-btn" type="button">
+        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #0A214A;">
+          <h4 style="margin-top: 0; color: #0A214A;">Cookie-Einstellungen verwalten</h4>
+          <p style="margin-bottom: 10px;">Sie können Ihre Cookie-Einstellungen hier direkt zurücksetzen:</p>
+          <button onclick="resetCookieConsent()" style="background: #0A214A; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 600;">
             Cookie-Einstellungen zurücksetzen
           </button>
-          <p class="cookie-reset-note">Beim nächsten Besuch wird Ihnen der Cookie-Banner erneut angezeigt.</p>
+          <p style="font-size: 0.9em; margin-top: 10px; color: #666;">Beim nächsten Besuch wird Ihnen der Cookie-Banner erneut angezeigt.</p>
         </div>
         
         <h2>3. Hosting und Content Delivery Networks (CDN)</h2>
@@ -120,11 +119,6 @@
         alert('Cookie-Einstellungen wurden zurückgesetzt. Die Seite wird neu geladen.');
         location.reload();
       }
-    }
-
-    const cookieResetButton = document.getElementById('cookieResetButton');
-    if (cookieResetButton) {
-      cookieResetButton.addEventListener('click', resetCookieConsent);
     }
   </script>
 </body>

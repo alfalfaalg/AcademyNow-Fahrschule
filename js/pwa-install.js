@@ -15,32 +15,49 @@
   }
   
   window.showInstallPrompt = function(prompt) {
-    if (document.querySelector('.pwa-install-banner')) {
-      return;
-    }
-
     const banner = document.createElement('div');
-    banner.className = 'pwa-install-banner';
-
-    const container = document.createElement('div');
-    container.className = 'pwa-install-banner__container';
-
-    const title = document.createElement('div');
-    title.className = 'pwa-install-banner__title';
-    title.textContent = 'App installieren';
-
-    const message = document.createElement('div');
-    message.className = 'pwa-install-banner__message';
-    message.textContent = 'AcademyNow als App auf Ihrem Gerät installieren?';
-
-    const actions = document.createElement('div');
-    actions.className = 'pwa-install-banner__actions';
-
-    const installButton = document.createElement('button');
-    installButton.type = 'button';
-    installButton.className = 'pwa-install-banner__button pwa-install-banner__button--primary';
-    installButton.textContent = 'Installieren';
-    installButton.addEventListener('click', () => {
+    banner.innerHTML = `
+      <div style="
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: var(--primary);
+        color: white;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        z-index: 10000;
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: center;
+        animation: slideInUp 0.3s ease;
+      ">
+        <div style="font-weight: 600; margin-bottom: 8px;">App installieren</div>
+        <div style="font-size: 0.9em; margin-bottom: 12px;">AcademyNow als App auf Ihrem Gerät installieren?</div>
+        <button onclick="installApp()" style="
+          background: var(--accent);
+          color: var(--primary);
+          border: none;
+          padding: 8px 16px;
+          border-radius: 4px;
+          font-weight: 600;
+          cursor: pointer;
+          margin-right: 8px;
+        ">Installieren</button>
+        <button onclick="this.parentElement.parentElement.remove()" style="
+          background: transparent;
+          color: white;
+          border: 1px solid rgba(255,255,255,0.3);
+          padding: 8px 16px;
+          border-radius: 4px;
+          cursor: pointer;
+        ">Nicht jetzt</button>
+      </div>
+    `;
+    document.body.appendChild(banner);
+    
+    window.installApp = function() {
       prompt.prompt();
       prompt.userChoice.then((result) => {
         if (result.outcome === 'accepted') {
@@ -48,24 +65,8 @@
         } else {
           console.log('❌ PWA installation declined');
         }
-      }).finally(() => {
         banner.remove();
-        deferredPrompt = null;
       });
-    });
-
-    const dismissButton = document.createElement('button');
-    dismissButton.type = 'button';
-    dismissButton.className = 'pwa-install-banner__button pwa-install-banner__button--secondary';
-    dismissButton.textContent = 'Nicht jetzt';
-    dismissButton.addEventListener('click', () => {
-      banner.remove();
-      deferredPrompt = null;
-    });
-
-    actions.append(installButton, dismissButton);
-    container.append(title, message, actions);
-    banner.append(container);
-    document.body.append(banner);
+    };
   }
 })();

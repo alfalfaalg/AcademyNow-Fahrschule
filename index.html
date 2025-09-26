@@ -42,7 +42,7 @@
   <meta property="og:site_name" content="AcademyNow Fahrschule">
   <meta property="og:title" content="AcademyNow Fahrschule Hamburg - Führerschein mit Sommerangebot">
   <meta property="og:description" content="Moderne Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung & Intensivkurse. Jetzt Sommerangebot - Grundbetrag nur 399€!">
-  <meta property="og:image" content="https://www.academynow-fahrschule.de/images/logo.PNG">
+  <meta property="og:image" content="https://www.academynow-fahrschule.de/images/logo_neu.webp">
   <meta property="og:image:alt" content="AcademyNow Fahrschule Hamburg Logo - Moderne Fahrausbildung">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -58,7 +58,7 @@
   <meta name="twitter:site" content="@academynow_fahrschule">
   <meta name="twitter:title" content="AcademyNow Fahrschule Hamburg - Führerschein mit 50% Rabatt">
   <meta name="twitter:description" content="Moderne Fahrausbildung in Hamburg. Automatik, Intensivkurse, alle Klassen. Sommerangebot - Grundbetrag nur 399€!">
-  <meta name="twitter:image" content="https://www.academynow-fahrschule.de/images/logo.PNG">
+  <meta name="twitter:image" content="https://www.academynow-fahrschule.de/images/logo_neu.webp">
   <meta name="twitter:image:alt" content="AcademyNow Fahrschule Logo">
   <meta name="twitter:label1" content="Standort">
   <meta name="twitter:data1" content="Hamburg, Adenauerallee 10">
@@ -83,8 +83,8 @@
     "url": "https://www.academynow-fahrschule.de",
     "telephone": "+49-40-123456789",
     "email": "info@academynow-fahrschule.de",
-    "image": "https://www.academynow-fahrschule.de/images/logo.PNG",
-    "logo": "https://www.academynow-fahrschule.de/images/logo.PNG",
+    "image": "https://www.academynow-fahrschule.de/images/logo_neu.webp",
+    "logo": "https://www.academynow-fahrschule.de/images/logo_neu.webp",
     "sameAs": [
       "https://www.facebook.com/academynow.fahrschule",
       "https://www.instagram.com/academynow_fahrschule",
@@ -180,15 +180,17 @@
        FAVICONS & ICONS (für Browser-Tabs und Geräte)
        ================================================================================= -->
   
-  <!-- Standard Favicon - Verwende Logo als Favicon -->
+  <!-- Standard Favicons -->
   <link rel="icon" href="images/favicon-48.png" sizes="48x48" type="image/png">
   <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
-  <link rel="icon" href="images/logo.PNG" sizes="any" type="image/png">
+  <link rel="icon" href="images/icon-192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="images/logo_neu.webp" sizes="any" type="image/webp">
+  <link rel="shortcut icon" href="images/favicon-32.png" type="image/png">
   
   <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" href="images/logo.PNG">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/logo.PNG">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
   
   <!-- Android Chrome -->
   <link rel="manifest" href="manifest.json">
@@ -196,10 +198,10 @@
   
   <!-- Microsoft Windows -->
   <meta name="msapplication-TileColor" content="#0A214A">
-  <meta name="msapplication-TileImage" href="images/logo.PNG">
+  <meta name="msapplication-TileImage" content="images/icon-144.png">
   
   <!-- Safari Pinned Tab -->
-  <link rel="mask-icon" href="images/logo.PNG" color="#0A214A">
+  <link rel="mask-icon" href="images/logo_neu.webp" color="#0A214A">
 
   <!-- =================================================================================
        RESSOURCEN-OPTIMIERUNG (Preload, Preconnect)
@@ -207,7 +209,7 @@
   <link rel="preload" href="css/styles.css" as="style">
   <link rel="preload" href="js/main.js" as="script">
   <link rel="preload" href="images/heroBackground/mercedes-hero-optimized.jpg" as="image">
-  <link rel="preload" href="images/logo.PNG" as="image">
+  <link rel="preload" href="images/logo_neu.webp" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
   <link rel="preconnect" href="https://formsubmit.co">
@@ -216,6 +218,22 @@
   <link rel="dns-prefetch" href="https://www.google.com">
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   
+  <!-- Critical CSS für Above-the-Fold Content -->
+  <style>
+    /* Critical CSS - Above the fold */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden}
+    .container{width:100%;max-width:1300px;padding:0 clamp(15px,3vw,30px);margin:0 auto}
+    #main-header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:8px 0;background:rgba(255,255,255,.98);box-shadow:0 2px 15px rgba(0,0,0,.1)}
+    .header-content{display:flex;justify-content:space-between;align-items:center}
+    .logo img{height:auto;width:220px;max-width:100%}
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:80px;color:#fff}
+    .hero-background{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.8) 100%),linear-gradient(135deg,rgba(10,20,35,.92) 0%,rgba(15,25,40,.88) 50%,rgba(20,30,45,.85) 100%),url('images/heroBackground/mercedes-hero-placeholder.jpg') center/cover;z-index:-1;filter:blur(2px)}
+    .skip-links{position:absolute;top:-100px;left:0;z-index:10000}
+    .skip-link{position:absolute;left:-10000px;background:#0A214A;color:#fff;padding:12px 16px;text-decoration:none;font-weight:600}
+    .skip-link:focus{position:static;left:auto;width:auto;height:auto;overflow:visible;display:inline-block}
+  </style>
+
   <!-- =================================================================================
        SCHRIFTARTEN & STYLESHEETS
        ================================================================================= -->
@@ -228,6 +246,15 @@
   <!-- Haupt-Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
+<!-- Google tag (gtag.js) DAS DARF NICHT GELÖSCHT WERDEN-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17118954542"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17118954542');
+</script>
 <body>
   <!-- =================================================================================
        SKIP LINKS (Accessibility - für Screenreader und Keyboard-Navigation)
@@ -246,11 +273,15 @@
       <div class="header-content">
         <div class="logo">
           <a href="index.html" class="logo-link" aria-label="AcademyNow Fahrschule Homepage">
-            <img src="images/logo.PNG" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg">
+            <img src="images/logo_neu.webp" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg">
           </a>
         </div>
         <!-- Button für mobile Navigation (Burger-Menü) -->
-        <button class="mobile-menu-btn" aria-expanded="false" aria-label="Menü öffnen">☰</button>
+        <button class="mobile-menu-btn" aria-expanded="false" aria-label="Menü öffnen">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
         
         <!-- Hauptnavigation -->
         <nav id="main-navigation" aria-label="Hauptnavigation">
@@ -312,8 +343,8 @@
           
           <!-- Klickbares Sommerangebot -->
           <a href="https://fs0478.fso360-svc.de/" target="_blank" rel="noopener noreferrer" class="offer-badge-v2">
-            <span class="discount">Sommerangebot</span>
-            <span class="offer-desc">Grundbetrag nur 399€</span>
+            <span class="discount">🌞 Sommerangebot</span>
+            <span class="offer-desc">Grundbetrag nur 399€!</span>
           </a>
           
           <div class="hero-buttons">
@@ -643,7 +674,7 @@
         <div class="google-bewertungen-footer">
           <span class="google-info">Stand: Juni 2025</span>
           <a href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="google-bewertung-cta">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="google-star-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:middle;margin-right:8px;" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
             Jetzt bewerten auf Google
           </a>
         </div>
@@ -868,7 +899,7 @@
       <div class="footer-columns">
         <!-- Spalte 1: Logo & Beschreibung -->
         <div class="footer-column">
-          <img src="images/logo.PNG" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg" class="footer-logo">
+          <img src="images/logo_neu.webp" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg" class="footer-logo">
           <p>Mit uns kommst du ans Ziel!</p>
         </div>
 

@@ -146,10 +146,6 @@ git commit -m "feat: neue Funktion hinzugefügt"
 git push origin main
 ```
 
-## 🗂️ To-Do
-
-- [ ] In einem eigenen Unterordner ein vollautomatisches WordPress-Theme vorbereiten, das nach Aktivierung ohne manuelle Nacharbeit die komplette Seite bereitstellt.
-
 ## 📄 Lizenz
 
 © 2025 AcademyNow GmbH. Alle Rechte vorbehalten.
