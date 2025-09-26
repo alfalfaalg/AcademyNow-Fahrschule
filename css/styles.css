@@ -107,7 +107,10 @@ img, svg, video {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(135deg, var(--primary) 0%, #0d2951 100%);
+  background:
+    radial-gradient(circle at 10% 18%, rgba(32, 44, 62, 0.25) 0%, rgba(32, 44, 62, 0) 55%),
+    radial-gradient(circle at 90% 18%, rgba(32, 44, 62, 0.25) 0%, rgba(32, 44, 62, 0) 55%),
+    linear-gradient(180deg, rgba(36, 48, 67, 0.96) 0%, rgba(31, 44, 62, 0.9) 65%, rgba(27, 39, 56, 0.86) 100%);
   color: var(--light);
   padding: 16px 20px;
   z-index: 10000;
@@ -203,6 +206,10 @@ img, svg, video {
 /* Cookie Banner Mobile Styles - werden später in zentralem @media Block konsolidiert */
 
 @media (max-width: 480px) {
+  :root {
+    --section-padding: 44px 0;
+  }
+
   .cookie-buttons {
     flex-direction: column;
     width: 100%;
@@ -357,24 +364,29 @@ select:focus,
 
 /* Focus für Mobile Menu Button */
 .mobile-menu-btn:focus {
-  background: var(--accent);
-  color: var(--primary);
+  background: transparent !important; /* keine Box bei Fokus */
+  color: inherit;
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: none;
 }
-
-/* Focus für Buttons */
-.primary-btn:focus,
-.outline-btn:focus,
-.cta-btn:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 2px var(--light), 0 0 0 5px var(--accent), 0 4px 12px rgba(0,0,0,0.2);
-}
-
-/* Focus für Form-Elemente */
-input:focus,
-textarea:focus,
-select:focus {
-  border-color: var(--accent);
-  background: rgba(209, 177, 124, 0.05);
+.mobile-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent; /* keine weiße Box */
+  border: none;
+  border-radius: 8px; /* behalte Touch-Radius */
+  padding: 12px; /* Touch-Target */
+  font-size: 18px;
+  color: var(--light);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 1002;
 }
 
 /* Focus für FAQ Items */
@@ -639,7 +651,7 @@ input[type="checkbox"]:checked::after {
   box-shadow: 0 4px 18px rgba(18, 28, 45, 0.15);
   position: relative;
   width: 100%;
-  padding: 6px 0;
+  padding: 8px 0 4px;
   transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
@@ -852,14 +864,14 @@ nav ul li a.nav-link.active::after {
 ==================================*/
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding-top: 80px;
-  padding-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 30px;
   color: var(--light);
 }
 
@@ -872,8 +884,8 @@ nav ul li a.nav-link.active::after {
   
   /* Progressive Loading: Start with placeholder */
   background: 
-    radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%),
-    linear-gradient(135deg, rgba(10, 20, 35, 0.92) 0%, rgba(15, 25, 40, 0.88) 50%, rgba(20, 30, 45, 0.85) 100%),
+    radial-gradient(ellipse at center, rgba(23, 33, 47, 0) 0%, rgba(23, 33, 47, 0.42) 55%, rgba(22, 31, 45, 0.82) 100%),
+    linear-gradient(135deg, rgba(32, 44, 62, 0.92) 0%, rgba(28, 40, 58, 0.9) 50%, rgba(24, 35, 52, 0.88) 100%),
     url('../images/heroBackground/mercedes-hero-placeholder.jpg') no-repeat center/cover;
   
   z-index: -1;
@@ -883,8 +895,8 @@ nav ul li a.nav-link.active::after {
 
 .hero-background.loaded {
   background: 
-    radial-gradient(ellipse at center, transparent 20%, rgba(0, 0, 0, 0.4) 60%, rgba(0, 0, 0, 0.8) 100%),
-    linear-gradient(135deg, rgba(10, 20, 35, 0.92) 0%, rgba(15, 25, 40, 0.88) 50%, rgba(20, 30, 45, 0.85) 100%),
+    radial-gradient(ellipse at center, rgba(23, 33, 47, 0) 0%, rgba(23, 33, 47, 0.42) 55%, rgba(22, 31, 45, 0.82) 100%),
+    linear-gradient(135deg, rgba(32, 44, 62, 0.92) 0%, rgba(28, 40, 58, 0.9) 50%, rgba(24, 35, 52, 0.88) 100%),
     url('../images/heroBackground/mercedes-hero-optimized.jpg') no-repeat center/cover;
   filter: blur(0px);
 }
@@ -922,7 +934,7 @@ nav ul li a.nav-link.active::after {
 /* Hero Background - Sehr dunkles, dramatisches Design mit starker Vignette */
 
 .hero-content-wrapper {
-  padding: 120px 0 60px;
+  padding: 100px 0 50px;
 }
 
 .hero-badge {
@@ -2040,6 +2052,35 @@ nav ul li a.nav-link.active::after {
   text-align: center;
 }
 
+/* Zusätzliche Footer-Listen (Schnellzugriff, Öffnungszeiten) */
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.2rem 0 0;
+}
+
+.footer-links-list li {
+  margin: 0.35rem 0;
+  color: rgba(226, 233, 242, 0.92);
+}
+
+.footer-links-list a {
+  color: rgba(222, 230, 240, 0.9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links-list a:hover {
+  color: #ffffff;
+}
+
+.opening-hours h4 {
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .simple-footer .footer-logo + p {
   margin-top: 0.4rem;
   margin-bottom: 0.2rem;
@@ -2484,6 +2525,9 @@ nav ul li a.nav-link.active::after {
   transform: translateY(0);
 }
 
+/* Mobile Menu Button - Basis Definition (sichtbar; Desktop blendet per min-width aus) */
+/* Konsolidiert: Basisdefinition weiter oben; hier keine display:none mehr, um Flash alter Styles zu vermeiden */
+
 /* GPU Acceleration for smooth animations */
 .hero-background,
 .scroll-indicator,
@@ -2519,42 +2563,101 @@ nav ul li a.nav-link.active::after {
 
 /* Mobile (bis 768px) */
 @media (max-width: 768px) {
-  /* Mobile Header - kompakter und gleiche Farbe wie Desktop */
+  /* Hero-Inhalt früher starten lassen */
+  .hero {
+    justify-content: flex-start;
+  }
+
+  .hero-content-wrapper {
+    padding: 24px 0 20px;
+  }
+
+  .hero-badge {
+    margin-bottom: 18px; /* Badge näher an Titel */
+  }
+
+  .hero-title {
+    margin-bottom: 22px;
+  }
+  /* Hamburger sichtbar und über allem */
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    z-index: 1100;
+  }
+
+  .hamburger-line {
+     background: #ffffff !important; /* drei weiße Striche */
+     box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+  /* Basis Mobile Styles für Layout-Stabilität */
+  body {
+    overflow-x: hidden;
+  }
+  
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --section-padding: 56px 0;
+  }
+  
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-header h2 {
+    font-size: 2.1rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+  
+  /* Mobile Header - minimal padding */
   #main-header {
-    padding: 6px 0;
-    background: rgba(10, 33, 74, 0.98);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 15px rgba(10, 33, 74, 0.3);
+    padding: 2px 0 4px;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(32, 44, 62, 0.3) 0%, rgba(32, 44, 62, 0) 55%),
+      radial-gradient(circle at 88% 18%, rgba(32, 44, 62, 0.3) 0%, rgba(32, 44, 62, 0) 55%),
+      linear-gradient(180deg, rgba(32, 44, 62, 0.95) 0%, rgba(27, 39, 56, 0.9) 70%, rgba(24, 35, 52, 0.86) 100%);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 4px 16px rgba(10, 23, 41, 0.25);
   }
   
   .header-content {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    gap: 2px;
+    min-height: 44px;
+    padding: 2px 0;
   }
 
   .logo img {
-    width: 160px;
+    width: 190px;
     height: auto;
   }
 
   #main-header .header-buttons {
     order: 3;
     width: 100%;
-    margin-top: 12px;
+    margin-top: 0;
+    padding: 2px 0 0;
     justify-content: center;
-    gap: 12px;
+    gap: 6px;
   }
-
+  
   #main-header .header-buttons .cta-btn,
   #main-header .header-buttons .header-kontakt-btn {
-    width: 45%;
-    max-width: 180px;
-    height: 42px;
-    min-width: 140px;
-    font-size: 0.9rem;
-    padding: 8px 12px;
+    flex: 1 1 48%;
+    max-width: 230px;
+    height: 38px;
+    min-width: 0;
+    font-size: 0.86rem;
+    padding: 9px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2581,6 +2684,10 @@ nav ul li a.nav-link.active::after {
   /* Cookie Banner Mobile Styles */
   .cookie-banner {
     padding: 16px;
+    background:
+      radial-gradient(circle at 10% 18%, rgba(32, 44, 62, 0.25) 0%, rgba(32, 44, 62, 0) 55%),
+      radial-gradient(circle at 90% 18%, rgba(32, 44, 62, 0.25) 0%, rgba(32, 44, 62, 0) 55%),
+      linear-gradient(180deg, rgba(36, 48, 67, 0.96) 0%, rgba(31, 44, 62, 0.9) 65%, rgba(27, 39, 56, 0.86) 100%) !important;
   }
   
   .cookie-content {
@@ -2606,24 +2713,31 @@ nav ul li a.nav-link.active::after {
   }
   
   .mobile-menu-btn {
-    display: block !important;
-    min-height: 48px;
-    min-width: 48px;
+    display: inline-flex !important;
+    min-height: 44px;
+    min-width: 44px;
     position: relative;
-    z-index: 1001;
-    padding: 12px;
+    z-index: 1100;
+    padding: 8px;
+      background: transparent !important; /* keine Box */
+      margin-left: auto; /* rechtsbündig */
+    border: none !important;
+    border-radius: 8px; /* Touch-Radius erhalten */
+    cursor: pointer;
+    box-shadow: none !important;
   }
 
   /* Moderne Hamburger-Linien Animation */
   .hamburger-line {
-    display: block;
+    display: block !important;
     width: 24px;
     height: 3px;
-    background: var(--light);
+    background: #ffffff !important; /* drei weiße Striche */
     margin: 4px 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
     border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   }
 
   /* Animation zum X wenn Menü aktiv */
@@ -2646,21 +2760,13 @@ nav ul li a.nav-link.active::after {
     margin: 0 auto;
   }
 
-  /* Hero Background für Mobile heller machen */
-  .hero-background {
-    background: 
-      radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.5) 100%),
-      linear-gradient(135deg, rgba(10, 20, 35, 0.6) 0%, rgba(15, 25, 40, 0.5) 50%, rgba(20, 30, 45, 0.4) 100%),
-      url('../images/heroBackground/mercedes-hero-placeholder.jpg') no-repeat center/cover;
-    filter: brightness(1.3) contrast(1.1);
-  }
-
-  .hero-background.loaded {
-    background: 
-      radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.2) 70%, rgba(0, 0, 0, 0.5) 100%),
-      linear-gradient(135deg, rgba(10, 20, 35, 0.6) 0%, rgba(15, 25, 40, 0.5) 50%, rgba(20, 30, 45, 0.4) 100%),
-      url('../images/heroBackground/mercedes-hero-optimized.jpg') no-repeat center/cover;
-    filter: brightness(1.3) contrast(1.1);
+  /* Hero Section für Mobile optimieren */
+  .hero {
+    padding-top: 18px;
+    padding-bottom: 22px;
+    min-height: 58vh;
+    max-width: 100vw;
+    overflow: hidden;
   }
   
   nav[aria-label="Hauptnavigation"] ul {
@@ -2777,6 +2883,22 @@ nav ul li a.nav-link.active::after {
   /* Zusätzliche Mobile-Menü-Button Eigenschaften bereits oben definiert */
   
   /* Hero-Bereich */
+  .hero-content {
+    text-align: center !important;
+    padding: 0 15px;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .hero-content h1 {
+    text-align: center !important;
+  }
+  
+  .hero-content p {
+    text-align: center !important;
+  }
+  
   .hero-content .offer-badge {
     display: flex;
     flex-direction: column;
@@ -2848,6 +2970,15 @@ nav ul li a.nav-link.active::after {
   }
 
   /* Footer */
+  .simple-footer {
+    padding: 1.8rem 0 1rem;
+  }
+
+  .footer-columns {
+    gap: 28px;
+    margin-bottom: 0.8rem;
+  }
+
   .simple-footer .footer-columns {
     flex-direction: column;
     align-items: center;
@@ -2890,6 +3021,10 @@ nav ul li a.nav-link.active::after {
 
   .brand-primary {
     font-size: clamp(2.2rem, 6vw, 2.8rem);
+  }
+
+  .section-header h2 {
+    font-size: 1.9rem;
   }
 }
 
@@ -3114,32 +3249,29 @@ html {
   MOBILE NAVIGATION
 ==================================*/
 
-/* Mobile Menu Button - immer ausblenden außer auf Mobile */
-.mobile-menu-btn {
-  display: none !important;
-  background: rgba(10, 33, 74, 0.9);
-  border: 2px solid var(--accent);
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 18px;
-  color: var(--light);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  -webkit-tap-highlight-color: transparent;
+/* Mobile Menu Button – Basis (sichtbar, wird auf Desktop versteckt) */
+/* Mobile Menu Button: Basis-Styles sind weiter oben definiert (transparent, keine Box) */
+
+/* Auf großen Screens ausblenden */
+@media (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none !important;
+  }
 }
 
 /* Mobile Menu Button Hover und Mobile Einblendung */
 .mobile-menu-btn:hover {
-  background: var(--primary);
-  border-color: var(--accent-dark);
+  background: transparent !important; /* keine Box auf Hover */
+  border-color: transparent !important;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: none !important;
 }
 
 .mobile-menu-btn:active {
   transform: translateY(0);
-  background: rgba(10, 33, 74, 1);
+  background: transparent !important; /* keine Box auf Active */
+  box-shadow: none !important;
+  border-color: transparent !important;
 }
 
 /* Mobile Styles sind jetzt im zentralen @media Block konsolidiert */
