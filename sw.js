@@ -13,6 +13,7 @@ const STATIC_ASSETS = [
   '/css/styles.css?v=2025-09-26',
   '/js/main.js',
   '/images/logo_neu.webp',
+  '/images/logo_social.png',
   '/images/heroBackground/mercedes-hero-optimized.jpg',
   '/images/heroBackground/mercedes-hero-placeholder.jpg',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@600;700&display=swap',
