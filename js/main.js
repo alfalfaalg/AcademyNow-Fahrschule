@@ -328,32 +328,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // === Dynamische Navigation: Aktiven Menüpunkt beim Scrollen und Klick setzen ===
   const navLinksArr = Array.from(navLinks);
-  const sectionIds = navLinksArr
-    .map(link => link.getAttribute('href'))
-    .filter(href => href && href.startsWith('#'))
-    .map(href => href.slice(1));
-  const sections = sectionIds
-    .map(id => document.getElementById(id))
+  const navSections = navLinksArr
+    .map(link => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) {
+        return null;
+      }
+      const section = document.getElementById(href.slice(1));
+      return section ? { link, section } : null;
+    })
     .filter(Boolean);
 
   function setActiveNavOnScroll() {
     const headerHeight = document.getElementById('main-header')?.offsetHeight || 0;
     const scrollPos = window.scrollY + headerHeight + 40;
-    let currentSectionIndex = 0;
 
-    sections.forEach((section, idx) => {
-      if (section.offsetTop <= scrollPos) {
-        currentSectionIndex = idx;
+    if (!navSections.length) {
+      navLinksArr.forEach(link => link.classList.remove('active'));
+      return;
+    }
+
+    let currentPair = navSections[0];
+
+    navSections.forEach(pair => {
+      if (pair.section.offsetTop <= scrollPos) {
+        currentPair = pair;
       }
     });
 
-    navLinksArr.forEach((link, idx) => {
-      if (idx === currentSectionIndex) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
+    navLinksArr.forEach(link => link.classList.remove('active'));
+    currentPair.link.classList.add('active');
   }
 
   window.addEventListener('scroll', setActiveNavOnScroll, { passive: true });

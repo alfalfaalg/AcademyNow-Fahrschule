@@ -1038,9 +1038,11 @@ nav ul li a.nav-link.active::after {
   line-height: 0.9;
 }
 
-/* Sommerangebot Badge - Seriöseres Design */
+/* Sommerangebot Badge - Mobile optimiert */
 .offer-badge-v2 {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: rgba(255, 255, 255, 0.15);
   color: var(--light);
   border-radius: 12px;
@@ -1048,10 +1050,10 @@ nav ul li a.nav-link.active::after {
   backdrop-filter: blur(15px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 16px 32px;
-  margin: 32px auto 28px auto;
+  margin: 28px auto 24px auto;
   font-family: 'Inter', Arial, sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.01em;
   text-align: center;
   max-width: 95vw;
@@ -1063,6 +1065,7 @@ nav ul li a.nav-link.active::after {
   text-decoration: none;
   cursor: pointer;
   pointer-events: auto;
+  gap: 6px;
 }
 
 .offer-badge-v2:hover {
@@ -1073,6 +1076,18 @@ nav ul li a.nav-link.active::after {
 
 .offer-badge-v2 > * {
   pointer-events: none;
+}
+
+.offer-badge-v2 .discount {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.offer-badge-v2 .offer-desc {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.95;
 }
 
 /* Anmelde-Button */
@@ -1123,7 +1138,7 @@ nav ul li a.nav-link.active::after {
   z-index: 100;
   cursor: pointer;
   padding: 8px 0 0;
-  margin-top: 18px;
+  margin-top: 35px; /* mehr Abstand zu Buttons auf Mobile */
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -2970,32 +2985,37 @@ nav ul li a.nav-link.active::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 12px 18px;
-    gap: 8px;
-    margin: 25px auto;
+    padding: 14px 20px;
+    gap: 6px;
+    margin: 22px auto 20px auto;
     max-width: calc(100% - 30px);
     font-size: 0.9rem;
   }
   
-  .offer-badge .discount {
-    font-size: 1.3rem; /* Etwas kleiner auf Mobilgeräten, aber immer noch größer als vorher */
+  .hero-content .offer-badge .discount {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  
+  .hero-content .offer-badge .offer-desc {
+    font-size: 0.88rem;
+    font-weight: 500;
   }
   
   .hero .hero-buttons {
     flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    align-items: stretch; /* Buttons volle Breite */
+    gap: 12px;
     width: 100%;
-    margin-top: 25px;
+    max-width: 320px; /* einheitliche maximale Breite */
+    margin: 25px auto 40px auto; /* mehr Abstand nach unten für Scroll-Indikator */
   }
   
   .hero-buttons > a,
   .hero .hero-buttons .register-btn {
-    width: auto;
-    min-width: 220px;
-    max-width: 85%;
-    padding: 12px 20px;
-    font-size: 0.9rem;
+    width: 100%; /* alle Buttons gleich breit */
+    padding: 14px 20px;
+    font-size: 0.95rem;
     text-align: center;
     display: inline-flex;
     align-items: center;
@@ -3003,8 +3023,7 @@ nav ul li a.nav-link.active::after {
   }
 
   .hero .hero-buttons a {
-    width: 100%;
-    max-width: 250px;
+    width: 100%; /* alle Buttons gleich breit */
     text-align: center;
     justify-content: center;
     margin: 0;
