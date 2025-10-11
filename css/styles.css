@@ -631,7 +631,7 @@ input[type="checkbox"]:checked::after {
 
 .primary-btn {
   background: var(--accent);
-  color: var(--primary);
+  color: var(--light); /* Weiß statt dunkel für bessere Lesbarkeit */
   font-weight: 600;
   padding: 14px 28px;
   border-radius: 5px;
@@ -645,6 +645,7 @@ input[type="checkbox"]:checked::after {
 
 .primary-btn:hover {
   background: var(--accent-dark);
+  color: var(--light); /* Weiß bleibt auch bei Hover */
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
 }
@@ -1515,42 +1516,7 @@ nav ul li a.nav-link.active::after {
   font-size: 0.95rem;
 }
 
-/* Anmelde-Button */
-.register-btn {
-  background: #ff5722;
-  color: white;
-  font-weight: 600;
-  padding: 14px 28px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
-}
-
-.register-btn:hover {
-  background: #e64a19;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(255, 87, 34, 0.4);
-}
-
-.register-btn:active {
-  transform: translateY(-1px);
-}
-
-.register-icon {
-  transition: transform 0.3s;
-}
-
-.register-btn:hover .register-icon {
-  transform: scale(1.1);
-}
+/* Anmelde-Button entfernt - nicht verwendet */
 
 /* Scroll-Indikator */
 .scroll-indicator {
@@ -3236,61 +3202,7 @@ nav ul li a.nav-link.active::after {
   }
 }
 
-/* Bewertungen und Google Maps Styles */
-.bewertungen-section {
-  text-align: center;
-  background: #f9f9f9;
-  padding: var(--section-padding);
-}
-
-.google-bewertungen {
-  max-width: 600px;
-  margin: 0 auto 40px;
-  background-color: var(--light);
-  padding: 30px;
-  border-radius: var(--card-radius);
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-}
-
-.sterne {
-  color: var(--accent-gold);
-  font-size: 2rem;
-  letter-spacing: 5px;
-  margin-bottom: 15px;
-}
-
-.bewertung-info {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 15px;
-}
-
-.google-info {
-  margin-top: 15px;
-  color: #444;
-}
-
-.google-logo {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-  width: 24px;
-  height: 24px;
-}
-
-.google-bewertung {
-  display: inline-flex;
-  align-items: center;
-  color: #4285f4;
-  text-decoration: none;
-  margin-top: 15px;
-  font-weight: 500;
-}
-
-.google-bewertung:hover {
-  text-decoration: underline;
-}
+/* Alte Bewertungs-Styles entfernt - nicht mehr verwendet (ersetzt durch google-bewertungen-card) */
 
 /* Google Bewertungen Widget - Verfeinertes Design mit externem Google Icon */
 .google-bewertungen-card {
@@ -3730,12 +3642,13 @@ html {
   }
 
   .hero-extravaganz {
-    font-size: clamp(2.2rem, 8vw, 2.8rem);
-    letter-spacing: 0.1em;
-    line-height: 1.1;
+    font-size: clamp(2rem, 7vw, 2.8rem); /* Kleinere Min-Größe */
+    letter-spacing: 0.05em; /* Reduziert von 0.1em für bessere Lesbarkeit */
+    line-height: 1.2;
     white-space: normal;
     text-align: center;
     margin: 0 auto 8px;
+    word-spacing: 0.1em; /* Bessere Wort-Abstände */
   }
 
   /* Bindestrich auf Mobile ausblenden */
