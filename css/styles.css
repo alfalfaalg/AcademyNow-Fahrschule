@@ -3554,10 +3554,156 @@ html {
     height: 16px;
   }
 
-  /* Navigation dritte Reihe (wenn geöffnet) */
-  #main-header nav {
-    grid-column: 1 / -1;
-    grid-row: 3;
+  /* ============================================================================
+     FULLSCREEN MOBILE MENÜ - Professionelles Overlay
+     ============================================================================ */
+
+  /* Navigation Overlay */
+  #main-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh; /* Dynamic Viewport Height für mobile Browser */
+    background: linear-gradient(
+      135deg,
+      rgba(10, 33, 74, 0.98) 0%,
+      rgba(15, 38, 79, 0.97) 50%,
+      rgba(10, 33, 74, 0.98) 100%
+    );
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Menü geöffnet */
+  #main-navigation.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  /* Menü-Liste zentriert */
+  #main-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Menü-Items */
+  #main-navigation ul li {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  /* Animation für Menü-Items wenn Menü aktiv */
+  #main-navigation.active ul li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Gestaffelte Animation */
+  #main-navigation.active ul li:nth-child(1) { transition-delay: 0.1s; }
+  #main-navigation.active ul li:nth-child(2) { transition-delay: 0.15s; }
+  #main-navigation.active ul li:nth-child(3) { transition-delay: 0.2s; }
+  #main-navigation.active ul li:nth-child(4) { transition-delay: 0.25s; }
+  #main-navigation.active ul li:nth-child(5) { transition-delay: 0.3s; }
+  #main-navigation.active ul li:nth-child(6) { transition-delay: 0.35s; }
+  #main-navigation.active ul li:nth-child(7) { transition-delay: 0.4s; }
+
+  /* Links */
+  #main-navigation ul li a {
+    display: block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+    font-weight: 600;
+    padding: 18px 40px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    letter-spacing: 0.02em;
+  }
+
+  /* Hover-Effekt */
+  #main-navigation ul li a:hover,
+  #main-navigation ul li a.active {
+    background: rgba(232, 140, 74, 0.15);
+    color: var(--accent);
+    transform: translateX(8px);
+  }
+
+  /* Dropdown in Mobile */
+  #main-navigation .dropdown {
+    position: relative;
+  }
+
+  #main-navigation .dropdown-menu {
+    position: static;
+    display: none;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin: 8px 20px;
+    padding: 8px 0;
+    box-shadow: none;
+  }
+
+  #main-navigation .dropdown.active .dropdown-menu {
+    display: block;
+  }
+
+  #main-navigation .dropdown-menu li a {
+    font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+    padding: 12px 30px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  #main-navigation .dropdown-menu li a:hover {
+    color: var(--accent);
+    background: rgba(232, 140, 74, 0.1);
+  }
+
+  /* Dropdown-Arrow */
+  #main-navigation .dropdown-arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+  }
+
+  #main-navigation .dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Burger Button über dem Overlay */
+  .mobile-menu-btn {
+    position: relative;
+    z-index: 1100 !important;
+  }
+
+  /* Burger Animation zu X */
+  .mobile-menu-btn.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .mobile-menu-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu-btn.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   /* ============================================================================

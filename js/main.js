@@ -289,42 +289,80 @@ document.addEventListener('DOMContentLoaded', function() {
   // Service Worker Registration
   registerServiceWorker();
   
-  // 1. Mobile Navigation
+  // 1. Fullscreen Mobile Navigation
   const menuBtn = document.querySelector('.mobile-menu-btn');
-  const navMenu = document.querySelector('nav[aria-label="Hauptnavigation"] ul');
+  const navOverlay = document.querySelector('#main-navigation');
   const navLinks = document.querySelectorAll('nav[aria-label="Hauptnavigation"] ul li a.nav-link');
 
-  if (menuBtn && navMenu) {
+  if (menuBtn && navOverlay) {
     menuBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      navMenu.classList.toggle('active');
-      const isExpanded = navMenu.classList.contains('active');
+      e.stopPropagation();
+
+      // Toggle Menü und Button
+      navOverlay.classList.toggle('active');
+      this.classList.toggle('active');
+
+      const isExpanded = navOverlay.classList.contains('active');
       this.setAttribute('aria-expanded', isExpanded);
       this.setAttribute('aria-label', isExpanded ? 'Menü schließen' : 'Menü öffnen');
+
+      // Body Scroll sperren/entsperren
+      document.body.style.overflow = isExpanded ? 'hidden' : '';
     });
 
-    // Schließen des Menüs beim Klicken außerhalb
-    document.addEventListener('click', function(e) {
-      if (navMenu.classList.contains('active') &&
-          !navMenu.contains(e.target) &&
-          e.target !== menuBtn) {
-        navMenu.classList.remove('active');
+    // Schließen des Menüs beim Klicken auf das Overlay (außerhalb der Links)
+    navOverlay.addEventListener('click', function(e) {
+      // Nur wenn direkt auf das Overlay geklickt wird (nicht auf Links)
+      if (e.target === navOverlay || e.target === navOverlay.querySelector('ul')) {
+        navOverlay.classList.remove('active');
+        menuBtn.classList.remove('active');
         menuBtn.setAttribute('aria-expanded', false);
         menuBtn.setAttribute('aria-label', 'Menü öffnen');
+        document.body.style.overflow = '';
       }
     });
 
     // Menü schließen beim Klick auf einen Navigation-Link
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-          navMenu.classList.remove('active');
+        if (navOverlay.classList.contains('active')) {
+          navOverlay.classList.remove('active');
+          menuBtn.classList.remove('active');
           menuBtn.setAttribute('aria-expanded', false);
           menuBtn.setAttribute('aria-label', 'Menü öffnen');
+          document.body.style.overflow = '';
         }
       });
     });
+
+    // ESC-Taste schließt Menü
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
+        navOverlay.classList.remove('active');
+        menuBtn.classList.remove('active');
+        menuBtn.setAttribute('aria-expanded', false);
+        menuBtn.setAttribute('aria-label', 'Menü öffnen');
+        document.body.style.overflow = '';
+      }
+    });
   }
+
+  // Dropdown Menu Toggle (für Mobile und Desktop)
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+  
+  dropdownToggles.forEach(toggle => {
+    // Desktop: Hover ist bereits via CSS gehandelt
+    // Mobile: Click-Handler für Toggle
+    toggle.addEventListener('click', function(e) {
+      // Nur auf Mobile (wenn mobile-menu-btn sichtbar ist)
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const dropdown = this.closest('.dropdown');
+        dropdown.classList.toggle('active');
+      }
+    });
+  });
 
   // === Dynamische Navigation: Aktiven Menüpunkt beim Scrollen und Klick setzen ===
   const navLinksArr = Array.from(navLinks);
@@ -603,15 +641,15 @@ function optimizedScrollHandler() {
       const currentScrollY = window.scrollY;
       const scrollingDown = currentScrollY > lastScrollY;
       
-      // Header hide/show logic
-      const header = document.getElementById('main-header');
-      if (header) {
-        if (scrollingDown && currentScrollY > 100) {
-          header.style.transform = 'translateY(-100%)';
-        } else {
-          header.style.transform = 'translateY(0)';
-        }
-      }
+      // Header hide/show logic - DEAKTIVIERT (verursachte komische Bewegungen)
+      // const header = document.getElementById('main-header');
+      // if (header) {
+      //   if (scrollingDown && currentScrollY > 100) {
+      //     header.style.transform = 'translateY(-100%)';
+      //   } else {
+      //     header.style.transform = 'translateY(0)';
+      //   }
+      // }
       
       // Scroll indicator fade
       const scrollIndicator = document.getElementById('scrollIndicator');
