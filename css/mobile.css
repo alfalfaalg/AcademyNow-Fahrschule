@@ -1,0 +1,759 @@
+/* Mobile styles extracted */
+@media (max-width: 768px) {
+  /* Basis Mobile Styles */
+  body {
+    padding-top: 0;
+    overflow-x: hidden;
+  }
+
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --section-padding: 56px 0;
+  }
+
+  /* Mobile Header - kompakt wie academy-now.de */
+  #main-header {
+    padding: 10px 0;
+    position: relative;
+    background: rgba(32, 44, 62, 0.92);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(10, 23, 41, 0.3);
+  }
+
+  .header-content {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    align-items: center;
+    gap: 10px 12px;
+  }
+
+  .logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .logo img {
+    width: 150px;
+  }
+
+  .mobile-menu-btn {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+    display: inline-flex !important;
+    z-index: 1100;
+    padding: 6px;
+  }
+
+  .hamburger-line {
+    background: #ffffff !important;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Buttons zweite Reihe */
+  #main-header .header-buttons {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  #main-header .header-buttons .header-btn {
+    flex: 1;
+    min-width: 0;
+    height: 42px;
+    font-size: 0.9rem;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    box-shadow: none;
+  }
+
+  .header-btn-text {
+    display: inline;
+    white-space: nowrap;
+    font-size: 0.85rem;
+  }
+
+  .header-btn-icon {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .header-btn-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Navigation dritte Reihe (wenn geöffnet) */
+  #main-header nav {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+
+  /* Hero Background - Auto besser sichtbar machen */
+  .hero-background {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(23, 33, 47, 0) 0%,
+        rgba(23, 33, 47, 0.15) 50%,
+        rgba(22, 31, 45, 0.45) 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(32, 44, 62, 0.5) 0%,
+        rgba(28, 40, 58, 0.45) 50%,
+        rgba(24, 35, 52, 0.4) 100%
+      ),
+      url("../images/heroBackground/mercedes-hero-placeholder.jpg") no-repeat
+        center/cover !important;
+    filter: blur(0px) !important;
+  }
+
+  .hero-background.loaded {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(23, 33, 47, 0) 0%,
+        rgba(23, 33, 47, 0.15) 50%,
+        rgba(22, 31, 45, 0.45) 100%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(32, 44, 62, 0.5) 0%,
+        rgba(28, 40, 58, 0.45) 50%,
+        rgba(24, 35, 52, 0.4) 100%
+      ),
+      url("../images/heroBackground/mercedes-hero-optimized.jpg") no-repeat
+        center/cover !important;
+    filter: blur(0px) !important;
+  }
+
+  /* Hero - kompakt und vollständig sichtbar */
+  .hero {
+    min-height: 100vh;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 15px;
+    padding-bottom: 40px;
+  }
+
+  .hero-content-wrapper {
+    padding: 15px 0 20px;
+    width: 100%;
+  }
+
+  .hero-badge {
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .hero-title {
+    margin-bottom: 12px;
+  }
+
+  .brand-primary {
+    font-size: clamp(1.8rem, 6.5vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .brand-accent {
+    font-size: clamp(1rem, 3.8vw, 1.3rem);
+    margin-top: 4px;
+  }
+
+  /* Neueröffnungsangebot kompakt */
+  .hero-extravaganz-link {
+    margin: 15px auto 12px;
+  }
+
+  .hero-extravaganz {
+    font-size: clamp(2.2rem, 8vw, 2.8rem);
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    white-space: normal;
+    text-align: center;
+    margin: 0 auto 8px;
+  }
+
+  /* Bindestrich auf Mobile ausblenden */
+  .hyphen {
+    display: none;
+  }
+
+  /* Mobile Break aktivieren für Umbruch */
+  .mobile-break {
+    display: block;
+  }
+
+  /* Preise kompakter */
+  .extravaganz-offer {
+    gap: 4px;
+  }
+
+  .offer-label {
+    font-size: 0.8rem;
+  }
+
+  .offer-price-row {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .offer-price-old {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+  }
+
+  .offer-price-new {
+    font-size: clamp(2.5rem, 6.5vw, 3.2rem);
+  }
+
+  .offer-period {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    margin-top: 5px;
+  }
+
+  /* Freunde werben Box */
+  .freunde-werben-box {
+    margin: 12px auto 0;
+    padding: 8px 16px;
+    max-width: 90%;
+  }
+
+  .freunde-werben-title {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .freunde-werben-discount {
+    font-size: 0.85rem;
+  }
+
+  /* Hero Buttons */
+  .hero-buttons {
+    margin-top: 15px;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    max-width: 90%;
+  }
+
+  .hero-btn {
+    width: 100%;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    bottom: 10px;
+  }
+
+  /* Sections */
+  .section-header {
+    margin-bottom: 32px;
+  }
+
+  .section-header h2 {
+    font-size: 2.1rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .ueber-uns-text,
+  .ueber-uns-text p {
+    text-align: center;
+  }
+
+  .ueber-uns-text {
+    max-width: 95vw;
+  }
+
+  .google-maps-container {
+    height: 220px;
+  }
+
+  /* Cookie Banner Mobile Styles */
+  .cookie-banner {
+    padding: 16px;
+    background: radial-gradient(
+        circle at 10% 18%,
+        rgba(32, 44, 62, 0.25) 0%,
+        rgba(32, 44, 62, 0) 55%
+      ),
+      radial-gradient(
+        circle at 90% 18%,
+        rgba(32, 44, 62, 0.25) 0%,
+        rgba(32, 44, 62, 0) 55%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(36, 48, 67, 0.96) 0%,
+        rgba(31, 44, 62, 0.9) 65%,
+        rgba(27, 39, 56, 0.86) 100%
+      ) !important;
+  }
+
+  .cookie-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+.cookie-text {
+  min-width: auto;
+  font-size: 13px;
+}
+
+.cookie-reset-card {
+  margin: 20px 0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary);
+}
+
+.cookie-reset-title {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.cookie-reset-text {
+  margin-bottom: 10px;
+}
+
+.cookie-reset-note {
+  font-size: 0.9em;
+  margin-top: 10px;
+  color: #666;
+}
+
+  .cookie-buttons {
+    justify-content: center;
+    width: 100%;
+  }
+
+.cookie-btn {
+  padding: 12px 16px;
+  font-size: 13px;
+  min-width: 100px;
+}
+.cookie-reset-btn {
+  background: var(--primary);
+  color: var(--light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cookie-reset-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+  .mobile-menu-btn {
+    display: inline-flex !important;
+    min-height: 44px;
+    min-width: 44px;
+    position: relative;
+    z-index: 1100;
+    padding: 8px;
+    background: transparent !important; /* keine Box */
+    margin-left: auto; /* rechtsbündig */
+    border: none !important;
+    border-radius: 8px; /* Touch-Radius erhalten */
+    cursor: pointer;
+    box-shadow: none !important;
+  }
+
+  /* Moderne Hamburger-Linien Animation */
+  .hamburger-line {
+    display: block !important;
+    width: 24px;
+    height: 3px;
+    background: #ffffff !important; /* drei weiße Striche */
+    margin: 4px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Animation zum X wenn Menü aktiv */
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .mobile-menu-btn[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  /* Standort Container auf Mobile */
+  .standort-container {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  /* Hero Section für Mobile optimieren */
+  .hero {
+    padding-top: 44px;
+    padding-bottom: 40px;
+    min-height: auto;
+  }
+
+  nav[aria-label="Hauptnavigation"] ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: radial-gradient(
+        circle at 6% 0%,
+        rgba(43, 55, 74, 0.36) 0%,
+        rgba(43, 55, 74, 0) 55%
+      ),
+      radial-gradient(
+        circle at 94% 0%,
+        rgba(43, 55, 74, 0.36) 0%,
+        rgba(43, 55, 74, 0) 55%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(43, 55, 74, 0.98) 0%,
+        rgba(26, 35, 52, 0.98) 100%
+      );
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    display: block;
+    z-index: 1000; /* Sicherstellen, dass es über allem ist */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    /* Animation hinzufügen */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-15px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  nav[aria-label="Hauptnavigation"] ul.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 80vh; /* Maximale Höhe beim Aufklappen */
+    overflow-y: auto; /* Scrollbar, wenn viele Elemente */
+  }
+
+  nav[aria-label="Hauptnavigation"] ul li {
+    display: block;
+    margin: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    transition-delay: 0.05s;
+  }
+
+  nav[aria-label="Hauptnavigation"] ul.active li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Verzögerte Animation für jeden Listeneintrag */
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(3) {
+    transition-delay: 0.15s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(4) {
+    transition-delay: 0.2s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(5) {
+    transition-delay: 0.25s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(6) {
+    transition-delay: 0.3s;
+  }
+  nav[aria-label="Hauptnavigation"] ul.active li:nth-child(7) {
+    transition-delay: 0.35s;
+  }
+
+  /* Verbesserte Link-Styles */
+  nav[aria-label="Hauptnavigation"] ul li a {
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    min-height: 44px;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  /* Aktiver Zustand und Hover für Links */
+  nav[aria-label="Hauptnavigation"] ul li a:active,
+  nav[aria-label="Hauptnavigation"] ul li a.clicked {
+    background-color: rgba(var(--accent-gold-rgb), 0.22);
+    color: #ffffff;
+  }
+
+  nav[aria-label="Hauptnavigation"] ul li a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Ripple-Effekt für visuelles Feedback beim Klicken */
+  nav[aria-label="Hauptnavigation"] ul li a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(var(--accent-gold-rgb), 0.32);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+  }
+
+  nav[aria-label="Hauptnavigation"] ul li a:active::after {
+    animation: ripple 0.6s ease-out;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0) translate(-50%, -50%);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(20) translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+
+  /* Mobile Dropdown Styles */
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    background: rgba(20, 30, 45, 0.95);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .dropdown.active .dropdown-menu {
+    max-height: 500px;
+  }
+
+  .dropdown-menu::before {
+    display: none;
+  }
+
+  .dropdown-menu li a {
+    padding: 12px 20px 12px 35px !important;
+    font-size: 0.95em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .dropdown-arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.active .dropdown-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Zusätzliche Mobile-Menü-Button Eigenschaften bereits oben definiert */
+
+  /* Hero-Bereich */
+  .hero-content {
+    text-align: center !important;
+    padding: 0 15px;
+    max-width: 100%;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    text-align: center !important;
+  }
+
+  .hero-content p {
+    text-align: center !important;
+  }
+
+  .hero-content .offer-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 14px 20px;
+    gap: 6px;
+    margin: 22px auto 20px auto;
+    max-width: calc(100% - 30px);
+    font-size: 0.9rem;
+  }
+
+  .hero-content .offer-badge .discount {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .hero-content .offer-badge .offer-desc {
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+
+  .hero .hero-buttons {
+    flex-direction: column;
+    align-items: stretch; /* Buttons volle Breite */
+    gap: 12px;
+    width: 100%;
+    max-width: 320px; /* einheitliche maximale Breite */
+    margin: 25px auto 40px auto; /* mehr Abstand nach unten für Scroll-Indikator */
+  }
+
+  .hero-buttons > a,
+  .hero .hero-buttons .register-btn {
+    width: 100%; /* alle Buttons gleich breit */
+    padding: 14px 20px;
+    font-size: 0.95rem;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero .hero-buttons a {
+    width: 100%; /* alle Buttons gleich breit */
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  /* Formulare */
+  .form-group.horizontal {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .form-group.horizontal label {
+    flex: none;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .checkbox-group {
+    margin-left: 0;
+  }
+
+  /* Grids & Layouts */
+  .ueber-uns-buttons,
+  .karriere-grid,
+  .preise-container {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer */
+  .simple-footer {
+    padding: 1rem 0 0.4rem; /* DRASTISCH reduziert für Mobile */
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 16px; /* DRASTISCH reduziert von 20px */
+    margin-bottom: 0.8rem; /* DRASTISCH reduziert von 1.2rem */
+    text-align: center;
+  }
+
+  .footer-column {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .footer-column h3::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .footer-links-list li {
+    margin: 0.4rem 0;
+  }
+
+  .footer-links-list {
+    max-width: 260px;
+    margin: 0.2rem auto 0;
+  }
+
+  .footer-brand {
+    margin: 0.2rem auto 0.2rem; /* Nochmal 50% weniger: von 0.4rem auf 0.2rem (Mobile) */
+  }
+
+  .simple-footer .container {
+    padding-left: clamp(20px, 6vw, 32px);
+    padding-right: clamp(20px, 6vw, 32px);
+  }
+
+  /* Leistungen */
+  .leistungen-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablet */
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .leistung-item {
+    padding: 15px 10px;
+  }
+
+  /* Größere Touch-Ziele für alle wichtigen Buttons im mobilen Layout */
+  .hero-buttons a,
+  .btn-preis,
+  .stelle-btn,
+  .outline-btn,
+  .primary-btn,
+  .submit-btn,
+  .header-kontakt-btn {
+    padding: 15px 25px;
+    margin: 5px 0;
+  }
+}

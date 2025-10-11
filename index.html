@@ -1,866 +1,1458 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WWRGDHJ7');</script>
-  <!-- End Google Tag Manager -->
-  
-  <!-- Authentifizierungsskript -->
-  <script src="js/auth.js" defer></script>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+    </script>
+    <!-- End Google Tag Manager -->
 
-  <!-- =================================================================================
+    <!-- Authentifizierungsskript -->
+    <script src="js/auth.js" defer></script>
+
+    <!-- =================================================================================
        META-INFORMATIONEN & SEO
        ================================================================================= -->
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>AcademyNow Fahrschule - Mit uns kommst du ans Ziel!</title>
 
-  <!-- Haupt-SEO-Tags -->
-  <meta name="description" content="AcademyNow Fahrschule Hamburg - Führerschein Klassen A, B, BE, C, CE. Moderne Fahrausbildung mit Sommerangebot - Grundbetrag nur 399€. Automatik-Ausbildung & Intensivkurse. Adenauerallee 10, Hamburg.">
-  <meta name="keywords" content="Fahrschule Hamburg, Führerschein Hamburg, Fahrausbildung, AcademyNow, Adenauerallee, Automatik-Ausbildung, Intensivkurse, Führerscheinklassen A B BE C CE, Motorradführerschein Hamburg, Fahrstunden Hamburg">
-  
-  <!-- Enhanced SEO Meta Tags -->
-  <meta name="author" content="AcademyNow Fahrschule">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow">
-  <meta name="bingbot" content="index, follow">
-  <meta name="revisit-after" content="7 days">
-  <meta name="distribution" content="global">
-  <meta name="rating" content="general">
-  <meta name="format-detection" content="telephone=yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="AcademyNow Fahrschule">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.academynow-fahrschule.de/">
-  
-  <!-- Alternate Languages (falls später mehrsprachig) -->
-  <link rel="alternate" hreflang="de" href="https://www.academynow-fahrschule.de/">
-  <link rel="alternate" hreflang="x-default" href="https://www.academynow-fahrschule.de/">
-  
-  <!-- Open Graph Tags für Social Media & Google Suchergebnisse -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="AcademyNow Fahrschule">
-  <meta property="og:title" content="AcademyNow Fahrschule Hamburg - Führerschein mit Sommerangebot">
-  <meta property="og:description" content="Moderne Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung & Intensivkurse. Jetzt Sommerangebot - Grundbetrag nur 399€!">
-  <meta property="og:image" content="https://www.academynow-fahrschule.de/images/logo_social.png">
-  <meta property="og:image:alt" content="AcademyNow Fahrschule Hamburg Logo ohne weißen Hintergrund">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://www.academynow-fahrschule.de">
-  <meta property="og:locale" content="de_DE">
-  <meta property="business:contact_data:street_address" content="Adenauerallee 10">
-  <meta property="business:contact_data:locality" content="Hamburg">
-  <meta property="business:contact_data:postal_code" content="20097">
-  <meta property="business:contact_data:country_name" content="Deutschland">
-  
-  <!-- Twitter Card Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@academynow_fahrschule">
-  <meta name="twitter:title" content="AcademyNow Fahrschule Hamburg - Führerschein mit 50% Rabatt">
-  <meta name="twitter:description" content="Moderne Fahrausbildung in Hamburg. Automatik, Intensivkurse, alle Klassen. Sommerangebot - Grundbetrag nur 399€!">
-  <meta name="twitter:image" content="https://www.academynow-fahrschule.de/images/logo_social.png">
-  <meta name="twitter:image:alt" content="AcademyNow Fahrschule Logo">
-  <meta name="twitter:label1" content="Standort">
-  <meta name="twitter:data1" content="Hamburg, Adenauerallee 10">
-  <meta name="twitter:label2" content="Angebot">
-  <meta name="twitter:data2" content="Sommerangebot 399€">
-  
-  <!-- Zusätzliche SEO Meta-Tags -->
-  <meta name="geo.region" content="DE-HH">
-  <meta name="geo.placename" content="Hamburg">
-  <meta name="geo.position" content="53.5511;9.9937">
-  <meta name="ICBM" content="53.5511, 9.9937">
-  
-  <!-- Schema.org Structured Data for Local Business -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://www.academynow-fahrschule.de",
-    "name": "AcademyNow Fahrschule",
-    "alternateName": "Academy Now Fahrschule Hamburg",
-    "description": "Moderne und effiziente Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung und Intensivkurse verfügbar.",
-    "url": "https://www.academynow-fahrschule.de",
-    "telephone": "+49-40-98259150",
-    "email": "info@academynow-fahrschule.de",
-    "image": "https://www.academynow-fahrschule.de/images/logo_social.png",
-    "logo": "https://www.academynow-fahrschule.de/images/logo_neu.webp",
-    "sameAs": [
-      "https://www.facebook.com/academynow.fahrschule",
-      "https://www.instagram.com/academynow_fahrschule",
-      "https://www.tiktok.com/@academynow_fahrschule"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Adenauerallee 10",
-      "addressLocality": "Hamburg",
-      "addressRegion": "Hamburg",
-      "postalCode": "20097",
-      "addressCountry": "DE"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 53.5511,
-      "longitude": 9.9937
-    },
-    "openingHours": [
-      "Mo-Fr 09:00-18:00",
-      "Sa 10:00-14:00"
-    ],
-    "priceRange": "€€",
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates", 
-        "latitude": 53.5511,
-        "longitude": 9.9937
-      },
-      "geoRadius": "25000"
-    },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Fahrausbildung Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Führerschein Klasse B",
-            "description": "PKW Führerschein - Standard Ausbildung"
-          }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AcademyNow Fahrschule - Mit uns kommst du ans Ziel!</title>
+
+    <!-- Haupt-SEO-Tags -->
+    <meta
+      name="description"
+      content="AcademyNow Fahrschule Hamburg - Führerschein Klassen A, B, BE, C, CE. Moderne Fahrausbildung - Automatik-Ausbildung & Intensivkurse. Flexible Fahrzeiten. Adenauerallee 10, Hamburg."
+    />
+    <meta
+      name="keywords"
+      content="Fahrschule Hamburg, Führerschein Hamburg, Fahrausbildung, AcademyNow, Adenauerallee, Automatik-Ausbildung, Intensivkurse, Führerscheinklassen A B BE C CE, Motorradführerschein Hamburg, Fahrstunden Hamburg"
+    />
+
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="author" content="AcademyNow Fahrschule" />
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="bingbot" content="index, follow" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="AcademyNow Fahrschule" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.academynow-fahrschule.de/" />
+
+    <!-- Alternate Languages (falls später mehrsprachig) -->
+    <link
+      rel="alternate"
+      hreflang="de"
+      href="https://www.academynow-fahrschule.de/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://www.academynow-fahrschule.de/"
+    />
+
+    <!-- Open Graph Tags für Social Media & Google Suchergebnisse -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AcademyNow Fahrschule" />
+    <meta
+      property="og:title"
+      content="AcademyNow Fahrschule Hamburg - Moderne Fahrausbildung"
+    />
+    <meta
+      property="og:description"
+      content="Moderne Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung & Intensivkurse. Flexible Fahrzeiten."
+    />
+    <meta
+      property="og:image"
+      content="https://www.academynow-fahrschule.de/images/logo_social.png"
+    />
+    <meta
+      property="og:image:alt"
+      content="AcademyNow Fahrschule Hamburg Logo ohne weißen Hintergrund"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.academynow-fahrschule.de" />
+    <meta property="og:locale" content="de_DE" />
+    <meta
+      property="business:contact_data:street_address"
+      content="Adenauerallee 10"
+    />
+    <meta property="business:contact_data:locality" content="Hamburg" />
+    <meta property="business:contact_data:postal_code" content="20097" />
+    <meta property="business:contact_data:country_name" content="Deutschland" />
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@academynow_fahrschule" />
+    <meta
+      name="twitter:title"
+      content="AcademyNow Fahrschule Hamburg - Moderne Fahrausbildung"
+    />
+    <meta
+      name="twitter:description"
+      content="Moderne Fahrausbildung in Hamburg. Automatik, Intensivkurse, alle Klassen. Flexible Fahrzeiten."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.academynow-fahrschule.de/images/logo_social.png"
+    />
+    <meta name="twitter:image:alt" content="AcademyNow Fahrschule Logo" />
+    <meta name="twitter:label1" content="Standort" />
+    <meta name="twitter:data1" content="Hamburg, Adenauerallee 10" />
+    <meta name="twitter:label2" content="Führerscheinklassen" />
+    <meta name="twitter:data2" content="A, B, BE, C, CE" />
+
+    <!-- Zusätzliche SEO Meta-Tags -->
+    <meta name="geo.region" content="DE-HH" />
+    <meta name="geo.placename" content="Hamburg" />
+    <meta name="geo.position" content="53.5511;9.9937" />
+    <meta name="ICBM" content="53.5511, 9.9937" />
+
+    <!-- Schema.org Structured Data for Local Business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://www.academynow-fahrschule.de",
+        "name": "AcademyNow Fahrschule",
+        "alternateName": "Academy Now Fahrschule Hamburg",
+        "description": "Moderne und effiziente Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung und Intensivkurse verfügbar.",
+        "url": "https://www.academynow-fahrschule.de",
+        "telephone": "+49-40-98259150",
+        "email": "info@academynow-fahrschule.de",
+        "image": "https://www.academynow-fahrschule.de/images/logo_social.png",
+        "logo": "https://www.academynow-fahrschule.de/images/logo_neu.webp",
+        "sameAs": [
+          "https://www.facebook.com/academynow.fahrschule",
+          "https://www.instagram.com/academynow_fahrschule",
+          "https://www.tiktok.com/@academynow_fahrschule"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Adenauerallee 10",
+          "addressLocality": "Hamburg",
+          "addressRegion": "Hamburg",
+          "postalCode": "20097",
+          "addressCountry": "DE"
         },
-        {
-          "@type": "Offer", 
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Automatik-Ausbildung",
-            "description": "Führerschein mit Automatikgetriebe"
-          }
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 53.5511,
+          "longitude": 9.9937
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service", 
-            "name": "Intensivkurse",
-            "description": "Schnelle Führerschein-Ausbildung"
-          }
+        "openingHours": ["Mo-Fr 09:00-18:00", "Sa 10:00-14:00"],
+        "priceRange": "€€",
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 53.5511,
+            "longitude": 9.9937
+          },
+          "geoRadius": "25000"
         },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Motorrad Führerschein Klasse A",
-            "description": "Motorradführerschein alle Klassen"
-          }
-        }
-      ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Academy Now Team"
-    },
-    "specialty": [
-      "Fahrausbildung",
-      "Führerschein",
-      "Automatik-Ausbildung", 
-      "Intensivkurse",
-      "Motorradführerschein"
-    ]
-  }
-  </script>
-  
-  <!-- =================================================================================
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Fahrausbildung Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Führerschein Klasse B",
+                "description": "PKW Führerschein - Standard Ausbildung"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Automatik-Ausbildung",
+                "description": "Führerschein mit Automatikgetriebe"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Intensivkurse",
+                "description": "Schnelle Führerschein-Ausbildung"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Motorrad Führerschein Klasse A",
+                "description": "Motorradführerschein alle Klassen"
+              }
+            }
+          ]
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "127",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Academy Now Team"
+        },
+        "specialty": [
+          "Fahrausbildung",
+          "Führerschein",
+          "Automatik-Ausbildung",
+          "Intensivkurse",
+          "Motorradführerschein"
+        ]
+      }
+    </script>
+
+    <!-- =================================================================================
        FAVICONS & ICONS (für Browser-Tabs und Geräte)
        ================================================================================= -->
-  
-  <!-- Standard Favicons -->
-  <link rel="icon" href="images/logo_neu.png" sizes="48x48" type="image/png">
-  <link rel="icon" href="images/logo_neu.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="images/logo_neu.png" sizes="16x16" type="image/png">
-  <link rel="icon" href="images/logo_neu.png" sizes="192x192" type="image/png">
-  <link rel="icon" href="images/logo_neu.webp" sizes="any" type="image/webp">
-  <link rel="shortcut icon" href="images/logo_neu.png" type="image/png">
-  
-  <!-- Apple Touch Icons -->
-  <link rel="apple-touch-icon" href="images/logo_neu.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_neu.png">
-  
-  <!-- Android Chrome -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0A214A">
-  
-  <!-- Microsoft Windows -->
-  <meta name="msapplication-TileColor" content="#0A214A">
-  <meta name="msapplication-TileImage" content="images/logo_neu.png">
-  
-  <!-- Safari Pinned Tab -->
-  <link rel="mask-icon" href="images/logo_neu.webp" color="#0A214A">
 
-  <!-- =================================================================================
+    <!-- Standard Favicon ICO für beste Browser-Kompatibilität und Google Search -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <!-- Standard Favicons (PNG für moderne Browser) -->
+    <link
+      rel="icon"
+      href="images/logo_neu.png"
+      sizes="48x48"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="images/logo_neu.png"
+      sizes="32x32"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="images/logo_neu.png"
+      sizes="16x16"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="images/logo_neu.png"
+      sizes="192x192"
+      type="image/png"
+    />
+    <link
+      rel="icon"
+      href="images/logo_neu.webp"
+      sizes="any"
+      type="image/webp"
+    />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="images/logo_neu.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo_neu.png" />
+
+    <!-- Android Chrome -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#0A214A" />
+
+    <!-- Microsoft Windows -->
+    <meta name="msapplication-TileColor" content="#0A214A" />
+    <meta name="msapplication-TileImage" content="images/logo_neu.png" />
+
+    <!-- Safari Pinned Tab -->
+    <link rel="mask-icon" href="images/logo_neu.webp" color="#0A214A" />
+
+    <!-- =================================================================================
        RESSOURCEN-OPTIMIERUNG (Preload, Preconnect)
        ================================================================================= -->
-  <link rel="preload" href="css/styles.css" as="style">
-  <link rel="preload" href="js/main.js" as="script">
-  <link rel="preload" href="images/heroBackground/mercedes-hero-optimized.jpg" as="image">
-  <link rel="preload" href="images/logo_neu.webp" as="image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
-  <link rel="preconnect" href="https://formsubmit.co">
-  <link rel="preconnect" href="https://fs0478.fso360-svc.de">
-  <link rel="preconnect" href="https://wa.me">
-  <link rel="dns-prefetch" href="https://www.google.com">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-  
-  <!-- Critical CSS für Above-the-Fold Content -->
-  <style>
-    /* Critical CSS - Above the fold */
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;color:#333;background:#fff;overflow-x:hidden}
-    .container{width:100%;max-width:1300px;padding:0 clamp(15px,3vw,30px);margin:0 auto}
-    #main-header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:8px 0;background:rgba(255,255,255,.98);box-shadow:0 2px 15px rgba(0,0,0,.1)}
-    .header-content{display:flex;justify-content:space-between;align-items:center}
-    .logo img{height:auto;width:220px;max-width:100%}
-    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding-top:80px;color:#fff}
-    .hero-background{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.8) 100%),linear-gradient(135deg,rgba(10,20,35,.92) 0%,rgba(15,25,40,.88) 50%,rgba(20,30,45,.85) 100%),url('images/heroBackground/mercedes-hero-placeholder.jpg') center/cover;z-index:-1;filter:blur(2px)}
-    .skip-links{position:absolute;top:-100px;left:0;z-index:10000}
-    .skip-link{position:absolute;left:-10000px;background:#0A214A;color:#fff;padding:12px 16px;text-decoration:none;font-weight:600}
-    .skip-link:focus{position:static;left:auto;width:auto;height:auto;overflow:visible;display:inline-block}
-  </style>
+    <link rel="preload" href="css/styles.css" as="style" />
+    <link rel="preload" href="js/main.js" as="script" />
+    <link
+      rel="preload"
+      href="images/heroBackground/mercedes-hero-optimized.jpg"
+      as="image"
+    />
+    <link rel="preload" href="images/logo_neu.webp" as="image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://formsubmit.co" />
+    <!-- preconnect zu fs0478.fso360-svc.de entfernt - SEO-Agentur Anforderung -->
+    <link rel="preconnect" href="https://wa.me" />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
-  <!-- =================================================================================
+    <!-- Critical CSS für Above-the-Fold Content -->
+    <style>
+      /* Critical CSS - Above the fold */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        color: #333;
+        background: #fff;
+        overflow-x: hidden;
+      }
+      .container {
+        width: 100%;
+        max-width: 1300px;
+        padding: 0 clamp(15px, 3vw, 30px);
+        margin: 0 auto;
+      }
+      #main-header {
+        position: relative;
+        z-index: 1000;
+        padding: 3px 0;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      }
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo img {
+        height: auto;
+        width: 180px;
+        max-width: 100%;
+      }
+      .hero {
+        position: relative;
+        min-height: 65vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        padding-top: 70px;
+        padding-bottom: 45px;
+        color: #fff;
+      }
+      .hero-background {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse at center,
+            transparent 20%,
+            rgba(0, 0, 0, 0.4) 60%,
+            rgba(0, 0, 0, 0.8) 100%
+          ),
+          linear-gradient(
+            135deg,
+            rgba(10, 20, 35, 0.92) 0%,
+            rgba(15, 25, 40, 0.88) 50%,
+            rgba(20, 30, 45, 0.85) 100%
+          ),
+          url("images/heroBackground/mercedes-hero-placeholder.jpg")
+            center/cover;
+        z-index: -1;
+        filter: blur(2px);
+      }
+      .skip-links {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        z-index: 10000;
+      }
+      .skip-link {
+        position: absolute;
+        left: -10000px;
+        background: #0a214a;
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .skip-link:focus {
+        position: static;
+        left: auto;
+        width: auto;
+        height: auto;
+        overflow: visible;
+        display: inline-block;
+      }
+    </style>
+
+    <!-- =================================================================================
        SCHRIFTARTEN & STYLESHEETS
        ================================================================================= -->
-  <!-- Google Fonts: Inter, Playfair Display, Montserrat -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter, Playfair Display, Montserrat -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Playfair+Display:wght@400;700&amp;family=Montserrat:wght@600;700&amp;display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Haupt-Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=2025-09-26">
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17118954542"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-17118954542');
-  </script>
-</head>
-<body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWRGDHJ7"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  
-  <!-- =================================================================================
+    <!-- Haupt-Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css?v=2025-10-11-hover" />
+    <link rel="stylesheet" href="css/mobile.css?v=2025-10-11" media="screen and (max-width: 768px)" />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-17118954542"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "AW-17118954542");
+    </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WWRGDHJ7"
+        height="0"
+        width="0"
+        class="gtm-noscript"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- =================================================================================
        SKIP LINKS (Accessibility - für Screenreader und Keyboard-Navigation)
        ================================================================================= -->
-  <nav aria-label="Skip links" class="skip-links">
-    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
-    <a href="#main-navigation" class="skip-link">Zur Navigation springen</a>
-    <a href="#kontakt" class="skip-link">Zum Kontakt springen</a>
-  </nav>
+    <nav aria-label="Skip links" class="skip-links">
+      <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+      <a href="#main-navigation" class="skip-link">Zur Navigation springen</a>
+      <a href="ueber-uns.html#kontakt" class="skip-link"
+        >Zum Kontakt springen</a
+      >
+    </nav>
 
-  <!-- =================================================================================
+    <!-- =================================================================================
        HEADER BEREICH (Logo, Navigation, Buttons)
        ================================================================================= -->
-  <header id="main-header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <a href="index.html" class="logo-link" aria-label="AcademyNow Fahrschule Homepage">
-            <img src="images/logo_neu.webp" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg">
-          </a>
-        </div>
-        <!-- Button für mobile Navigation (Burger-Menü) -->
-        <button class="mobile-menu-btn" aria-expanded="false" aria-label="Menü öffnen">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-        
-        <!-- Hauptnavigation -->
-        <nav id="main-navigation" aria-label="Hauptnavigation">
-          <ul>
-            <li><a href="#hero" class="nav-link active">Start</a></li>
-            <li><a href="#preise" class="nav-link">Preise</a></li>
-            <li><a href="ueber-uns.html#ueber-uns" class="nav-link">Über uns</a></li>
-            <li><a href="#standorte" class="nav-link">Standorte</a></li>
-            <li><a href="#faq" class="nav-link">FAQ</a></li>
-            <li><a href="ueber-uns.html#karriere" class="nav-link">Karriere</a></li>
-            <li><a href="#kontakt" class="nav-link">Kontakt</a></li>
-          </ul>
-        </nav>
-        
-        <!-- Buttons im Header (Anmeldung, Sofortkontakt) -->
-        <div class="header-buttons">
-          <!-- Direkt anmelden statt 'Kostenlos anmelden' -->
-          <a href="https://fs0478.fso360-svc.de/" target="_blank" rel="noopener noreferrer" class="cta-btn header-btn">
-            <span class="header-btn-icon">
-              <!-- User-Plus SVG -->
-              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-              </svg>
-            </span>
-            <span class="header-btn-text">Direkt anmelden</span>
-          </a>
-
-          <!-- Sofortkontakt bleibt unverändert -->
-          <a href="https://wa.me/4917631065840" target="_blank" rel="noopener noreferrer" class="header-kontakt-btn header-btn">
-            <span class="header-btn-icon">
-              <!-- WhatsApp SVG -->
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="#25D366">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.296-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            </span>
-            <span class="header-btn-text">Sofortkontakt</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- =================================================================================
-       HERO BEREICH (Haupt-Banner der Startseite)
-       ================================================================================= -->
-  <main id="main-content">
-  <section id="hero" class="hero hero-layout-1">
-    <div class="hero-background"></div>
-    <div class="hero-graphic-accent"></div> <!-- Neues Element für grafischen Akzent -->
-    <div class="container">
-      <div class="hero-content-wrapper">
-        <div class="hero-content">
-          <span class="hero-badge">Deine Fahrschule in Hamburg</span>
-          <div class="hero-title">
-            <span class="brand-primary"><span class="big-letter">A</span>CADEMY <span class="big-letter">N</span>OW</span>
-            <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
+    <header id="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a
+              href="/"
+              class="logo-link"
+              aria-label="AcademyNow Fahrschule Homepage"
+            >
+              <img
+                src="images/logo_neu.webp"
+                alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg"
+              />
+            </a>
           </div>
-          <p>Mit uns kommst du ans Ziel! Unser erfahrenes Team bringt dich schnell und sicher zu deinem Führerschein.</p>
-          
-          <!-- Klickbares Sommerangebot -->
-          <a href="https://fs0478.fso360-svc.de/" target="_blank" rel="noopener noreferrer" class="offer-badge-v2">
-            <span class="discount">🌞 Sommerangebot</span>
-            <span class="offer-desc">Grundbetrag nur 399€!</span>
-          </a>
-          
-          <div class="hero-buttons">
-            <a href="#kontakt" class="primary-btn hero-btn">Kostenloses Angebot</a>
-            <a href="#standorte" class="outline-btn hero-btn">Standorte entdecken</a>
-            <a href="https://fs0478.fso360-svc.de/" target="_blank" rel="noopener noreferrer" class="register-btn hero-btn">
-              <span class="register-icon">
-                <!-- User-Plus SVG -->
-                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <!-- Button für mobile Navigation (Burger-Menü) -->
+          <button
+            class="mobile-menu-btn"
+            aria-expanded="false"
+            aria-label="Menü öffnen"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+
+          <!-- Hauptnavigation -->
+          <nav id="main-navigation" aria-label="Hauptnavigation">
+            <ul>
+              <li><a href="#hero" class="nav-link active">Start</a></li>
+              <li><a href="#preise" class="nav-link">Preise</a></li>
+              <!-- Bildungsangebot Dropdown -->
+              <li class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle">
+                  Bildungsangebot
+                  <svg
+                    class="dropdown-arrow"
+                    width="12"
+                    height="8"
+                    viewBox="0 0 12 8"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M1 1l5 5 5-5"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      fill="none"
+                    />
+                  </svg>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a
+                      href="https://academy-now.de/mehr-erfahren-fahrschule/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      City-Logistiker / KEP-Fahrer
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="#standorte" class="nav-link">Standorte</a></li>
+              <li><a href="#fuhrpark" class="nav-link">Fuhrpark</a></li>
+              <li><a href="#faq" class="nav-link">FAQ</a></li>
+              <li>
+                <a href="ueber-uns.html#ueber-uns" class="nav-link">Über uns</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Buttons im Header (Anmeldung, Sofortkontakt) -->
+          <div class="header-buttons">
+            <a
+              href="https://fs0478.fso360-svc.de/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-btn header-btn"
+            >
+              <span class="header-btn-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  />
+                </svg>
               </span>
-              Direkt anmelden
+              <span class="header-btn-text">Direkt anmelden</span>
+            </a>
+
+            <a
+              href="https://wa.me/4917631065840"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="header-kontakt-btn header-btn"
+            >
+              <span class="header-btn-icon">
+                <!-- WhatsApp SVG -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="#25D366"
+                >
+                  <path
+                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.198.296-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                  />
+                </svg>
+              </span>
+              <span class="header-btn-text">Sofortkontakt</span>
             </a>
           </div>
         </div>
-      </div> <!-- Ende hero-content-wrapper -->
-
-      <!-- Scroll-Indikator (Pfeil nach unten) -->
-      <!-- Dieses Element wurde basierend auf main.js und styles.css hinzugefügt -->
-      <div id="scrollIndicator" class="scroll-indicator">
-        <span class="scroll-text">Mehr entdecken</span>
-        <div class="arrow-container">
-          <svg class="scroll-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-            <path d="M11.0001 15.0001L11.0001 3L13.0001 3L13.0001 15.0001L16.5356 11.4646L17.95 12.8788L12.0001 18.8286L6.05037 12.8788L7.46458 11.4646L11.0001 15.0001Z"></path>
-          </svg>
-        </div>
       </div>
+    </header>
 
-    </div> <!-- Ende container -->
-  </section>
-
-  <!-- =================================================================================
-       HERO BACKGROUND SWITCHER (Entwicklungstools)
+    <!-- =================================================================================
+       HERO BEREICH (Haupt-Banner der Startseite)
        ================================================================================= -->
-  
-  <!-- =================================================================================
-       PREISE SEKTION (verschoben direkt nach dem Hero-Bereich)
-       ================================================================================= -->
-  <section id="preise" class="section preise-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Unsere Preise</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Transparente und faire Preise für deine Fahrausbildung.</p>
-      </div>
-      
-      <div class="preise-container">
-        <!-- Basis-Paket -->
-        <div class="preis-card">
-          <div class="preis-header">
-            <h3>Basis-Paket</h3>
-            <p class="preis">399€</p>
-            <span class="rabatt-info">Sommerangebot</span>
-          </div>
-          <div class="preis-body">
-            <ul class="preis-features">
-              <li><span class="icon-check">✓</span> Gesamter Theorieunterricht</li>
-              <li><span class="icon-check">✓</span> Prüfungsvorbereitung</li>
-              <li><span class="icon-check">✓</span> Theorie in 7 Tagen möglich</li>
-              <li><span class="icon-check">✓</span> Online-Lernplattform</li>
-            </ul>
-            <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
-          </div>
-        </div>
-        
-        <!-- Fahrstunden-Pakete -->
-        <div class="preis-card featured">
-          <div class="preis-badge">Beliebt</div>
-          <div class="preis-header">
-            <h3>Fahrstunden</h3>
-            <p class="preis-info">PKW-Fahrstunden</p>
-            <p class="preis">70€</p>
-            <span class="zeit-info">pro 45 Minuten</span>
-          </div>
-          <div class="preis-body">
-            <ul class="preis-features">
-              <li><span class="icon-check">✓</span> Erfahrene Fahrlehrer</li>
-              <li><span class="icon-check">✓</span> Moderne Fahrzeuge</li>
-              <li><span class="icon-check">✓</span> Flexible Terminplanung</li>
-              <li><span class="icon-check">✓</span> Intensivkurse möglich</li>
-              <li><span class="icon-check">✓</span> Auch abends und am Wochenende</li>
-            </ul>
-            <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
-          </div>
-        </div>
-        
-        <!-- Motorrad-Pakete -->
-        <div class="preis-card">
-          <div class="preis-header">
-            <h3>Motorrad</h3>
-            <p class="preis-info">Motorrad-Fahrstunden</p>
-            <p class="preis">75€</p>
-            <span class="zeit-info">pro 45 Minuten</span>
-          </div>
-          <div class="preis-body">
-            <ul class="preis-features">
-              <li><span class="icon-check">✓</span> Alle Führerscheinklassen (A, A1, A2)</li>
-              <li><span class="icon-check">✓</span> Hochwertige Motorräder</li>
-              <li><span class="icon-check">✓</span> Protective Ausrüstung verfügbar</li>
-              <li><span class="icon-check">✓</span> Sonderfahrten inbegriffen</li>
-            </ul>
-            <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <main id="main-content">
+      <section id="hero" class="hero hero-layout-1">
+        <div class="hero-background"></div>
+        <div class="hero-graphic-accent"></div>
+        <!-- Neues Element für grafischen Akzent -->
+        <div class="container">
+          <div class="hero-content-wrapper">
+            <div class="hero-content">
+              <span class="hero-badge">Deine Fahrschule in Hamburg</span>
+              <div class="hero-title">
+                <span class="brand-primary"
+                  ><span class="big-letter">A</span>CADEMY
+                  <span class="big-letter">N</span>OW</span
+                >
+                <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
+              </div>
 
-  <!-- =================================================================================
-       LEISTUNGEN SEKTION
-       ================================================================================= -->
-  <section id="leistungen" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Unsere Leistungen</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Wir bieten dir eine umfassende Fahrausbildung mit vielen Vorteilen</p>
-      </div>
-      
-      <div class="leistungen-container">
-        <!-- Flexible Fahrzeiten -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Flexible Fahrzeiten</h3>
-          <p class="leistung-beschreibung">Unsere Kurse sind intensiv und auf flexible Fahrzeiten abgestimmt, einschließlich abends und am Wochenende.</p>
-        </div>
-        
-        <!-- Studentenrabatte -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Studentenrabatte</h3>
-          <p class="leistung-beschreibung">Attraktive Rabatte für Schüler*innen und Studierende - frag uns nach unseren speziellen Konditionen!</p>
-        </div>
-        
-        <!-- Mehrere Führerscheinklassen -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Mehrere Führerscheinklassen</h3>
-          <p class="leistung-beschreibung">Wir bieten Ausbildung in den Klassen A, B, BE, C und CE an.</p>
-        </div>
-        
-        <!-- Automatik-Ausbildung -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Automatik-Ausbildung</h3>
-          <p class="leistung-beschreibung">Wir bieten die Möglichkeit zur Ausbildung auf Automatikfahrzeugen.</p>
-        </div>
-        
-        <!-- Intensiv- und Ferienkurse -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3-5h6v2H9zm0-7h6v2H9zm0 3.5h6v2H9z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Intensiv- und Ferienkurse</h3>
-          <p class="leistung-beschreibung">Spezielle intensive Kurse, auch während der Ferien verfügbar.</p>
-        </div>
-        
-        <!-- Mehrsprachige Ausbildung -->
-        <div class="leistung-item">
-          <div class="leistung-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
-              <path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/>
-            </svg>
-          </div>
-          <h3 class="leistung-titel">Mehrsprachige Ausbildung</h3>
-          <p class="leistung-beschreibung">Wir bieten Kurse in mehreren Sprachen an, um allen Teilnehmer*innen gerecht zu werden.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+              <!-- Neueröffnungsangebot -->
+              <div class="hero-extravaganz-link">
+                <div class="hero-extravaganz">
+                  NEUERÖFFNUNGS<span
+                    class="hyphen"
+                    aria-hidden="true"
+                    role="presentation"
+                    >-</span
+                  ><br class="mobile-break" />ANGEBOT
+                </div>
+                <div class="extravaganz-offer">
+                  <span class="offer-label">Grundbetrag</span>
+                  <div class="offer-price-row">
+                    <span class="offer-price-old">499€</span>
+                    <span class="offer-price-new">99€</span>
+                  </div>
+                  <span class="offer-period">vom 18.10 bis 25.10</span>
+                </div>
+              </div>
 
-  <!-- =================================================================================
-       STANDORTE SEKTION
-       ================================================================================= -->
-  <section id="standorte" class="section standorte-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Unsere Standorte</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Besuche uns an unserem Standort in Hamburg</p>
-      </div>
-      
-      <!-- Standort Container mit Karte und Adresse -->
-      <div class="standort-container">
-        <!-- Google Maps Container -->
-        <div class="google-maps-container">
-          <iframe 
-            class="maps-iframe" 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.6413262712514!2d10.0130689!3d53.5528986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18fce29063f77%3A0x793896a833d7c53!2sFahrschule%20Academy%20Now!5e0!3m2!1sde!2sde!4v1715107275021!5m2!1sde!2sde" 
-            allowfullscreen="" 
-            title="Fahrschule Academy Now Standort"
-            loading="lazy">
-          </iframe>
-        </div>
-        
-        <!-- Standortadresse Block -->
-        <div class="standort-adresse-block">
-          <h3 class="standort-titel">Hamburg Mitte</h3>
-          <a href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D" 
-             class="adresse-link" 
-             target="_blank" 
-             rel="noopener noreferrer">
-            Adenauerallee 10, 20097 Hamburg
-          </a>
-          <a href="tel:+4940982591350" class="telefon-link">(040) 982 591 50</a>
-          <p class="oeffnungszeiten">Mo-Fr: 13:00-18:30 Uhr</p>
-          <a href="#kontakt" class="primary-btn termin-button">Termin vereinbaren</a>
-        </div>
-      </div>
-    </div>
-  </section>
+              <!-- Freunde werben Freunde Box -->
+              <div class="freunde-werben-box">
+                <span class="freunde-werben-title">FREUNDE WERBEN FREUNDE</span>
+                <span class="freunde-werben-discount"
+                  >30€ Rabatt auf eine Fahrstunde</span
+                >
+              </div>
 
-  <!-- =================================================================================
-       BEWERTUNGEN SEKTION
-       ================================================================================= -->
-  <section class="bewertungen-section section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Was sagen unsere Schüler</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Erfahrungen aus erster Hand von unseren Fahrschülern</p>
-      </div>
-      <div class="google-bewertungen-card">
-        <div class="google-bewertungen-header">
-          <span class="google-logo-container">
-            <!-- Verwende das Icon aus dem images/icons Verzeichnis -->
-            <img src="images/icons/icons8-google-logo.svg" alt="Google" class="google-logo-img">
-          </span>
-          <span class="google-label">Google-Bewertungen</span>
-        </div>
-        <div class="google-bewertungen-main">
-          <div class="bewertung-score-container">
-            <span class="bewertung-wert">4,9</span>
-            <div class="bewertung-sterne-container" role="img" aria-label="Bewertung: 4,9 von 5 Sternen">
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-              <svg width="20" height="20" fill="#D1B17C" viewBox="0 0 24 24" class="partial-star" aria-hidden="true"><defs><linearGradient id="starGradient"><stop offset="90%" stop-color="#D1B17C"/><stop offset="90%" stop-color="#E0E0E0"/></linearGradient></defs><path fill="url(#starGradient)" d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
+              <!-- <p class="hero-description">
+                Mit uns kommst du ans Ziel! Unser erfahrenes Team bringt dich
+                schnell und sicher zu deinem Führerschein.
+              </p> -->
+
+              <div class="hero-buttons">
+                <a href="ueber-uns.html#kontakt" class="primary-btn hero-btn"
+                  >Kostenloses Angebot</a
+                >
+                <a href="#standorte" class="outline-btn hero-btn"
+                  >Standorte entdecken</a
+                >
+              </div>
             </div>
           </div>
-          <span class="bewertung-anzahl"><strong>28</strong> Erfahrungsberichte</span>
-        </div>
-        <div class="google-bewertungen-footer">
-          <span class="google-info">Stand: Juni 2025</span>
-          <a href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="google-bewertung-cta">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" style="vertical-align:middle;margin-right:8px;" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"/></svg>
-            Jetzt bewerten auf Google
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+          <!-- Ende hero-content-wrapper -->
 
-  <!-- =================================================================================
+          <!-- Scroll-Indikator (Pfeil nach unten) -->
+          <!-- Dieses Element wurde basierend auf main.js und styles.css hinzugefügt -->
+          <div id="scrollIndicator" class="scroll-indicator">
+            <span class="scroll-text">Mehr entdecken</span>
+            <div class="arrow-container">
+              <svg
+                class="scroll-arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="24"
+                height="24"
+              >
+                <path
+                  d="M11.0001 15.0001L11.0001 3L13.0001 3L13.0001 15.0001L16.5356 11.4646L17.95 12.8788L12.0001 18.8286L6.05037 12.8788L7.46458 11.4646L11.0001 15.0001Z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Ende container -->
+      </section>
+
+      <!-- =================================================================================
+       HERO BACKGROUND SWITCHER (Entwicklungstools)
+       ================================================================================= -->
+
+      <!-- =================================================================================
+       PREISE SEKTION (verschoben direkt nach dem Hero-Bereich)
+       ================================================================================= -->
+      <section id="preise" class="section preise-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Unsere Preise</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Transparente und faire Preise für deine Fahrausbildung.
+            </p>
+          </div>
+
+          <div class="preise-container">
+            <!-- Basis-Paket -->
+            <div class="preis-card">
+              <div class="preis-header">
+                <h3>Basis-Paket</h3>
+                <div class="preis-wrapper">
+                  <p class="preis">399€</p>
+                  <span class="old-price-badge">statt 499€</span>
+                </div>
+                <span class="rabatt-badge">🔥 Spezial-Angebot</span>
+              </div>
+              <div class="preis-body">
+                <ul class="preis-features">
+                  <li>
+                    <span class="icon-check">✓</span> Gesamter Theorieunterricht
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Prüfungsvorbereitung
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Theorie in 7 Tagen möglich
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Online-Lernplattform
+                  </li>
+                </ul>
+                <a href="ueber-uns.html#kontakt" class="btn-preis"
+                  >Jetzt anfragen</a
+                >
+              </div>
+            </div>
+
+            <!-- Fahrstunden-Pakete -->
+            <div class="preis-card featured">
+              <div class="preis-badge">Beliebt</div>
+              <div class="preis-header">
+                <h3>Fahrstunden</h3>
+                <p class="preis-info">PKW-Fahrstunden</p>
+                <p class="preis">70€</p>
+                <span class="zeit-info">pro 45 Minuten</span>
+              </div>
+              <div class="preis-body">
+                <ul class="preis-features">
+                  <li>
+                    <span class="icon-check">✓</span> Erfahrene Fahrlehrer
+                  </li>
+                  <li><span class="icon-check">✓</span> Moderne Fahrzeuge</li>
+                  <li>
+                    <span class="icon-check">✓</span> Flexible Terminplanung
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Intensivkurse möglich
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Auch abends und am
+                    Wochenende
+                  </li>
+                </ul>
+                <a href="ueber-uns.html#kontakt" class="btn-preis"
+                  >Jetzt anfragen</a
+                >
+              </div>
+            </div>
+
+            <!-- Motorrad-Pakete -->
+            <div class="preis-card">
+              <div class="preis-header">
+                <h3>Motorrad</h3>
+                <p class="preis-info">Motorrad-Fahrstunden</p>
+                <p class="preis">75€</p>
+                <span class="zeit-info">pro 45 Minuten</span>
+              </div>
+              <div class="preis-body">
+                <ul class="preis-features">
+                  <li>
+                    <span class="icon-check">✓</span> Alle Führerscheinklassen
+                    (A, A1, A2)
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Hochwertige Motorräder
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Protective Ausrüstung
+                    verfügbar
+                  </li>
+                  <li>
+                    <span class="icon-check">✓</span> Sonderfahrten inbegriffen
+                  </li>
+                </ul>
+                <a href="ueber-uns.html#kontakt" class="btn-preis"
+                  >Jetzt anfragen</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
+       LEISTUNGEN SEKTION
+       ================================================================================= -->
+      <section id="leistungen" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Unsere Leistungen</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Wir bieten dir eine umfassende Fahrausbildung mit vielen Vorteilen
+            </p>
+          </div>
+
+          <div class="leistungen-container">
+            <!-- Flexible Fahrzeiten -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Flexible Fahrzeiten</h3>
+              <p class="leistung-beschreibung">
+                Unsere Kurse sind intensiv und auf flexible Fahrzeiten
+                abgestimmt, einschließlich abends und am Wochenende.
+              </p>
+            </div>
+
+            <!-- Studentenrabatte -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Studentenrabatte</h3>
+              <p class="leistung-beschreibung">
+                Attraktive Rabatte für Schüler*innen und Studierende - frag uns
+                nach unseren speziellen Konditionen!
+              </p>
+            </div>
+
+            <!-- Mehrere Führerscheinklassen -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M16.53 11.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59 17l5.94-5.94zM19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Mehrere Führerscheinklassen</h3>
+              <p class="leistung-beschreibung">
+                Wir bieten Ausbildung in den Klassen A, B, BE, C und CE an.
+              </p>
+            </div>
+
+            <!-- Automatik-Ausbildung -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Automatik-Ausbildung</h3>
+              <p class="leistung-beschreibung">
+                Wir bieten die Möglichkeit zur Ausbildung auf
+                Automatikfahrzeugen.
+              </p>
+            </div>
+
+            <!-- Intensiv- und Ferienkurse -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-3-5h6v2H9zm0-7h6v2H9zm0 3.5h6v2H9z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Intensiv- und Ferienkurse</h3>
+              <p class="leistung-beschreibung">
+                Spezielle intensive Kurse, auch während der Ferien verfügbar.
+              </p>
+            </div>
+
+            <!-- Mehrsprachige Ausbildung -->
+            <div class="leistung-item">
+              <div class="leistung-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="36"
+                  height="36"
+                  fill="currentColor"
+                >
+                  <path
+                    d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"
+                  />
+                </svg>
+              </div>
+              <h3 class="leistung-titel">Mehrsprachige Ausbildung</h3>
+              <p class="leistung-beschreibung">
+                Wir bieten Kurse in mehreren Sprachen an, um allen
+                Teilnehmer*innen gerecht zu werden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
+       STANDORTE SEKTION
+       ================================================================================= -->
+      <section id="standorte" class="section standorte-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Unsere Standorte</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Besuche uns an einem unserer Standorte in Hamburg
+            </p>
+          </div>
+
+          <!-- 2-Spalten Layout für beide Standorte -->
+          <div class="standorte-grid">
+            <!-- Standort Hamburg Mitte -->
+            <div class="standort-container">
+              <!-- Google Maps Container -->
+              <div class="google-maps-container">
+                <iframe
+                  class="maps-iframe"
+                  src="https://www.google.com/maps?q=Adenauerallee+10,+20097+Hamburg&output=embed"
+                  title="Fahrschule Academy Now Standort Hamburg Mitte"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                >
+                </iframe>
+                <a
+                  class="maps-overlay-link"
+                  href="https://maps.google.com/?q=Adenauerallee+10,+20097+Hamburg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Maps öffnen: Hamburg Mitte"
+                  >Google Maps öffnen</a
+                >
+              </div>
+
+              <!-- Standortadresse Block -->
+              <div class="standort-adresse-block">
+                <h3 class="standort-titel">Hamburg Mitte</h3>
+                <a
+                  href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
+                  class="adresse-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Adenauerallee 10, 20097 Hamburg
+                </a>
+                <a href="tel:+4940982591350" class="telefon-link"
+                  >(040) 982 591 50</a
+                >
+                <p class="oeffnungszeiten">Mo-Fr: 13:00-18:30 Uhr</p>
+                <a
+                  href="ueber-uns.html#kontakt"
+                  class="primary-btn termin-button"
+                  >Termin vereinbaren</a
+                >
+              </div>
+            </div>
+
+            <!-- Standort Bergedorf -->
+            <div class="standort-container">
+              <!-- Google Maps Container -->
+              <div class="google-maps-container">
+                <iframe
+                  class="maps-iframe"
+                  src="https://www.google.com/maps?q=Chrysanderstraße+19,+21029+Hamburg&output=embed"
+                  title="Fahrschule Academy Now Standort Bergedorf"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  allowfullscreen
+                >
+                </iframe>
+                <a
+                  class="maps-overlay-link"
+                  href="https://maps.google.com/?q=Chrysanderstraße+19,+21029+Hamburg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Google Maps öffnen: Hamburg Bergedorf"
+                  >Google Maps öffnen</a
+                >
+              </div>
+
+              <!-- Standortadresse Block -->
+              <div class="standort-adresse-block">
+                <h3 class="standort-titel">Hamburg Bergedorf</h3>
+                <a
+                  href="https://www.google.com/maps/search/Chrysanderstraße+19,+21029+Hamburg"
+                  class="adresse-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Chrysanderstraße 19, 21029 Hamburg
+                </a>
+                <a href="tel:+4940982591350" class="telefon-link"
+                  >(040) 982 591 50</a
+                >
+                <p class="oeffnungszeiten">Mo-Fr: 13:00-18:30 Uhr</p>
+                <a
+                  href="ueber-uns.html#kontakt"
+                  class="primary-btn termin-button"
+                  >Termin vereinbaren</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
+       BEWERTUNGEN SEKTION
+       ================================================================================= -->
+      <section class="bewertungen-section section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Was sagen unsere Schüler</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Erfahrungen aus erster Hand von unseren Fahrschülern
+            </p>
+          </div>
+          <div class="google-bewertungen-card">
+            <div class="google-bewertungen-header">
+              <span class="google-logo-container">
+                <!-- Verwende das Icon aus dem images/icons Verzeichnis -->
+                <img
+                  src="images/icons/icons8-google-logo.svg"
+                  alt="Google"
+                  class="google-logo-img"
+                />
+              </span>
+              <span class="google-label">Google-Bewertungen</span>
+            </div>
+            <div class="google-bewertungen-main">
+              <div class="bewertung-score-container">
+                <span class="bewertung-wert">4,9</span>
+                <div
+                  class="bewertung-sterne-container"
+                  role="img"
+                  aria-label="Bewertung: 4,9 von 5 Sternen"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="#D1B17C"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="#D1B17C"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="#D1B17C"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="#D1B17C"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                    />
+                  </svg>
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="#D1B17C"
+                    viewBox="0 0 24 24"
+                    class="partial-star"
+                    aria-hidden="true"
+                  >
+                    <defs>
+                      <linearGradient id="starGradient">
+                        <stop offset="90%" stop-color="#D1B17C" />
+                        <stop offset="90%" stop-color="#E0E0E0" />
+                      </linearGradient>
+                    </defs>
+                    <path
+                      fill="url(#starGradient)"
+                      d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <span class="bewertung-anzahl"
+                ><strong>28</strong> Erfahrungsberichte</span
+              >
+            </div>
+            <div class="google-bewertungen-footer">
+              <span class="google-info">Stand: Oktober 2025</span>
+              <a
+                href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener"
+                class="google-bewertung-cta"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  class="google-bewertung-icon"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
+                  />
+                </svg>
+                Jetzt bewerten auf Google
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
        FAQ SEKTION (Häufig gestellte Fragen)
        ================================================================================= -->
-  <section id="faq" class="section faq-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Häufig gestellte Fragen</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Antworten auf die wichtigsten Fragen rund um deinen Führerschein</p>
-      </div>
-      
-      <div class="faq-container" role="region" aria-labelledby="faq-heading">
-        <!-- FAQ Item 1 - Struktur angepasst -->
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
-            <h3>Was beinhaltet das Premium-Paket?</h3>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-1" aria-labelledby="faq-question-1" role="region">
-            <p>Unser Premium-Paket umfasst den kompletten Theorieunterricht, alle erforderlichen Fahrstunden (Pflicht, Übungsfahrten, Sonderfahrten), kostenlose Prüfungssimulationen, Anmeldegebühren bei TÜV/Dekra sowie eine garantierte Prüfungstermin-Buchung innerhalb von 4 Wochen nach Abschluss deiner Ausbildung.</p>
+      <section id="faq" class="section faq-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Häufig gestellte Fragen</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Antworten auf die wichtigsten Fragen rund um deinen Führerschein
+            </p>
           </div>
-        </div>
-        
-        <!-- FAQ Item 2 -->
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
-            <h3>Gibt es einen Rabatt, wenn ich mich mit einem Freund anmelde?</h3>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-2" aria-labelledby="faq-question-2" role="region">
-            <p>Ja, wir bieten einen Freundschaftsbonus von 30€ für jeden von euch, wenn ihr euch gemeinsam anmeldet. Sprecht uns einfach beim ersten Termin darauf an.</p>
-          </div>
-        </div>
-        
-        <!-- FAQ Item 3 -->
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
-            <h3>Wie lange dauert es, bis ich meinen Führerschein habe?</h3>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-3" aria-labelledby="faq-question-3" role="region">
-            <p>Die Dauer bis zum Führerschein hängt von verschiedenen Faktoren ab, wie z.B. deiner Verfügbarkeit für Fahrstunden und deinem individuellen Lerntempo. Bei regelmäßiger Teilnahme und Übung können unsere Schüler den Führerschein oft innerhalb von 3-4 Monaten erlangen.</p>
-          </div>
-        </div>
-        
-        <!-- FAQ Item 4 -->
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
-            <h3>Welche Zahlungsmöglichkeiten gibt es?</h3>
-            <span class="faq-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="faq-answer" id="faq-answer-4" aria-labelledby="faq-question-4" role="region">
-            <p>Wir bieten verschiedene Zahlungsmöglichkeiten an: Barzahlung, EC-Karte, Überweisung oder auch Ratenzahlung. Sprich uns einfach an, wir finden gemeinsam die beste Lösung für dich.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- =================================================================================
-       KONTAKTFORMULAR SEKTION
-       ================================================================================= -->
-  <section id="kontakt" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Kontakt</h2>
-        <div class="section-divider"></div>
-        <p class="section-description">Mit uns kommst du ans Ziel!</p>
-      </div>
-      
-      <div class="kontakt-formular">
-        <h3>Schreib uns eine Nachricht</h3>
-        <form action="https://formsubmit.co/kontakt@academynow-fahrschule.de" method="POST" id="kontaktForm" class="form" role="form" aria-labelledby="kontakt-heading">
-          <!-- FormSubmit spezifische versteckte Felder -->
-          <input type="hidden" name="_next" value="https://www.academynow-fahrschule.de/danke.html">
-          <input type="hidden" name="_subject" value="Neue Anfrage von AcademyNow Webseite">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="box">
-          <input type="hidden" name="_honey" value="">
-          <input type="hidden" name="_format" value="plain">
-          <input type="hidden" name="_cc" value="kontakt2@academynow-fahrschule.de">
-          
-          <div class="form-group horizontal">
-            <label for="name">Name <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
-            <input type="text" id="name" name="name" placeholder="Dein Name" required aria-required="true" aria-describedby="name-help">
-            <div id="name-help" class="sr-only">Dein vollständiger Name ist erforderlich</div>
-          </div>
-          
-          <div class="form-group horizontal">
-            <label for="telefon">Telefon <span class="optional-indicator">(optional)</span></label>
-            <input type="tel" id="telefon" name="telefon" placeholder="Deine Telefonnummer" aria-describedby="telefon-help">
-            <div id="telefon-help" class="sr-only">Telefonnummer für Rückfragen - optional</div>
-          </div>
-          
-          <div class="form-group horizontal">
-            <label for="email">E-Mail <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
-            <input type="email" id="email" name="email" placeholder="Deine E-Mail-Adresse" required aria-required="true" aria-describedby="email-help">
-            <div id="email-help" class="sr-only">Deine E-Mail-Adresse für unsere Antwort</div>
-          </div>
-          
-          <div class="form-group horizontal">
-            <label for="fuehrerscheinklasse">Führerscheinklasse <span class="optional-indicator">(optional)</span></label>
-            <select id="fuehrerscheinklasse" name="fuehrerscheinklasse" aria-describedby="klasse-help">
-              <option value="">Bitte wählen</option>
-              <option value="B">Klasse B (PKW)</option>
-              <option value="A">Klasse A (Motorrad)</option>
-              <option value="A1">Klasse A1 (Leichtkraftrad)</option>
-              <option value="AM">Klasse AM (Mofa/Moped)</option>
-              <option value="BE">Klasse BE (PKW mit Anhänger)</option>
-              <option value="C">Klasse C (LKW)</option>
-              <option value="CE">Klasse CE (LKW mit Anhänger)</option>
-              <option value="andere">Andere/Nicht sicher</option>
-            </select>
-            <div id="klasse-help" class="sr-only">Wähle die gewünschte Führerscheinklasse - optional</div>
-          </div>
-          
-          <div class="form-group horizontal textarea-group">
-            <label for="nachricht">Deine Nachricht <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
-            <textarea id="nachricht" name="nachricht" rows="5" placeholder="Wie können wir dir helfen?" required aria-required="true" aria-describedby="nachricht-help"></textarea>
-            <div id="nachricht-help" class="sr-only">Beschreibe dein Anliegen ausführlich</div>
-          </div>
-          
-          <div class="form-group checkbox-group">
-            <input type="checkbox" id="datenschutz" name="datenschutz" value="akzeptiert" required aria-required="true" aria-describedby="datenschutz-help">
-            <label for="datenschutz">Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener noreferrer" aria-label="Datenschutzerklärung in neuem Tab öffnen">Datenschutzerklärung</a> gelesen und stimme zu, dass meine Daten zum Zweck der Kontaktaufnahme verarbeitet werden. <span class="required-indicator" aria-label="Pflichtfeld">*</span></label>
-            <div id="datenschutz-help" class="sr-only">Zustimmung zur Datenverarbeitung ist erforderlich</div>
-          </div>
-          
-          <button type="submit" class="submit-btn" aria-describedby="submit-help">Nachricht senden</button>
-          <div id="submit-help" class="sr-only">Formular absenden - alle Pflichtfelder müssen ausgefüllt sein</div>
-        </form>
-      </div>
-    </div>
-  </section>
-  </main>
+          <div
+            class="faq-container"
+            role="region"
+            aria-labelledby="faq-heading"
+          >
+            <!-- FAQ Item 1 - Struktur angepasst -->
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-1"
+                id="faq-question-1"
+              >
+                <h3>Was beinhaltet das Premium-Paket?</h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-1"
+                aria-labelledby="faq-question-1"
+                role="region"
+              >
+                <p>
+                  Unser Premium-Paket umfasst den kompletten Theorieunterricht,
+                  alle erforderlichen Fahrstunden (Pflicht, Übungsfahrten,
+                  Sonderfahrten), kostenlose Prüfungssimulationen,
+                  Anmeldegebühren bei TÜV/Dekra sowie eine garantierte
+                  Prüfungstermin-Buchung innerhalb von 4 Wochen nach Abschluss
+                  deiner Ausbildung.
+                </p>
+              </div>
+            </div>
 
-  <!-- =================================================================================
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-2"
+                id="faq-question-2"
+              >
+                <h3>
+                  Gibt es einen Rabatt, wenn ich mich mit einem Freund anmelde?
+                </h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-2"
+                aria-labelledby="faq-question-2"
+                role="region"
+              >
+                <p>
+                  Ja, wir bieten einen Freundschaftsbonus von 30€ für jeden von
+                  euch, wenn ihr euch gemeinsam anmeldet. Sprecht uns einfach
+                  beim ersten Termin darauf an.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-3"
+                id="faq-question-3"
+              >
+                <h3>Wie lange dauert es, bis ich meinen Führerschein habe?</h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-3"
+                aria-labelledby="faq-question-3"
+                role="region"
+              >
+                <p>
+                  Die Dauer bis zum Führerschein hängt von verschiedenen
+                  Faktoren ab, wie z.B. deiner Verfügbarkeit für Fahrstunden und
+                  deinem individuellen Lerntempo. Bei regelmäßiger Teilnahme und
+                  Übung können unsere Schüler den Führerschein oft innerhalb von
+                  3 Monaten erlangen.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-4"
+                id="faq-question-4"
+              >
+                <h3>Welche Zahlungsmöglichkeiten gibt es?</h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-4"
+                aria-labelledby="faq-question-4"
+                role="region"
+              >
+                <p>
+                  Wir bieten verschiedene Zahlungsmöglichkeiten an: Barzahlung,
+                  EC-Karte, Überweisung oder auch Ratenzahlung. Sprich uns
+                  einfach an, wir finden gemeinsam die beste Lösung für dich.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- =================================================================================
        FOOTER BEREICH
        ================================================================================= -->
-  <footer class="simple-footer">
-    <div class="container">
-      <div class="footer-social">
-        <p class="footer-social-title">Folgen Sie uns in den sozialen Medien</p>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/academynow.fahrschule" target="_blank" rel="noopener noreferrer" class="social-icon facebook" aria-label="AcademyNow Fahrschule auf Facebook">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://www.instagram.com/academynow.fahrschule" target="_blank" rel="noopener noreferrer" class="social-icon instagram" aria-label="AcademyNow Fahrschule auf Instagram">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="https://www.tiktok.com/@academynow.fahrschule" target="_blank" rel="noopener noreferrer" class="social-icon tiktok" aria-label="AcademyNow Fahrschule auf TikTok">
-            <i class="fab fa-tiktok"></i>
-          </a>
-          <a href="https://www.youtube.com/@academynow.fahrschule" target="_blank" rel="noopener noreferrer" class="social-icon youtube" aria-label="AcademyNow Fahrschule auf YouTube">
-            <i class="fab fa-youtube"></i>
-          </a>
+    <footer class="simple-footer">
+      <div class="container">
+        <div class="footer-social">
+          <p class="footer-social-title">
+            Folgen Sie uns in den sozialen Medien
+          </p>
+          <div class="social-icons">
+            <!-- Facebook Link temporär auskommentiert - SEO-Agentur: Prüfen ob Kanal vorhanden
+            <a
+              href="https://www.facebook.com/academynow.fahrschule"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon facebook"
+              aria-label="AcademyNow Fahrschule auf Facebook"
+            >
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            -->
+            <a
+              href="https://www.instagram.com/academynow.fahrschule"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon instagram"
+              aria-label="AcademyNow Fahrschule auf Instagram"
+            >
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a
+              href="https://www.tiktok.com/@academynow.fahrschule"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon tiktok"
+              aria-label="AcademyNow Fahrschule auf TikTok"
+            >
+              <i class="fab fa-tiktok"></i>
+            </a>
+            <!-- YouTube Link temporär auskommentiert - SEO-Agentur: Prüfen ob Kanal vorhanden
+            <a
+              href="https://www.youtube.com/@academynow.fahrschule"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon youtube"
+              aria-label="AcademyNow Fahrschule auf YouTube"
+            >
+              <i class="fab fa-youtube"></i>
+            </a>
+            -->
+          </div>
+        </div>
+
+        <span class="footer-divider" aria-hidden="true"></span>
+
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3>Über Academy Now</h3>
+            <ul class="footer-links-list">
+              <li><a href="ueber-uns.html#ueber-uns">Über uns</a></li>
+              <li><a href="#standorte">Standorte</a></li>
+              <li><a href="#faq">Häufige Fragen</a></li>
+              <li><a href="ueber-uns.html#kontakt">Kontakt</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Fahrschul-Angebote</h3>
+            <ul class="footer-links-list">
+              <li>
+                <a href="#leistungen">Führerscheinklassen & Leistungen</a>
+              </li>
+              <li><a href="#preise">Preise & Pakete</a></li>
+              <li><a href="#leistungen">Automatik- & Intensivkurse</a></li>
+              <li><a href="ueber-uns.html#karriere">Karriere & Jobs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Kontakt</h3>
+            <ul class="footer-links-list footer-contact-list">
+              <li>
+                <a
+                  href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener"
+                  class="footer-contact-link address-link"
+                >
+                  Adenauerallee 10, 20097 Hamburg
+                </a>
+              </li>
+              <li>
+                <a href="tel:04098259150" class="footer-contact-link phone-link"
+                  >(040) 982 591 50</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mailto:kontakt@academynow-fahrschule.de"
+                  class="footer-contact-link email-link"
+                  >kontakt@academynow-fahrschule.de</a
+                >
+              </li>
+              <li class="footer-hours">
+                <strong>Öffnungszeiten</strong>
+                <span>Mo–Fr: 09:00 – 18:00</span>
+                <span>Sa: 10:00 – 14:00</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Weitere Auftritte</h3>
+            <ul class="footer-links-list">
+              <li><a href="/">Academy Now Fahrschule</a></li>
+              <li>
+                <a href="coming-soon.html" class="is-muted"
+                  >Erste Hilfe Schulungen <span>(demnächst)</span></a
+                >
+              </li>
+              <li><a href="#standorte">Alle Standorte</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-brand">
+          <img
+            src="images/logo_neu.webp"
+            alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg"
+            class="footer-logo"
+          />
+          <p class="footer-brand-claim">Mit uns kommen Sie ans Ziel!</p>
+        </div>
+
+        <!-- Vereinfachte Linkleiste über dem Copyright -->
+        <div class="footer-bottom">
+          <div class="footer-links">
+            <a href="impressum.html">Impressum</a> —
+            <a href="datenschutz.html">Datenschutz</a> —
+            <a href="datenschutz.html#cookies">Cookie-Richtlinien</a>
+          </div>
+          <div class="copyright">
+            <p>&copy; 2025 – Alle Rechte vorbehalten an Academy Now GmbH.</p>
+          </div>
         </div>
       </div>
+    </footer>
 
-      <span class="footer-divider" aria-hidden="true"></span>
-
-      <div class="footer-columns">
-        <div class="footer-column">
-          <h3>Über Academy Now</h3>
-          <ul class="footer-links-list">
-            <li><a href="ueber-uns.html#ueber-uns">Über uns</a></li>
-            <li><a href="#standorte">Standorte</a></li>
-            <li><a href="#faq">Häufige Fragen</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3>Fahrschul-Angebote</h3>
-          <ul class="footer-links-list">
-            <li><a href="#leistungen">Führerscheinklassen & Leistungen</a></li>
-            <li><a href="#preise">Preise & Pakete</a></li>
-            <li><a href="#leistungen">Automatik- & Intensivkurse</a></li>
-            <li><a href="ueber-uns.html#karriere">Karriere & Jobs</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3>Kontakt</h3>
-          <ul class="footer-links-list footer-contact-list">
-            <li>
-              <a href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="footer-contact-link address-link">
-                Adenauerallee 10, 20097 Hamburg
-              </a>
-            </li>
-            <li><a href="tel:04098259150" class="footer-contact-link phone-link">(040) 982 591 50</a></li>
-            <li><a href="mailto:kontakt@academynow-fahrschule.de" class="footer-contact-link email-link">kontakt@academynow-fahrschule.de</a></li>
-            <li class="footer-hours">
-              <strong>Öffnungszeiten</strong>
-              <span>Mo–Fr: 09:00 – 18:00</span>
-              <span>Sa: 10:00 – 14:00</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h3>Weitere Auftritte</h3>
-          <ul class="footer-links-list">
-            <li><a href="index.html">Academy Now Fahrschule</a></li>
-            <li><a href="coming-soon.html" class="is-muted">Erste Hilfe Schulungen <span>(demnächst)</span></a></li>
-            <li><a href="#standorte">Alle Standorte</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-brand">
-        <img src="images/logo_neu.webp" alt="AcademyNow Fahrschule Logo - Moderne Fahrausbildung in Hamburg" class="footer-logo">
-        <p class="footer-brand-claim">Mit uns kommst du ans Ziel!</p>
-      </div>
-
-      <!-- Vereinfachte Linkleiste über dem Copyright -->
-      <div class="footer-bottom">
-        <div class="footer-links">
-          <a href="impressum.html">Impressum</a> — <a href="datenschutz.html">Datenschutz</a> — <a href="datenschutz.html#cookies">Cookie-Richtlinien</a>
-        </div>
-        <div class="copyright">
-          <p>&copy; 2025 – Alle Rechte vorbehalten an Academy Now GmbH.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  <!-- =================================================================================
+    <!-- =================================================================================
        JAVASCRIPT DATEIEN
        ================================================================================= -->
-  <script src="js/main.js" defer></script>
-  <script src="js/cookie-banner.js" defer></script>
-  <script src="js/pwa-install.js" defer></script>
-</body>
+    <script src="js/main.js" defer></script>
+    <script src="js/cookie-banner.js" defer></script>
+    <script src="js/pwa-install.js" defer></script>
+  </body>
 </html>
