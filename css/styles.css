@@ -1632,12 +1632,14 @@ nav ul li a.nav-link.active::after {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(var(--accent-rgb), 0.18) 0%,
-    rgba(255, 255, 255, 0) 55%
+    rgba(var(--accent-rgb), 0.12) 0%,
+    rgba(var(--accent-rgb), 0.05) 40%,
+    rgba(255, 255, 255, 0) 70%
   );
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
+  z-index: 1; /* Über dem Inhalt */
 }
 
 .highlight-item:hover,
@@ -1652,8 +1654,8 @@ nav ul li a.nav-link.active::after {
 .stelle-card:focus-within,
 .initiativ-card:hover,
 .initiativ-card:focus-within {
-  transform: translateY(-14px);
-  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-14px) !important; /* !important um Überschreibungen zu verhindern */
+  box-shadow: var(--card-shadow-hover) !important;
 }
 
 .highlight-item:hover::after,
@@ -1814,8 +1816,8 @@ nav ul li a.nav-link.active::after {
 
 .standort-card:hover,
 .standort-card:focus-within {
-  transform: translateY(-14px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+  transform: translateY(-14px) !important;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16) !important;
 }
 
 .standort-image {
@@ -2040,7 +2042,8 @@ nav ul li a.nav-link.active::after {
 
 .preis-card.featured:hover,
 .preis-card.featured:focus-within {
-  transform: translateY(-12px) scale(1.02);
+  transform: translateY(-14px) scale(1.02) !important; /* Gleicher Lift wie andere Karten */
+  box-shadow: var(--card-shadow-hover) !important;
 }
 
 .preis-badge {
