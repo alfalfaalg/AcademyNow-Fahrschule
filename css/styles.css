@@ -3591,18 +3591,20 @@ html {
   }
 
   /* Menü-Liste zentriert */
-  #main-navigation ul {
+  #main-navigation > ul {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: center;
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 0;
+    width: 100%;
+    max-width: 600px;
   }
 
-  /* Menü-Items */
-  #main-navigation ul li {
+  /* Menü-Items (nur direkte Kinder) */
+  #main-navigation > ul > li {
     margin: 0;
     opacity: 0;
     transform: translateY(20px);
@@ -3610,24 +3612,24 @@ html {
   }
 
   /* Animation für Menü-Items wenn Menü aktiv */
-  #main-navigation.active ul li {
-    opacity: 1;
-    transform: translateY(0);
+  #main-navigation.active > ul > li {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
   }
 
   /* Gestaffelte Animation */
-  #main-navigation.active ul li:nth-child(1) { transition-delay: 0.1s; }
-  #main-navigation.active ul li:nth-child(2) { transition-delay: 0.15s; }
-  #main-navigation.active ul li:nth-child(3) { transition-delay: 0.2s; }
-  #main-navigation.active ul li:nth-child(4) { transition-delay: 0.25s; }
-  #main-navigation.active ul li:nth-child(5) { transition-delay: 0.3s; }
-  #main-navigation.active ul li:nth-child(6) { transition-delay: 0.35s; }
-  #main-navigation.active ul li:nth-child(7) { transition-delay: 0.4s; }
+  #main-navigation.active > ul > li:nth-child(1) { transition-delay: 0.1s; }
+  #main-navigation.active > ul > li:nth-child(2) { transition-delay: 0.15s; }
+  #main-navigation.active > ul > li:nth-child(3) { transition-delay: 0.2s; }
+  #main-navigation.active > ul > li:nth-child(4) { transition-delay: 0.25s; }
+  #main-navigation.active > ul > li:nth-child(5) { transition-delay: 0.3s; }
+  #main-navigation.active > ul > li:nth-child(6) { transition-delay: 0.35s; }
+  #main-navigation.active > ul > li:nth-child(7) { transition-delay: 0.4s; }
 
   /* Links */
-  #main-navigation ul li a {
+  #main-navigation > ul > li > a {
     display: block;
-    color: #ffffff;
+    color: #ffffff !important;
     text-decoration: none;
     font-size: clamp(1.5rem, 5vw, 2.2rem);
     font-weight: 600;
@@ -3639,10 +3641,10 @@ html {
   }
 
   /* Hover-Effekt */
-  #main-navigation ul li a:hover,
-  #main-navigation ul li a.active {
+  #main-navigation > ul > li > a:hover,
+  #main-navigation > ul > li > a.active {
     background: rgba(232, 140, 74, 0.15);
-    color: var(--accent);
+    color: var(--accent) !important;
     transform: translateX(8px);
   }
 
