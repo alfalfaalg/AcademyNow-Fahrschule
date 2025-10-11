@@ -3642,13 +3642,15 @@ html {
   }
 
   .hero-extravaganz {
-    font-size: clamp(2rem, 7vw, 2.8rem); /* Kleinere Min-Größe */
-    letter-spacing: 0.05em; /* Reduziert von 0.1em für bessere Lesbarkeit */
-    line-height: 1.2;
+    font-size: clamp(1.8rem, 6.5vw, 2.8rem); /* Noch kleiner für vollständige Sichtbarkeit */
+    letter-spacing: 0.03em; /* Minimal für kompakte Darstellung */
+    line-height: 1.15;
     white-space: normal;
     text-align: center;
     margin: 0 auto 8px;
-    word-spacing: 0.1em; /* Bessere Wort-Abstände */
+    word-spacing: 0.05em; /* Reduziert */
+    max-width: 95%; /* Verhindert Überlauf */
+    overflow-wrap: break-word;
   }
 
   /* Bindestrich auf Mobile ausblenden */
