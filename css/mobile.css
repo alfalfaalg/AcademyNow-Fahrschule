@@ -459,8 +459,7 @@
     min-height: 100vh;
     display: none;
     z-index: 2000; /* above header for true fullscreen */
-    background:
-      radial-gradient(
+    background: radial-gradient(
         circle at 10% 18%,
         rgba(32, 44, 62, 0.25) 0%,
         rgba(32, 44, 62, 0) 55%
@@ -768,6 +767,34 @@
   .karriere-grid,
   .preise-container {
     grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+
+  /* Preiskarten auf Mobile - kompakter aber elegant */
+  .preis-card {
+    max-width: 95%;
+    margin: 0 auto;
+  }
+
+  .preis-header {
+    padding: 30px 20px 25px;
+  }
+
+  .preis-header h3 {
+    font-size: 1.45rem;
+  }
+
+  .preis {
+    font-size: 2.8rem;
+  }
+
+  .preis-body {
+    padding: 25px 20px;
+  }
+
+  .btn-preis {
+    padding: 14px 24px;
+    font-size: 1rem;
   }
 
   /* Footer */

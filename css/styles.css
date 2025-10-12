@@ -2048,113 +2048,168 @@ nav ul li a.nav-link.active::after {
     rgba(255, 255, 255, 0.97),
     rgba(248, 249, 250, 0.95)
   );
+  padding: 80px 0;
 }
 
 .preise-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* .preis-card Basis-Styles bereits in Zeile 1635-1648 definiert */
+/* Flyer-inspirierte Preiskarten mit modernem Design */
+.preis-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px; /* Größerer Radius wie im Flyer */
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform: translateY(0);
+  will-change: transform, box-shadow;
+  border: 1px solid rgba(10, 33, 74, 0.08);
+}
+
+.preis-card:hover,
+.preis-card:focus-within {
+  transform: translateY(-14px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+}
 
 .preis-card.featured {
   border: 2px solid var(--accent);
-  transform: translateY(0) scale(1.02);
+  transform: translateY(0) scale(1);
 }
 
 .preis-card.featured:hover,
 .preis-card.featured:focus-within {
-  transform: translateY(-14px) scale(1.02) !important; /* Gleicher Lift wie andere Karten */
-  box-shadow: var(--card-shadow-hover) !important;
+  transform: translateY(-14px) scale(1);
+  box-shadow: 0 16px 32px rgba(232, 140, 74, 0.2),
+    0 5px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* Beliebt Badge - oben rechts wie im Flyer */
 .preis-badge {
   position: absolute;
-  top: 0;
-  right: 0;
-  background: var(--accent);
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(
+    135deg,
+    var(--accent) 0%,
+    var(--accent-dark) 100%
+  );
   color: #fff;
-  padding: 5px 15px;
-  font-size: 0.8rem;
-  border-bottom-left-radius: 10px;
-  font-weight: 500;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.35);
+  z-index: 10;
 }
 
+/* Dunkler Header wie im Flyer */
 .preis-header {
-  padding: 25px 20px;
-  background: var(--primary);
+  padding: 35px 25px 30px;
+  background: linear-gradient(135deg, #2c3e5a 0%, var(--primary) 100%);
   color: #fff;
   text-align: center;
+  position: relative;
 }
 
 .preis-header h3 {
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 1.5rem;
-}
-
-.preis {
-  font-size: 2.5rem;
+  margin-bottom: 15px;
   font-weight: 700;
-  font-family: "Inter", sans-serif;
+  font-size: 1.65rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
+/* Großer prominenter Preis */
+.preis {
+  font-size: 3.2rem;
+  font-weight: 800;
+  font-family: "Inter", sans-serif;
+  line-height: 1;
+  margin: 10px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Weißer Content-Bereich */
 .preis-body {
-  padding: 25px 20px;
+  padding: 30px 25px;
+  background: #ffffff;
 }
 
 .preis-features {
   list-style: none;
-  margin-bottom: 25px;
+  margin-bottom: 28px;
 }
 
 .preis-features li {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
+  font-size: 1.02rem;
+  color: #333;
+  line-height: 1.5;
 }
 
+.preis-features li:last-child {
+  border-bottom: none;
+}
+
+/* Checkmark Styling */
 .icon-check {
   color: var(--accent);
-  margin-right: 10px;
+  margin-right: 12px;
   font-weight: bold;
+  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
+/* Orange CTA Button wie im Flyer */
 .btn-preis {
   display: block;
-  background: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #f5a660 100%);
   color: #fff;
   text-align: center;
-  padding: 15px 25px; /* Größerer Klickbereich */
-  border-radius: 5px;
+  padding: 16px 28px;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 1.05rem;
   transition: all 0.3s ease;
-  margin: 5px 0;
+  margin: 8px 0 0;
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .btn-preis:hover {
-  background: var(--accent-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+  background: linear-gradient(135deg, var(--accent-dark) 0%, #e89850 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
 }
 
 .preis-info {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  margin-top: 5px;
-  margin-bottom: 10px;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 8px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .zeit-info {
   display: block;
-  margin-top: 5px;
-  font-size: 0.9rem;
-  opacity: 0.8;
+  margin-top: 8px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  font-weight: 500;
 }
 
 .rabatt-info {
@@ -2166,31 +2221,38 @@ nav ul li a.nav-link.active::after {
   margin-top: 5px;
 }
 
-/* Basis-Paket Orange Badge */
+/* Spezial-Angebot Badge mit Emoji wie im Flyer */
 .rabatt-badge {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--accent) 0%, #ffc68a 100%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ffa860 100%);
   color: #fff;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-top: 10px;
-  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-top: 15px;
+  box-shadow: 0 6px 18px rgba(var(--accent-rgb), 0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .preis-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
+  margin: 8px 0;
 }
 
+/* Durchgestrichener Altpreis */
 .old-price-badge {
-  font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.65);
   text-decoration: line-through;
-  font-weight: 500;
+  font-weight: 600;
+  text-decoration-thickness: 2px;
 }
 
 /*==================================
