@@ -2,6 +2,13 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preconnect für externe Ressourcen (Performance) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -23,8 +30,6 @@
     <!-- =================================================================================
        META-INFORMATIONEN & SEO
        ================================================================================= -->
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>AcademyNow Fahrschule - Mit uns kommst du ans Ziel!</title>
 
@@ -417,20 +422,30 @@
       rel="stylesheet"
     />
 
-    <!-- Font Awesome Icons -->
+    <!-- Font Awesome Icons - mit preload für kritische Ressource -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      />
+    </noscript>
 
-    <!-- Haupt-Stylesheet -->
-    <link rel="stylesheet" href="css/styles.css?v=2025-10-12-black-theme" />
+    <!-- Haupt-Stylesheet - Preload für kritisches CSS -->
+    <link rel="preload" href="css/styles.css?v=2025-10-13-pagespeed" as="style" />
+    <link rel="stylesheet" href="css/styles.css?v=2025-10-13-pagespeed" />
     <link
       rel="stylesheet"
-      href="css/mobile.css?v=2025-10-12-black-theme"
+      href="css/mobile.css?v=2025-10-13-pagespeed"
       media="screen and (max-width: 768px)"
     />
-    <!-- Google tag (gtag.js) -->
+    
+    <!-- Google tag (gtag.js) - async geladen -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=AW-17118954542"
@@ -964,6 +979,8 @@
                   class="maps-iframe"
                   src="https://www.google.com/maps?q=Adenauerallee+10,+20097+Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Hamburg Mitte"
+                  width="600"
+                  height="450"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   allowfullscreen
@@ -1010,6 +1027,8 @@
                   class="maps-iframe"
                   src="https://www.google.com/maps?q=Chrysanderstraße+19,+21029+Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Bergedorf"
+                  width="600"
+                  height="450"
                   loading="lazy"
                   referrerpolicy="no-referrer-when-downgrade"
                   allowfullscreen
@@ -1071,6 +1090,8 @@
                   src="images/icons/icons8-google-logo.svg"
                   alt="Google"
                   class="google-logo-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </span>
               <span class="google-label">Google-Bewertungen</span>
