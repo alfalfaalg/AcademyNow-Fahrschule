@@ -803,6 +803,19 @@
     font-size: 1rem;
   }
 
+  /* Standort-Karten - gleiche Breite wie Preiskarten */
+  .standort-cards {
+    flex-direction: column;
+    gap: 25px;
+    max-width: 100%;
+  }
+
+  .standort-card {
+    max-width: 95%;
+    margin: 0 auto;
+    width: 100%;
+  }
+
   /* Footer */
   .simple-footer {
     padding: 1rem 0 0.4rem; /* DRASTISCH reduziert für Mobile */
@@ -843,15 +856,17 @@
     padding-right: clamp(20px, 6vw, 32px);
   }
 
-  /* Leistungen */
+  /* Leistungen - einzeln untereinander für bessere Lesbarkeit */
   .leistungen-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 Spalten auf Tablet */
+    grid-template-columns: 1fr !important; /* Nur 1 Spalte auf Mobile */
     gap: 20px;
     margin-top: 30px;
   }
 
   .leistung-item {
-    padding: 15px 10px;
+    padding: 20px 15px;
+    max-width: 95%;
+    margin: 0 auto;
   }
 
   /* Größere Touch-Ziele für alle wichtigen Buttons im mobilen Layout */
