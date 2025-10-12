@@ -2,16 +2,17 @@
 // SERVICE WORKER - ADVANCED CACHING STRATEGY
 // =================================================================================
 
-const CACHE_NAME = 'academynow-fahrschule-v1.0.1';
-const STATIC_CACHE = 'academynow-static-v2';
-const DYNAMIC_CACHE = 'academynow-dynamic-v2';
+const CACHE_NAME = 'academynow-fahrschule-v1.0.3-mobile-fix';
+const STATIC_CACHE = 'academynow-static-v3-mobile-fix';
+const DYNAMIC_CACHE = 'academynow-dynamic-v3-mobile-fix';
 
 // Critical resources to cache immediately
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/css/styles.css?v=2025-09-26',
-  '/js/main.js',
+  '/css/styles.css?v=2025-10-12-mobile-fix',
+  '/css/mobile.css?v=2025-10-12-mobile-fix',
+  '/js/main.js?v=2025-10-12-mobile-fix',
   '/images/logo_neu.webp',
   '/images/logo_social.png',
   '/images/heroBackground/mercedes-hero-optimized.jpg',
@@ -32,7 +33,9 @@ self.addEventListener('install', (event) => {
       })
       .then(() => {
         console.log('✅ Service Worker: Static assets cached');
-        return self.skipWaiting();
+        console.log('⏸️ Service Worker: Waiting for user confirmation to activate');
+        // NICHT automatisch skippen - warten auf User-Bestätigung via updateApp()
+        // self.skipWaiting() wird über Message-Handler (Zeile 201-203) aufgerufen
       })
       .catch((error) => {
         console.error('❌ Service Worker: Failed to cache static assets', error);
