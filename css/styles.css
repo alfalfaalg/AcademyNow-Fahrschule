@@ -23,15 +23,24 @@
   1. GRUNDLEGENDE EINSTELLUNGEN
 ==================================*/
 :root {
-  --primary: #0a214a;
+  /* NEU: Premium-Schwarz statt Blau (Logo-Update) */
+  --primary: #15171c; /* Elegantes Anthrazit-Schwarz mit Tiefe */
+  --primary-light: #1f2128; /* Hellere Variante für Hover */
+  --primary-rgb: 21, 23, 28; /* RGB für Transparenz */
+
+  /* Orange-Akzente (bestehend) */
   --accent: #e88c4a; /* Wärme & Aktivierung (angepasstes Orange) */
   --accent-dark: #c4742e; /* CTA-Hover für mehr Tiefe */
   --accent-rgb: 232, 140, 74;
   --accent-gold: #d1b17c; /* Seriöser Goldton aus vorherigem CI */
   --accent-gold-dark: #b28b53;
   --accent-gold-rgb: 209, 177, 124;
-  --card-shadow-base: 0 6px 20px rgba(13, 28, 52, 0.08);
-  --card-shadow-hover: 0 18px 36px rgba(13, 28, 52, 0.18);
+
+  /* Schatten angepasst an Schwarz */
+  --card-shadow-base: 0 6px 20px rgba(0, 0, 0, 0.12);
+  --card-shadow-hover: 0 18px 36px rgba(0, 0, 0, 0.22);
+
+  /* Basis-Farben */
   --light: #ffffff;
   --light-bg: #f8f9fa;
   --text: #333333;
@@ -122,18 +131,18 @@ video {
   right: 0;
   background: radial-gradient(
       circle at 10% 18%,
-      rgba(32, 44, 62, 0.25) 0%,
-      rgba(32, 44, 62, 0) 55%
+      rgba(21, 23, 28, 0.25) 0%,
+      rgba(21, 23, 28, 0) 55%
     ),
     radial-gradient(
       circle at 90% 18%,
-      rgba(32, 44, 62, 0.25) 0%,
-      rgba(32, 44, 62, 0) 55%
+      rgba(21, 23, 28, 0.25) 0%,
+      rgba(21, 23, 28, 0) 55%
     ),
     linear-gradient(
       180deg,
       rgba(36, 48, 67, 0.96) 0%,
-      rgba(31, 44, 62, 0.9) 65%,
+      rgba(21, 23, 28, 0.9) 65%,
       rgba(27, 39, 56, 0.86) 100%
     );
   color: var(--light);
@@ -682,18 +691,18 @@ input[type="checkbox"]:checked::after {
 #main-header {
   background: radial-gradient(
       circle at 10% 18%,
-      rgba(32, 44, 62, 0.25) 0%,
-      rgba(32, 44, 62, 0) 55%
+      rgba(21, 23, 28, 0.25) 0%,
+      rgba(21, 23, 28, 0) 55%
     ),
     radial-gradient(
       circle at 90% 18%,
-      rgba(32, 44, 62, 0.25) 0%,
-      rgba(32, 44, 62, 0) 55%
+      rgba(21, 23, 28, 0.25) 0%,
+      rgba(21, 23, 28, 0) 55%
     ),
     linear-gradient(
       180deg,
       rgba(36, 48, 67, 0.96) 0%,
-      rgba(31, 44, 62, 0.9) 65%,
+      rgba(21, 23, 28, 0.9) 65%,
       rgba(27, 39, 56, 0.86) 100%
     );
   box-shadow: 0 4px 18px rgba(18, 28, 45, 0.15);
@@ -707,18 +716,18 @@ input[type="checkbox"]:checked::after {
   padding: 2px 0 1px;
   background: radial-gradient(
       circle at 6% -6%,
-      rgba(32, 44, 62, 0.28) 0%,
-      rgba(32, 44, 62, 0) 48%
+      rgba(21, 23, 28, 0.28) 0%,
+      rgba(21, 23, 28, 0) 48%
     ),
     radial-gradient(
       circle at 94% -6%,
-      rgba(32, 44, 62, 0.28) 0%,
-      rgba(32, 44, 62, 0) 48%
+      rgba(21, 23, 28, 0.28) 0%,
+      rgba(21, 23, 28, 0) 48%
     ),
     linear-gradient(
       180deg,
       rgba(36, 48, 67, 0.96) 0%,
-      rgba(31, 44, 62, 0.88) 70%,
+      rgba(21, 23, 28, 0.88) 70%,
       rgba(27, 39, 56, 0.84) 100%
     );
   box-shadow: 0 5px 18px rgba(18, 28, 45, 0.15);
@@ -842,7 +851,7 @@ nav ul li a.nav-link.active::after {
   background: linear-gradient(
     135deg,
     rgba(27, 39, 56, 0.98) 0%,
-    rgba(32, 44, 62, 0.98) 100%
+    rgba(21, 23, 28, 0.98) 100%
   );
   backdrop-filter: blur(10px);
   border-radius: 8px;
@@ -894,7 +903,7 @@ nav ul li a.nav-link.active::after {
   background: linear-gradient(
     135deg,
     rgba(27, 39, 56, 0.98) 0%,
-    rgba(32, 44, 62, 0.98) 100%
+    rgba(21, 23, 28, 0.98) 100%
   );
   transform: translateX(-50%) rotate(45deg);
   border-radius: 2px;
@@ -1047,7 +1056,7 @@ nav ul li a.nav-link.active::after {
     ),
     linear-gradient(
       135deg,
-      rgba(32, 44, 62, 0.75) 0%,
+      rgba(21, 23, 28, 0.75) 0%,
       rgba(28, 40, 58, 0.7) 50%,
       rgba(24, 35, 52, 0.68) 100%
     ),
@@ -1068,7 +1077,7 @@ nav ul li a.nav-link.active::after {
     ),
     linear-gradient(
       135deg,
-      rgba(32, 44, 62, 0.75) 0%,
+      rgba(21, 23, 28, 0.75) 0%,
       rgba(28, 40, 58, 0.7) 50%,
       rgba(24, 35, 52, 0.68) 100%
     ),
@@ -3649,7 +3658,7 @@ html {
   #main-header {
     padding: 10px 0;
     position: relative;
-    background: rgba(32, 44, 62, 0.92);
+    background: rgba(21, 23, 28, 0.92);
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 8px rgba(10, 23, 41, 0.3);
   }
@@ -3752,7 +3761,7 @@ html {
       ),
       linear-gradient(
         135deg,
-        rgba(32, 44, 62, 0.5) 0%,
+        rgba(21, 23, 28, 0.5) 0%,
         rgba(28, 40, 58, 0.45) 50%,
         rgba(24, 35, 52, 0.4) 100%
       ),
@@ -3770,7 +3779,7 @@ html {
       ),
       linear-gradient(
         135deg,
-        rgba(32, 44, 62, 0.5) 0%,
+        rgba(21, 23, 28, 0.5) 0%,
         rgba(28, 40, 58, 0.45) 50%,
         rgba(24, 35, 52, 0.4) 100%
       ),

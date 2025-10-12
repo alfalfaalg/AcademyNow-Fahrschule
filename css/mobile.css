@@ -19,7 +19,7 @@
   #main-header {
     padding: 10px 0;
     position: relative;
-    background: rgba(32, 44, 62, 0.92);
+    background: rgba(21, 23, 28, 0.92);
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 8px rgba(10, 23, 41, 0.3);
   }
@@ -116,7 +116,7 @@
       ),
       linear-gradient(
         135deg,
-        rgba(32, 44, 62, 0.5) 0%,
+        rgba(21, 23, 28, 0.5) 0%,
         rgba(28, 40, 58, 0.45) 50%,
         rgba(24, 35, 52, 0.4) 100%
       ),
@@ -134,7 +134,7 @@
       ),
       linear-gradient(
         135deg,
-        rgba(32, 44, 62, 0.5) 0%,
+        rgba(21, 23, 28, 0.5) 0%,
         rgba(28, 40, 58, 0.45) 50%,
         rgba(24, 35, 52, 0.4) 100%
       ),
@@ -318,18 +318,18 @@
     padding: 16px;
     background: radial-gradient(
         circle at 10% 18%,
-        rgba(32, 44, 62, 0.25) 0%,
-        rgba(32, 44, 62, 0) 55%
+        rgba(21, 23, 28, 0.25) 0%,
+        rgba(21, 23, 28, 0) 55%
       ),
       radial-gradient(
         circle at 90% 18%,
-        rgba(32, 44, 62, 0.25) 0%,
-        rgba(32, 44, 62, 0) 55%
+        rgba(21, 23, 28, 0.25) 0%,
+        rgba(21, 23, 28, 0) 55%
       ),
       linear-gradient(
         180deg,
         rgba(36, 48, 67, 0.96) 0%,
-        rgba(31, 44, 62, 0.9) 65%,
+        rgba(21, 23, 28, 0.9) 65%,
         rgba(27, 39, 56, 0.86) 100%
       ) !important;
   }
@@ -472,18 +472,18 @@
     z-index: 2000; /* above header for true fullscreen */
     background: radial-gradient(
         circle at 10% 18%,
-        rgba(32, 44, 62, 0.25) 0%,
-        rgba(32, 44, 62, 0) 55%
+        rgba(21, 23, 28, 0.25) 0%,
+        rgba(21, 23, 28, 0) 55%
       ),
       radial-gradient(
         circle at 90% 18%,
-        rgba(32, 44, 62, 0.25) 0%,
-        rgba(32, 44, 62, 0) 55%
+        rgba(21, 23, 28, 0.25) 0%,
+        rgba(21, 23, 28, 0) 55%
       ),
       linear-gradient(
         180deg,
         rgba(36, 48, 67, 0.96) 0%,
-        rgba(31, 44, 62, 0.9) 65%,
+        rgba(21, 23, 28, 0.9) 65%,
         rgba(27, 39, 56, 0.88) 100%
       );
     backdrop-filter: blur(10px);
