@@ -19,6 +19,13 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+chrome-devtools.log
+
+# Test Screenshots und temporäre Bilder
+test-*.png
+hero-screenshot.png
+hero-updated.png
+mobile-*.png
 
 # Dependencies (falls später Node.js genutzt wird)
 node_modules/

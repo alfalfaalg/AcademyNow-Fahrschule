@@ -2,6 +2,17 @@
 
 Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg.
 
+## 🤖 AI-Optimiert mit Gemini
+
+Diese Website ist **perfekt konfiguriert für Gemini AI**:
+
+- 📘 **GEMINI.md** - Vollständige Projekt-Instructions
+- 📋 **TODO.md** - Aktuelle Aufgaben & Prioritäten
+- 🔧 **MCP-Server** - Chrome DevTools Integration
+- ⚙️ **VS Code Config** - Optimierte Settings für AI-Development
+
+👉 **Siehe [GEMINI_SETUP.md](GEMINI_SETUP.md) für Details**
+
 ## ✨ Features
 
 - **🎨 Modernes Design** mit Hamburg-Fokus
@@ -41,19 +52,21 @@ Potenzielle Fahrschüler in Hamburg, die eine moderne und vertrauenserweckende F
 ## 🚀 Installation & Nutzung
 
 1. **Repository klonen:**
+
    ```bash
    git clone [repository-url]
    cd "Fahrschule (aktuell)"
    ```
 
 2. **Lokaler Server (optional):**
+
    ```bash
    # Mit Python
    python3 -m http.server 8000
-   
+
    # Mit Node.js
    npx serve .
-   
+
    # Mit VSCode Live Server Extension
    ```
 
@@ -65,12 +78,14 @@ Potenzielle Fahrschüler in Hamburg, die eine moderne und vertrauenserweckende F
 ## 🎨 Design-System
 
 ### Farben
+
 - **Primary:** `#0A214A` (Dunkelblau)
 - **Accent:** `#D1B17C` (Gold)
 - **Light:** `#FFFFFF` (Weiß)
 - **Text:** `#333333` (Dunkelgrau)
 
 ### Typografie
+
 - **Headings:** Playfair Display (serif)
 - **Body:** Inter (sans-serif)
 - **Buttons:** Montserrat (sans-serif)
@@ -87,6 +102,7 @@ Die Website verfügt über einen interaktiven Background-Switcher mit 16 verschi
 ## 🔐 Authentifizierung
 
 Die Coming-Soon-Seite ist mit einem Passwort geschützt:
+
 - **Passwort:** `!!Projekt2025`
 - **Sicherheit:** 3 Versuche, dann Sperrung
 - **Speicherung:** Session & Local Storage
@@ -94,6 +110,7 @@ Die Coming-Soon-Seite ist mit einem Passwort geschützt:
 ## 📞 Kontaktdaten
 
 **AcademyNow Fahrschule**
+
 - **Adresse:** Adenauerallee 10, 20097 Hamburg
 - **Telefon:** (040) 982 591 50
 - **WhatsApp:** +49 176 31065840
@@ -134,12 +151,15 @@ Die Coming-Soon-Seite ist mit einem Passwort geschützt:
 ## 🔧 Entwicklung
 
 ### VSCode Extensions
+
 Die folgenden Extensions sind für die Entwicklung empfohlen:
+
 - **Unused CSS Classes** - Findet unbenutzte CSS-Klassen
 - **Dead Code Hunter** - Erkennt tote Code-Bereiche
 - **Live Server** - Lokaler Entwicklungsserver
 
 ### Git Workflow
+
 ```bash
 git add .
 git commit -m "feat: neue Funktion hinzugefügt"

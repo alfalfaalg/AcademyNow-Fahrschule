@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-chrome-devtools"],
+      "description": "Chrome DevTools MCP Server - Live Browser Testing & Debugging",
+      "enabled": true,
+      "env": {
+        "CHROME_USER_DATA_DIR": "/tmp/chrome-devtools-mcp"
+      }
+    }
+  },
+  "globalShortcut": "Ctrl+Shift+P"
+}

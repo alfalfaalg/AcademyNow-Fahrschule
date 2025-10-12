@@ -1,6 +1,102 @@
 # Änderungen an der AcademyNow Fahrschule Website
 
-**Datum:** 1. Oktober 2025
+**Datum:** 1. Oktober 2025 (Ursprung) | **Update:** 7. Oktober 2025
+
+---
+
+## 🚀 NEUE TODO-LISTE (7. Oktober 2025)
+
+### 🆕 Offene Punkte (aktuell)
+- [x] Header nochmals um ca. 20 % verschlanken (Höhe/Padding und Button-Höhen anpassen) und Abstände an neue Höhe angleichen.
+- [x] Hero-Bereich entdichten: mehr vertikale Abstände zwischen Badge, Titel, Angebot, Box und Buttons schaffen, sodass der Bereich luftiger wirkt.
+- [x] CI-Orange harmonisieren: Farbwerte für `--accent` und `--accent-dark` sanfter abstimmen und zugehörige Glows/Verläufe anpassen.
+- [x] Header und mobile Header um weitere ca. 10 % verschlanken (Desktop) bzw. 30 % (Mobile) und Seitenkonsistenz prüfen.
+- [x] Hero-Anzeige feinjustieren: `SPEZIAL-ANGEBOT`, Text "Grundbetrag 399€ statt 499€" vergrößern sowie Farbgebung (weiß/gold/orange) harmonisieren.
+- [x] Farbkonzept mit Orange + ehemaligem Goldton erarbeiten und anwenden (insb. „Führerschein ohne Umwege“), inkl. Recherche seriöser Farbkombination & Anpassung von Glows/Verläufen.
+- [x] Header/Footer auf allen Seiten (inkl. mobile) auf identisches Styling prüfen und korrigieren; offene ToDos-Seitenprüfung durchführen.
+- [x] Mobile Header neu strukturieren: Logo links, Burger rechts, darunter jeweils zugehörige CTA-Buttons (Direkt anmelden / Sofortkontakt) mit minimalem vertikalen Platzbedarf.
+- [x] Mobile Hero optimieren: Padding reduzieren, "SPEZIAL-ANGEBOT" lesbar halten, CTA-Effekte prüfen und Hero samt Header im ersten Viewport sichtbar machen.
+- [x] Mobile Typografie prüfen: Fließtexte (z. B. Über uns, Sektionseinleitungen) mittig ausrichten, Abstände angleichen.
+- [x] Mobile Layouts anpassen: Grids (Preise, Leistungen, Standorte) für kleine Viewports optimieren, Kartenhöhe reduzieren, Menüdarstellung/Interaktion testen.
+- [x] Einheitlichen Hover/Lift-Effekt aus Über-uns-Highlights auf Preise, Leistungen, Standorte und Karriere-Karten übertragen.
+- [x] Footer anpassen: Logo vergrößern, Claim-Text näher platzieren und wording auf „Mit uns kommen Sie ans Ziel!“ aktualisieren.
+
+### ✅ Abgeschlossen (07.10.2025):
+- ✅ Google Tag Manager (GTM-WWRGDHJ7) auf allen HTML-Seiten
+- ✅ Telefonnummer im Schema.org: +49-40-98259150
+- ✅ Logo-Update (logo_neu.png/webp) - alle alten Icons entfernt
+- ✅ Mobile Hero-Optimierung (Buttons, Spacing, Sommerangebot-Badge)
+- ✅ Service Worker Cache-Busting (v2)
+- ✅ Hamburger-Menü CSS-Konflikte bereinigt
+- ✅ Footer modernisiert (4 Spalten, Schnellzugriff, Öffnungszeiten)
+- ✅ **CI-Farbe von Gold (#D1B17C) auf Orange (#E8752D) umgestellt** - CSS-Variablen --accent und --accent-dark
+- ✅ **Header um 1/3 schmaler** - Padding reduziert: Desktop 8px→5px, Mobile 2px→1px, Position: fixed
+- ✅ **Header Scroll-Bug behoben** - Transform-basiertes Auto-Hide deaktiviert
+- ✅ **Bildungsangebot Dropdown hinzugefügt** - "City-Logistiker / KEP-Fahrer" → academy-now.de
+- ✅ **Karriere in Footer verschoben** - Fuhrpark-Link zur Navigation hinzugefügt
+- ✅ **Hero-Hintergrund aufgehellt** - Overlay-Opacity von 0.82-0.92 auf 0.65-0.75 reduziert
+- ✅ **EXTRAVAGANZ-Text hinzugefügt** - 3.5rem mit Orange-Gradient und Shimmer-Animation
+- ✅ **Hero-Preis aktualisiert** - "399€ statt 499€" mit Durchstreichung
+- ✅ **Basis-Paket Farbe und Preis** - Orange Gradient Badge + "399€ statt 499€"
+- ✅ **Hover-Effekte auf Preiskarten** - translateY von -5px auf -8px erhöht
+- ✅ **Standort Bergedorf hinzugefügt** - 2-Spalten Grid Layout (Hamburg Mitte | Bergedorf)
+- ✅ **Über Uns Text gekürzt** - Highlight-Boxen kompakter, Button-Text zentriert
+
+### 🔧 NEUE ANFORDERUNGEN (07.10.2025):
+
+#### 1. Header-Optimierung ✅ KOMPLETT
+- ✅ **Header um 1/3 schmaler machen** - Padding Desktop: 5px/3px (vorher 8px/4px), Mobile: 1px/3px (vorher 2px/4px)
+- ✅ **Neuer Menüpunkt "Bildungsangebot"** mit Dropdown
+  - Dropdown-Design wie academy-now.de mit Hover-Animation
+  - Dropdown-Inhalt: "City-Logistiker / KEP-Fahrer"
+  - Link zu: https://academy-now.de/mehr-erfahren-fahrschule/
+  - Mobile: Click-Toggle mit JavaScript
+- ✅ **Menüpunkt "Karriere" entfernt** (jetzt in Footer unter "Fahrschul-Angebote")
+- ✅ **Neuer Menüpunkt "Fuhrpark"** hinzugefügt
+- ✅ **Header fixiert** - Position: fixed, Scroll-Bug behoben (transform-Animation deaktiviert)
+
+#### 2. Hero-Bereich Verbesserungen ✅ TEILWEISE
+- ✅ **Hero-Background heller gemacht** - Overlay-Opacity reduziert für bessere Mercedes-Sichtbarkeit
+- ⏸️ **Zweites Auto-Bild** (Classic SL) - Warten auf Bild-Asset
+- ✅ **Sommerangebot-Text optimiert:**
+  - "Grundbetrag 399€ statt 499€" mit Durchstreichung
+  - "EXTRAVAGANZ" hinzugefügt: 3.5rem, Orange-Gradient, Shimmer-Animation
+  - Bessere Text-Verteilung
+
+#### 3. Preise-Sektion Anpassungen ✅ KOMPLETT
+- ✅ **Basis-Paket farblich an Sommerangebot angepasst** - Orange Gradient Badge
+- ✅ **"399€ statt 499€"** bei Basis-Paket mit Durchstreichung
+- ✅ **Hover-Effekt für alle 3 Preis-Karten:**
+  - translateY(-8px) mit smooth transition (0.3s ease)
+  - Alle Karten: Basis-Paket, Fahrstunden, Motorrad
+
+#### 4. Standorte-Sektion ✅ KOMPLETT
+- ✅ **Neuer Standort "Bergedorf" hinzugefügt**
+  - Adresse: Chrysanderstraße 19, 21029 Hamburg
+  - Layout: 2-Spalten Grid (responsive: 1 Spalte auf Mobile)
+  - Google Maps eingebunden
+  - Kontaktdaten und Öffnungszeiten
+  - Links: Hamburg Mitte | Rechts: Bergedorf
+  - Gleicher Stil/Design wie bestehender Standort
+
+#### 5. Über Uns-Sektion
+- [ ] **Text in den 3 Highlight-Boxen kürzen**
+  - "Zentrale Lage", "Flexible Zeiten", etc.
+  - Weniger Text, kompakter
+- [ ] **Button-Text zentrieren** in beiden Buttons
+
+#### 6. CI-Farben (Corporate Identity)
+- [ ] **Goldton durch Logo-Orange ersetzen** (auf gesamter Website)
+  - Aktuell: Gold (#D1B17C / --accent)
+  - Neu: Logo-Orange (aus logo_neu.png extrahieren)
+  - Betroffen: Buttons, Badges, Akzente, Hover-Effekte
+
+#### 7. Favicon/Icon für Google
+- [ ] **Google-Icon aus `/images/icons/` Ordner verwenden**
+  - Prüfen: Welches Icon ist gemeint?
+  - Optional: favicon.ico im Root erstellen
+
+---
 
 ## ⚠️ WICHTIG: Diese Änderungen müssen in die neue Version übernommen werden!
 
