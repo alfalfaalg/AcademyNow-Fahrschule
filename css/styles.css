@@ -2070,12 +2070,87 @@ nav ul li a.nav-link.active::after {
   transform: translateY(0);
   will-change: transform, box-shadow;
   border: 1px solid rgba(10, 33, 74, 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
 .preis-card:hover,
 .preis-card:focus-within {
   transform: translateY(-14px);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+}
+
+/* 🔥 HOT DEAL - Brennender Border-Effekt! */
+.preis-card.hot-deal {
+  border: 3px solid transparent;
+  background: 
+    linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, 
+      #ff4500 0%, 
+      #ff8c00 25%, 
+      #ffd700 50%, 
+      #ff8c00 75%, 
+      #ff4500 100%
+    ) border-box;
+  animation: burning-border 3s ease-in-out infinite;
+  box-shadow: 
+    0 5px 20px rgba(0, 0, 0, 0.05),
+    0 0 30px rgba(255, 69, 0, 0.3),
+    inset 0 0 20px rgba(255, 140, 0, 0.1);
+}
+
+@keyframes burning-border {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 8px rgba(255, 69, 0, 0.6))
+      drop-shadow(0 0 15px rgba(255, 140, 0, 0.4))
+      hue-rotate(0deg);
+  }
+  25% {
+    filter: 
+      drop-shadow(0 0 12px rgba(255, 140, 0, 0.7))
+      drop-shadow(0 0 20px rgba(255, 69, 0, 0.5))
+      hue-rotate(10deg);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 15px rgba(255, 215, 0, 0.6))
+      drop-shadow(0 0 25px rgba(255, 140, 0, 0.5))
+      hue-rotate(0deg);
+  }
+  75% {
+    filter: 
+      drop-shadow(0 0 12px rgba(255, 140, 0, 0.7))
+      drop-shadow(0 0 20px rgba(255, 69, 0, 0.5))
+      hue-rotate(-10deg);
+  }
+}
+
+.preis-card.hot-deal:hover,
+.preis-card.hot-deal:focus-within {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 0 50px rgba(255, 69, 0, 0.5),
+    inset 0 0 30px rgba(255, 140, 0, 0.15);
+  animation: burning-border-intense 2s ease-in-out infinite;
+}
+
+@keyframes burning-border-intense {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 15px rgba(255, 69, 0, 0.8))
+      drop-shadow(0 0 25px rgba(255, 140, 0, 0.6))
+      hue-rotate(0deg)
+      brightness(1.1);
+  }
+  50% {
+    filter: 
+      drop-shadow(0 0 20px rgba(255, 215, 0, 0.8))
+      drop-shadow(0 0 35px rgba(255, 140, 0, 0.7))
+      hue-rotate(15deg)
+      brightness(1.15);
+  }
 }
 
 .preis-card.featured {
@@ -2142,11 +2217,15 @@ nav ul li a.nav-link.active::after {
 .preis-body {
   padding: 30px 25px;
   background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Nimmt verfügbaren Platz ein */
 }
 
 .preis-features {
   list-style: none;
   margin-bottom: 28px;
+  flex: 1; /* Features nehmen verfügbaren Platz ein */
 }
 
 .preis-features li {
