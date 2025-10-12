@@ -507,6 +507,14 @@
     transform: translateY(0) scale(1);
   }
 
+  /* Verstecke Scroll-Indicator wenn Mobile-Menü aktiv ist */
+  #main-navigation.active ~ * .scroll-indicator,
+  body:has(#main-navigation.active) .scroll-indicator {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   /* Keep the close (X) hamburger button accessible on top of overlay */
   .mobile-menu-btn.active,
   .mobile-menu-btn[aria-expanded="true"] {
