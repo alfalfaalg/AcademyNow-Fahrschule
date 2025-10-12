@@ -318,6 +318,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize Intersection Observer
   initIntersectionObserver();
 
+  // Check for pending updates
+  checkForPendingUpdate();
+
   // Service Worker Registration
   registerServiceWorker();
 
@@ -647,8 +650,21 @@ async function registerServiceWorker() {
 }
 
 function showUpdateNotification() {
-  // Create elegant update notification
+  // Prüfen ob User das Update bereits gesehen hat (für diese Session)
+  if (sessionStorage.getItem('updateNotificationShown') === 'true') {
+    console.log('⏭️ Update notification already shown this session');
+    return;
+  }
+
+  // Markieren dass Notification angezeigt wurde
+  sessionStorage.setItem('updateNotificationShown', 'true');
+  sessionStorage.setItem('updateAvailable', 'true');
+
+  console.log('🔔 Showing update notification (permanent until clicked)');
+
+  // Create elegant update notification - BLEIBT DAUERHAFT
   const notification = document.createElement("div");
+  notification.id = 'update-notification';
   notification.innerHTML = `
     <div style="
       position: fixed;
@@ -658,40 +674,55 @@ function showUpdateNotification() {
       color: white;
       padding: 16px 24px;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
       z-index: 10001;
-      max-width: 300px;
+      max-width: 320px;
       font-family: 'Inter', sans-serif;
       animation: slideInRight 0.3s ease;
     ">
-      <div style="font-weight: 600; margin-bottom: 8px;">Update verfügbar</div>
-      <div style="font-size: 0.9em; margin-bottom: 12px;">Eine neue Version der App ist verfügbar.</div>
+      <div style="font-weight: 700; margin-bottom: 4px; font-size: 1.05em;">🎉 Update verfügbar!</div>
+      <div style="font-size: 0.9em; margin-bottom: 14px; opacity: 0.95;">Eine neue Version ist bereit. Bitte aktualisieren Sie für die neuesten Features und Fixes.</div>
       <button onclick="updateApp()" style="
         background: var(--accent);
         color: var(--primary);
         border: none;
-        padding: 8px 16px;
-        border-radius: 4px;
+        padding: 10px 20px;
+        border-radius: 6px;
         font-weight: 600;
         cursor: pointer;
-        margin-right: 8px;
-      ">Aktualisieren</button>
-      <button onclick="this.parentElement.parentElement.remove()" style="
-        background: transparent;
-        color: white;
-        border: 1px solid rgba(255,255,255,0.3);
-        padding: 8px 16px;
-        border-radius: 4px;
-        cursor: pointer;
-      ">Später</button>
+        width: 100%;
+        font-size: 0.95em;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.2)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+        Jetzt aktualisieren
+      </button>
+      <div style="font-size: 0.75em; margin-top: 8px; opacity: 0.7; text-align: center;">Dieses Update bleibt sichtbar</div>
     </div>
   `;
   document.body.appendChild(notification);
 }
 
+// Beim Page Load prüfen ob Update verfügbar ist
+function checkForPendingUpdate() {
+  if (sessionStorage.getItem('updateAvailable') === 'true' &&
+      sessionStorage.getItem('updateNotificationShown') !== 'true') {
+    console.log('🔄 Pending update detected, showing notification again');
+    showUpdateNotification();
+  }
+}
+
 function updateApp() {
+  console.log('🔄 User clicked update button - activating new Service Worker');
+
+  // SessionStorage leeren damit nach Reload keine Notification mehr erscheint
+  sessionStorage.removeItem('updateNotificationShown');
+  sessionStorage.removeItem('updateAvailable');
+
   if (navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage({ type: "SKIP_WAITING" });
+    window.location.reload();
+  } else {
+    // Fallback wenn kein Service Worker
     window.location.reload();
   }
 }
