@@ -181,12 +181,32 @@
   }
 
   .hero-extravaganz {
-    font-size: clamp(2.2rem, 8vw, 2.8rem);
-    letter-spacing: 0.1em;
-    line-height: 1.1;
+    font-size: clamp(2.2rem, 8vw, 2.7rem);
+    letter-spacing: 0.04em;
+    line-height: 1.05;
     white-space: normal;
     text-align: center;
-    margin: 0 auto 8px;
+    margin: 0 auto 10px;
+    gap: 6px;
+    max-width: 100%;
+  }
+
+  .hero-offer-top,
+  .hero-offer-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-offer-top {
+    font-size: 0.86em;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-offer-bottom {
+    font-size: 1.1em;
+    letter-spacing: 0.18em;
   }
 
   /* Bindestrich auf Mobile ausblenden */
@@ -430,41 +450,51 @@
   /* Fullscreen Mobile Navigation Overlay (controlled by #main-navigation.active) */
   #main-navigation {
     position: fixed;
-    inset: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
     display: none;
     z-index: 2000; /* above header for true fullscreen */
-    background: radial-gradient(
-        circle at 6% 0%,
-        rgba(43, 55, 74, 0.36) 0%,
-        rgba(43, 55, 74, 0) 55%
+    background:
+      radial-gradient(
+        circle at 10% 18%,
+        rgba(32, 44, 62, 0.25) 0%,
+        rgba(32, 44, 62, 0) 55%
       ),
       radial-gradient(
-        circle at 94% 0%,
-        rgba(43, 55, 74, 0.36) 0%,
-        rgba(43, 55, 74, 0) 55%
+        circle at 90% 18%,
+        rgba(32, 44, 62, 0.25) 0%,
+        rgba(32, 44, 62, 0) 55%
       ),
       linear-gradient(
         180deg,
-        rgba(43, 55, 74, 0.98) 0%,
-        rgba(26, 35, 52, 0.98) 100%
+        rgba(36, 48, 67, 0.96) 0%,
+        rgba(31, 44, 62, 0.9) 65%,
+        rgba(27, 39, 56, 0.88) 100%
       );
-    padding: 90px 20px 40px; /* room for header area */
+    backdrop-filter: blur(10px);
+    padding: 0 24px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+    transform: translateY(-12px) scale(1.02);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   }
 
   #main-navigation.active {
     display: flex !important;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    padding: 120px 24px 72px;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   /* Keep the close (X) hamburger button accessible on top of overlay */
@@ -476,38 +506,83 @@
     z-index: 3001;
   }
 
-  #main-navigation ul {
+  #main-navigation > ul {
     width: 100%;
-    max-width: 520px;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
     padding: 0;
     list-style: none;
-    gap: 4px;
+    gap: 22px;
+    min-height: calc(100vh - 220px);
   }
 
-  #main-navigation li {
+  #main-navigation > ul > li {
     margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  #main-navigation li a {
-    display: block;
-    text-align: center;
+  #main-navigation > ul > li.dropdown {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #main-navigation > ul > li.dropdown > a.nav-link {
+    padding-bottom: 0;
+  }
+
+  #main-navigation > ul > li.dropdown > a.nav-link::after {
+    width: 48%;
+    bottom: -10px;
+  }
+
+  #main-navigation > ul > li > a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     color: rgba(255, 255, 255, 0.95);
-    padding: 16px 14px;
-    font-size: 1.25rem;
+    padding: 6px 10px;
+    font-size: 1.18rem;
     font-weight: 600;
     text-decoration: none;
-    line-height: 1.5;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    transition: background-color 0.2s ease, color 0.2s ease;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    background: transparent;
+    border: none;
+  }
+
+  #main-navigation > ul > li > a::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 60%;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.55);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  #main-navigation li a:hover::after,
+  #main-navigation li a:active::after,
+  #main-navigation li a.clicked::after {
+    transform: translateX(-50%) scaleX(1);
+    background-color: rgba(255, 255, 255, 0.9);
   }
 
   #main-navigation li a:hover,
   #main-navigation li a:active,
   #main-navigation li a.clicked {
-    background-color: rgba(var(--accent-gold-rgb), 0.18);
     color: #ffffff;
   }
 
@@ -522,43 +597,84 @@
     }
   }
 
-  /* Mobile Dropdown Styles */
+  /* Mobile Dropdown Styles - IMMER AUSGEKLAPPT */
   /* Dropdown inside fullscreen menu */
-  .dropdown-menu {
+  #main-navigation .dropdown-toggle {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+    pointer-events: none; /* Nicht klickbar, da immer ausgeklappt */
+  }
+
+  #main-navigation .dropdown-arrow {
+    display: none; /* Pfeil verstecken, da immer ausgeklappt */
+  }
+
+  #main-navigation .dropdown-menu {
     position: static;
+    display: flex !important; /* IMMER sichtbar */
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
     opacity: 1;
     visibility: visible;
     transform: none;
-    background: rgba(20, 30, 45, 0.75);
-    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    border-radius: 0;
     padding: 0;
-    margin: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    margin-top: 0;
+    box-shadow: none;
   }
 
-  .dropdown.active .dropdown-menu {
-    max-height: 500px;
-  }
-
-  .dropdown-menu::before {
+  #main-navigation .dropdown-menu::before {
     display: none;
   }
 
-  .dropdown-menu li a {
-    padding: 12px 20px 12px 35px !important;
-    font-size: 1.05rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    text-align: left;
+  #main-navigation .dropdown-menu li {
+    width: auto;
+    display: flex;
+    justify-content: center;
   }
 
-  .dropdown-arrow {
-    transition: transform 0.3s ease;
+  #main-navigation .dropdown-menu li a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 6px !important;
+    font-size: 1rem !important;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    text-align: center !important;
+    color: rgba(255, 255, 255, 0.82) !important;
   }
 
-  .dropdown.active .dropdown-arrow {
-    transform: rotate(180deg);
+  #main-navigation .dropdown-menu li a:hover,
+  #main-navigation .dropdown-menu li a:active {
+    color: #ffffff !important;
+  }
+
+  #main-navigation .dropdown-menu li a::after {
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    width: 50%;
+    height: 1px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.45);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  #main-navigation .dropdown-menu li a:hover::after {
+    transform: translateX(-50%) scaleX(1);
+    background: rgba(255, 255, 255, 0.85);
   }
 
   /* Zusätzliche Mobile-Menü-Button Eigenschaften bereits oben definiert */

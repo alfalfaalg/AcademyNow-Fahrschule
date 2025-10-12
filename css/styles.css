@@ -839,7 +839,6 @@ nav ul li a.nav-link.active::after {
   position: absolute;
   top: calc(100% + 15px);
   left: 50%;
-  transform: translateX(-50%);
   background: linear-gradient(
     135deg,
     rgba(27, 39, 56, 0.98) 0%,
@@ -890,7 +889,6 @@ nav ul li a.nav-link.active::after {
   position: absolute;
   top: -6px;
   left: 50%;
-  transform: translateX(-50%);
   width: 12px;
   height: 12px;
   background: linear-gradient(
@@ -1302,19 +1300,43 @@ nav ul li a.nav-link.active::after {
 }
 
 .hero-extravaganz {
-  font-size: clamp(3.4rem, 10vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: clamp(3.4rem, 10vw, 5.4rem);
   font-weight: 900;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.06em;
   color: var(--accent);
-  text-shadow: 0 0 25px rgba(var(--accent-rgb), 0.45),
-    0 0 45px rgba(var(--accent-gold-rgb), 0.35),
-    0 6px 18px rgba(var(--accent-rgb), 0.35);
-  margin: 0 0 12px 0;
-  animation: shimmerGlow 3s ease-in-out infinite;
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  margin: 0 auto 20px;
+  width: 100%;
+  max-width: 620px;
   text-align: center;
-  line-height: 1.1;
+  line-height: 1.04;
   white-space: normal;
   word-break: keep-all;
+}
+
+.hero-offer-top,
+.hero-offer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.hero-offer-top {
+  font-size: 0.94em;
+  letter-spacing: 0.2em;
+}
+
+.hero-offer-bottom {
+  font-size: 1.12em;
+  letter-spacing: 0.26em;
 }
 
 /* Mobile Break standardmäßig versteckt (Desktop) */
@@ -1469,16 +1491,11 @@ nav ul li a.nav-link.active::after {
   }
 
   .hero-extravaganz {
-    background: linear-gradient(
-      90deg,
-      var(--accent-gold) 0%,
-      rgba(var(--accent-gold-rgb), 0.95) 20%,
-      var(--accent) 90%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: var(--accent);
+    background-clip: initial;
+    color: var(--accent);
   }
 
   .offer-price-new {
