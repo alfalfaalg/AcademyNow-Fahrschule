@@ -328,16 +328,28 @@ document.addEventListener("DOMContentLoaded", function () {
     'nav[aria-label="Hauptnavigation"] ul li a.nav-link'
   );
 
+  console.log("🔍 Mobile Menu Debug:", {
+    menuBtn: !!menuBtn,
+    navOverlay: !!navOverlay,
+    navLinks: navLinks.length,
+  });
+
   if (menuBtn && navOverlay) {
+    console.log("✅ Mobile menu elements found, attaching event listener");
+
     menuBtn.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
+
+      console.log("📱 Menu button clicked");
 
       // Toggle Menü und Button
       navOverlay.classList.toggle("active");
       this.classList.toggle("active");
 
       const isExpanded = navOverlay.classList.contains("active");
+      console.log("📱 Menu state:", isExpanded ? "OPEN" : "CLOSED");
+
       this.setAttribute("aria-expanded", isExpanded);
       this.setAttribute(
         "aria-label",

@@ -39,7 +39,8 @@
   }
 
   .logo img {
-    width: 150px;
+    height: 44px;
+    width: auto;
   }
 
   .mobile-menu-btn {
@@ -47,8 +48,9 @@
     grid-row: 1;
     justify-self: end;
     display: inline-flex !important;
-    z-index: 1100;
+    z-index: 3001; /* Höher als Overlay für Klickbarkeit */
     padding: 6px;
+    position: relative; /* Notwendig für z-index */
   }
 
   .hamburger-line {
@@ -70,9 +72,9 @@
   #main-header .header-buttons .header-btn {
     flex: 1;
     min-width: 0;
-    height: 42px;
-    font-size: 0.9rem;
-    padding: 0 12px;
+    height: 34px; /* 20% niedriger (42px * 0.8 = 33.6px) */
+    font-size: 0.85rem; /* leicht kleiner für bessere Lesbarkeit */
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -392,12 +394,13 @@
     transform: translateY(-2px);
   }
 
+  /* Mobile Menu Button (zweite Definition - sollte konsolidiert werden) */
   .mobile-menu-btn {
     display: inline-flex !important;
     min-height: 44px;
     min-width: 44px;
     position: relative;
-    z-index: 1100;
+    z-index: 3001; /* Höher als Overlay */
     padding: 8px;
     background: transparent !important; /* keine Box */
     margin-left: auto; /* rechtsbündig */
@@ -434,10 +437,18 @@
     transform: rotate(-45deg) translate(7px, -7px);
   }
 
-  /* Standort Container auf Mobile */
+  /* Standort Container auf Mobile - EXAKT gleiche Größe */
   .standort-container {
     max-width: 95%;
+    width: 100%;
     margin: 0 auto;
+  }
+
+  /* Standorte Grid - untereinander */
+  .standorte-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
   }
 
   /* Hero Section für Mobile optimieren */
@@ -774,12 +785,22 @@
   .preis-card {
     max-width: 95%;
     margin: 0 auto;
+    width: 100%;
   }
 
-  /* Hot Deal Karte - gleiche Breite wie andere trotz dickerem Border */
+  /* Hot Deal Karte - GLEICHE Breite wie andere Cards, Feuer darf über Rand */
   .preis-card.hot-deal {
     max-width: 95%;
+    width: 100%;
     box-sizing: border-box;
+    /* Feuer-Effekt overflow erlauben */
+    overflow: visible;
+  }
+
+  /* Sicherstellen dass Container das Feuer nicht abschneidet */
+  .preise-container {
+    overflow: visible !important;
+    padding: 0 10px;
   }
 
   .preis-header {
