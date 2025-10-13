@@ -10,9 +10,9 @@ const DYNAMIC_CACHE = 'academynow-dynamic-v4-black-theme';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/css/styles.css?v=2025-10-12-black-theme',
-  '/css/mobile.css?v=2025-10-12-black-theme',
-  '/js/main.js?v=2025-10-12-black-theme',
+  '/css/styles.css?v=2025-10-13-bugfixes',
+  '/css/mobile.css?v=2025-10-13-bugfixes',
+  '/js/main.js?v=2025-10-13-bugfixes',
   '/images/logo_neu.webp',
   '/images/logo_social.png',
   '/images/heroBackground/mercedes-hero-optimized.jpg',

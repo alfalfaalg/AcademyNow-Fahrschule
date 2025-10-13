@@ -561,11 +561,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // 3. Scroll Indicator
+  // 3. Scroll Indicator - "Mehr entdecken"
   const scrollIndicator = document.getElementById("scrollIndicator");
+  console.log('🔍 Scroll Indicator Debug:', {
+    element: !!scrollIndicator,
+    opacity: scrollIndicator?.style.opacity,
+    pointerEvents: scrollIndicator?.style.pointerEvents
+  });
+
   if (scrollIndicator) {
+    // Sicherstellen dass Element klickbar ist
+    scrollIndicator.style.opacity = "1";
+    scrollIndicator.style.pointerEvents = "auto";
+    scrollIndicator.style.cursor = "pointer";
+
     scrollIndicator.addEventListener("click", function (e) {
       e.preventDefault();
+      e.stopPropagation();
+
+      console.log('📍 "Mehr entdecken" clicked - scrolling to Preise');
+
       const preiseSection = document.getElementById("preise");
       if (preiseSection) {
         const headerHeight =
@@ -577,8 +592,12 @@ document.addEventListener("DOMContentLoaded", function () {
           top: targetPosition,
           behavior: "smooth",
         });
+      } else {
+        console.error('❌ Preise section not found');
       }
     });
+  } else {
+    console.error('❌ Scroll Indicator element not found');
   }
 
   // Authentifizierung prüfen
@@ -598,17 +617,52 @@ document.addEventListener("DOMContentLoaded", function () {
     setupDeveloperLogin();
   }
 
-  // Kontaktformular Validierung
+  // Kontaktformular Validierung - SICHER (nur 1x submission)
   const kontaktForm = document.getElementById("kontaktForm");
   if (kontaktForm) {
+    let formSubmitting = false; // Verhindert Doppel-Submission
+
     kontaktForm.addEventListener("submit", (e) => {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("nachricht").value.trim();
-      if (!name || !email || !message) {
+      // Doppel-Submission verhindern
+      if (formSubmitting) {
+        console.warn('⚠️ Form already submitting, preventing duplicate');
         e.preventDefault();
-        alert("Bitte füllen Sie alle Pflichtfelder aus.");
+        return;
       }
+
+      // Validierung
+      const name = document.getElementById("name")?.value.trim();
+      const email = document.getElementById("email")?.value.trim();
+      const nachricht = document.getElementById("nachricht")?.value.trim();
+      const datenschutz = document.getElementById("datenschutz")?.checked;
+
+      if (!name || !email || !nachricht || !datenschutz) {
+        e.preventDefault();
+        alert("Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung.");
+        return;
+      }
+
+      // Email Format Validierung
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        e.preventDefault();
+        alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+        return;
+      }
+
+      // Alles OK - Formular wird nativ submittet (nur 1x!)
+      formSubmitting = true;
+      console.log('✅ Form validation passed - submitting to FormSubmit.co');
+
+      // Button disabled zur Sicherheit
+      const submitBtn = kontaktForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Wird gesendet...";
+      }
+
+      // FormSubmit.co übernimmt ab hier (native submission)
+      // Redirect zu danke.html erfolgt automatisch
     });
   }
 
@@ -952,7 +1006,9 @@ function debounce(func, wait) {
 }
 
 // Initialize advanced form handling
-document.addEventListener("DOMContentLoaded", initAdvancedFormHandling); // Progressive Image Loading
+// DEAKTIVIERT: Führte zu mehrfachen Form-Submissions!
+// FormSubmit.co funktioniert am besten mit nativen Form-Submissions
+// document.addEventListener("DOMContentLoaded", initAdvancedFormHandling);
 function initProgressiveImageLoading() {
   const heroBackground = document.querySelector(".hero-background");
   if (!heroBackground) return;
