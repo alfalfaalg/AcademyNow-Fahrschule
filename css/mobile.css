@@ -184,12 +184,13 @@
 
   .hero-extravaganz {
     font-size: clamp(2.2rem, 8vw, 2.7rem);
+    font-weight: 800; /* Fetter für bessere Lesbarkeit auf Mobile */
     letter-spacing: 0.04em;
-    line-height: 1.05;
+    line-height: 0.95; /* Engere Zeilenhöhe - alles näher zusammen */
     white-space: normal;
     text-align: center;
     margin: 0 auto 10px;
-    gap: 6px;
+    gap: 0px; /* Kein Gap mehr - alles direkt aneinander */
     max-width: 100%;
   }
 
@@ -199,21 +200,26 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin: 0; /* Keine zusätzlichen Abstände */
   }
 
   .hero-offer-top {
     font-size: 0.86em;
     letter-spacing: 0.12em;
+    font-weight: 800; /* NEUERÖFFNUNGS fetter */
+    margin-bottom: -2px; /* NEUERÖFFNUNGS näher zum Bindestrich */
   }
 
   .hero-offer-bottom {
     font-size: 1.1em;
     letter-spacing: 0.18em;
+    font-weight: 800; /* ANGEBOT fetter */
+    margin-top: -8px; /* ANGEBOT näher zum Bindestrich - wie Zeilen löschen */
   }
 
-  /* Bindestrich auf Mobile ausblenden */
+  /* Bindestrich auf Mobile ANZEIGEN (war vorher ausgeblendet) */
   .hyphen {
-    display: none;
+    display: inline; /* Bindestrich wieder sichtbar machen */
   }
 
   /* Mobile Break aktivieren für Umbruch */
@@ -228,6 +234,7 @@
 
   .offer-label {
     font-size: 0.8rem;
+    font-weight: 700; /* GRUNDBETRAG fetter */
   }
 
   .offer-price-row {
@@ -896,39 +903,6 @@
     padding: 20px 15px;
     max-width: 95%;
     margin: 0 auto;
-  }
-
-  .fuhrpark-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    margin-top: 28px;
-  }
-
-  .fahrzeug-card {
-    padding: 26px 22px;
-  }
-
-  .fahrzeug-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 1.6rem;
-  }
-
-  .fahrzeug-card h3 {
-    font-size: 1.3rem;
-  }
-
-  .fahrzeug-features {
-    font-size: 0.95rem;
-  }
-
-  .fuhrpark-cta {
-    margin-top: 32px;
-    gap: 10px;
-  }
-
-  .fuhrpark-note {
-    font-size: 0.88rem;
   }
 
   /* Größere Touch-Ziele für alle wichtigen Buttons im mobilen Layout */
