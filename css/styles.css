@@ -1833,15 +1833,10 @@ nav ul li a.nav-link.active::after {
   border-radius: 50%;
   margin-bottom: 15px;
   font-size: 2rem;
-  transition: all 0.3s ease;
+  /* Keine Transition mehr - Icon bewegt sich mit der ganzen Box */
 }
 
-.leistung-item:hover .leistung-icon,
-.leistung-item:focus-within .leistung-icon {
-  background: var(--accent);
-  color: var(--primary);
-  transform: translateY(-6px);
-}
+/* Icon-Hover entfernt - bewegt sich bereits mit der gesamten Card */
 
 .leistung-titel {
   font-weight: 700;
@@ -1903,13 +1898,10 @@ nav ul li a.nav-link.active::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  /* Keine Transition mehr - Bild bewegt sich mit der ganzen Card */
 }
 
-.standort-card:hover .standort-image img,
-.standort-card:focus-within .standort-image img {
-  transform: scale(1.08);
-}
+/* Bild-Zoom entfernt - bewegt sich bereits mit der gesamten Card */
 
 .standort-badge {
   position: absolute;
@@ -1968,7 +1960,7 @@ nav ul li a.nav-link.active::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
 }
 
 .standort-btn:hover,
@@ -2297,7 +2289,7 @@ nav ul li a.nav-link.active::after {
   text-decoration: none;
   font-weight: 700;
   font-size: 1.05rem;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   margin: 8px 0 0;
   box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.3);
   text-transform: uppercase;
@@ -3415,7 +3407,7 @@ nav ul li a.nav-link.active::after {
   box-shadow: 0 8px 35px rgba(10, 33, 74, 0.1);
   padding: 3rem 2.5rem 2rem 2.5rem;
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   border: 1.5px solid rgba(var(--accent-gold-rgb), 0.25);
   position: relative;
   overflow: hidden;
@@ -4007,7 +3999,7 @@ html {
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
   position: relative;
 }
 
