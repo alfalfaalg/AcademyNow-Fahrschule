@@ -276,14 +276,23 @@ function initProgressiveImageLoading() {
 // =================================================================================
 
 function lazyLoadMaps() {
-  const mapIframes = document.querySelectorAll("iframe.maps-iframe[data-src]");
+  const mapIframes = document.querySelectorAll("iframe.maps-iframe");
   if (mapIframes.length === 0) return;
+
   const loadMap = (iframe) => {
-    if (iframe.dataset.src) {
-      iframe.src = iframe.dataset.src;
-      iframe.removeAttribute("data-src");
+    if (iframe.dataset.loaded === "true") return;
+
+    const source = iframe.dataset.src || iframe.src;
+    if (!source) return;
+
+    if (!iframe.src || iframe.src === "about:blank") {
+      iframe.src = source;
     }
+
+    iframe.dataset.loaded = "true";
+    iframe.removeAttribute("data-src");
   };
+
   if ("IntersectionObserver" in window) {
     const mapObserver = new IntersectionObserver(
       (entries) => {

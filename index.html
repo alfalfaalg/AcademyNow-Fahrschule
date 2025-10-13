@@ -310,12 +310,11 @@
     <meta name="msapplication-TileImage" content="images/logo_neu.png" />
 
     <!-- Safari Pinned Tab -->
-    <link rel="mask-icon" href="images/logo_neu.webp" color="#0A214A" />
+    <link rel="mask-icon" href="images/logo_mask.svg" color="#0A214A" />
 
     <!-- =================================================================================
        RESSOURCEN-OPTIMIERUNG (Preload, Preconnect)
        ================================================================================= -->
-    <link rel="preload" href="css/styles.css" as="style" />
     <link rel="preload" href="js/main.js?v=2025-10-13-bugfix" as="script" />
     <link
       rel="preload"
@@ -827,7 +826,7 @@
 
       <!-- =================================================================================
        LEISTUNGEN SEKTION
-       ================================================================================= -->
+      ================================================================================= -->
       <section id="leistungen" class="section">
         <div class="container">
           <div class="section-header">
@@ -973,6 +972,70 @@
       </section>
 
       <!-- =================================================================================
+       FUHRPARK SEKTION
+       ================================================================================= -->
+      <section id="fuhrpark" class="section fuhrpark-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Unser Fuhrpark</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Moderne Fahrzeuge für jede Ausbildungsstufe – effizient, sicher und
+              perfekt auf deine Führerscheinklasse abgestimmt.
+            </p>
+          </div>
+
+          <div class="fuhrpark-grid">
+            <article class="fahrzeug-card">
+              <div class="fahrzeug-icon" aria-hidden="true">
+                <i class="fas fa-car-side"></i>
+              </div>
+              <h3>Klasse B – VW ID.4 Pro</h3>
+              <ul class="fahrzeug-features">
+                <li>Vollelektrische Automatik mit Fahrassistenz</li>
+                <li>360° Kamera &amp; Park-Pilot für sicheres Manövrieren</li>
+                <li>Optimal für die Ausbildung zur Schlüsselzahl B197</li>
+              </ul>
+            </article>
+
+            <article class="fahrzeug-card">
+              <div class="fahrzeug-icon" aria-hidden="true">
+                <i class="fas fa-motorcycle"></i>
+              </div>
+              <h3>Klasse A – Yamaha MT-07</h3>
+              <ul class="fahrzeug-features">
+                <li>ABS &amp; Traktionskontrolle für maximale Sicherheit</li>
+                <li>Anpassbare Sitzhöhe für jede Körpergröße</li>
+                <li>Leistungsstark und wendig für Fahrspaß und Präzision</li>
+              </ul>
+            </article>
+
+            <article class="fahrzeug-card">
+              <div class="fahrzeug-icon" aria-hidden="true">
+                <i class="fas fa-truck-moving"></i>
+              </div>
+              <h3>Klasse C/CE – MAN TGX</h3>
+              <ul class="fahrzeug-features">
+                <li>Fahrerassistenz-Systeme &amp; digitale Spiegel</li>
+                <li>Automatisiertes Schaltgetriebe für entspanntes Lernen</li>
+                <li>Spezielle Rangiermodule für Praxis nah an der Prüfung</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="fuhrpark-cta">
+            <a href="ueber-uns.html#kontakt" class="primary-btn fuhrpark-btn"
+              >Fuhrpark live erleben</a
+            >
+            <span class="fuhrpark-note"
+              >Wir erweitern unsere Fahrzeuge regelmäßig – nenn uns gern deinen
+              Favoriten.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
        STANDORTE SEKTION
        ================================================================================= -->
       <section id="standorte" class="section standorte-section">
@@ -993,8 +1056,9 @@
               <div class="google-maps-container">
                 <iframe
                   class="maps-iframe"
-                  src="https://www.google.com/maps?q=Adenauerallee+10,+20097+Hamburg&output=embed"
+                  data-src="https://www.google.com/maps?q=Adenauerallee+10,+20097+Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Hamburg Mitte"
+                  src="about:blank"
                   width="600"
                   height="450"
                   loading="lazy"
@@ -1041,8 +1105,9 @@
               <div class="google-maps-container">
                 <iframe
                   class="maps-iframe"
-                  src="https://www.google.com/maps?q=Chrysanderstraße+19,+21029+Hamburg&output=embed"
+                  data-src="https://www.google.com/maps?q=Chrysanderstraße+19,+21029+Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Bergedorf"
+                  src="about:blank"
                   width="600"
                   height="450"
                   loading="lazy"
@@ -1362,7 +1427,6 @@
             Folgen Sie uns in den sozialen Medien
           </p>
           <div class="social-icons">
-            <!-- Facebook Link temporär auskommentiert - SEO-Agentur: Prüfen ob Kanal vorhanden
             <a
               href="https://www.facebook.com/academynow.fahrschule"
               target="_blank"
@@ -1372,7 +1436,6 @@
             >
               <i class="fab fa-facebook-f"></i>
             </a>
-            -->
             <a
               href="https://www.instagram.com/academynow.fahrschule"
               target="_blank"
@@ -1391,7 +1454,6 @@
             >
               <i class="fab fa-tiktok"></i>
             </a>
-            <!-- YouTube Link temporär auskommentiert - SEO-Agentur: Prüfen ob Kanal vorhanden
             <a
               href="https://www.youtube.com/@academynow.fahrschule"
               target="_blank"
@@ -1401,7 +1463,6 @@
             >
               <i class="fab fa-youtube"></i>
             </a>
-            -->
           </div>
         </div>
 
