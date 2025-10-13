@@ -164,7 +164,7 @@
       const consentData = this.buildConsent({ analytics: false, marketing: false });
       localStorage.setItem(this.cookieKey, JSON.stringify(consentData));
       this.hideBanner();
-      console.log('Cookie-Einwilligung gespeichert:', consentData);
+      // console.log('Cookie-Einwilligung gespeichert:', consentData);
     }
   
     showSettings() {
@@ -212,7 +212,7 @@
       localStorage.setItem(this.cookieKey, JSON.stringify(consentData));
       this.closeSettings();
       this.hideBanner();
-      console.log('Cookie-Einwilligung gespeichert (Auswahl):', consentData);
+      // console.log('Cookie-Einwilligung gespeichert (Auswahl):', consentData);
       // Hier ggf. Aktivierung/Deaktivierung von Skripten je nach Zustimmung implementieren
     }
   

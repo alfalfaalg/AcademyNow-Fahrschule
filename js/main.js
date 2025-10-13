@@ -197,7 +197,7 @@ function initPerformanceMonitoring() {
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       const lastEntry = entries[entries.length - 1];
-      console.log("📊 LCP:", Math.round(lastEntry.startTime), "ms");
+      // console.log("📊 LCP:", Math.round(lastEntry.startTime), "ms");
     }).observe({ entryTypes: ["largest-contentful-paint"] });
 
     // First Input Delay
@@ -221,19 +221,19 @@ function initPerformanceMonitoring() {
           clsValue += entry.value;
         }
       });
-      console.log("📊 CLS:", clsValue.toFixed(4));
+      // console.log("📊 CLS:", clsValue.toFixed(4));
     }).observe({ entryTypes: ["layout-shift"] });
   }
 
   // Page Load Performance
   window.addEventListener("load", () => {
     const perfData = performance.getEntriesByType("navigation")[0];
-    console.log(
+    // console.log(
       "📊 Page Load Time:",
       Math.round(perfData.loadEventEnd - perfData.fetchStart),
       "ms"
     );
-    console.log(
+    // console.log(
       "📊 DOM Interactive:",
       Math.round(perfData.domInteractive - perfData.fetchStart),
       "ms"
@@ -259,7 +259,7 @@ function initProgressiveImageLoading() {
       heroBackground.classList.add("loaded");
     }, 100);
 
-    console.log("✅ Hero image loaded successfully");
+    // console.log("✅ Hero image loaded successfully");
   };
 
   highResImage.onerror = function () {
@@ -331,27 +331,27 @@ document.addEventListener("DOMContentLoaded", function () {
     'nav[aria-label="Hauptnavigation"] ul li a.nav-link'
   );
 
-  console.log("🔍 Mobile Menu Debug:", {
+  // console.log("🔍 Mobile Menu Debug:", {
     menuBtn: !!menuBtn,
     navOverlay: !!navOverlay,
     navLinks: navLinks.length,
   });
 
   if (menuBtn && navOverlay) {
-    console.log("✅ Mobile menu elements found, attaching event listener");
+    // console.log("✅ Mobile menu elements found, attaching event listener");
 
     menuBtn.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
 
-      console.log("📱 Menu button clicked");
+      // console.log("📱 Menu button clicked");
 
       // Toggle Menü und Button
       navOverlay.classList.toggle("active");
       this.classList.toggle("active");
 
       const isExpanded = navOverlay.classList.contains("active");
-      console.log("📱 Menu state:", isExpanded ? "OPEN" : "CLOSED");
+      // console.log("📱 Menu state:", isExpanded ? "OPEN" : "CLOSED");
 
       this.setAttribute("aria-expanded", isExpanded);
       this.setAttribute(
@@ -563,7 +563,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 3. Scroll Indicator - "Mehr entdecken"
   const scrollIndicator = document.getElementById("scrollIndicator");
-  console.log('🔍 Scroll Indicator Debug:', {
+  // console.log('🔍 Scroll Indicator Debug:', {
     element: !!scrollIndicator,
     opacity: scrollIndicator?.style.opacity,
     pointerEvents: scrollIndicator?.style.pointerEvents
@@ -579,7 +579,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       e.stopPropagation();
 
-      console.log('📍 "Mehr entdecken" clicked - scrolling to Preise');
+      // console.log('📍 "Mehr entdecken" clicked - scrolling to Preise');
 
       const preiseSection = document.getElementById("preise");
       if (preiseSection) {
@@ -652,7 +652,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Alles OK - Formular wird nativ submittet (nur 1x!)
       formSubmitting = true;
-      console.log('✅ Form validation passed - submitting to FormSubmit.co');
+      // console.log('✅ Form validation passed - submitting to FormSubmit.co');
 
       // Button disabled zur Sicherheit
       const submitBtn = kontaktForm.querySelector('button[type="submit"]');
@@ -679,7 +679,7 @@ async function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register("/sw.js");
-      console.log(
+      // console.log(
         "✅ Service Worker registered successfully:",
         registration.scope
       );
@@ -698,7 +698,7 @@ async function registerServiceWorker() {
         });
       });
     } catch (error) {
-      console.log("❌ Service Worker registration failed:", error);
+      // console.log("❌ Service Worker registration failed:", error);
     }
   }
 }
@@ -706,7 +706,7 @@ async function registerServiceWorker() {
 function showUpdateNotification() {
   // Prüfen ob User das Update bereits gesehen hat (für diese Session)
   if (sessionStorage.getItem('updateNotificationShown') === 'true') {
-    console.log('⏭️ Update notification already shown this session');
+    // console.log('⏭️ Update notification already shown this session');
     return;
   }
 
@@ -714,7 +714,7 @@ function showUpdateNotification() {
   sessionStorage.setItem('updateNotificationShown', 'true');
   sessionStorage.setItem('updateAvailable', 'true');
 
-  console.log('🔔 Showing update notification (permanent until clicked)');
+  // console.log('🔔 Showing update notification (permanent until clicked)');
 
   // Create elegant update notification - BLEIBT DAUERHAFT
   const notification = document.createElement("div");
@@ -760,13 +760,13 @@ function showUpdateNotification() {
 function checkForPendingUpdate() {
   if (sessionStorage.getItem('updateAvailable') === 'true' &&
       sessionStorage.getItem('updateNotificationShown') !== 'true') {
-    console.log('🔄 Pending update detected, showing notification again');
+    // console.log('🔄 Pending update detected, showing notification again');
     showUpdateNotification();
   }
 }
 
 function updateApp() {
-  console.log('🔄 User clicked update button - activating new Service Worker');
+  // console.log('🔄 User clicked update button - activating new Service Worker');
 
   // SessionStorage leeren damit nach Reload keine Notification mehr erscheint
   sessionStorage.removeItem('updateNotificationShown');
@@ -1027,7 +1027,7 @@ function initProgressiveImageLoading() {
       heroBackground.classList.add("loaded");
     }, 100);
 
-    console.log("✅ Hero image loaded successfully");
+    // console.log("✅ Hero image loaded successfully");
   };
 
   highResImage.onerror = function () {
