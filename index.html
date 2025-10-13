@@ -9,6 +9,26 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
+    <!-- Google Consent Mode v2 - Default (vor GTM!) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // Consent Mode v2 Standard: Alles auf "denied" bis User zustimmt
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "granted",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -296,11 +316,7 @@
        RESSOURCEN-OPTIMIERUNG (Preload, Preconnect)
        ================================================================================= -->
     <link rel="preload" href="css/styles.css" as="style" />
-    <link
-      rel="preload"
-      href="js/main.js?v=2025-10-13-bugfix"
-      as="script"
-    />
+    <link rel="preload" href="js/main.js?v=2025-10-13-bugfix" as="script" />
     <link
       rel="preload"
       href="images/heroBackground/mercedes-hero-optimized.jpg"
@@ -437,11 +453,7 @@
     </noscript>
 
     <!-- Haupt-Stylesheet - Preload für kritisches CSS -->
-    <link
-      rel="preload"
-      href="css/styles.css?v=2025-10-13-bugfix"
-      as="style"
-    />
+    <link rel="preload" href="css/styles.css?v=2025-10-13-bugfix" as="style" />
     <link rel="stylesheet" href="css/styles.css?v=2025-10-13-bugfix" />
     <link
       rel="stylesheet"
