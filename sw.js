@@ -2,17 +2,17 @@
 // SERVICE WORKER - ADVANCED CACHING STRATEGY
 // =================================================================================
 
-const CACHE_NAME = 'academynow-fahrschule-v1.0.4-black-theme';
-const STATIC_CACHE = 'academynow-static-v4-black-theme';
-const DYNAMIC_CACHE = 'academynow-dynamic-v4-black-theme';
+const CACHE_NAME = 'academynow-fahrschule-v1.0.5-bugfix';
+const STATIC_CACHE = 'academynow-static-v5-bugfix';
+const DYNAMIC_CACHE = 'academynow-dynamic-v5-bugfix';
 
 // Critical resources to cache immediately
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/css/styles.css?v=2025-10-13-bugfixes',
-  '/css/mobile.css?v=2025-10-13-bugfixes',
-  '/js/main.js?v=2025-10-13-bugfixes',
+  '/css/styles.css?v=2025-10-13-bugfix',
+  '/css/mobile.css?v=2025-10-13-bugfix',
+  '/js/main.js?v=2025-10-13-bugfix',
   '/images/logo_neu.webp',
   '/images/logo_social.png',
   '/images/heroBackground/mercedes-hero-optimized.jpg',

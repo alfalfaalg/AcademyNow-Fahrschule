@@ -229,15 +229,15 @@ function initPerformanceMonitoring() {
   window.addEventListener("load", () => {
     const perfData = performance.getEntriesByType("navigation")[0];
     // console.log(
-      "📊 Page Load Time:",
-      Math.round(perfData.loadEventEnd - perfData.fetchStart),
-      "ms"
-    );
+    //   "📊 Page Load Time:",
+    //   Math.round(perfData.loadEventEnd - perfData.fetchStart),
+    //   "ms"
+    // );
     // console.log(
-      "📊 DOM Interactive:",
-      Math.round(perfData.domInteractive - perfData.fetchStart),
-      "ms"
-    );
+    //   "📊 DOM Interactive:",
+    //   Math.round(perfData.domInteractive - perfData.fetchStart),
+    //   "ms"
+    // );
   });
 }
 
@@ -332,10 +332,10 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
   // console.log("🔍 Mobile Menu Debug:", {
-    menuBtn: !!menuBtn,
-    navOverlay: !!navOverlay,
-    navLinks: navLinks.length,
-  });
+  //   menuBtn: !!menuBtn,
+  //   navOverlay: !!navOverlay,
+  //   navLinks: navLinks.length,
+  // });
 
   if (menuBtn && navOverlay) {
     // console.log("✅ Mobile menu elements found, attaching event listener");
@@ -564,10 +564,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // 3. Scroll Indicator - "Mehr entdecken"
   const scrollIndicator = document.getElementById("scrollIndicator");
   // console.log('🔍 Scroll Indicator Debug:', {
-    element: !!scrollIndicator,
-    opacity: scrollIndicator?.style.opacity,
-    pointerEvents: scrollIndicator?.style.pointerEvents
-  });
+  //   element: !!scrollIndicator,
+  //   opacity: scrollIndicator?.style.opacity,
+  //   pointerEvents: scrollIndicator?.style.pointerEvents
+  // });
 
   if (scrollIndicator) {
     // Sicherstellen dass Element klickbar ist
@@ -679,8 +679,7 @@ async function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register("/sw.js");
-      // console.log(
-        "✅ Service Worker registered successfully:",
+      console.log("✅ Service Worker registered successfully:",
         registration.scope
       );
 
@@ -1009,78 +1008,3 @@ function debounce(func, wait) {
 // DEAKTIVIERT: Führte zu mehrfachen Form-Submissions!
 // FormSubmit.co funktioniert am besten mit nativen Form-Submissions
 // document.addEventListener("DOMContentLoaded", initAdvancedFormHandling);
-function initProgressiveImageLoading() {
-  const heroBackground = document.querySelector(".hero-background");
-  if (!heroBackground) return;
-
-  // Add loading class for shimmer effect
-  heroBackground.classList.add("loading");
-
-  // Create high-res image
-  const highResImage = new Image();
-  highResImage.onload = function () {
-    // Remove loading class
-    heroBackground.classList.remove("loading");
-
-    // Add loaded class with smooth transition
-    setTimeout(() => {
-      heroBackground.classList.add("loaded");
-    }, 100);
-
-    // console.log("✅ Hero image loaded successfully");
-  };
-
-  highResImage.onerror = function () {
-    console.error("❌ Failed to load hero image");
-    heroBackground.classList.remove("loading");
-  };
-
-  // Start loading the high-resolution image
-  highResImage.src = "images/heroBackground/mercedes-hero-optimized.jpg";
-}
-
-// Scroll Indicator functionality
-function initScrollIndicator() {
-  const scrollIndicator = document.getElementById("scrollIndicator");
-  if (!scrollIndicator) return;
-
-  scrollIndicator.addEventListener("click", function () {
-    // Scroll to the next section (about section)
-    const aboutSection =
-      document.getElementById("about") ||
-      document.querySelector(".about-section");
-    if (aboutSection) {
-      aboutSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    } else {
-      // Fallback: scroll down by viewport height
-      window.scrollBy({
-        top: window.innerHeight,
-        behavior: "smooth",
-      });
-    }
-  });
-
-  // Hide scroll indicator when user scrolls down
-  let lastScrollTop = 0;
-  window.addEventListener(
-    "scroll",
-    function () {
-      const scrollTop =
-        window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > window.innerHeight * 0.2) {
-        scrollIndicator.style.opacity = "0";
-        scrollIndicator.style.pointerEvents = "none";
-      } else {
-        scrollIndicator.style.opacity = "1";
-        scrollIndicator.style.pointerEvents = "auto";
-      }
-
-      lastScrollTop = scrollTop;
-    },
-    { passive: true }
-  );
-}
