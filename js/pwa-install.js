@@ -1,21 +1,48 @@
+// =================================================================================
+// PWA INSTALLATION PROMPT - BEST PRACTICES
+// =================================================================================
+
 // Zusätzliche PWA-Features: Installations-Banner
-(function(){
-  if ('beforeinstallprompt' in window) {
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
+(function () {
+  if ("beforeinstallprompt" in window) {
+    let deferredPrompt = null;
+    let installPromptShown = false; // Track if prompt was already shown
+
+    // Handle beforeinstallprompt event (can fire multiple times!)
+    window.addEventListener("beforeinstallprompt", (e) => {
+      console.log('📱 PWA: beforeinstallprompt event fired');
+
+      // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
+
+      // Stash the event so it can be triggered later
       deferredPrompt = e;
-      // Show install banner after user interaction
+
+      // Don't show prompt if already shown in this session
+      if (installPromptShown) {
+        console.log('⏭️ PWA: Install prompt already shown this session');
+        return;
+      }
+
+      // Show install banner after user interaction (10 seconds)
       setTimeout(() => {
-        if (deferredPrompt && !window.matchMedia('(display-mode: standalone)').matches) {
+        // Check if app is already installed
+        if (window.matchMedia("(display-mode: standalone)").matches) {
+          console.log('✅ PWA: App already installed');
+          return;
+        }
+
+        // Check if we still have the deferred prompt
+        if (deferredPrompt) {
           showInstallPrompt(deferredPrompt);
+          installPromptShown = true;
         }
       }, 10000);
     });
   }
-  
-  window.showInstallPrompt = function(prompt) {
-    const banner = document.createElement('div');
+
+  window.showInstallPrompt = function (prompt) {
+    const banner = document.createElement("div");
     banner.innerHTML = `
       <div style="
         position: fixed;
@@ -56,17 +83,13 @@
       </div>
     `;
     document.body.appendChild(banner);
-    
-    window.installApp = function() {
+
+    window.installApp = function () {
       prompt.prompt();
       prompt.userChoice.then((result) => {
-        if (result.outcome === 'accepted') {
-          console.log('✅ PWA installation accepted');
-        } else {
-          console.log('❌ PWA installation declined');
-        }
+        // PWA installation choice recorded
         banner.remove();
       });
     };
-  }
+  };
 })();

@@ -204,11 +204,7 @@ function initPerformanceMonitoring() {
     new PerformanceObserver((entryList) => {
       const entries = entryList.getEntries();
       entries.forEach((entry) => {
-        console.log(
-          "📊 FID:",
-          Math.round(entry.processingStart - entry.startTime),
-          "ms"
-        );
+        // FID tracking (silent in production)
       });
     }).observe({ entryTypes: ["first-input"] });
 
@@ -317,7 +313,23 @@ function lazyLoadMaps() {
 
 // ========== INITIALISIERUNG ==========
 
-document.addEventListener("DOMContentLoaded", function () {
+// =================================================================================
+// INITIALIZATION SYSTEM - BFCACHE COMPATIBLE
+// =================================================================================
+
+// Global flag to prevent multiple initializations
+let isInitialized = false;
+
+// Initialization function that can be called on DOMContentLoaded AND pageshow
+function initializeApp() {
+  // Prevent double initialization
+  if (isInitialized) {
+    console.log("⏭️ App already initialized, skipping...");
+    return;
+  }
+
+  console.log("✅ Initializing AcademyNow App...");
+
   // Performance monitoring
   initPerformanceMonitoring();
 
@@ -330,7 +342,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check for pending updates
   checkForPendingUpdate();
 
-  // Service Worker Registration
+  // Service Worker Registration (only once)
   registerServiceWorker();
 
   // 1. Fullscreen Mobile Navigation
@@ -602,11 +614,11 @@ document.addEventListener("DOMContentLoaded", function () {
           behavior: "smooth",
         });
       } else {
-        console.error('❌ Preise section not found');
+        console.error("❌ Preise section not found");
       }
     });
   } else {
-    console.error('❌ Scroll Indicator element not found');
+    console.error("❌ Scroll Indicator element not found");
   }
 
   // Authentifizierung prüfen
@@ -627,57 +639,95 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Kontaktformular Validierung - SICHER (nur 1x submission)
-  const kontaktForm = document.getElementById("kontaktForm");
-  if (kontaktForm) {
+  // Unterstützt alle Form-IDs für Rückwärtskompatibilität
+  const kontaktForm =
+    document.getElementById("kontaktForm-home") ||
+    document.getElementById("kontaktForm-ueber") ||
+    document.getElementById("kontaktForm");
+  if (kontaktForm && !kontaktForm.dataset.listenerAdded) {
+    // Flag setzen, um mehrfache Listener zu verhindern
+    kontaktForm.dataset.listenerAdded = "true";
+
     let formSubmitting = false; // Verhindert Doppel-Submission
 
-    kontaktForm.addEventListener("submit", (e) => {
-      // Doppel-Submission verhindern
-      if (formSubmitting) {
-        console.warn('⚠️ Form already submitting, preventing duplicate');
-        e.preventDefault();
-        return;
-      }
+    kontaktForm.addEventListener(
+      "submit",
+      (e) => {
+        // Doppel-Submission verhindern
+        if (formSubmitting) {
+          console.warn("⚠️ Form already submitting, preventing duplicate");
+          e.preventDefault();
+          return;
+        }
 
-      // Validierung
-      const name = document.getElementById("name")?.value.trim();
-      const email = document.getElementById("email")?.value.trim();
-      const nachricht = document.getElementById("nachricht")?.value.trim();
-      const datenschutz = document.getElementById("datenschutz")?.checked;
+        // Validierung
+        const name = document.getElementById("name")?.value.trim();
+        const email = document.getElementById("email")?.value.trim();
+        const nachricht = document.getElementById("nachricht")?.value.trim();
+        const datenschutz = document.getElementById("datenschutz")?.checked;
 
-      if (!name || !email || !nachricht || !datenschutz) {
-        e.preventDefault();
-        alert("Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung.");
-        return;
-      }
+        if (!name || !email || !nachricht || !datenschutz) {
+          e.preventDefault();
+          alert(
+            "Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung."
+          );
+          return;
+        }
 
-      // Email Format Validierung
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        e.preventDefault();
-        alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
-        return;
-      }
+        // Email Format Validierung
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          e.preventDefault();
+          alert("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+          return;
+        }
 
-      // Alles OK - Formular wird nativ submittet (nur 1x!)
-      formSubmitting = true;
-      // console.log('✅ Form validation passed - submitting to FormSubmit.co');
+        // Alles OK - Formular wird nativ submittet (nur 1x!)
+        formSubmitting = true;
+        // console.log('✅ Form validation passed - submitting to FormSubmit.co');
 
-      // Button disabled zur Sicherheit
-      const submitBtn = kontaktForm.querySelector('button[type="submit"]');
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Wird gesendet...";
-      }
+        // Button disabled zur Sicherheit
+        const submitBtn = kontaktForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Wird gesendet...";
+        }
 
-      // FormSubmit.co übernimmt ab hier (native submission)
-      // Redirect zu danke.html erfolgt automatisch
-    });
+        // FormSubmit.co übernimmt ab hier (native submission)
+        // Redirect zu danke.html erfolgt automatisch
+      },
+      { once: true }
+    ); // WICHTIG: Event Listener wird nach 1x automatisch entfernt!
   }
+
+  // Mark app as initialized
+  isInitialized = true;
+  console.log("✅ AcademyNow App initialized successfully");
 
   // =================================================================================
   // INITALISIERUNG ABGESCHLOSSEN
   // =================================================================================
+}
+
+// Call initialization on DOMContentLoaded
+document.addEventListener("DOMContentLoaded", initializeApp);
+
+// =================================================================================
+// BFCACHE COMPATIBILITY - Handle page restore from cache
+// =================================================================================
+window.addEventListener("pageshow", function (event) {
+  if (event.persisted) {
+    // Page was restored from bfcache
+    console.log("🔄 Page restored from bfcache");
+
+    // Refresh dynamic content if needed
+    const reviewsContainer = document.getElementById(
+      "google-reviews-container"
+    );
+    if (reviewsContainer && typeof loadGoogleReviews === "function") {
+      loadGoogleReviews();
+    }
+  }
 });
 
 // =================================================================================
@@ -688,7 +738,8 @@ async function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register("/sw.js");
-      console.log("✅ Service Worker registered successfully:",
+      console.log(
+        "✅ Service Worker registered successfully:",
         registration.scope
       );
 
@@ -713,20 +764,20 @@ async function registerServiceWorker() {
 
 function showUpdateNotification() {
   // Prüfen ob User das Update bereits gesehen hat (für diese Session)
-  if (sessionStorage.getItem('updateNotificationShown') === 'true') {
+  if (sessionStorage.getItem("updateNotificationShown") === "true") {
     // console.log('⏭️ Update notification already shown this session');
     return;
   }
 
   // Markieren dass Notification angezeigt wurde
-  sessionStorage.setItem('updateNotificationShown', 'true');
-  sessionStorage.setItem('updateAvailable', 'true');
+  sessionStorage.setItem("updateNotificationShown", "true");
+  sessionStorage.setItem("updateAvailable", "true");
 
   // console.log('🔔 Showing update notification (permanent until clicked)');
 
   // Create elegant update notification - BLEIBT DAUERHAFT
   const notification = document.createElement("div");
-  notification.id = 'update-notification';
+  notification.id = "update-notification";
   notification.innerHTML = `
     <div style="
       position: fixed;
@@ -766,8 +817,10 @@ function showUpdateNotification() {
 
 // Beim Page Load prüfen ob Update verfügbar ist
 function checkForPendingUpdate() {
-  if (sessionStorage.getItem('updateAvailable') === 'true' &&
-      sessionStorage.getItem('updateNotificationShown') !== 'true') {
+  if (
+    sessionStorage.getItem("updateAvailable") === "true" &&
+    sessionStorage.getItem("updateNotificationShown") !== "true"
+  ) {
     // console.log('🔄 Pending update detected, showing notification again');
     showUpdateNotification();
   }
@@ -777,8 +830,8 @@ function updateApp() {
   // console.log('🔄 User clicked update button - activating new Service Worker');
 
   // SessionStorage leeren damit nach Reload keine Notification mehr erscheint
-  sessionStorage.removeItem('updateNotificationShown');
-  sessionStorage.removeItem('updateAvailable');
+  sessionStorage.removeItem("updateNotificationShown");
+  sessionStorage.removeItem("updateAvailable");
 
   if (navigator.serviceWorker.controller) {
     navigator.serviceWorker.controller.postMessage({ type: "SKIP_WAITING" });
@@ -834,186 +887,8 @@ function optimizedScrollHandler() {
 window.addEventListener("scroll", optimizedScrollHandler, { passive: true });
 
 // =================================================================================
-// IMPROVED FORM HANDLING WITH VALIDATION
+// INITALISIERUNG ABGESCHLOSSEN
 // =================================================================================
 
-function initAdvancedFormHandling() {
-  const form = document.getElementById("kontaktForm");
-  if (!form) return;
-
-  // Real-time validation
-  const inputs = form.querySelectorAll("input, textarea, select");
-  inputs.forEach((input) => {
-    input.addEventListener("input", debounce(validateField, 300));
-    input.addEventListener("blur", validateField);
-  });
-
-  // Enhanced form submission
-  form.addEventListener("submit", handleFormSubmission);
-}
-
-function validateField(event) {
-  const field = event.target;
-  const value = field.value.trim();
-
-  // Remove existing validation classes
-  field.classList.remove("valid", "invalid");
-
-  let isValid = true;
-
-  // Validation rules
-  switch (field.type) {
-    case "email":
-      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      break;
-    case "tel":
-      isValid = value === "" || /^[\d\s\-\+\(\)]+$/.test(value);
-      break;
-    default:
-      if (field.required) {
-        isValid = value.length > 0;
-      }
-  }
-
-  // Apply validation class
-  field.classList.add(isValid ? "valid" : "invalid");
-
-  // Show/hide error message
-  const errorElement = field.parentElement.querySelector(".error-message");
-  if (!isValid && field.required) {
-    if (!errorElement) {
-      const error = document.createElement("div");
-      error.className = "error-message";
-      error.textContent = getErrorMessage(field);
-      field.parentElement.appendChild(error);
-    }
-  } else if (errorElement) {
-    errorElement.remove();
-  }
-}
-
-function getErrorMessage(field) {
-  switch (field.type) {
-    case "email":
-      return "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
-    case "tel":
-      return "Bitte geben Sie eine gültige Telefonnummer ein.";
-    default:
-      return "Dieses Feld ist erforderlich.";
-  }
-}
-
-function handleFormSubmission(event) {
-  event.preventDefault();
-
-  const form = event.target;
-  const submitButton = form.querySelector('button[type="submit"]');
-
-  // Show loading state
-  submitButton.textContent = "Wird gesendet...";
-  submitButton.disabled = true;
-
-  // Collect form data
-  const formData = new FormData(form);
-
-  // Submit form (with potential offline queueing)
-  submitFormData(formData, form)
-    .then(() => {
-      showSuccessMessage();
-      form.reset();
-    })
-    .catch((error) => {
-      console.error("Form submission failed:", error);
-      showErrorMessage();
-    })
-    .finally(() => {
-      submitButton.textContent = "Nachricht senden";
-      submitButton.disabled = false;
-    });
-}
-
-async function submitFormData(formData, form) {
-  try {
-    const response = await fetch(form.action, {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-
-    return response;
-  } catch (error) {
-    // Queue for later if offline
-    if (!navigator.onLine) {
-      queueFormSubmission(formData);
-      throw new Error(
-        "Formular wurde für die spätere Übertragung gespeichert."
-      );
-    }
-    throw error;
-  }
-}
-
-function queueFormSubmission(formData) {
-  const submissions = JSON.parse(
-    localStorage.getItem("queuedSubmissions") || "[]"
-  );
-  submissions.push({
-    data: Object.fromEntries(formData),
-    timestamp: Date.now(),
-  });
-  localStorage.setItem("queuedSubmissions", JSON.stringify(submissions));
-}
-
-function showSuccessMessage() {
-  showMessage("✅ Nachricht erfolgreich gesendet!", "success");
-}
-
-function showErrorMessage() {
-  showMessage("❌ Fehler beim Senden. Bitte versuchen Sie es erneut.", "error");
-}
-
-function showMessage(text, type) {
-  const message = document.createElement("div");
-  message.className = `form-message ${type}`;
-  message.textContent = text;
-  message.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 16px 24px;
-    border-radius: 8px;
-    color: white;
-    font-weight: 600;
-    z-index: 10002;
-    animation: slideInRight 0.3s ease;
-    background: ${type === "success" ? "#27ae60" : "#e74c3c"};
-  `;
-
-  document.body.appendChild(message);
-
-  setTimeout(() => {
-    message.style.animation = "slideOutRight 0.3s ease";
-    setTimeout(() => message.remove(), 300);
-  }, 5000);
-}
-
-// Utility function for debouncing
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Initialize advanced form handling
-// DEAKTIVIERT: Führte zu mehrfachen Form-Submissions!
 // FormSubmit.co funktioniert am besten mit nativen Form-Submissions
 // document.addEventListener("DOMContentLoaded", initAdvancedFormHandling);

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <path
-    fill="currentColor"
-    d="M12 36L20 20h24l8 16h6a4 4 0 014 4v8a2 2 0 01-2 2H4a2 2 0 01-2-2v-8a4 4 0 014-4h6z"
-  />
-  <circle cx="22" cy="50" r="6" fill="currentColor" />
-  <circle cx="42" cy="50" r="6" fill="currentColor" />
-</svg>

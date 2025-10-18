@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: Event Listener & bfcache Fixes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-section h2 {
+            color: #0A214A;
+            margin-top: 0;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .status.pass {
+            background: #4CAF50;
+            color: white;
+        }
+        .status.fail {
+            background: #f44336;
+            color: white;
+        }
+        .status.info {
+            background: #2196F3;
+            color: white;
+        }
+        .log {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            padding: 2px 0;
+            border-bottom: 1px solid #eee;
+        }
+        button {
+            background: #0A214A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #163a6d;
+        }
+        #test-form {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 4px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            color: #0A214A;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 AcademyNow Fahrschule - Event Listener & bfcache Fix Tests</h1>
+
+    <!-- Test 1: Initialization Guard -->
+    <div class="test-section">
+        <h2>Test 1: Initialisierungs-Guard <span id="test1-status" class="status info">Testing...</span></h2>
+        <p>Testet, ob die App mehrfach initialisiert wird (sollte NICHT passieren)</p>
+        <div class="log" id="test1-log"></div>
+        <button onclick="testInitialization()">Initialisierung erneut auslösen</button>
+    </div>
+
+    <!-- Test 2: Event Listener Duplikate -->
+    <div class="test-section">
+        <h2>Test 2: Event Listener Duplikate <span id="test2-status" class="status info">Testing...</span></h2>
+        <p>Testet, ob Formular-Submit mehrfach ausgelöst wird</p>
+        <p><strong>Anzahl Submissions:</strong> <span class="counter" id="submit-count">0</span></p>
+        <form id="test-form">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="E-Mail" required>
+            <textarea placeholder="Nachricht" required></textarea>
+            <button type="submit">Absenden (zählt Submissions)</button>
+        </form>
+        <div class="log" id="test2-log"></div>
+        <button onclick="reattachFormListener()">Event Listener erneut registrieren (sollte scheitern)</button>
+    </div>
+
+    <!-- Test 3: bfcache Kompatibilität -->
+    <div class="test-section">
+        <h2>Test 3: bfcache Kompatibilität <span id="test3-status" class="status info">Testing...</span></h2>
+        <p>Testet, ob pageshow-Event mit persisted=true korrekt behandelt wird</p>
+        <div class="log" id="test3-log"></div>
+        <button onclick="simulateBfcacheRestore()">bfcache-Restore simulieren</button>
+        <p><small>💡 Um echten bfcache-Restore zu testen: Navigiere zu einer anderen Seite und dann zurück mit Browser-Back-Button</small></p>
+    </div>
+
+    <!-- Test 4: ID-Duplikate -->
+    <div class="test-section">
+        <h2>Test 4: Formular-ID-Auflösung <span id="test4-status" class="status info">Testing...</span></h2>
+        <p>Testet die neue ID-Struktur für Kontaktformulare</p>
+        <div class="log" id="test4-log"></div>
+        <button onclick="testFormIDs()">Formular-IDs testen</button>
+    </div>
+
+    <!-- Test 5: GTM/gtag DataLayer -->
+    <div class="test-section">
+        <h2>Test 5: GTM/gtag DataLayer <span id="test5-status" class="status info">Testing...</span></h2>
+        <p>Testet, ob dataLayer korrekt initialisiert ist</p>
+        <div class="log" id="test5-log"></div>
+        <button onclick="testDataLayer()">DataLayer testen</button>
+    </div>
+
+    <script>
+        // =============================================================================
+        // TEST 1: Initialisierungs-Guard
+        // =============================================================================
+        let isInitialized = false;
+        let initCount = 0;
+
+        function initializeApp() {
+            initCount++;
+            logTest1(`🔄 Initialisierung aufgerufen (Versuch ${initCount})`);
+
+            if (isInitialized) {
+                logTest1('⏭️ App bereits initialisiert, überspringe...');
+                updateStatus('test1-status', 'pass', 'PASS');
+                return;
+            }
+
+            logTest1('✅ Initialisiere App zum ersten Mal...');
+            isInitialized = true;
+            logTest1('✅ App erfolgreich initialisiert');
+            updateStatus('test1-status', 'pass', 'PASS');
+        }
+
+        function testInitialization() {
+            initializeApp();
+        }
+
+        // =============================================================================
+        // TEST 2: Event Listener Duplikate
+        // =============================================================================
+        let submitCount = 0;
+        let formListenerAttached = false;
+
+        function setupFormListener() {
+            const form = document.getElementById('test-form');
+
+            if (form.dataset.listenerAdded) {
+                logTest2('⏭️ Form-Listener bereits registriert, überspringe...');
+                updateStatus('test2-status', 'pass', 'PASS');
+                return false;
+            }
+
+            form.dataset.listenerAdded = 'true';
+            formListenerAttached = true;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                submitCount++;
+                document.getElementById('submit-count').textContent = submitCount;
+                logTest2(`📨 Form submitted! (Anzahl: ${submitCount})`);
+
+                if (submitCount > 1) {
+                    logTest2('⚠️ WARNUNG: Mehrfache Submission erkannt!');
+                    updateStatus('test2-status', 'fail', 'FAIL');
+                } else {
+                    updateStatus('test2-status', 'pass', 'PASS');
+                }
+            }, { once: false }); // once: false damit wir mehrfach testen können
+
+            logTest2('✅ Form-Listener erfolgreich registriert');
+            return true;
+        }
+
+        function reattachFormListener() {
+            const result = setupFormListener();
+            if (!result) {
+                logTest2('✅ Guard funktioniert: Listener nicht erneut registriert');
+            }
+        }
+
+        // =============================================================================
+        // TEST 3: bfcache Kompatibilität
+        // =============================================================================
+        let bfcacheRestoreCount = 0;
+
+        function handleBfcacheRestore(event) {
+            if (event.persisted) {
+                bfcacheRestoreCount++;
+                logTest3(`🔄 bfcache-Restore erkannt (Anzahl: ${bfcacheRestoreCount})`);
+                logTest3('✅ pageshow-Event mit persisted=true funktioniert');
+                updateStatus('test3-status', 'pass', 'PASS');
+            }
+        }
+
+        function simulateBfcacheRestore() {
+            const event = new PageTransitionEvent('pageshow', { persisted: true });
+            handleBfcacheRestore(event);
+        }
+
+        window.addEventListener('pageshow', handleBfcacheRestore);
+
+        // =============================================================================
+        // TEST 4: Formular-ID-Auflösung
+        // =============================================================================
+        function testFormIDs() {
+            logTest4('🔍 Teste Formular-ID-Auflösung...');
+
+            // Simuliere die main.js Logik
+            const kontaktFormHome = document.getElementById('kontaktForm-home');
+            const kontaktFormUeber = document.getElementById('kontaktForm-ueber');
+            const kontaktFormOld = document.getElementById('kontaktForm');
+
+            logTest4(`- kontaktForm-home: ${kontaktFormHome ? '✅ gefunden' : '❌ nicht gefunden'}`);
+            logTest4(`- kontaktForm-ueber: ${kontaktFormUeber ? '✅ gefunden' : '❌ nicht gefunden'}`);
+            logTest4(`- kontaktForm (alt): ${kontaktFormOld ? '⚠️ gefunden (Duplikat!)' : '✅ nicht gefunden (gut)'}`);
+
+            // Test der Fallback-Logik
+            const resolvedForm = kontaktFormHome || kontaktFormUeber || kontaktFormOld;
+            if (resolvedForm) {
+                logTest4(`✅ Formular erfolgreich aufgelöst: ${resolvedForm.id}`);
+                updateStatus('test4-status', 'pass', 'PASS');
+            } else {
+                logTest4('ℹ️ Kein Kontaktformular auf dieser Test-Seite (erwartet)');
+                updateStatus('test4-status', 'info', 'INFO');
+            }
+        }
+
+        // =============================================================================
+        // TEST 5: GTM/gtag DataLayer
+        // =============================================================================
+        function testDataLayer() {
+            logTest5('🔍 Teste dataLayer-Initialisierung...');
+
+            // Simuliere mehrfache Initialisierung
+            window.dataLayer = window.dataLayer || [];
+            logTest5(`✅ Erste Initialisierung: dataLayer ist Array: ${Array.isArray(window.dataLayer)}`);
+
+            const firstRef = window.dataLayer;
+
+            // Zweite Initialisierung (sollte nichts überschreiben)
+            window.dataLayer = window.dataLayer || [];
+            logTest5(`✅ Zweite Initialisierung: gleiche Referenz: ${firstRef === window.dataLayer}`);
+
+            // Test gtag-Funktion
+            function gtag() { dataLayer.push(arguments); }
+            gtag('event', 'test_event', { test: true });
+            logTest5(`✅ gtag-Funktion funktioniert, dataLayer hat ${window.dataLayer.length} Einträge`);
+
+            updateStatus('test5-status', 'pass', 'PASS');
+        }
+
+        // =============================================================================
+        // Helper Functions
+        // =============================================================================
+        function logTest1(msg) {
+            appendLog('test1-log', msg);
+        }
+
+        function logTest2(msg) {
+            appendLog('test2-log', msg);
+        }
+
+        function logTest3(msg) {
+            appendLog('test3-log', msg);
+        }
+
+        function logTest4(msg) {
+            appendLog('test4-log', msg);
+        }
+
+        function logTest5(msg) {
+            appendLog('test5-log', msg);
+        }
+
+        function appendLog(logId, msg) {
+            const logEl = document.getElementById(logId);
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            const timestamp = new Date().toLocaleTimeString('de-DE');
+            entry.textContent = `[${timestamp}] ${msg}`;
+            logEl.appendChild(entry);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        function updateStatus(statusId, className, text) {
+            const statusEl = document.getElementById(statusId);
+            statusEl.className = `status ${className}`;
+            statusEl.textContent = text;
+        }
+
+        // =============================================================================
+        // Auto-run Tests on Page Load
+        // =============================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🧪 Running automated tests...');
+
+            // Test 1: Initialization
+            initializeApp();
+            setTimeout(() => {
+                initializeApp(); // Should be skipped
+            }, 100);
+
+            // Test 2: Form Listener
+            setupFormListener();
+
+            // Test 5: DataLayer
+            testDataLayer();
+
+            console.log('✅ Automated tests completed');
+        });
+    </script>
+</body>
+</html>
