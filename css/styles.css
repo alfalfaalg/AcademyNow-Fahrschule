@@ -622,7 +622,7 @@ input[type="checkbox"]:checked::after {
   border-radius: 5px;
   font-weight: 600;
   letter-spacing: 0.3px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -645,7 +645,7 @@ input[type="checkbox"]:checked::after {
   padding: 14px 28px;
   border-radius: 5px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -667,7 +667,7 @@ input[type="checkbox"]:checked::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -706,14 +706,14 @@ input[type="checkbox"]:checked::after {
       rgba(27, 39, 56, 0.86) 100%
     );
   box-shadow: 0 4px 18px rgba(18, 28, 45, 0.15);
-  padding: 3px 0 2px;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px 0; /* Erhöht von 3px auf 20px für mehr Höhe */
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   position: relative;
   z-index: 100; /* keep header below the fullscreen overlay defined at 2000 */
 }
 
 #main-header.scrolled {
-  padding: 2px 0 1px;
+  padding: 12px 0; /* Erhöht von 2px auf 12px */
   background: radial-gradient(
       circle at 6% -6%,
       rgba(21, 23, 28, 0.28) 0%,
@@ -745,8 +745,8 @@ input[type="checkbox"]:checked::after {
 }
 
 .logo img {
-  height: auto;
-  width: 180px;
+  height: 32px; /* Gleiche Höhe wie die Header-Buttons */
+  width: auto;
   max-width: 100%;
   filter: drop-shadow(0 4px 8px rgba(10, 33, 74, 0.12));
   transition: transform 0.3s ease;
@@ -1678,11 +1678,14 @@ nav ul li a.nav-link.active::after {
   background: #ffffff;
   border-radius: var(--card-radius);
   box-shadow: var(--card-shadow-base);
-  transition: transform 0.35s ease, box-shadow 0.35s ease,
-    border-color 0.35s ease;
-  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0) translateZ(0);
   will-change: transform, box-shadow;
   overflow: hidden;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .highlight-item,
@@ -1708,7 +1711,7 @@ nav ul li a.nav-link.active::after {
     rgba(255, 255, 255, 0) 70%
   );
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
   z-index: 1; /* Über dem Inhalt */
 }
@@ -1808,17 +1811,14 @@ nav ul li a.nav-link.active::after {
   position: relative;
   overflow: hidden;
   box-shadow: var(--card-shadow-base);
-  transition: transform 0.35s ease, box-shadow 0.35s ease,
-    border-color 0.35s ease;
-  transform: translateY(0);
-  will-change: transform, box-shadow;
+  /* Transition wird von der globalen Regel geerbt - KEINE doppelte Definition! */
 }
 
 .leistung-item:hover,
 .leistung-item:focus-within {
   border-color: var(--accent);
-  transform: translateY(-14px);
-  box-shadow: var(--card-shadow-hover);
+  /* transform und box-shadow werden von globaler Regel (Zeile 1719-1735) übernommen */
+  /* NICHT hier überschreiben, sonst wird die smooth transition zerstört! */
 }
 
 .leistung-icon {
@@ -1879,7 +1879,7 @@ nav ul li a.nav-link.active::after {
   border-radius: var(--card-radius);
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  /* Transition wird von der globalen Regel geerbt */
   max-width: 500px;
   width: 100%;
   margin: 0 auto;
@@ -1887,8 +1887,8 @@ nav ul li a.nav-link.active::after {
 
 .standort-card:hover,
 .standort-card:focus-within {
-  transform: translateY(-14px) !important;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16) !important;
+  transform: translateY(-14px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
 }
 
 .standort-image {
@@ -1963,7 +1963,7 @@ nav ul li a.nav-link.active::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.35s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .standort-btn:hover,
@@ -2109,7 +2109,8 @@ nav ul li a.nav-link.active::after {
   border-radius: 20px; /* Größerer Radius wie im Flyer */
   overflow: hidden;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateY(0);
   will-change: transform, box-shadow;
   border: 1px solid rgba(10, 33, 74, 0.08);
@@ -2119,8 +2120,8 @@ nav ul li a.nav-link.active::after {
 
 .preis-card:hover,
 .preis-card:focus-within {
-  transform: translateY(-14px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
+  /* transform und box-shadow werden von globaler Regel (Zeile 1719-1735) übernommen */
+  /* NICHT hier überschreiben, sonst wird die smooth transition zerstört! */
 }
 
 /* 🔥 HOT DEAL - Brennender Border-Effekt! */
@@ -2139,6 +2140,9 @@ nav ul li a.nav-link.active::after {
   animation: burning-border 3s ease-in-out infinite;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05), 0 0 30px rgba(255, 69, 0, 0.3),
     inset 0 0 20px rgba(255, 140, 0, 0.1);
+  /* Smooth transition für hover */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes burning-border {
@@ -2186,6 +2190,10 @@ nav ul li a.nav-link.active::after {
 .preis-card.featured {
   border: 2px solid var(--accent);
   transform: translateY(0) scale(1);
+  /* Smooth transition für hover */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .preis-card.featured:hover,
@@ -2575,7 +2583,7 @@ nav ul li a.nav-link.active::after {
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 5px 0;
 }
 
@@ -2727,7 +2735,7 @@ nav ul li a.nav-link.active::after {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   margin: 5px 0;
   display: block;
 }
@@ -3450,7 +3458,7 @@ nav ul li a.nav-link.active::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: #ffffff;
   padding: 8px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -3482,6 +3490,10 @@ nav ul li a.nav-link.active::after {
 }
 .bewertung-sterne-container {
   display: flex;
+}
+.google-stars {
+  display: flex;
+  gap: 4px;
 }
 .bewertung-sterne-container svg {
   filter: drop-shadow(0 2px 3px rgba(var(--accent-gold-rgb), 0.35));
@@ -4002,7 +4014,8 @@ html {
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 

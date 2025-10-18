@@ -13,7 +13,7 @@ const STATIC_ASSETS = [
   "/css/styles.css?v=2025-10-13-bugfix",
   "/css/mobile.css?v=2025-10-13-bugfix",
   "/js/main.js?v=2025-10-13-bugfix",
-  "/images/logo_neu.webp",
+  "/images/logo_favicon.webp",
   "/images/logo_social.png",
   "/images/heroBackground/mercedes-hero-optimized.jpg",
   "/images/heroBackground/mercedes-hero-placeholder.jpg",
@@ -158,8 +158,8 @@ self.addEventListener("push", (event) => {
     body: event.data
       ? event.data.text()
       : "Neue Nachricht von AcademyNow Fahrschule",
-    icon: "/images/logo_neu.webp",
-    badge: "/images/logo_neu.webp",
+    icon: "/images/logo_favicon.webp",
+    badge: "/images/logo_favicon.webp",
     tag: "academynow-notification",
     renotify: true,
     actions: [
