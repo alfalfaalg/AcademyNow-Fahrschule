@@ -648,6 +648,23 @@ function initializeApp() {
     // Flag setzen, um mehrfache Listener zu verhindern
     kontaktForm.dataset.listenerAdded = "true";
 
+    // Standortauswahl: Dynamische E-Mail-Weiterleitung
+    const standortSelect = kontaktForm.querySelector("#standort-auswahl");
+    if (standortSelect) {
+      standortSelect.addEventListener("change", function () {
+        const standort = this.value;
+        if (standort === "Bergedorf") {
+          kontaktForm.action =
+            "https://formsubmit.co/kontakt-bergedorf@academynow-fahrschule.de";
+          console.log("📍 Standort gewählt: Bergedorf");
+        } else if (standort === "Hamburg Mitte") {
+          kontaktForm.action =
+            "https://formsubmit.co/kontakt@academynow-fahrschule.de";
+          console.log("📍 Standort gewählt: Hamburg Mitte");
+        }
+      });
+    }
+
     let formSubmitting = false; // Verhindert Doppel-Submission
 
     kontaktForm.addEventListener(
@@ -665,8 +682,9 @@ function initializeApp() {
         const email = document.getElementById("email")?.value.trim();
         const nachricht = document.getElementById("nachricht")?.value.trim();
         const datenschutz = document.getElementById("datenschutz")?.checked;
+        const standort = standortSelect?.value;
 
-        if (!name || !email || !nachricht || !datenschutz) {
+        if (!name || !email || !nachricht || !datenschutz || !standort) {
           e.preventDefault();
           alert(
             "Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung."
@@ -684,7 +702,9 @@ function initializeApp() {
 
         // Alles OK - Formular wird nativ submittet (nur 1x!)
         formSubmitting = true;
-        // console.log('✅ Form validation passed - submitting to FormSubmit.co');
+        console.log(
+          "✅ Form validation passed - submitting to: " + kontaktForm.action
+        );
 
         // Button disabled zur Sicherheit
         const submitBtn = kontaktForm.querySelector('button[type="submit"]');
@@ -699,6 +719,9 @@ function initializeApp() {
       { once: true }
     ); // WICHTIG: Event Listener wird nach 1x automatisch entfernt!
   }
+
+  // Initialize WhatsApp Modal
+  initWhatsAppModal();
 
   // Mark app as initialized
   isInitialized = true;
@@ -885,6 +908,99 @@ function optimizedScrollHandler() {
 
 // Use passive listeners for better performance
 window.addEventListener("scroll", optimizedScrollHandler, { passive: true });
+
+// =================================================================================
+// WHATSAPP STANDORTAUSWAHL MODAL
+// =================================================================================
+
+/**
+ * WhatsApp Modal Funktionen für Standortauswahl
+ * Zeigt Modal bei Klick auf WhatsApp-Button
+ * Nutzer kann zwischen Hamburg Mitte und Bergedorf wählen
+ */
+
+// WhatsApp Modal öffnen
+function showWhatsAppModal(event) {
+  if (event) event.preventDefault();
+  const modal = document.getElementById("whatsapp-modal");
+  if (modal) {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    console.log("📱 WhatsApp Modal geöffnet");
+  } else {
+    console.error("❌ WhatsApp Modal nicht gefunden!");
+  }
+  return false; // Prevent default link behavior
+}
+
+// WhatsApp Modal schließen
+function closeWhatsAppModal() {
+  const modal = document.getElementById("whatsapp-modal");
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+    console.log("❌ WhatsApp Modal geschlossen");
+  }
+  return false;
+}
+
+// WhatsApp Chat mit gewähltem Standort öffnen
+function openWhatsApp(standort) {
+  let phoneNumber;
+  let standortName;
+
+  if (standort === "mitte") {
+    phoneNumber = "4917631065840"; // Hamburg Mitte
+    standortName = "Hamburg Mitte";
+  } else if (standort === "bergedorf") {
+    phoneNumber = "4915561355146"; // Bergedorf
+    standortName = "Bergedorf";
+  }
+
+  console.log("📱 WhatsApp wird geöffnet für: " + standortName);
+
+  // Modal schließen ZUERST
+  closeWhatsAppModal();
+
+  // WhatsApp öffnen in neuem Tab (nach kleiner Verzögerung)
+  setTimeout(function () {
+    window.open(
+      `https://wa.me/${phoneNumber}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  }, 100);
+
+  return false;
+}
+
+// Initialize WhatsApp Modal Event Listeners after DOM is ready
+function initWhatsAppModal() {
+  const modal = document.getElementById("whatsapp-modal");
+
+  if (modal) {
+    // Modal schließen bei Klick außerhalb
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeWhatsAppModal();
+      }
+    });
+
+    // ESC-Taste zum Schließen
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        const modalStyle = window.getComputedStyle(modal);
+        if (modalStyle.display !== "none") {
+          closeWhatsAppModal();
+        }
+      }
+    });
+
+    console.log("✅ WhatsApp Modal Events initialized");
+  } else {
+    console.warn("⚠️ WhatsApp Modal nicht gefunden - Event Listeners nicht registriert");
+  }
+}
 
 // =================================================================================
 // INITALISIERUNG ABGESCHLOSSEN

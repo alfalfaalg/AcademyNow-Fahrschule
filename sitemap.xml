@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage - Höchste Priorität -->
+  <url>
+    <loc>https://academynow-fahrschule.de/</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Über uns Seite -->
+  <url>
+    <loc>https://academynow-fahrschule.de/ueber-uns.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Datenschutz Seite -->
+  <url>
+    <loc>https://academynow-fahrschule.de/datenschutz.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Impressum Seite -->
+  <url>
+    <loc>https://academynow-fahrschule.de/impressum.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Danke Seite (niedrige Priorität, nur für Referenz) -->
+  <url>
+    <loc>https://academynow-fahrschule.de/danke.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+  <!-- Coming Soon Seite (falls vorhanden) -->
+  <url>
+    <loc>https://academynow-fahrschule.de/coming-soon.html</loc>
+    <lastmod>2025-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+</urlset>
