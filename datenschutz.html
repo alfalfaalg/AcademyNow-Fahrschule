@@ -34,6 +34,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Datenschutz | AcademyNow Fahrschule</title>
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://academynow-fahrschule.de/datenschutz.html" />
+
   <!-- Favicons -->
 <link rel="icon" href="images/logo_favicon.png" type="image/png">
 <link rel="icon" href="images/logo_favicon.webp" sizes="any" type="image/webp">
@@ -167,5 +170,33 @@
       }
     }
   </script>
+
+  <!-- WhatsApp Standort-Auswahl Modal -->
+  <div id="whatsapp-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content whatsapp-modal">
+      <h3>Welchen Standort möchten Sie kontaktieren?</h3>
+      <p>Bitte wählen Sie Ihren bevorzugten Standort:</p>
+
+      <div class="whatsapp-standort-buttons">
+        <button class="whatsapp-standort-btn" onclick="openWhatsApp('mitte'); return false;">
+          <span class="standort-icon">📍</span>
+          <div class="standort-info">
+            <strong>Hamburg Mitte</strong>
+            <small>Adenauerallee 10</small>
+          </div>
+        </button>
+
+        <button class="whatsapp-standort-btn" onclick="openWhatsApp('bergedorf'); return false;">
+          <span class="standort-icon">📍</span>
+          <div class="standort-info">
+            <strong>Bergedorf</strong>
+            <small>Chrysanderstraße 19</small>
+          </div>
+        </button>
+      </div>
+
+      <button class="modal-close-btn" onclick="closeWhatsAppModal(); return false;">Abbrechen</button>
+    </div>
+  </div>
 </body>
 </html>

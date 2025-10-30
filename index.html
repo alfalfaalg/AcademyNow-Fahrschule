@@ -83,13 +83,13 @@
     <meta name="apple-mobile-web-app-title" content="AcademyNow Fahrschule" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.academynow-fahrschule.de/" />
+    <link rel="canonical" href="https://academynow-fahrschule.de/" />
 
     <!-- Alternate Languages (falls später mehrsprachig) -->
     <link
       rel="alternate"
       hreflang="de"
-      href="https://www.academynow-fahrschule.de/"
+      href="https://academynow-fahrschule.de/"
     />
     <link
       rel="alternate"
@@ -602,9 +602,8 @@
             </a>
 
             <a
-              href="https://wa.me/4917631065840"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              onclick="showWhatsAppModal(event)"
               class="header-kontakt-btn header-btn"
             >
               <span class="header-btn-icon">
@@ -662,9 +661,9 @@
                   <span class="offer-label">Grundbetrag</span>
                   <div class="offer-price-row">
                     <span class="offer-price-old">499€</span>
-                    <span class="offer-price-new">99€</span>
+                    <span class="offer-price-new">199€</span>
                   </div>
-                  <span class="offer-period">vom 18.10 bis 25.10</span>
+                  <span class="offer-period">vom 18.10 bis 31.10</span>
                 </div>
               </div>
 
@@ -1468,6 +1467,33 @@
                 </div>
               </div>
 
+              <div class="form-group horizontal">
+                <label for="standort-auswahl"
+                  >Standort auswählen
+                  <span class="required-indicator" aria-label="Pflichtfeld"
+                    >*</span
+                  ></label
+                >
+                <select
+                  id="standort-auswahl"
+                  name="Standort"
+                  required
+                  aria-required="true"
+                  aria-describedby="standort-help"
+                >
+                  <option value="">Bitte wählen Sie einen Standort...</option>
+                  <option value="Hamburg Mitte">
+                    Hamburg Mitte - Adenauerallee 10
+                  </option>
+                  <option value="Bergedorf">
+                    Bergedorf - Chrysanderstraße 19
+                  </option>
+                </select>
+                <div id="standort-help" class="sr-only">
+                  Wählen Sie den Standort, den Sie kontaktieren möchten
+                </div>
+              </div>
+
               <div class="form-group checkbox-group">
                 <input
                   type="checkbox"
@@ -1589,6 +1615,9 @@
             <h3>Kontakt</h3>
             <ul class="footer-links-list footer-contact-list">
               <li>
+                <strong>Hamburg Mitte</strong>
+              </li>
+              <li>
                 <a
                   href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
@@ -1611,9 +1640,37 @@
                 >
               </li>
               <li class="footer-hours">
-                <strong>Öffnungszeiten</strong>
-                <span>Mo–Fr: 10:30 – 18:30</span>
-                <span>Sa: 10:00 – 14:00</span>
+                <span>Mo–Fr: 10:30 – 18:30, Sa: 10:00 – 14:00</span>
+              </li>
+              <li style="margin-top: 1rem;">
+                <strong>Bergedorf</strong>
+              </li>
+              <li>
+                <a
+                  href="https://www.google.com/maps/place/Chrysanderstra%C3%9Fe+19,+21029+Hamburg/@53.4896,10.2147,17z"
+                  target="_blank"
+                  rel="noopener"
+                  class="footer-contact-link address-link"
+                >
+                  Chrysanderstraße 19, 21029 Hamburg
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:040637433359"
+                  class="footer-contact-link phone-link"
+                  >040/637 433 59</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mailto:kontakt-bergedorf@academynow-fahrschule.de"
+                  class="footer-contact-link email-link"
+                  >kontakt-bergedorf@academynow-fahrschule.de</a
+                >
+              </li>
+              <li class="footer-hours">
+                <span>Mo–Fr: 13:00 – 18:30</span>
               </li>
             </ul>
           </div>
@@ -1664,6 +1721,45 @@
     <!-- =================================================================================
        JAVASCRIPT DATEIEN
        ================================================================================= -->
+    <!-- WhatsApp Standort-Auswahl Modal -->
+    <div id="whatsapp-modal" class="modal-overlay" style="display: none">
+      <div class="modal-content whatsapp-modal">
+        <h3>Welchen Standort möchten Sie kontaktieren?</h3>
+        <p>Bitte wählen Sie Ihren bevorzugten Standort:</p>
+
+        <div class="whatsapp-standort-buttons">
+          <button
+            class="whatsapp-standort-btn"
+            onclick="openWhatsApp('mitte'); return false;"
+          >
+            <span class="standort-icon">📍</span>
+            <div class="standort-info">
+              <strong>Hamburg Mitte</strong>
+              <small>Adenauerallee 10</small>
+            </div>
+          </button>
+
+          <button
+            class="whatsapp-standort-btn"
+            onclick="openWhatsApp('bergedorf'); return false;"
+          >
+            <span class="standort-icon">📍</span>
+            <div class="standort-info">
+              <strong>Bergedorf</strong>
+              <small>Chrysanderstraße 19</small>
+            </div>
+          </button>
+        </div>
+
+        <button
+          class="modal-close-btn"
+          onclick="closeWhatsAppModal(); return false;"
+        >
+          Abbrechen
+        </button>
+      </div>
+    </div>
+
     <script src="js/main.js?v=2025-10-14-duplicate-fix" defer></script>
     <!-- Eigener Cookie-Banner deaktiviert - Cookie Yes wird verwendet -->
     <!-- <script src="js/cookie-banner.js" defer></script> -->

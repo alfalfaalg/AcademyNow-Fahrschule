@@ -41,6 +41,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vielen Dank | AcademyNow Fahrschule</title>
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://academynow-fahrschule.de/danke.html" />
+
     <!-- Favicons -->
     <link rel="icon" href="images/logo_favicon.png" type="image/png" />
     <link
@@ -199,9 +202,8 @@
             </a>
 
             <a
-              href="https://wa.me/4917631065840"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              onclick="showWhatsAppModal(event)"
               class="header-kontakt-btn header-btn"
             >
               <span class="header-btn-icon">
@@ -236,9 +238,16 @@
 
           <div class="contact-info">
             <p>Du erreichst uns auch direkt unter:</p>
-            <p><strong>📞 (040) 982 591 50</strong></p>
-            <p><strong>📱 WhatsApp: +49 176 31065840</strong></p>
-            <p><strong>✉️ kontakt@academynow-fahrschule.de</strong></p>
+
+            <p><strong>Hamburg Mitte:</strong></p>
+            <p>📞 (040) 982 591 50</p>
+            <p>📱 WhatsApp: +49 176 31065840</p>
+            <p>✉️ kontakt@academynow-fahrschule.de</p>
+
+            <p style="margin-top: 1rem;"><strong>Bergedorf:</strong></p>
+            <p>📞 040/637 433 59</p>
+            <p>📱 WhatsApp: +49 155 61355146</p>
+            <p>✉️ kontakt-bergedorf@academynow-fahrschule.de</p>
           </div>
 
           <a href="index.html" class="primary-btn">Zurück zur Startseite</a>
@@ -253,6 +262,34 @@
         </div>
       </div>
     </footer>
+
+    <!-- WhatsApp Standort-Auswahl Modal -->
+    <div id="whatsapp-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content whatsapp-modal">
+        <h3>Welchen Standort möchten Sie kontaktieren?</h3>
+        <p>Bitte wählen Sie Ihren bevorzugten Standort:</p>
+
+        <div class="whatsapp-standort-buttons">
+          <button class="whatsapp-standort-btn" onclick="openWhatsApp('mitte'); return false;">
+            <span class="standort-icon">📍</span>
+            <div class="standort-info">
+              <strong>Hamburg Mitte</strong>
+              <small>Adenauerallee 10</small>
+            </div>
+          </button>
+
+          <button class="whatsapp-standort-btn" onclick="openWhatsApp('bergedorf'); return false;">
+            <span class="standort-icon">📍</span>
+            <div class="standort-info">
+              <strong>Bergedorf</strong>
+              <small>Chrysanderstraße 19</small>
+            </div>
+          </button>
+        </div>
+
+        <button class="modal-close-btn" onclick="closeWhatsAppModal(); return false;">Abbrechen</button>
+      </div>
+    </div>
   </body>
   <!-- Scripts -->
   <script src="js/main.js?v=2025-10-14-duplicate-fix" defer></script>

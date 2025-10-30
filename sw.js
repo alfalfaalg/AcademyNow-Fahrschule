@@ -2,9 +2,9 @@
 // SERVICE WORKER - ADVANCED CACHING STRATEGY
 // =================================================================================
 
-const CACHE_NAME = "academynow-fahrschule-v1.0.5-bugfix";
-const STATIC_CACHE = "academynow-static-v5-bugfix";
-const DYNAMIC_CACHE = "academynow-dynamic-v5-bugfix";
+const CACHE_NAME = "academynow-fahrschule-v2.1.0";
+const STATIC_CACHE = "academynow-static-v6";
+const DYNAMIC_CACHE = "academynow-dynamic-v6";
 
 // Critical resources to cache immediately
 const STATIC_ASSETS = [
