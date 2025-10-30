@@ -723,6 +723,10 @@ function initializeApp() {
   // Initialize WhatsApp Modal
   initWhatsAppModal();
 
+  // Initialize Popup Form
+  initPopupFormEvents();
+  initPopupFormHandling();
+
   // Mark app as initialized
   isInitialized = true;
   console.log("✅ AcademyNow App initialized successfully");
@@ -999,6 +1003,249 @@ function initWhatsAppModal() {
     console.log("✅ WhatsApp Modal Events initialized");
   } else {
     console.warn("⚠️ WhatsApp Modal nicht gefunden - Event Listeners nicht registriert");
+  }
+}
+
+// =================================================================================
+// MULTI-STEP POPUP FORMULAR
+// =================================================================================
+
+let currentPopupStep = 1;
+const totalPopupSteps = 5;
+
+// Popup öffnen
+function openPopupForm() {
+  const overlay = document.getElementById("popup-form-overlay");
+  if (overlay) {
+    overlay.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    currentPopupStep = 1;
+    showPopupStep(1);
+    updatePopupProgress(1);
+    console.log("✅ Popup-Formular geöffnet");
+  }
+  return false;
+}
+
+// Popup schließen
+function closePopupForm() {
+  const overlay = document.getElementById("popup-form-overlay");
+  if (overlay) {
+    overlay.style.display = "none";
+    document.body.style.overflow = ""; // Re-enable scrolling
+    resetPopupForm();
+    console.log("❌ Popup-Formular geschlossen");
+  }
+  return false;
+}
+
+// Formular zurücksetzen
+function resetPopupForm() {
+  const form = document.getElementById("popup-form");
+  if (form) {
+    form.reset();
+  }
+  currentPopupStep = 1;
+  showPopupStep(1);
+  updatePopupProgress(1);
+
+  // Alle Fehlermeldungen entfernen
+  const errorMessages = document.querySelectorAll(".error-message");
+  errorMessages.forEach((msg) => (msg.textContent = ""));
+}
+
+// Step anzeigen
+function showPopupStep(stepNumber) {
+  const steps = document.querySelectorAll(".form-step");
+  steps.forEach((step) => {
+    if (parseInt(step.getAttribute("data-step")) === stepNumber) {
+      step.classList.add("active");
+    } else {
+      step.classList.remove("active");
+    }
+  });
+}
+
+// Progress Bar aktualisieren
+function updatePopupProgress(stepNumber) {
+  const progressFill = document.getElementById("progress-fill");
+  const progressSteps = document.querySelectorAll(".progress-steps .step");
+
+  // Progress Fill Width
+  const percentage = (stepNumber / totalPopupSteps) * 100;
+  if (progressFill) {
+    progressFill.style.width = percentage + "%";
+  }
+
+  // Step Indicators
+  progressSteps.forEach((step) => {
+    const stepNum = parseInt(step.getAttribute("data-step"));
+    if (stepNum < stepNumber) {
+      step.classList.add("completed");
+      step.classList.remove("active");
+    } else if (stepNum === stepNumber) {
+      step.classList.add("active");
+      step.classList.remove("completed");
+    } else {
+      step.classList.remove("active", "completed");
+    }
+  });
+}
+
+// Nächster Step
+function nextStep(fromStep) {
+  if (validatePopupStep(fromStep)) {
+    currentPopupStep = fromStep + 1;
+    showPopupStep(currentPopupStep);
+    updatePopupProgress(currentPopupStep);
+  }
+}
+
+// Vorheriger Step
+function prevStep(fromStep) {
+  currentPopupStep = fromStep - 1;
+  showPopupStep(currentPopupStep);
+  updatePopupProgress(currentPopupStep);
+}
+
+// Validierung für jeden Step
+function validatePopupStep(stepNumber) {
+  let isValid = true;
+  let errorMsg = "";
+
+  // Clear previous errors
+  const errorElement = document.getElementById(`error-${getFieldName(stepNumber)}`);
+  if (errorElement) {
+    errorElement.textContent = "";
+  }
+
+  switch (stepNumber) {
+    case 1: // Name
+      const name = document.getElementById("popup-name").value.trim();
+      if (name === "") {
+        errorMsg = "Bitte geben Sie Ihren Namen ein.";
+        isValid = false;
+      } else if (name.length < 2) {
+        errorMsg = "Der Name ist zu kurz.";
+        isValid = false;
+      }
+      if (!isValid && errorElement) {
+        errorElement.textContent = errorMsg;
+      }
+      break;
+
+    case 2: // Email
+      const email = document.getElementById("popup-email").value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (email === "") {
+        errorMsg = "Bitte geben Sie Ihre E-Mail-Adresse ein.";
+        isValid = false;
+      } else if (!emailRegex.test(email)) {
+        errorMsg = "Bitte geben Sie eine gültige E-Mail-Adresse ein.";
+        isValid = false;
+      }
+      if (!isValid && errorElement) {
+        errorElement.textContent = errorMsg;
+      }
+      break;
+
+    case 3: // Phone (PFLICHTFELD basierend auf Google Ads Brief)
+      const phone = document.getElementById("popup-phone").value.trim();
+      if (phone === "") {
+        errorMsg = "Bitte geben Sie Ihre Telefonnummer ein.";
+        isValid = false;
+      } else if (phone.length < 6) {
+        errorMsg = "Die Telefonnummer ist zu kurz.";
+        isValid = false;
+      }
+      if (!isValid && errorElement) {
+        errorElement.textContent = errorMsg;
+      }
+      break;
+
+    case 4: // Führerscheinklasse
+      const klasse = document.getElementById("popup-klasse").value;
+      if (klasse === "") {
+        errorMsg = "Bitte wählen Sie eine Führerscheinklasse.";
+        isValid = false;
+      }
+      if (!isValid && errorElement) {
+        errorElement.textContent = errorMsg;
+      }
+      break;
+
+    case 5: // Standort
+      const standort = document.getElementById("popup-standort").value;
+      if (standort === "") {
+        errorMsg = "Bitte wählen Sie einen Standort.";
+        isValid = false;
+      }
+      if (!isValid && errorElement) {
+        errorElement.textContent = errorMsg;
+      }
+      break;
+  }
+
+  return isValid;
+}
+
+// Helper: Feldname für Error-Element
+function getFieldName(stepNumber) {
+  const fieldNames = {
+    1: "name",
+    2: "email",
+    3: "phone",
+    4: "klasse",
+    5: "standort"
+  };
+  return fieldNames[stepNumber] || "";
+}
+
+// Form Submit Handler mit Email-Routing basierend auf Standort
+function initPopupFormHandling() {
+  const form = document.getElementById("popup-form");
+  const standortSelect = document.getElementById("popup-standort");
+
+  if (form && standortSelect) {
+    // Dynamische Email-Routing basierend auf Standort-Auswahl
+    standortSelect.addEventListener("change", function () {
+      const standort = this.value;
+      if (standort === "Bergedorf") {
+        form.action = "https://formsubmit.co/kontakt-bergedorf@academynow-fahrschule.de";
+        console.log("📧 Email-Routing: Bergedorf");
+      } else if (standort === "Hamburg Mitte") {
+        form.action = "https://formsubmit.co/kontakt@academynow-fahrschule.de";
+        console.log("📧 Email-Routing: Hamburg Mitte");
+      }
+    });
+
+    console.log("✅ Popup Form Email-Routing initialisiert");
+  }
+}
+
+// Event Listeners für Popup
+function initPopupFormEvents() {
+  const overlay = document.getElementById("popup-form-overlay");
+
+  if (overlay) {
+    // Click außerhalb schließt Popup
+    overlay.addEventListener("click", function (event) {
+      if (event.target === overlay) {
+        closePopupForm();
+      }
+    });
+
+    // ESC-Taste zum Schließen
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        const overlayStyle = window.getComputedStyle(overlay);
+        if (overlayStyle.display !== "none") {
+          closePopupForm();
+        }
+      }
+    });
+
+    console.log("✅ Popup Form Events initialisiert");
   }
 }
 
