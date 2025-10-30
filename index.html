@@ -51,16 +51,16 @@
        META-INFORMATIONEN & SEO
        ================================================================================= -->
 
-    <title>AcademyNow Fahrschule - Mit uns kommst du ans Ziel!</title>
+    <title>Fahrschule Hamburg - Führerschein Klasse A, B, C | AcademyNow</title>
 
     <!-- Haupt-SEO-Tags -->
     <meta
       name="description"
-      content="AcademyNow Fahrschule Hamburg - Führerschein Klassen A, B, BE, C, CE. Moderne Fahrausbildung - Automatik-Ausbildung & Intensivkurse. Flexible Fahrzeiten. Adenauerallee 10, Hamburg."
+      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Moderne Fahrzeuge, flexible Zeiten. Jetzt anmelden ab 199€!"
     />
     <meta
       name="keywords"
-      content="Fahrschule Hamburg, Führerschein Hamburg, Fahrausbildung, AcademyNow, Adenauerallee, Automatik-Ausbildung, Intensivkurse, Führerscheinklassen A B BE C CE, Motorradführerschein Hamburg, Fahrstunden Hamburg"
+      content="Fahrschule Hamburg, Führerschein Hamburg, Führerschein Klasse B, Führerschein Klasse A, Führerschein Klasse C, PKW Führerschein, Motorrad Führerschein, LKW Führerschein, Fahrschule Hamburg Mitte, Fahrschule Bergedorf, Automatik Führerschein, B197, Intensivkurs, Fahrstunden Hamburg"
     />
 
     <!-- Enhanced SEO Meta Tags -->
@@ -102,11 +102,11 @@
     <meta property="og:site_name" content="AcademyNow Fahrschule" />
     <meta
       property="og:title"
-      content="AcademyNow Fahrschule Hamburg - Moderne Fahrausbildung"
+      content="Fahrschule Hamburg - Führerschein Klasse A, B, C | AcademyNow"
     />
     <meta
       property="og:description"
-      content="Moderne Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung & Intensivkurse. Flexible Fahrzeiten."
+      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Jetzt anmelden ab 199€!"
     />
     <meta
       property="og:image"
@@ -673,13 +673,13 @@
           <div class="hero-content-wrapper">
             <div class="hero-content">
               <span class="hero-badge">Deine Fahrschule in Hamburg</span>
-              <div class="hero-title">
+              <h1 class="hero-title">
                 <span class="brand-primary"
                   ><span class="big-letter">A</span>CADEMY
                   <span class="big-letter">N</span>OW</span
                 >
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
-              </div>
+              </h1>
 
               <!-- Neueröffnungsangebot -->
               <div class="hero-extravaganz-link">
@@ -792,7 +792,7 @@
                     <span class="icon-check">✓</span> Online-Lernplattform
                   </li>
                 </ul>
-                <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
+                <a href="#" onclick="openPopupForm(); return false;" class="btn-preis">Jetzt anfragen</a>
               </div>
             </div>
 
@@ -821,7 +821,7 @@
                     Wochenende
                   </li>
                 </ul>
-                <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
+                <a href="#" onclick="openPopupForm(); return false;" class="btn-preis">Jetzt anfragen</a>
               </div>
             </div>
 
@@ -850,7 +850,7 @@
                     <span class="icon-check">✓</span> Sonderfahrten inbegriffen
                   </li>
                 </ul>
-                <a href="#kontakt" class="btn-preis">Jetzt anfragen</a>
+                <a href="#" onclick="openPopupForm(); return false;" class="btn-preis">Jetzt anfragen</a>
               </div>
             </div>
           </div>
@@ -1755,6 +1755,175 @@
     <!-- =================================================================================
        JAVASCRIPT DATEIEN
        ================================================================================= -->
+
+    <!-- Multi-Step Popup Formular -->
+    <div id="popup-form-overlay" class="popup-overlay" style="display: none">
+      <div class="popup-container">
+        <button class="popup-close-btn" onclick="closePopupForm(); return false;" aria-label="Formular schließen">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="popup-header">
+          <h2>Jetzt Anmelden</h2>
+          <p>Starten Sie Ihre Fahrausbildung bei Academy Now</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="popup-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-steps">
+            <span class="step active" data-step="1">1</span>
+            <span class="step" data-step="2">2</span>
+            <span class="step" data-step="3">3</span>
+            <span class="step" data-step="4">4</span>
+            <span class="step" data-step="5">5</span>
+          </div>
+        </div>
+
+        <!-- Multi-Step Form -->
+        <form
+          id="popup-form"
+          action="https://formsubmit.co/kontakt@academynow-fahrschule.de"
+          method="POST"
+          class="popup-form"
+        >
+          <!-- FormSubmit.co Configuration -->
+          <input type="hidden" name="_subject" value="Neue Anmeldung - Academy Now Fahrschule">
+          <input type="hidden" name="_next" value="https://academynow-fahrschule.de/danke.html">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+
+          <!-- Step 1: Name -->
+          <div class="form-step active" data-step="1">
+            <h3>Wie heißen Sie?</h3>
+            <div class="form-group">
+              <label for="popup-name">Ihr vollständiger Name *</label>
+              <input
+                type="text"
+                id="popup-name"
+                name="Name"
+                required
+                placeholder="Max Mustermann"
+                autocomplete="name"
+              >
+              <span class="error-message" id="error-name"></span>
+            </div>
+            <button type="button" class="btn-next" onclick="nextStep(1)">Weiter</button>
+          </div>
+
+          <!-- Step 2: Email -->
+          <div class="form-step" data-step="2">
+            <h3>Ihre E-Mail-Adresse</h3>
+            <div class="form-group">
+              <label for="popup-email">E-Mail *</label>
+              <input
+                type="email"
+                id="popup-email"
+                name="Email"
+                required
+                placeholder="max@beispiel.de"
+                autocomplete="email"
+              >
+              <span class="error-message" id="error-email"></span>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="btn-back" onclick="prevStep(2)">Zurück</button>
+              <button type="button" class="btn-next" onclick="nextStep(2)">Weiter</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Phone -->
+          <div class="form-step" data-step="3">
+            <h3>Ihre Telefonnummer</h3>
+            <div class="form-group">
+              <label for="popup-phone">Telefon *</label>
+              <input
+                type="tel"
+                id="popup-phone"
+                name="Telefon"
+                required
+                placeholder="0160 12345678"
+                autocomplete="tel"
+              >
+              <small class="form-hint">Für Rückfragen zu Ihrer Anmeldung</small>
+              <span class="error-message" id="error-phone"></span>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="btn-back" onclick="prevStep(3)">Zurück</button>
+              <button type="button" class="btn-next" onclick="nextStep(3)">Weiter</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Führerscheinklasse -->
+          <div class="form-step" data-step="4">
+            <h3>Welche Führerscheinklasse?</h3>
+            <div class="form-group">
+              <label for="popup-klasse">Führerscheinklasse *</label>
+              <select id="popup-klasse" name="Führerscheinklasse" required>
+                <option value="">Bitte wählen...</option>
+                <option value="B - PKW">B - PKW</option>
+                <option value="A - Motorrad">A - Motorrad</option>
+                <option value="A1 - Leichtkraftrad (125ccm)">A1 - Leichtkraftrad (125ccm)</option>
+                <option value="A2 - Motorrad (bis 35kW)">A2 - Motorrad (bis 35kW)</option>
+                <option value="AM - Roller/Mofa">AM - Roller/Mofa</option>
+                <option value="B96 - PKW mit Anhänger">B96 - PKW mit Anhänger</option>
+                <option value="B197 - Automatik">B197 - Automatik</option>
+                <option value="BE - PKW mit großem Anhänger">BE - PKW mit großem Anhänger</option>
+                <option value="C - LKW">C - LKW</option>
+                <option value="C1 - Leicht-LKW">C1 - Leicht-LKW</option>
+                <option value="CE - LKW mit Anhänger">CE - LKW mit Anhänger</option>
+                <option value="Andere / Beratung gewünscht">Andere / Beratung gewünscht</option>
+              </select>
+              <span class="error-message" id="error-klasse"></span>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="btn-back" onclick="prevStep(4)">Zurück</button>
+              <button type="button" class="btn-next" onclick="nextStep(4)">Weiter</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Standort & Nachricht -->
+          <div class="form-step" data-step="5">
+            <h3>Letzter Schritt</h3>
+            <div class="form-group">
+              <label for="popup-standort">Bevorzugter Standort *</label>
+              <select id="popup-standort" name="Standort" required>
+                <option value="">Bitte wählen...</option>
+                <option value="Hamburg Mitte">Hamburg Mitte - Adenauerallee 10</option>
+                <option value="Bergedorf">Bergedorf - Chrysanderstraße 19</option>
+              </select>
+              <span class="error-message" id="error-standort"></span>
+            </div>
+            <div class="form-group">
+              <label for="popup-message">Ihre Nachricht (optional)</label>
+              <textarea
+                id="popup-message"
+                name="Nachricht"
+                rows="4"
+                placeholder="Haben Sie Fragen oder besondere Wünsche?"
+              ></textarea>
+            </div>
+            <div class="form-navigation">
+              <button type="button" class="btn-back" onclick="prevStep(5)">Zurück</button>
+              <button type="submit" class="btn-submit">Jetzt Anmelden</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Success Message (hidden by default) -->
+        <div class="popup-success" id="popup-success" style="display: none">
+          <div class="success-icon">✓</div>
+          <h3>Vielen Dank!</h3>
+          <p>Ihre Anmeldung wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.</p>
+        </div>
+      </div>
+    </div>
+
     <!-- WhatsApp Standort-Auswahl Modal -->
     <div id="whatsapp-modal" class="modal-overlay" style="display: none">
       <div class="modal-content whatsapp-modal">
