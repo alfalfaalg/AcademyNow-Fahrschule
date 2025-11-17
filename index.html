@@ -56,7 +56,7 @@
     <!-- Haupt-SEO-Tags -->
     <meta
       name="description"
-      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Moderne Fahrzeuge, flexible Zeiten. Jetzt anmelden ab 199€!"
+      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Moderne Fahrzeuge, flexible Zeiten. Jetzt anmelden!"
     />
     <meta
       name="keywords"
@@ -106,7 +106,7 @@
     />
     <meta
       property="og:description"
-      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Jetzt anmelden ab 199€!"
+      content="Führerschein in Hamburg machen: PKW (Klasse B), Motorrad (Klasse A), LKW (Klasse C). 2 Standorte: Mitte & Bergedorf. Jetzt anmelden!"
     />
     <meta
       property="og:image"
@@ -370,7 +370,7 @@
       href="https://fonts.gstatic.com"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://formsubmit.co" />
+    <link rel="preconnect" href="https://api.web3forms.com" />
     <!-- preconnect zu fs0478.fso360-svc.de entfernt - SEO-Agentur Anforderung -->
     <link rel="preconnect" href="https://wa.me" />
     <link rel="dns-prefetch" href="https://www.google.com" />
@@ -681,7 +681,15 @@
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
               </h1>
 
-              <!-- Neueröffnungsangebot -->
+              <!--
+              ============================================================================
+              NEUERÖFFNUNGSANGEBOT - TEMPLATE FÜR ZUKÜNFTIGE ANGEBOTE
+              ============================================================================
+              Auskommentiert: Aktuell kein Angebot aktiv
+              Bei neuen Angeboten: Kommentar entfernen und Preise/Daten anpassen
+              ============================================================================
+              -->
+              <!--
               <div class="hero-extravaganz-link">
                 <div class="hero-extravaganz">
                   <span class="hero-offer-top">NEUERÖFFNUNGS</span
@@ -700,6 +708,7 @@
                   <span class="offer-period">vom 18.10 bis 31.10</span>
                 </div>
               </div>
+              -->
 
               <!-- Freunde werben Freunde Box -->
               <div class="freunde-werben-box">
@@ -1370,30 +1379,36 @@
           <div class="kontakt-formular">
             <h3>Schreib uns eine Nachricht</h3>
             <form
-              action="https://formsubmit.co/kontakt@academynow-fahrschule.de"
+              action="https://api.web3forms.com/submit"
               method="POST"
               id="kontaktForm-home"
               class="form"
               role="form"
               aria-labelledby="kontakt-heading"
+              data-web3-hamburg-key="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
+              data-web3-bergedorf-key="3e125402-6dc5-4034-a065-0ce3b4d74a1a"
             >
-              <!-- FormSubmit spezifische versteckte Felder -->
+              <!-- Web3Forms Konfiguration -->
               <input
                 type="hidden"
-                name="_next"
-                value="https://www.academynow-fahrschule.de/danke.html"
+                name="access_key"
+                class="web3forms-key"
+                value=""
               />
               <input
                 type="hidden"
-                name="_subject"
+                name="subject"
                 value="Neue Anfrage von AcademyNow Webseite"
               />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
               <input
                 type="hidden"
-                name="_cc"
-                value="kontakt2@academynow-fahrschule.de"
+                name="from_name"
+                value="AcademyNow Fahrschule"
+              />
+              <input
+                type="hidden"
+                name="redirect"
+                value="https://www.academynow-fahrschule.de/danke.html"
               />
 
               <div class="form-group horizontal">
@@ -1480,6 +1495,33 @@
                 </div>
               </div>
 
+              <div class="form-group horizontal">
+                <label for="standort-auswahl"
+                  >Standort
+                  <span class="required-indicator" aria-label="Pflichtfeld"
+                    >*</span
+                  ></label
+                >
+                <select
+                  id="standort-auswahl"
+                  name="standort"
+                  required
+                  aria-required="true"
+                  aria-describedby="standort-help"
+                >
+                  <option value="">Bitte Standort wählen</option>
+                  <option value="Hamburg Mitte">
+                    Hamburg Mitte – Adenauerallee 10
+                  </option>
+                  <option value="Bergedorf">
+                    Hamburg Bergedorf – Chrysanderstraße 19
+                  </option>
+                </select>
+                <div id="standort-help" class="sr-only">
+                  Wähle den Standort, den wir kontaktieren sollen
+                </div>
+              </div>
+
               <div class="form-group horizontal textarea-group">
                 <label for="nachricht"
                   >Deine Nachricht
@@ -1501,34 +1543,7 @@
                 </div>
               </div>
 
-              <div class="form-group horizontal">
-                <label for="standort-auswahl"
-                  >Standort auswählen
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <select
-                  id="standort-auswahl"
-                  name="Standort"
-                  required
-                  aria-required="true"
-                  aria-describedby="standort-help"
-                >
-                  <option value="">Bitte wählen Sie einen Standort...</option>
-                  <option value="Hamburg Mitte">
-                    Hamburg Mitte - Adenauerallee 10
-                  </option>
-                  <option value="Bergedorf">
-                    Bergedorf - Chrysanderstraße 19
-                  </option>
-                </select>
-                <div id="standort-help" class="sr-only">
-                  Wählen Sie den Standort, den Sie kontaktieren möchten
-                </div>
-              </div>
-
-              <div class="form-group checkbox-group">
+              <div class="checkbox-group">
                 <input
                   type="checkbox"
                   id="datenschutz"
@@ -1788,15 +1803,18 @@
         <!-- Multi-Step Form -->
         <form
           id="popup-form"
-          action="https://formsubmit.co/kontakt@academynow-fahrschule.de"
+          action="https://api.web3forms.com/submit"
           method="POST"
           class="popup-form"
+          data-web3-hamburg-key="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
+          data-web3-bergedorf-key="3e125402-6dc5-4034-a065-0ce3b4d74a1a"
         >
-          <!-- FormSubmit.co Configuration -->
-          <input type="hidden" name="_subject" value="Neue Anmeldung - Academy Now Fahrschule">
-          <input type="hidden" name="_next" value="https://academynow-fahrschule.de/danke.html">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none">
+          <!-- Web3Forms Konfiguration -->
+          <input type="hidden" name="access_key" class="web3forms-key" value="">
+          <input type="hidden" name="subject" value="Neue Anmeldung - Academy Now Fahrschule">
+          <input type="hidden" name="from_name" value="AcademyNow Fahrschule">
+          <input type="hidden" name="redirect" value="https://www.academynow-fahrschule.de/danke.html#popup">
+          <input type="text" name="botcheck" style="display:none">
 
           <!-- Step 1: Name -->
           <div class="form-step active" data-step="1">

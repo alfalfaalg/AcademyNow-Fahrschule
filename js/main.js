@@ -181,9 +181,76 @@ function preloadNextSectionResources(currentSection) {
     // Preload contact form resources
     const link = document.createElement("link");
     link.rel = "prefetch";
-    link.href = "https://formsubmit.co/";
+    link.href = "https://api.web3forms.com/";
     document.head.appendChild(link);
   }
+}
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+
+function configureWeb3FormsRouting(form, standortSelect) {
+  if (!form) {
+    return;
+  }
+
+  form.action = WEB3FORMS_ENDPOINT;
+
+  const keyInput = form.querySelector('input[name="access_key"]');
+  if (!keyInput) {
+    console.warn("⚠️ Kein access_key Feld im Formular gefunden.", form.id);
+    return;
+  }
+
+  const hamburgKey =
+    form.dataset.web3HamburgKey || form.dataset.web3DefaultKey || "";
+  const bergedorfKey =
+    form.dataset.web3BergedorfKey || form.dataset.web3DefaultKey || hamburgKey;
+
+  const applyKey = (standort) => {
+    if (standort === "Bergedorf" && bergedorfKey) {
+      keyInput.value = bergedorfKey;
+    } else {
+      keyInput.value = hamburgKey;
+    }
+  };
+
+  applyKey(standortSelect?.value || "Hamburg Mitte");
+
+  if (standortSelect) {
+    standortSelect.addEventListener("change", function () {
+      applyKey(this.value);
+    });
+  }
+}
+
+function initSelectValidationStates() {
+  const requiredSelects = document.querySelectorAll("select[required]");
+  requiredSelects.forEach((select) => {
+    if (select.dataset.validationInitialized === "true") {
+      return;
+    }
+    select.dataset.validationInitialized = "true";
+    setSelectPristine(select);
+
+    const handleInteraction = () => {
+      if (select.dataset.pristine === "true") {
+        delete select.dataset.pristine;
+      }
+    };
+
+    select.addEventListener("change", handleInteraction);
+    select.addEventListener("blur", handleInteraction);
+
+    if (select.form) {
+      select.form.addEventListener("reset", () => {
+        setSelectPristine(select);
+      });
+    }
+  });
+}
+
+function setSelectPristine(select) {
+  select.dataset.pristine = "true";
 }
 
 // =================================================================================
@@ -631,6 +698,9 @@ function initializeApp() {
   // Lazy Loading für Maps
   lazyLoadMaps();
 
+  // Required Select Felder erst nach Nutzerinteraktion validieren
+  initSelectValidationStates();
+
   // "Coming Soon"-Funktionen
   if (document.body.classList.contains("coming-soon-page")) {
     setInterval(updateClock, 1000);
@@ -650,20 +720,7 @@ function initializeApp() {
 
     // Standortauswahl: Dynamische E-Mail-Weiterleitung
     const standortSelect = kontaktForm.querySelector("#standort-auswahl");
-    if (standortSelect) {
-      standortSelect.addEventListener("change", function () {
-        const standort = this.value;
-        if (standort === "Bergedorf") {
-          kontaktForm.action =
-            "https://formsubmit.co/kontakt-bergedorf@academynow-fahrschule.de";
-          console.log("📍 Standort gewählt: Bergedorf");
-        } else if (standort === "Hamburg Mitte") {
-          kontaktForm.action =
-            "https://formsubmit.co/kontakt@academynow-fahrschule.de";
-          console.log("📍 Standort gewählt: Hamburg Mitte");
-        }
-      });
-    }
+    configureWeb3FormsRouting(kontaktForm, standortSelect);
 
     let formSubmitting = false; // Verhindert Doppel-Submission
 
@@ -1206,20 +1263,9 @@ function initPopupFormHandling() {
   const form = document.getElementById("popup-form");
   const standortSelect = document.getElementById("popup-standort");
 
-  if (form && standortSelect) {
-    // Dynamische Email-Routing basierend auf Standort-Auswahl
-    standortSelect.addEventListener("change", function () {
-      const standort = this.value;
-      if (standort === "Bergedorf") {
-        form.action = "https://formsubmit.co/kontakt-bergedorf@academynow-fahrschule.de";
-        console.log("📧 Email-Routing: Bergedorf");
-      } else if (standort === "Hamburg Mitte") {
-        form.action = "https://formsubmit.co/kontakt@academynow-fahrschule.de";
-        console.log("📧 Email-Routing: Hamburg Mitte");
-      }
-    });
-
-    console.log("✅ Popup Form Email-Routing initialisiert");
+  if (form) {
+    configureWeb3FormsRouting(form, standortSelect);
+    console.log("✅ Popup Form Web3Forms-Routing initialisiert");
   }
 }
 

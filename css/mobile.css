@@ -785,7 +785,8 @@
   }
 
   .checkbox-group {
-    margin-left: 0;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
   }
 
   /* Grids & Layouts */
