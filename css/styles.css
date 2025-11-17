@@ -524,6 +524,11 @@ input[type="checkbox"]:focus + label {
   background-color: rgba(39, 174, 96, 0.05);
 }
 
+.form-group select[data-pristine="true"]:invalid {
+  border-color: var(--border);
+  background-color: #fff;
+}
+
 /* Enhanced Checkbox Accessibility */
 input[type="checkbox"] {
   width: 18px;
@@ -2716,14 +2721,30 @@ nav ul li a.nav-link.active::after {
 .checkbox-group {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  margin-left: 180px;
+  gap: 12px;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
   text-align: left;
   margin-bottom: 15px;
 }
 
+/* WICHTIG: Checkbox-group IMMER linksbündig, auch in .form-group */
+.form-group.checkbox-group {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+}
+
+.checkbox-group label {
+  flex: 0 1 auto;
+  text-align: left;
+  margin: 0;
+}
+
 .checkbox-group input {
   margin-top: 4px;
+  flex-shrink: 0;
 }
 
 .submit-btn {

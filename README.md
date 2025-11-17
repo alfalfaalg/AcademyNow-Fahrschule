@@ -392,7 +392,7 @@ open tests/TEST_FIXES.html
 
 ### Externe Services
 
-- **FormSubmit.co:** https://formsubmit.co
+- **Web3Forms:** https://web3forms.com
 - **Google Tag Manager:** GTM-WWRGDHJ7
 - **Google Ads:** AW-17118954542
 - **Google Places API:** (Reviews Integration)
