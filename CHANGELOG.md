@@ -236,7 +236,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 📊 Analytics
 
 #### Google Tag Manager
-- GTM Container: GTM-WWRGDHJ7
+- GTM Container: GTM-MSDGXD4L
 - Google Ads: AW-17118954542
 - Consent Mode v2 Integration
 

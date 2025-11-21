@@ -870,9 +870,22 @@
     margin: 0 auto;
   }
 
+  .footer-contact-row {
+    text-align: center;
+  }
+
   .footer-column h3::after {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .footer-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .footer-contact-card {
+    padding: 12px 14px;
   }
 
   .footer-links-list li {
@@ -898,6 +911,15 @@
     grid-template-columns: 1fr !important; /* Nur 1 Spalte auf Mobile */
     gap: 20px;
     margin-top: 30px;
+  }
+
+  .leistungen-cta-wrap {
+    margin: -4px auto 6px;
+  }
+
+  .leistungen-cta {
+    width: 100%;
+    max-width: 360px;
   }
 
   .leistung-item {
