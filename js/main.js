@@ -737,11 +737,10 @@ function initializeApp() {
         // Validierung
         const name = document.getElementById("name")?.value.trim();
         const email = document.getElementById("email")?.value.trim();
-        const nachricht = document.getElementById("nachricht")?.value.trim();
         const datenschutz = document.getElementById("datenschutz")?.checked;
         const standort = standortSelect?.value;
 
-        if (!name || !email || !nachricht || !datenschutz || !standort) {
+        if (!name || !email || !datenschutz || !standort) {
           e.preventDefault();
           alert(
             "Bitte füllen Sie alle Pflichtfelder aus und akzeptieren Sie die Datenschutzerklärung."

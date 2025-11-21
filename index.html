@@ -40,7 +40,7 @@
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+      })(window, document, "script", "dataLayer", "GTM-MSDGXD4L");
     </script>
     <!-- End Google Tag Manager -->
 
@@ -295,7 +295,8 @@
        FAVICONS & ICONS (für Browser-Tabs und Geräte)
        ================================================================================= -->
 
-    <!-- Standard Favicon ICO für beste Browser-Kompatibilität und Google Search -->
+    <!-- Standard Favicon: SVG (hell & rund) plus Fallback ICO -->
+    <link rel="icon" href="images/favicon-light.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
@@ -520,7 +521,7 @@
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-WWRGDHJ7"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-MSDGXD4L"
         height="0"
         width="0"
         class="gtm-noscript"
@@ -614,9 +615,8 @@
           <!-- Buttons im Header (Anmeldung, Sofortkontakt) -->
           <div class="header-buttons">
             <a
-              href="https://fs0478.fso360-svc.de/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="tel:+494098259150"
+              rel="noopener"
               class="cta-btn header-btn"
             >
               <span class="header-btn-icon">
@@ -632,7 +632,7 @@
                   />
                 </svg>
               </span>
-              <span class="header-btn-text">Direkt anmelden</span>
+              <span class="header-btn-text">040 982 591 50</span>
             </a>
 
             <a
@@ -681,34 +681,26 @@
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
               </h1>
 
-              <!--
-              ============================================================================
-              NEUERÖFFNUNGSANGEBOT - TEMPLATE FÜR ZUKÜNFTIGE ANGEBOTE
-              ============================================================================
-              Auskommentiert: Aktuell kein Angebot aktiv
-              Bei neuen Angeboten: Kommentar entfernen und Preise/Daten anpassen
-              ============================================================================
-              -->
-              <!--
-              <div class="hero-extravaganz-link">
-                <div class="hero-extravaganz">
-                  <span class="hero-offer-top">NEUERÖFFNUNGS</span
-                  ><span class="hyphen" aria-hidden="true" role="presentation"
-                    >-</span
-                  ><br class="mobile-break" /><span class="hero-offer-bottom"
-                    >ANGEBOT</span
-                  >
-                </div>
-                <div class="extravaganz-offer">
-                  <span class="offer-label">Grundbetrag</span>
-                  <div class="offer-price-row">
-                    <span class="offer-price-old">499€</span>
-                    <span class="offer-price-new">199€</span>
-                  </div>
-                  <span class="offer-period">vom 18.10 bis 31.10</span>
-                </div>
+          <div class="hero-extravaganz-link">
+            <div class="hero-extravaganz">
+              <span class="hero-offer-top">BLACK WEEK</span
+              ><span class="hyphen" aria-hidden="true" role="presentation"
+                >-</span
+              ><br class="mobile-break" /><span class="hero-offer-bottom"
+                >SPECIAL</span
+              >
+            </div>
+            <div class="extravaganz-offer">
+              <span class="offer-label">Grundbetrag</span>
+              <div class="offer-price-row">
+                <span class="offer-price-old">100%</span>
+                <span class="offer-price-new">-50%</span>
               </div>
-              -->
+              <span class="offer-period"
+                >Nur Black Week: 24.11 – 28.11</span
+              >
+            </div>
+          </div>
 
               <!-- Freunde werben Freunde Box -->
               <div class="freunde-werben-box">
@@ -726,9 +718,6 @@
               <div class="hero-buttons">
                 <a href="#kontakt" class="primary-btn hero-btn"
                   >Kostenloses Angebot</a
-                >
-                <a href="#standorte" class="outline-btn hero-btn"
-                  >Standorte entdecken</a
                 >
               </div>
             </div>
@@ -1010,6 +999,12 @@
               </p>
             </div>
           </div>
+
+          <div class="leistungen-cta-wrap">
+            <a href="#kontakt" class="primary-btn leistungen-cta"
+              >Jetzt zum Antragsformular</a
+            >
+          </div>
         </div>
       </section>
 
@@ -1133,16 +1128,18 @@
        ================================================================================= -->
       <section class="bewertungen-section section">
         <div class="container">
-          <div class="section-header">
-            <h2>Was sagen unsere Schüler</h2>
-            <div class="section-divider"></div>
-            <p class="section-description">
-              Erfahrungen aus erster Hand von unseren Fahrschülern
-            </p>
+            <div class="section-header">
+              <div class="section-eyebrow">Echte Kundenstimmen</div>
+              <h2>Was sagen unsere Schüler</h2>
+              <div class="section-divider"></div>
+              <p class="section-description">
+                Erfahrungen aus erster Hand von unseren Fahrschülern
+              </p>
           </div>
-          <div class="google-bewertungen-card">
-            <div class="google-bewertungen-header">
-              <span class="google-logo-container" aria-hidden="true">
+
+          <div class="google-summary-card">
+            <div class="google-summary-top">
+              <div class="google-logo-container" aria-hidden="true">
                 <img
                   src="images/icons/icons8-google-logo.svg"
                   alt="Google Logo"
@@ -1152,11 +1149,11 @@
                   width="28"
                   height="28"
                 />
-              </span>
-              <span class="google-label">Google-Bewertungen</span>
+              </div>
+              <div class="google-summary-title">Google-Bewertungen</div>
             </div>
-            <div class="google-bewertungen-main">
-              <div class="bewertung-score-container">
+            <div class="google-summary-body">
+              <div class="google-summary-score">
                 <span class="bewertung-wert google-rating-value">--</span>
                 <div
                   class="bewertung-sterne-container"
@@ -1164,103 +1161,65 @@
                   aria-live="polite"
                   aria-label="Bewertung basierend auf aktuellen Google-Rezensionen"
                 >
-                  <div class="google-stars" aria-hidden="true">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#E0E0E0"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#E0E0E0"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#E0E0E0"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#E0E0E0"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                      />
-                    </svg>
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="#E0E0E0"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                      />
-                    </svg>
-                  </div>
+                  <div class="google-stars" aria-hidden="true"></div>
                 </div>
               </div>
-              <div class="google-bewertungen-meta">
-                <span class="bewertung-anzahl">
-                  Basierend auf
-                  <strong class="google-review-count">--</strong>
-                  Google-Bewertungen
-                </span>
+              <div class="google-summary-meta">
+                Basierend auf
+                <strong class="google-review-count">--</strong>
+                Google-Bewertungen
               </div>
-            </div>
-            <div class="google-bewertungen-footer">
-              <span class="google-info">Stand: --</span>
+              <div class="google-summary-date">
+                <span class="google-info">Stand: --</span>
+              </div>
               <a
-                href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
+                href="https://www.google.de/maps/place/Fahrschule+Academy+Now/@53.5527523,10.0130196,21z/data=!4m8!3m7!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!9m1!1b1!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener"
-                class="google-bewertung-cta"
+                class="google-summary-cta"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  class="google-bewertung-icon"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 .587l3.668 7.568L24 9.423l-6 5.849L19.335 24 12 19.771 4.665 24 6 15.272 0 9.423l8.332-1.268z"
-                  />
-                </svg>
-                Jetzt bewerten auf Google
+                ★ Jetzt bewerten auf Google
               </a>
             </div>
           </div>
 
-          <!-- Dynamische Google Reviews Container -->
-          <div id="google-reviews-container" class="reviews-grid">
-            <!-- Reviews werden hier dynamisch eingefügt via JavaScript -->
-            <div class="reviews-loading">
-              <p>Lade Bewertungen...</p>
+          <!-- Dynamische Google Reviews Slider -->
+          <div class="reviews-shell">
+            <div class="reviews-slider">
+              <button
+                class="reviews-nav reviews-nav--prev"
+                type="button"
+                id="reviews-prev"
+                aria-label="Zur vorherigen Bewertung wechseln"
+              >
+                <span aria-hidden="true">‹</span>
+              </button>
+              <div class="reviews-viewport">
+                <div
+                  id="google-reviews-container"
+                  class="reviews-track"
+                  aria-live="polite"
+                >
+                  <!-- Reviews werden hier dynamisch eingefügt via JavaScript -->
+                  <div class="reviews-loading">
+                    <p>Lade Bewertungen...</p>
+                  </div>
+                </div>
+              </div>
+              <button
+                class="reviews-nav reviews-nav--next"
+                type="button"
+                id="reviews-next"
+                aria-label="Zur nächsten Bewertung wechseln"
+              >
+                <span aria-hidden="true">›</span>
+              </button>
             </div>
+            <div
+              id="google-reviews-dots"
+              class="reviews-dots"
+              aria-label="Bewertungsnavigation"
+            ></div>
           </div>
         </div>
       </section>
@@ -1393,7 +1352,7 @@
                 type="hidden"
                 name="access_key"
                 class="web3forms-key"
-                value=""
+                value="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
               />
               <input
                 type="hidden"
@@ -1522,27 +1481,6 @@
                 </div>
               </div>
 
-              <div class="form-group horizontal textarea-group">
-                <label for="nachricht"
-                  >Deine Nachricht
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <textarea
-                  id="nachricht"
-                  name="nachricht"
-                  rows="5"
-                  placeholder="Wie können wir dir helfen?"
-                  required
-                  aria-required="true"
-                  aria-describedby="nachricht-help"
-                ></textarea>
-                <div id="nachricht-help" class="sr-only">
-                  Beschreibe dein Anliegen ausführlich
-                </div>
-              </div>
-
               <div class="checkbox-group">
                 <input
                   type="checkbox"
@@ -1659,71 +1597,6 @@
               <li><a href="ueber-uns.html#karriere">Karriere & Jobs</a></li>
             </ul>
           </div>
-
-          <div class="footer-column">
-            <h3>Kontakt</h3>
-            <ul class="footer-links-list footer-contact-list">
-              <li>
-                <strong>Hamburg Mitte</strong>
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noopener"
-                  class="footer-contact-link address-link"
-                >
-                  Adenauerallee 10, 20097 Hamburg
-                </a>
-              </li>
-              <li>
-                <a href="tel:04098259150" class="footer-contact-link phone-link"
-                  >(040) 982 591 50</a
-                >
-              </li>
-              <li>
-                <a
-                  href="mailto:kontakt@academynow-fahrschule.de"
-                  class="footer-contact-link email-link"
-                  >kontakt@academynow-fahrschule.de</a
-                >
-              </li>
-              <li class="footer-hours">
-                <span>Mo–Fr: 10:30 – 18:30, Sa: 10:00 – 14:00</span>
-              </li>
-              <li style="margin-top: 1rem;">
-                <strong>Bergedorf</strong>
-              </li>
-              <li>
-                <a
-                  href="https://www.google.com/maps/place/Chrysanderstra%C3%9Fe+19,+21029+Hamburg/@53.4896,10.2147,17z"
-                  target="_blank"
-                  rel="noopener"
-                  class="footer-contact-link address-link"
-                >
-                  Chrysanderstraße 19, 21029 Hamburg
-                </a>
-              </li>
-              <li>
-                <a
-                  href="tel:040637433359"
-                  class="footer-contact-link phone-link"
-                  >040/637 433 59</a
-                >
-              </li>
-              <li>
-                <a
-                  href="mailto:kontakt-bergedorf@academynow-fahrschule.de"
-                  class="footer-contact-link email-link"
-                  >kontakt-bergedorf@academynow-fahrschule.de</a
-                >
-              </li>
-              <li class="footer-hours">
-                <span>Mo–Fr: 13:00 – 18:30</span>
-              </li>
-            </ul>
-          </div>
-
           <div class="footer-column">
             <h3>Weitere Auftritte</h3>
             <ul class="footer-links-list">
@@ -1735,6 +1608,78 @@
               </li>
               <li><a href="#standorte">Alle Standorte</a></li>
             </ul>
+          </div>
+        </div>
+
+        <div class="footer-contact-row">
+          <h3>Kontakt</h3>
+          <div class="footer-contact-grid">
+            <div class="footer-contact-card">
+              <div class="footer-contact-heading">Hamburg Mitte</div>
+              <ul class="footer-links-list footer-contact-list">
+                <li>
+                  <a
+                    href="https://www.google.com/maps/place/Fahrschule+Academy+Now/@53.5528986,10.0130689,21z/data=!4m6!3m5!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MDYyMi4wIKXMDSoASAFQAw%3D%3D"
+                    target="_blank"
+                    rel="noopener"
+                    class="footer-contact-link address-link"
+                  >
+                    Adenauerallee 10, 20097 Hamburg
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:04098259150"
+                    class="footer-contact-link phone-link"
+                    >(040) 982 591 50</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="mailto:kontakt@academynow-fahrschule.de"
+                    class="footer-contact-link email-link"
+                    >kontakt@academynow-fahrschule.de</a
+                  >
+                </li>
+                <li class="footer-hours">
+                  <span>Mo–Fr: 10:30 – 18:30</span>
+                  <span>Sa: 10:00 – 14:00</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-contact-card">
+              <div class="footer-contact-heading">Bergedorf</div>
+              <ul class="footer-links-list footer-contact-list">
+                <li>
+                  <a
+                    href="https://www.google.com/maps/place/Chrysanderstra%C3%9Fe+19,+21029+Hamburg/@53.4896,10.2147,17z"
+                    target="_blank"
+                    rel="noopener"
+                    class="footer-contact-link address-link"
+                  >
+                    Chrysanderstraße 19, 21029 Hamburg
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="tel:040637433359"
+                    class="footer-contact-link phone-link"
+                    >040 / 637 433 59</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="mailto:kontakt-bergedorf@academynow-fahrschule.de"
+                    class="footer-contact-link email-link"
+                    >kontakt-bergedorf@academynow-fahrschule.de</a
+                  >
+                </li>
+                <li class="footer-hours">
+                  <span>Mo–Fr: 13:00 – 18:30</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -1810,7 +1755,12 @@
           data-web3-bergedorf-key="3e125402-6dc5-4034-a065-0ce3b4d74a1a"
         >
           <!-- Web3Forms Konfiguration -->
-          <input type="hidden" name="access_key" class="web3forms-key" value="">
+          <input
+            type="hidden"
+            name="access_key"
+            class="web3forms-key"
+            value="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
+          >
           <input type="hidden" name="subject" value="Neue Anmeldung - Academy Now Fahrschule">
           <input type="hidden" name="from_name" value="AcademyNow Fahrschule">
           <input type="hidden" name="redirect" value="https://www.academynow-fahrschule.de/danke.html#popup">

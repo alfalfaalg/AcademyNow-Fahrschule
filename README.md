@@ -393,7 +393,7 @@ open tests/TEST_FIXES.html
 ### Externe Services
 
 - **Web3Forms:** https://web3forms.com
-- **Google Tag Manager:** GTM-WWRGDHJ7
+- **Google Tag Manager:** GTM-MSDGXD4L
 - **Google Ads:** AW-17118954542
 - **Google Places API:** (Reviews Integration)
 - **Cookie Yes:** (Cookie-Banner Integration)
