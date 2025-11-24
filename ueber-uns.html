@@ -738,18 +738,50 @@
             <h2>Karriere</h2>
             <div class="section-divider"></div>
             <p class="section-description">
-              Werde Teil unseres Teams und starte deine Karriere bei Academy Now
+              Werde Teil unseres Teams – aktuelle Stellenangebote und Chancen
+              bei Academy Now.
             </p>
           </div>
 
           <div class="karriere-content">
-            <div class="karriere-intro">
-              <p>
-                Wir sind ständig auf der Suche nach motivierten und freundlichen
-                Menschen, die unser Team verstärken möchten. Als wachsende
-                Fahrschule bieten wir dir spannende Entwicklungsmöglichkeiten
-                und ein kollegiales Arbeitsumfeld.
+            <!-- Karriere Einführungskarte -->
+            <div class="karriere-intro-card">
+              <div class="intro-card-badge">Aktuell rekrutieren</div>
+              <h3 class="intro-card-title">Offene Stellen</h3>
+              <ul class="intro-card-list">
+                <li>Fahrlehrer (m/w/d) Klasse B/BE</li>
+                <li>Assistenz im Büro (m/w/d) in Hamburg</li>
+                <li>Marketing/Vertrieb (m/w/d) – Teilzeit</li>
+              </ul>
+              <div class="intro-card-benefits">
+                <div class="benefit-item">
+                  <i class="fas fa-clock"></i>
+                  <span>Flexible Arbeitszeiten & Standorte</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>Weiterbildungen & Mentoring</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-car"></i>
+                  <span>Modernes Fahrzeug- und Schulungsmaterial</span>
+                </div>
+                <div class="benefit-item">
+                  <i class="fas fa-hand-holding-usd"></i>
+                  <span>Transparente Vergütung mit Bonus-Option</span>
+                </div>
+              </div>
+              <p class="intro-card-cta-text">
+                Interesse? Fülle das Karriere-Formular aus und wir melden uns
+                zeitnah. Bitte gib gewünschte Stelle, Arbeitsumfang und deinen
+                Standort an.
               </p>
+              <a href="#kontakt" class="intro-card-btn">Jetzt bewerben</a>
+            </div>
+
+            <!-- Detaillierte Stellenbeschreibungen -->
+            <div class="karriere-details">
+              <h3 class="details-title">Stellendetails</h3>
             </div>
 
             <!-- Karriere-Grid mit angepasstem Initiativbewerbungsblock -->
@@ -801,18 +833,18 @@
             <div class="stelle-card initiativ-card">
               <div class="stelle-header">
                 <h3>Initiativbewerbung</h3>
-                <span class="stelle-badge initiativ-badge">Flexibel</span>
+                <span class="stelle-badge initiativ-badge">Jederzeit</span>
               </div>
               <div class="stelle-body">
                 <p>
-                  Du findest keine passende Stelle, möchtest aber trotzdem Teil
-                  unseres Teams werden? Wir freuen uns auch über deine
-                  Initiativbewerbung!
+                  Keine passende Stelle dabei? Sende uns gerne eine
+                  Initiativbewerbung! Wir freuen uns darauf, dich kennenzulernen
+                  und gemeinsam Möglichkeiten für eine Zusammenarbeit zu finden.
                 </p>
                 <ul class="stelle-details">
-                  <li>Deine Stärken und Fähigkeiten</li>
-                  <li>Deine Vorstellung von deiner Rolle bei uns</li>
-                  <li>Deine Motivation, Teil unseres Teams zu sein</li>
+                  <li>Teile uns deine Stärken und Erfahrungen mit</li>
+                  <li>Beschreibe deine Wunschposition bei uns</li>
+                  <li>Zeig uns deine Motivation und Begeisterung</li>
                 </ul>
                 <a href="#kontakt" class="stelle-btn">Initiativ bewerben</a>
               </div>
@@ -1133,7 +1165,7 @@
               <li class="footer-hours">
                 <span>Mo–Fr: 10:30 – 18:30, Sa: 10:00 – 14:00</span>
               </li>
-              <li style="margin-top: 1rem;">
+              <li style="margin-top: 1rem">
                 <strong>Bergedorf</strong>
               </li>
               <li>
@@ -1147,7 +1179,9 @@
                 </a>
               </li>
               <li>
-                <a href="tel:040637433359" class="footer-contact-link phone-link"
+                <a
+                  href="tel:040637433359"
+                  class="footer-contact-link phone-link"
                   >040/637 433 59</a
                 >
               </li>
@@ -1211,13 +1245,16 @@
        JAVASCRIPT DATEIEN
        ================================================================================= -->
     <!-- WhatsApp Standort-Auswahl Modal -->
-    <div id="whatsapp-modal" class="modal-overlay" style="display: none;">
+    <div id="whatsapp-modal" class="modal-overlay" style="display: none">
       <div class="modal-content whatsapp-modal">
         <h3>Welchen Standort möchten Sie kontaktieren?</h3>
         <p>Bitte wählen Sie Ihren bevorzugten Standort:</p>
 
         <div class="whatsapp-standort-buttons">
-          <button class="whatsapp-standort-btn" onclick="openWhatsApp('mitte'); return false;">
+          <button
+            class="whatsapp-standort-btn"
+            onclick="openWhatsApp('mitte'); return false;"
+          >
             <span class="standort-icon">📍</span>
             <div class="standort-info">
               <strong>Hamburg Mitte</strong>
@@ -1225,7 +1262,10 @@
             </div>
           </button>
 
-          <button class="whatsapp-standort-btn" onclick="openWhatsApp('bergedorf'); return false;">
+          <button
+            class="whatsapp-standort-btn"
+            onclick="openWhatsApp('bergedorf'); return false;"
+          >
             <span class="standort-icon">📍</span>
             <div class="standort-info">
               <strong>Bergedorf</strong>
@@ -1234,7 +1274,12 @@
           </button>
         </div>
 
-        <button class="modal-close-btn" onclick="closeWhatsAppModal(); return false;">Abbrechen</button>
+        <button
+          class="modal-close-btn"
+          onclick="closeWhatsAppModal(); return false;"
+        >
+          Abbrechen
+        </button>
       </div>
     </div>
 
