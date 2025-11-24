@@ -4581,16 +4581,16 @@ html {
 
 /* Modal Content Container */
 .whatsapp-modal {
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   border-radius: 24px;
   padding: 2.5rem;
   max-width: 520px;
   width: 90%;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 60px rgba(15, 31, 61, 0.25);
   animation: modalSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
 @keyframes modalSlideIn {
@@ -4609,12 +4609,12 @@ html {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
-  color: #1a1a1a;
+  color: #0f1f3d;
   font-family: "Montserrat", sans-serif;
 }
 
 .whatsapp-modal p {
-  color: #666;
+  color: #5a6c8a;
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.6;
@@ -4822,7 +4822,8 @@ html {
   max-height: 90vh;
   overflow-y: auto;
   padding: 2.5rem 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(15, 31, 61, 0.25);
+  border: 1px solid rgba(59, 130, 246, 0.1);
   animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -4880,12 +4881,12 @@ html {
 .popup-header h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #0f1f3d;
   margin-bottom: 0.5rem;
 }
 
 .popup-header p {
-  color: #666;
+  color: #5a6c8a;
   font-size: 1rem;
 }
 
@@ -4897,7 +4898,7 @@ html {
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #e0e0e0;
+  background: #e8ecf3;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 1.5rem;
@@ -4905,7 +4906,7 @@ html {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--primary));
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
   border-radius: 10px;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   width: 20%;
@@ -4921,8 +4922,8 @@ html {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #e0e0e0;
-  color: #999;
+  background: #e8ecf3;
+  color: #94a3b8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4933,14 +4934,14 @@ html {
 }
 
 .progress-steps .step.active {
-  background: linear-gradient(135deg, var(--accent), var(--primary));
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
   color: white;
   transform: scale(1.15);
-  box-shadow: 0 4px 12px rgba(255, 95, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
 }
 
 .progress-steps .step.completed {
-  background: var(--accent);
+  background: #3b82f6;
   color: white;
 }
 
@@ -4968,7 +4969,7 @@ html {
 .form-step h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: #0f1f3d;
   margin-bottom: 1.5rem;
 }
 
@@ -4980,7 +4981,7 @@ html {
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: #1e293b;
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
 }
@@ -4990,7 +4991,7 @@ html {
 .form-group textarea {
   width: 100%;
   padding: 1rem 1.25rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid #e2e8f0;
   border-radius: 12px;
   font-size: 1rem;
   font-family: inherit;
@@ -5002,8 +5003,8 @@ html {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 4px rgba(255, 95, 0, 0.1);
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
 }
 
 .form-group textarea {
@@ -5049,15 +5050,15 @@ html {
 
 .btn-next,
 .btn-submit {
-  background: linear-gradient(135deg, var(--accent), var(--primary));
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
   color: white;
-  box-shadow: 0 4px 12px rgba(255, 95, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
 
 .btn-next:hover,
 .btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 95, 0, 0.4);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
 }
 
 .btn-next:active,
@@ -5066,12 +5067,12 @@ html {
 }
 
 .btn-back {
-  background: #f5f5f5;
-  color: #333;
+  background: #f1f5f9;
+  color: #475569;
 }
 
 .btn-back:hover {
-  background: #e0e0e0;
+  background: #e2e8f0;
 }
 
 /* Success Message */
@@ -5083,7 +5084,7 @@ html {
 .success-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
   color: white;
   border-radius: 50%;
   display: flex;
