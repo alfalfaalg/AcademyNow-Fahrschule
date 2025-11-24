@@ -783,6 +783,9 @@ function initializeApp() {
   initPopupFormEvents();
   initPopupFormHandling();
 
+  // Initialize Karriere Modal
+  initKarriereModalEvents();
+
   // Mark app as initialized
   isInitialized = true;
   console.log("✅ AcademyNow App initialized successfully");
@@ -1095,6 +1098,45 @@ function closePopupForm() {
   return false;
 }
 
+// ========================================
+// KARRIERE MODAL FUNCTIONS
+// ========================================
+
+// Karriere Modal öffnen
+function openKarriereModal() {
+  const modal = document.getElementById("karriere-modal");
+  if (modal) {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    console.log("✅ Karriere-Modal geöffnet");
+  }
+  return false;
+}
+
+// Karriere Modal schließen
+function closeKarriereModal() {
+  const modal = document.getElementById("karriere-modal");
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = ""; // Re-enable scrolling
+    resetKarriereForm();
+    console.log("❌ Karriere-Modal geschlossen");
+  }
+  return false;
+}
+
+// Karriere Formular zurücksetzen
+function resetKarriereForm() {
+  const form = document.getElementById("karriere-form");
+  if (form) {
+    form.reset();
+  }
+}
+
+// ========================================
+// END KARRIERE MODAL FUNCTIONS
+// ========================================
+
 // Formular zurücksetzen
 function resetPopupForm() {
   const form = document.getElementById("popup-form");
@@ -1291,6 +1333,32 @@ function initPopupFormEvents() {
     });
 
     console.log("✅ Popup Form Events initialisiert");
+  }
+}
+
+// Event Listeners für Karriere Modal
+function initKarriereModalEvents() {
+  const modal = document.getElementById("karriere-modal");
+
+  if (modal) {
+    // Click außerhalb schließt Modal
+    modal.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        closeKarriereModal();
+      }
+    });
+
+    // ESC-Taste zum Schließen
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        const modalStyle = window.getComputedStyle(modal);
+        if (modalStyle.display !== "none") {
+          closeKarriereModal();
+        }
+      }
+    });
+
+    console.log("✅ Karriere Modal Events initialisiert");
   }
 }
 

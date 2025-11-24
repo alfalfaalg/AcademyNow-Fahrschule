@@ -535,7 +535,6 @@
     <nav aria-label="Skip links" class="skip-links">
       <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
       <a href="#main-navigation" class="skip-link">Zur Navigation springen</a>
-      <a href="#kontakt" class="skip-link">Zum Kontakt springen</a>
     </nav>
 
     <!-- =================================================================================
@@ -606,9 +605,6 @@
               <li><a href="#standorte" class="nav-link">Standorte</a></li>
               <li><a href="#fuhrpark" class="nav-link">Fuhrpark</a></li>
               <li><a href="#faq" class="nav-link">FAQ</a></li>
-              <li>
-                <a href="ueber-uns.html#ueber-uns" class="nav-link">Über uns</a>
-              </li>
             </ul>
           </nav>
 
@@ -716,7 +712,7 @@
               </p> -->
 
               <div class="hero-buttons">
-                <a href="#kontakt" class="primary-btn hero-btn"
+                <a href="#" onclick="openPopupForm(); return false;" class="primary-btn hero-btn"
                   >Kostenloses Angebot</a
                 >
               </div>
@@ -750,6 +746,53 @@
       <!-- =================================================================================
        HERO BACKGROUND SWITCHER (Entwicklungstools)
        ================================================================================= -->
+
+      <!-- =================================================================================
+       KOMPAKTER ÜBER-UNS BLOCK
+      ================================================================================= -->
+      <section id="about-compact" class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Über uns</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Moderne Fahrschule mit persönlicher Betreuung, flexiblen Zeiten und nachhaltigem Lernerfolg.
+            </p>
+          </div>
+          <div class="about-compact-grid">
+            <div class="about-compact-text">
+              <p>
+                Die Academy Now Fahrschule steht für effiziente Ausbildung in entspannter Atmosphäre. Wir begleiten dich mit einem geduldigen Team und passen uns deinem Tempo an – vom ersten Gespräch bis zur erfolgreichen Prüfung.
+              </p>
+              <ul class="about-highlights">
+                <li><span class="icon">•</span><span>Individuelle Lernpläne und persönliche Betreuung</span></li>
+                <li><span class="icon">•</span><span>Moderne Fahrzeuge, flexible Termine – auch abends und am Wochenende</span></li>
+                <li><span class="icon">•</span><span>Hohe Bestehensquote dank intensiver Prüfungsvorbereitung</span></li>
+              </ul>
+              <div class="about-cta">
+                <a href="#" onclick="openPopupForm(); return false;" class="primary-btn">Unverbindlich beraten lassen</a>
+              </div>
+            </div>
+            <div class="about-compact-cards">
+              <div class="about-compact-card">
+                <div class="about-compact-icon">📍</div>
+                <h3>Zentrale Lage</h3>
+                <p>Optimal mit ÖPNV erreichbar. Zwei zentrale Standorte in Hamburg Mitte und Bergedorf – perfekt angebunden.</p>
+              </div>
+              <div class="about-compact-card">
+                <div class="about-compact-icon">🕒</div>
+                <h3>Flexible Zeiten</h3>
+                <p>Abends und am Wochenende verfügbar. Fahrstunden nach deinem Zeitplan – auch für Berufstätige ideal.</p>
+              </div>
+              <div class="about-compact-card">
+                <div class="about-compact-icon">✅</div>
+                <h3>Hohe Erfolgsquote</h3>
+                <p>Hohe Bestehensquote beim ersten Versuch dank intensiver Vorbereitung und erfahrenen Fahrlehrern.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- =================================================================================
        PREISE SEKTION (verschoben direkt nach dem Hero-Bereich)
@@ -1001,7 +1044,7 @@
           </div>
 
           <div class="leistungen-cta-wrap">
-            <a href="#kontakt" class="primary-btn leistungen-cta"
+            <a href="#" onclick="openPopupForm(); return false;" class="primary-btn leistungen-cta"
               >Jetzt zum Antragsformular</a
             >
           </div>
@@ -1032,9 +1075,9 @@
               <div class="google-maps-container">
                 <iframe
                   class="maps-iframe"
-                  data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.5!2d10.0129408!3d53.552809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18fce29063f77%3A0x793896a833d7c53!2sAdenauerallee%2010%2C%2020097%20Hamburg!5e0!3m2!1sde!2sde!4v1234567890"
+                  data-src="https://maps.google.com/maps?q=Adenauerallee%2010%2C%2020097%20Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Hamburg Mitte"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2369.5!2d10.0129408!3d53.552809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18fce29063f77%3A0x793896a833d7c53!2sAdenauerallee%2010%2C%2020097%20Hamburg!5e0!3m2!1sde!2sde!4v1234567890"
+                  src="https://maps.google.com/maps?q=Adenauerallee%2010%2C%2020097%20Hamburg&output=embed"
                   width="600"
                   height="450"
                   loading="lazy"
@@ -1067,7 +1110,7 @@
                   >(040) 982 591 50</a
                 >
                 <p class="oeffnungszeiten">Mo-Fr: 10:30-18:30 Uhr</p>
-                <a href="#kontakt" class="primary-btn termin-button"
+                <a href="#" onclick="openPopupForm(); return false;" class="primary-btn termin-button"
                   >Termin vereinbaren</a
                 >
               </div>
@@ -1079,9 +1122,9 @@
               <div class="google-maps-container">
                 <iframe
                   class="maps-iframe"
-                  data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2375.8!2d10.1551!3d53.4892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sChrysanderstra%C3%9Fe%2019%2C%2021029%20Hamburg!5e0!3m2!1sde!2sde!4v1234567890"
+                  data-src="https://maps.google.com/maps?q=Chrysanderstra%C3%9Fe%2019%2C%2021029%20Hamburg&output=embed"
                   title="Fahrschule Academy Now Standort Bergedorf"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2375.8!2d10.1551!3d53.4892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sChrysanderstra%C3%9Fe%2019%2C%2021029%20Hamburg!5e0!3m2!1sde!2sde!4v1234567890"
+                  src="https://maps.google.com/maps?q=Chrysanderstra%C3%9Fe%2019%2C%2021029%20Hamburg&output=embed"
                   width="600"
                   height="450"
                   loading="lazy"
@@ -1114,10 +1157,78 @@
                   >040/637 433 59</a
                 >
                 <p class="oeffnungszeiten">Mo-Fr: 13:00-18:30 Uhr</p>
-                <a href="#kontakt" class="primary-btn termin-button"
+                <a href="#" onclick="openPopupForm(); return false;" class="primary-btn termin-button"
                   >Termin vereinbaren</a
                 >
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================================
+       KARRIERE BLOCK
+      ================================================================================= -->
+      <section id="karriere" class="section karriere-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Karriere</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Werde Teil unseres Teams – aktuelle Stellenangebote und Chancen bei Academy Now.
+            </p>
+          </div>
+          <div class="karriere-content">
+            <div class="karriere-intro">
+              <h3>Offene Stellen bei AcademyNow Fahrschule</h3>
+              <p>Werde Teil unseres wachsenden Teams und gestalte die Zukunft der Fahrausbildung mit!</p>
+            </div>
+
+            <div class="karriere-jobs-grid">
+              <div class="job-card">
+                <div class="job-icon">🚗</div>
+                <h4>Fahrlehrer (m/w/d) Klasse B/BE</h4>
+                <p>Standorte: Hamburg Mitte & Bergedorf</p>
+              </div>
+              <div class="job-card">
+                <div class="job-icon">📋</div>
+                <h4>Assistenz im Büro (m/w/d)</h4>
+                <p>Standort: Hamburg Mitte</p>
+              </div>
+              <div class="job-card">
+                <div class="job-icon">📱</div>
+                <h4>Marketing/Vertrieb (m/w/d)</h4>
+                <p>Teilzeit • Flexibel</p>
+              </div>
+            </div>
+
+            <div class="karriere-benefits-section">
+              <h4>Deine Vorteile bei uns</h4>
+              <div class="karriere-benefits">
+                <div class="karriere-benefit">
+                  <span class="icon">✓</span>
+                  <span>Flexible Arbeitszeiten & Standorte</span>
+                </div>
+                <div class="karriere-benefit">
+                  <span class="icon">✓</span>
+                  <span>Weiterbildungen & Mentoring</span>
+                </div>
+                <div class="karriere-benefit">
+                  <span class="icon">✓</span>
+                  <span>Moderne Fahrzeuge & Schulungsmaterial</span>
+                </div>
+                <div class="karriere-benefit">
+                  <span class="icon">✓</span>
+                  <span>Transparente Vergütung mit Bonus-Option</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="karriere-cta">
+              <p>
+                Interesse? Fülle das Bewerbungsformular aus und wir melden uns zeitnah bei dir. Bitte gib die gewünschte Stelle, Arbeitsumfang und deinen Standort an.
+              </p>
+              <a href="#" onclick="openKarriereModal(); return false;" class="primary-btn">Jetzt bewerben</a>
             </div>
           </div>
         </div>
@@ -1320,208 +1431,62 @@
                 </p>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- =================================================================================
-         KONTAKTFORMULAR SEKTION
-         ================================================================================= -->
-      <section id="kontakt" class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2>Kontakt</h2>
-            <div class="section-divider"></div>
-            <p class="section-description">Mit uns kommst du ans Ziel!</p>
-          </div>
-
-          <div class="kontakt-formular">
-            <h3>Schreib uns eine Nachricht</h3>
-            <form
-              action="https://api.web3forms.com/submit"
-              method="POST"
-              id="kontaktForm-home"
-              class="form"
-              role="form"
-              aria-labelledby="kontakt-heading"
-              data-web3-hamburg-key="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
-              data-web3-bergedorf-key="3e125402-6dc5-4034-a065-0ce3b4d74a1a"
-            >
-              <!-- Web3Forms Konfiguration -->
-              <input
-                type="hidden"
-                name="access_key"
-                class="web3forms-key"
-                value="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
-              />
-              <input
-                type="hidden"
-                name="subject"
-                value="Neue Anfrage von AcademyNow Webseite"
-              />
-              <input
-                type="hidden"
-                name="from_name"
-                value="AcademyNow Fahrschule"
-              />
-              <input
-                type="hidden"
-                name="redirect"
-                value="https://www.academynow-fahrschule.de/danke.html"
-              />
-
-              <div class="form-group horizontal">
-                <label for="name"
-                  >Name
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Dein Name"
-                  required
-                  aria-required="true"
-                  aria-describedby="name-help"
-                />
-                <div id="name-help" class="sr-only">
-                  Dein vollständiger Name ist erforderlich
-                </div>
-              </div>
-
-              <div class="form-group horizontal">
-                <label for="telefon"
-                  >Telefon
-                  <span class="optional-indicator">(optional)</span></label
-                >
-                <input
-                  type="tel"
-                  id="telefon"
-                  name="telefon"
-                  placeholder="Deine Telefonnummer"
-                  aria-describedby="telefon-help"
-                />
-                <div id="telefon-help" class="sr-only">
-                  Telefonnummer für Rückfragen - optional
-                </div>
-              </div>
-
-              <div class="form-group horizontal">
-                <label for="email"
-                  >E-Mail
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="Deine E-Mail-Adresse"
-                  required
-                  aria-required="true"
-                  aria-describedby="email-help"
-                />
-                <div id="email-help" class="sr-only">
-                  Deine E-Mail-Adresse für unsere Antwort
-                </div>
-              </div>
-
-              <div class="form-group horizontal">
-                <label for="fuehrerscheinklasse"
-                  >Führerscheinklasse
-                  <span class="optional-indicator">(optional)</span></label
-                >
-                <select
-                  id="fuehrerscheinklasse"
-                  name="fuehrerscheinklasse"
-                  aria-describedby="klasse-help"
-                >
-                  <option value="">Bitte wählen</option>
-                  <option value="B">Klasse B (PKW)</option>
-                  <option value="A">Klasse A (Motorrad)</option>
-                  <option value="A1">Klasse A1 (Leichtkraftrad)</option>
-                  <option value="AM">Klasse AM (Mofa/Moped)</option>
-                  <option value="BE">Klasse BE (PKW mit Anhänger)</option>
-                  <option value="C">Klasse C (LKW)</option>
-                  <option value="CE">Klasse CE (LKW mit Anhänger)</option>
-                  <option value="andere">Andere/Nicht sicher</option>
-                </select>
-                <div id="klasse-help" class="sr-only">
-                  Wähle die gewünschte Führerscheinklasse - optional
-                </div>
-              </div>
-
-              <div class="form-group horizontal">
-                <label for="standort-auswahl"
-                  >Standort
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <select
-                  id="standort-auswahl"
-                  name="standort"
-                  required
-                  aria-required="true"
-                  aria-describedby="standort-help"
-                >
-                  <option value="">Bitte Standort wählen</option>
-                  <option value="Hamburg Mitte">
-                    Hamburg Mitte – Adenauerallee 10
-                  </option>
-                  <option value="Bergedorf">
-                    Hamburg Bergedorf – Chrysanderstraße 19
-                  </option>
-                </select>
-                <div id="standort-help" class="sr-only">
-                  Wähle den Standort, den wir kontaktieren sollen
-                </div>
-              </div>
-
-              <div class="checkbox-group">
-                <input
-                  type="checkbox"
-                  id="datenschutz"
-                  name="datenschutz"
-                  value="akzeptiert"
-                  required
-                  aria-required="true"
-                  aria-describedby="datenschutz-help"
-                />
-                <label for="datenschutz"
-                  >Ich habe die
-                  <a
-                    href="datenschutz.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Datenschutzerklärung in neuem Tab öffnen"
-                    >Datenschutzerklärung</a
-                  >
-                  gelesen und stimme zu, dass meine Daten zum Zweck der
-                  Kontaktaufnahme verarbeitet werden.
-                  <span class="required-indicator" aria-label="Pflichtfeld"
-                    >*</span
-                  ></label
-                >
-                <div id="datenschutz-help" class="sr-only">
-                  Zustimmung zur Datenverarbeitung ist erforderlich
-                </div>
-              </div>
-
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
               <button
-                type="submit"
-                class="submit-btn"
-                aria-label="Kontaktformular absenden"
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-4"
+                id="faq-question-4"
               >
-                Nachricht senden
+                <h3>Warum ist AcademyNow die beste Fahrschule für mich?</h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
               </button>
-            </form>
+              <div
+                class="faq-answer"
+                id="faq-answer-4"
+                aria-labelledby="faq-question-4"
+                role="region"
+              >
+                <p>
+                  Wir kombinieren flexible Zeiten, erfahrene Fahrlehrer und moderne Fahrzeuge mit hoher Bestehensquote und persönlicher Betreuung – ideal, wenn du schnell und sicher zum Führerschein möchtest.
+                </p>
+              </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+              <button
+                class="faq-question"
+                aria-expanded="false"
+                aria-controls="faq-answer-5"
+                id="faq-question-5"
+              >
+                <h3>Welche Dokumente benötige ich für die Anmeldung?</h3>
+                <span class="faq-icon" aria-hidden="true">+</span>
+              </button>
+              <div
+                class="faq-answer"
+                id="faq-answer-5"
+                aria-labelledby="faq-question-5"
+                role="region"
+              >
+                <p>
+                  Gültiger Ausweis, biometrisches Passfoto, Sehtest, Erste-Hilfe-Nachweis und ggf. Meldebescheinigung. Wir unterstützen dich bei allen Formularen und Terminen.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- Kontaktsektion auskommentiert – Popup-Formular wird genutzt -->
+      <!--
+      <section id="kontakt" class="section">
+        ...
+      </section>
+      -->
     </main>
 
     <!-- =================================================================================
@@ -1579,10 +1544,9 @@
           <div class="footer-column">
             <h3>Über Academy Now</h3>
             <ul class="footer-links-list">
-              <li><a href="ueber-uns.html#ueber-uns">Über uns</a></li>
               <li><a href="#standorte">Standorte</a></li>
               <li><a href="#faq">Häufige Fragen</a></li>
-              <li><a href="#kontakt">Kontakt</a></li>
+              <li><a href="#" onclick="openPopupForm(); return false;">Kontakt</a></li>
             </ul>
           </div>
 
@@ -1594,7 +1558,7 @@
               </li>
               <li><a href="#preise">Preise & Pakete</a></li>
               <li><a href="#leistungen">Automatik- & Intensivkurse</a></li>
-              <li><a href="ueber-uns.html#karriere">Karriere & Jobs</a></li>
+              <li><a href="#karriere">Karriere & Jobs</a></li>
             </ul>
           </div>
           <div class="footer-column">
@@ -1928,6 +1892,119 @@
         >
           Abbrechen
         </button>
+      </div>
+    </div>
+
+    <!-- Karriere/Stellenangebote Modal -->
+    <div id="karriere-modal" class="popup-overlay" style="display: none">
+      <div class="popup-container">
+        <button
+          class="popup-close-btn"
+          onclick="closeKarriereModal(); return false;"
+          aria-label="Formular schließen"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="popup-header">
+          <h2>Jetzt bewerben</h2>
+          <p>Werde Teil des Academy Now Teams</p>
+        </div>
+
+        <form
+          id="karriere-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="popup-form"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="Neue Bewerbung - Academy Now Fahrschule"
+          />
+          <input
+            type="hidden"
+            name="from_name"
+            value="AcademyNow Fahrschule"
+          />
+          <input type="text" name="botcheck" style="display: none" />
+
+          <div class="form-group">
+            <label for="karriere-name">Name *</label>
+            <input
+              type="text"
+              id="karriere-name"
+              name="Name"
+              required
+              placeholder="Ihr vollständiger Name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="karriere-email">E-Mail *</label>
+            <input
+              type="email"
+              id="karriere-email"
+              name="Email"
+              required
+              placeholder="ihre@email.de"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="karriere-phone">Telefon *</label>
+            <input
+              type="tel"
+              id="karriere-phone"
+              name="Telefon"
+              required
+              placeholder="+49..."
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="karriere-stelle">Gewünschte Stelle *</label>
+            <select id="karriere-stelle" name="Stelle" required>
+              <option value="">Bitte wählen...</option>
+              <option value="Fahrlehrer">Fahrlehrer/in (m/w/d)</option>
+              <option value="Marketing">Marketing/Vertrieb (m/w/d)</option>
+              <option value="Assistenz">Assistenz im Büro (m/w/d)</option>
+              <option value="Sonstiges">Initiativbewerbung</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="karriere-nachricht"
+              >Nachricht / Anschreiben *</label
+            >
+            <textarea
+              id="karriere-nachricht"
+              name="Nachricht"
+              rows="5"
+              required
+              placeholder="Erzählen Sie uns von sich..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            Bewerbung absenden
+          </button>
+        </form>
       </div>
     </div>
 
