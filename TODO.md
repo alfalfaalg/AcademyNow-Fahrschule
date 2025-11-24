@@ -1,16 +1,14 @@
 # TODO – AcademyNow Fahrschule (laufende Arbeiten)
 
 ## Offene Aufgaben
-- Bewertungsblock als Karussell neu gestalten (mobile Swipe + Desktop Multi-Card wie Referenz).
-- Über-uns-Block entfernen/ersetzen durch kompakten Info-Block zwischen erstem Block und Preise.
-- Karriere-Blöcke übernehmen statt Über-uns; auf Karriere-Seite eigenes Formular mit nötigen Feldern ergänzen.
-- FAQ um zusätzliche Fragen erweitern (z.B. Warum AcademyNow?, Welche Dokumente brauche ich?).
-
-## In Arbeit
-- Review-Karussell finalisieren (Styling & Tests).
+- Google Places API-Key produktiv freischalten (Billing + erlaubte Referrer), damit echte Profilbilder im Review-Slider laden.
+- Asset-Optimierung: große JPG/PNG → WebP/AVIF; ungenutzte Bilder/Icons aufräumen.
+- JS/CSS-Light-Cleanup: unbenutzte Funktionen/Styles identifizieren und gefahrlos entfernen (keine Behaviour-Änderungen).
+- Form-Zustellung live prüfen (Kontakt-/Bewerbungs-Popup via Web3Forms).
 
 ## Erledigt (diese Session)
-- Footer-Kontaktbereich neu layoutet (zwei Standorte nebeneinander, responsive Cards).
-- Header-CTA auf Telefonlink umgestellt; „Standorte entdecken“-CTA im Hero entfernt.
-- Neue Anmelde-Schaltfläche nach „Unsere Leistungen“ hinzugefügt.
-- Kontaktformular vereinfacht (Feld „Deine Nachricht“ entfernt).
+- „Über uns“ kompakt zentriert; CTA ergänzt, Karten vereinheitlicht.
+- Karriere-Karte modernisiert (Recruiting-Badge, Benefits).
+- Kontaktsektion entfernt, alle Kontakt-CTAs triggern Popup.
+- Standorte-Maps auf funktionierende Google-Maps-Embeds gestellt.
+- `ueber-uns.html` entfernt, `sitemap.xml` bereinigt.

@@ -8,6 +8,15 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 
 ## [2.0.0] - 2025-10-18
 
+## [2.0.1] - 2025-10-29
+
+### Geändert
+- Über-uns-Abschnitt komprimiert, zentriert und um CTA ergänzt; Karriere-Karte mit Recruiting-Badge und Benefit-Grid aufgefrischt.
+- Kontaktsektion auf der Startseite entfernt, alle Kontakt-CTAs öffnen das Popup-Formular.
+- Standorte-Maps auf funktionierende Google-Maps-Embeds umgestellt.
+- Nicht genutzte `ueber-uns.html` entfernt; `sitemap.xml` bereinigt (Über uns / Coming Soon entfernt).
+- Reviews-Fallback verlinkt direkt auf die Google-Maps-Place-URL; Avatar-Platzhalter ergänzt.
+
 ### 🔧 Behoben (Critical Fixes)
 
 #### Event Listener Duplikate

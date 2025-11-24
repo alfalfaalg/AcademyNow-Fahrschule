@@ -2,8 +2,8 @@
 
 Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg mit vollständiger DSGVO-Konformität, PWA-Support und optimierten Hover-Effekten.
 
-**Stand:** 18. Oktober 2025
-**Version:** 2.0 (Event Listener & Hover-Effekte Fix)
+**Stand:** 29. Oktober 2025
+**Version:** 2.0.1 (Kontakt-Popup only, kompakter Über-uns, Karten-Fixes)
 
 ---
 
@@ -20,8 +20,8 @@ Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg m
 ### Technische Highlights
 - ✅ **Event Listener Guards** - Keine doppelten Form-Submissions
 - ✅ **Smooth Hover-Effekte** - Material Design cubic-bezier Transitions
-- ✅ **Google Reviews Integration** mit 6h Caching
-- ✅ **FormSubmit.co** Integration für Kontaktformular
+- ✅ **Google Reviews Integration** mit 6h Caching (Places API, gültiger Key nötig)
+- ✅ **Web3Forms** Integration für Kontakt-/Bewerbungs-Popups
 - ✅ **Google Tag Manager** + Consent Mode v2
 - ✅ **ID-Duplikate behoben** - Unique IDs über alle Seiten
 
@@ -55,7 +55,7 @@ open http://localhost:8080
 ```
 📁 AcademyNow-Fahrschule/
 ├── 📄 index.html                 # Hauptseite (Startseite)
-├── 📄 ueber-uns.html             # Über uns + Karriere
+├── 📄 ueber-uns.html             # (entfernt) frühere Über-uns-Seite
 ├── 📄 danke.html                 # Danke-Seite (nach Formular)
 ├── 📄 impressum.html             # Impressum
 ├── 📄 datenschutz.html           # Datenschutzerklärung
@@ -64,8 +64,7 @@ open http://localhost:8080
 ├── 📄 sw.js                      # Service Worker
 │
 ├── 📁 css/
-│   ├── styles.css                # Haupt-Stylesheet (~4300 Zeilen)
-│   └── mobile.css                # Mobile-spezifische Styles
+│   └── styles.css                # Haupt-Stylesheet
 │
 ├── 📁 js/
 │   ├── main.js                   # Haupt-JavaScript (Event Listener Guards)
