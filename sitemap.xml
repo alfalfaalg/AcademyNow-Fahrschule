@@ -8,14 +8,6 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Über uns Seite -->
-  <url>
-    <loc>https://academynow-fahrschule.de/ueber-uns.html</loc>
-    <lastmod>2025-10-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Datenschutz Seite -->
   <url>
     <loc>https://academynow-fahrschule.de/datenschutz.html</loc>
@@ -40,11 +32,4 @@
     <priority>0.2</priority>
   </url>
 
-  <!-- Coming Soon Seite (falls vorhanden) -->
-  <url>
-    <loc>https://academynow-fahrschule.de/coming-soon.html</loc>
-    <lastmod>2025-10-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
 </urlset>
