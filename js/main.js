@@ -1339,6 +1339,8 @@ function initPopupFormEvents() {
 // Event Listeners für Karriere Modal
 function initKarriereModalEvents() {
   const modal = document.getElementById("karriere-modal");
+  const form = document.getElementById("karriere-form");
+  const standortSelect = form?.querySelector("#karriere-standort");
 
   if (modal) {
     // Click außerhalb schließt Modal
@@ -1357,6 +1359,11 @@ function initKarriereModalEvents() {
         }
       }
     });
+
+    // Web3Forms Routing nach Standort
+    if (form) {
+      configureWeb3FormsRouting(form, standortSelect);
+    }
 
     console.log("✅ Karriere Modal Events initialisiert");
   }

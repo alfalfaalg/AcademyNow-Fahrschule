@@ -1922,6 +1922,8 @@
           action="https://api.web3forms.com/submit"
           method="POST"
           class="popup-form"
+          data-web3-hamburg-key="18b5c4c6-a079-4e4a-b3d3-644f176996b8"
+          data-web3-bergedorf-key="3e125402-6dc5-4034-a065-0ce3b4d74a1a"
         >
           <input
             type="hidden"
@@ -1968,9 +1970,17 @@
               type="tel"
               id="karriere-phone"
               name="Telefon"
-              required
-              placeholder="+49..."
-            />
+            required
+            placeholder="+49..."
+          />
+        </div>
+
+          <div class="form-group">
+            <label for="karriere-standort">Bevorzugter Standort *</label>
+            <select id="karriere-standort" name="Standort" required>
+              <option value="Hamburg Mitte" selected>Hamburg Mitte - Adenauerallee 10</option>
+              <option value="Bergedorf">Bergedorf - Chrysanderstraße 19</option>
+            </select>
           </div>
 
           <div class="form-group">
