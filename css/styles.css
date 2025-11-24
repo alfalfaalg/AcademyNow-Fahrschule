@@ -5455,3 +5455,173 @@ html {
 #about-compact .about-compact-cards {
   justify-items: center;
 }
+
+/* =================================================================================
+   WARUM ACADEMYNOW SECTION
+   ================================================================================= */
+.warum-section {
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.warum-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 2rem;
+}
+
+.warum-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(15, 31, 61, 0.08);
+  border: 1px solid rgba(15, 31, 61, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.warum-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(15, 31, 61, 0.12);
+}
+
+.warum-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #e9f0fb, #dfe8f9);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.warum-card h3 {
+  font-size: 1.25rem;
+  color: #0f1f3d;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.warum-card p {
+  color: #5a6c8a;
+  line-height: 1.6;
+  font-size: 0.975rem;
+}
+
+/* =================================================================================
+   FÜHRERSCHEINKLASSEN SECTION
+   ================================================================================= */
+.fuehrerschein-section {
+  background: white;
+}
+
+.fuehrerschein-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 2rem;
+}
+
+.fuehrerschein-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 24px;
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fuehrerschein-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+  transform: translateY(-4px);
+}
+
+.fuehrerschein-icon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #e9f0fb, #dfe8f9);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  margin-bottom: 4px;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.fuehrerschein-card h3 {
+  font-size: 1.2rem;
+  color: #0f1f3d;
+  margin: 0;
+  font-weight: 600;
+}
+
+.klassen-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.klassen-badge {
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.fuehrerschein-card p {
+  color: #5a6c8a;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.fuehrerschein-card .secondary-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: white;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.fuehrerschein-card .secondary-btn:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .warum-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .fuehrerschein-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .warum-card {
+    padding: 24px 20px;
+  }
+
+  .fuehrerschein-card {
+    padding: 24px 20px;
+  }
+}
