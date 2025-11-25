@@ -4284,9 +4284,9 @@ html {
     font-size: 0.95rem;
   }
 
-  /* Scroll Indicator */
+  /* Scroll Indicator - auf Mobile verstecken */
   .scroll-indicator {
-    bottom: 10px;
+    display: none !important;
   }
 
   /* ============================================================================
