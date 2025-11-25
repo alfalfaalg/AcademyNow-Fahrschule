@@ -287,9 +287,9 @@
     font-size: 0.95rem;
   }
 
-  /* Scroll Indicator */
+  /* Scroll Indicator - auf Mobile verstecken (nimmt zu viel Platz weg) */
   .scroll-indicator {
-    bottom: 10px;
+    display: none !important;
   }
 
   /* Sections */
