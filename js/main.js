@@ -1007,6 +1007,35 @@ function closeWhatsAppModal() {
   return false;
 }
 
+// =================================================================================
+// TELEFON MODAL FUNKTIONEN (Standortauswahl)
+// =================================================================================
+
+// Telefon Modal öffnen
+function showTelefonModal(event) {
+  if (event) event.preventDefault();
+  const modal = document.getElementById("telefon-modal");
+  if (modal) {
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+    console.log("📞 Telefon Modal geöffnet");
+  } else {
+    console.error("❌ Telefon Modal nicht gefunden!");
+  }
+  return false; // Prevent default link behavior
+}
+
+// Telefon Modal schließen
+function closeTelefonModal() {
+  const modal = document.getElementById("telefon-modal");
+  if (modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "auto"; // Re-enable scrolling
+    console.log("❌ Telefon Modal geschlossen");
+  }
+  return false;
+}
+
 // WhatsApp Chat mit gewähltem Standort öffnen
 function openWhatsApp(standort) {
   let phoneNumber;
