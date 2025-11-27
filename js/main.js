@@ -929,7 +929,7 @@ function closeWhatsAppModal() {
   const modal = document.getElementById("whatsapp-modal");
   if (modal) {
     modal.style.display = "none";
-    document.body.style.overflow = "auto"; // Re-enable scrolling
+    document.body.style.overflow = ""; // Re-enable scrolling (empty = browser default)
     console.log("❌ WhatsApp Modal geschlossen");
   }
   return false;
@@ -958,7 +958,7 @@ function closeTelefonModal() {
   const modal = document.getElementById("telefon-modal");
   if (modal) {
     modal.style.display = "none";
-    document.body.style.overflow = "auto"; // Re-enable scrolling
+    document.body.style.overflow = ""; // Re-enable scrolling (empty = browser default)
     console.log("❌ Telefon Modal geschlossen");
   }
   return false;
