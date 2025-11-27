@@ -4,8 +4,8 @@
   "description": "Moderne Fahrausbildung in Hamburg. Führerschein Klassen A, B, BE, C, CE. Automatik-Ausbildung und Intensivkurse.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A214A",
-  "theme_color": "#0A214A",
+  "background_color": "#15171c",
+  "theme_color": "#15171c",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "de",
@@ -39,10 +39,10 @@
   ],
   "shortcuts": [
     {
-      "name": "Direkt anmelden",
-      "short_name": "Anmelden",
-      "description": "Zur Fahrschul-Anmeldung",
-      "url": "https://fs0478.fso360-svc.de/",
+      "name": "Preise ansehen",
+      "short_name": "Preise",
+      "description": "Unsere Fahrschul-Preise",
+      "url": "/#preise",
       "icons": [
         {
           "src": "images/logo_favicon.png",
@@ -52,10 +52,10 @@
       ]
     },
     {
-      "name": "Kontakt",
-      "short_name": "Kontakt",
-      "description": "Kontaktformular öffnen",
-      "url": "/#kontakt",
+      "name": "Standorte",
+      "short_name": "Standorte",
+      "description": "Unsere Standorte in Hamburg",
+      "url": "/#standorte",
       "icons": [
         {
           "src": "images/logo_favicon.png",
@@ -65,10 +65,10 @@
       ]
     },
     {
-      "name": "WhatsApp",
-      "short_name": "WhatsApp",
-      "description": "WhatsApp-Chat öffnen",
-      "url": "https://wa.me/4917631065840",
+      "name": "FAQ",
+      "short_name": "FAQ",
+      "description": "Häufig gestellte Fragen",
+      "url": "/#faq",
       "icons": [
         {
           "src": "images/logo_favicon.png",

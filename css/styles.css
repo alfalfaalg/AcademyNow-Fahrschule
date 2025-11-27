@@ -48,6 +48,9 @@
   --container-width: 1300px;
   --section-padding: 80px 0;
   --card-radius: 10px;
+  /* Z-Index Struktur */
+  --z-mobile-nav-overlay: 2000;
+  --z-mobile-nav-trigger: 3001;
 }
 
 * {
@@ -1833,7 +1836,11 @@ nav ul li a.nav-link.active::after {
 
 .leistungen-cta-wrap {
   text-align: center;
-  margin: 0 0 10px;
+  margin: 50px 0 30px;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  border: 2px dashed var(--accent);
 }
 
 .leistungen-cta {
@@ -1841,10 +1848,28 @@ nav ul li a.nav-link.active::after {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-width: 260px;
-  padding-inline: 28px;
+  min-width: 300px;
+  padding: 18px 36px;
   text-transform: none;
   font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 24px rgba(209, 177, 124, 0.35);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.leistungen-cta:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(209, 177, 124, 0.45);
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 8px 24px rgba(209, 177, 124, 0.35);
+  }
+  50% {
+    box-shadow: 0 8px 32px rgba(209, 177, 124, 0.55);
+  }
 }
 
 .leistung-item {
@@ -1870,17 +1895,12 @@ nav ul li a.nav-link.active::after {
 }
 
 .leistung-icon {
-  width: 80px;
-  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent;
-  border: 2px solid var(--accent);
   color: var(--accent);
-  border-radius: 50%;
   margin-bottom: 15px;
-  font-size: 2rem;
+  font-size: 3rem;
   /* Keine Transition mehr - Icon bewegt sich mit der ganzen Box */
 }
 
@@ -4051,7 +4071,7 @@ html {
     grid-row: 1;
     justify-self: end;
     display: inline-flex !important;
-    z-index: 1100;
+    z-index: var(--z-mobile-nav-trigger, 3001);
     padding: 8px;
   }
 
@@ -4634,7 +4654,7 @@ html {
   align-items: center;
   gap: 1.25rem;
   padding: 1.5rem 1.75rem;
-  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
   color: white;
   border: none;
   border-radius: 16px;
@@ -4642,7 +4662,7 @@ html {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1rem;
   text-align: left;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -4668,7 +4688,7 @@ html {
 
 .whatsapp-standort-btn:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
 }
 
 .whatsapp-standort-btn:active {
@@ -5199,10 +5219,11 @@ html {
   padding: 28px 24px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
   border: 1px solid rgba(15, 31, 61, 0.06);
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  align-items: center;
+  gap: 8px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -5212,18 +5233,12 @@ html {
 }
 
 .about-compact-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  color: #0f1f3d;
-  background: linear-gradient(135deg, #e9f0fb, #dfe8f9);
-  border: 1px solid rgba(15, 31, 61, 0.08);
-  box-shadow: 0 6px 16px rgba(15, 31, 61, 0.08);
-  margin-bottom: 4px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 2.5rem;
 }
 
 .about-compact-card h3 {
@@ -5239,6 +5254,7 @@ html {
   margin: 0;
   font-size: 0.975rem;
   line-height: 1.6;
+  text-align: center;
 }
 
 .about-highlights {
@@ -5265,6 +5281,7 @@ html {
 
 .about-cta {
   margin-top: 14px;
+  margin-bottom: 40px;
   display: inline-flex;
 }
 
@@ -5321,14 +5338,14 @@ html {
 .job-icon {
   width: 56px;
   height: 56px;
-  border-radius: 14px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.6rem;
-  background: linear-gradient(135deg, #e9f0fb, #dfe8f9);
-  border: 1px solid rgba(15, 31, 61, 0.08);
-  box-shadow: 0 6px 16px rgba(15, 31, 61, 0.08);
+  font-size: 1.4rem;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
   margin-bottom: 16px;
 }
 
@@ -5516,13 +5533,18 @@ html {
    ================================================================================= */
 .fuehrerschein-section {
   background: white;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .fuehrerschein-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin-top: 2rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .fuehrerschein-card {
@@ -5543,16 +5565,12 @@ html {
 }
 
 .fuehrerschein-icon {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #e9f0fb, #dfe8f9);
-  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  margin-bottom: 4px;
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 2.5rem;
 }
 
 .fuehrerschein-card h3 {
@@ -5606,13 +5624,27 @@ html {
 }
 
 /* Mobile Responsive */
-@media (max-width: 900px) {
-  .warum-grid {
+@media (max-width: 1024px) {
+  .fuehrerschein-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .fuehrerschein-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  .fuehrerschein-grid {
+  .fuehrerschein-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .warum-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
@@ -5623,5 +5655,18 @@ html {
 
   .fuehrerschein-card {
     padding: 24px 20px;
+  }
+
+  .leistungen-cta-wrap {
+    margin: 30px 0 20px;
+    padding: 20px 15px;
+  }
+
+  .leistungen-cta {
+    min-width: auto;
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 24px;
+    font-size: 1rem;
   }
 }

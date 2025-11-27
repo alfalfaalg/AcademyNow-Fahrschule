@@ -48,9 +48,17 @@
     grid-row: 1;
     justify-self: end;
     display: inline-flex !important;
-    z-index: 3001; /* Höher als Overlay für Klickbarkeit */
-    padding: 6px;
     position: relative; /* Notwendig für z-index */
+    z-index: var(--z-mobile-nav-trigger, 3001); /* Höher als Overlay für Klickbarkeit */
+    min-height: 44px;
+    min-width: 44px;
+    padding: 8px;
+    background: transparent !important; /* keine Box */
+    margin-left: auto; /* rechtsbündig */
+    border: none !important;
+    border-radius: 8px; /* Touch-Radius erhalten */
+    cursor: pointer;
+    box-shadow: none !important;
   }
 
   .hamburger-line {
@@ -401,22 +409,6 @@
     transform: translateY(-2px);
   }
 
-  /* Mobile Menu Button (zweite Definition - sollte konsolidiert werden) */
-  .mobile-menu-btn {
-    display: inline-flex !important;
-    min-height: 44px;
-    min-width: 44px;
-    position: relative;
-    z-index: 3001; /* Höher als Overlay */
-    padding: 8px;
-    background: transparent !important; /* keine Box */
-    margin-left: auto; /* rechtsbündig */
-    border: none !important;
-    border-radius: 8px; /* Touch-Radius erhalten */
-    cursor: pointer;
-    box-shadow: none !important;
-  }
-
   /* Moderne Hamburger-Linien Animation */
   .hamburger-line {
     display: block !important;
@@ -476,7 +468,7 @@
     height: 100vh;
     min-height: 100vh;
     display: none;
-    z-index: 2000; /* above header for true fullscreen */
+    z-index: var(--z-mobile-nav-overlay, 2000); /* above header for true fullscreen */
     background: radial-gradient(
         circle at 10% 18%,
         rgba(21, 23, 28, 0.25) 0%,
@@ -528,7 +520,7 @@
     position: fixed;
     top: 12px;
     right: 12px;
-    z-index: 3001;
+    z-index: var(--z-mobile-nav-trigger, 3001);
   }
 
   #main-navigation > ul {
