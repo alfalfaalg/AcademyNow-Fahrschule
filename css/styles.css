@@ -48,9 +48,23 @@
   --container-width: 1300px;
   --section-padding: 80px 0;
   --card-radius: 10px;
-  /* Z-Index Struktur */
-  --z-mobile-nav-overlay: 2000;
-  --z-mobile-nav-trigger: 3001;
+  /* Focus-Farbe für Accessibility (WCAG-konform) */
+  --focus-color: #0066cc; /* Blau für bessere Sichtbarkeit auf hellen Karten */
+  /* Z-Index Struktur - Hierarchie von oben nach unten */
+  --z-modal-overlay: 10000; /* Modals, Popups, Cookie Banner */
+  --z-cookie-modal-backdrop: 10001;
+  --z-cookie-modal: 10002;
+  --z-mobile-nav-trigger: 3001; /* Mobile Menu Button */
+  --z-mobile-nav-overlay: 2000; /* Mobile Navigation Overlay */
+  --z-dropdown: 1100; /* Desktop Dropdown Menüs */
+  --z-focus-ring: 1002; /* Focus Ring für Accessibility */
+  --z-header: 100; /* Fixed Header */
+  --z-scroll-indicator: 100; /* Scroll Indicator */
+  --z-content-above: 10; /* Content über Hero Background */
+  --z-faq-question: 5; /* FAQ Fragen */
+  --z-maps-overlay: 2; /* Maps Overlay Link */
+  --z-card-overlay: 1; /* Card Overlays */
+  --z-behind: -1; /* Hintergrund-Elemente */
 }
 
 * {
@@ -99,7 +113,7 @@ video {
   position: absolute;
   top: -100px;
   left: 0;
-  z-index: 10000;
+  z-index: var(--z-modal-overlay);
   background: var(--primary);
   padding: 0;
   margin: 0;
@@ -157,7 +171,7 @@ video {
     );
   color: var(--light);
   padding: 16px 20px;
-  z-index: 10000;
+  z-index: var(--z-modal-overlay);
   transform: translateY(100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
@@ -276,7 +290,7 @@ video {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
-  z-index: 10001;
+  z-index: var(--z-cookie-modal-backdrop);
 }
 
 .cookie-modal-backdrop.show {
@@ -295,7 +309,7 @@ video {
   border-radius: 12px 12px 0 0;
   box-shadow: 0 -12px 30px rgba(0, 0, 0, 0.25);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 10002;
+  z-index: var(--z-cookie-modal);
   border-top: 4px solid var(--accent);
 }
 
@@ -382,6 +396,7 @@ video {
 }
 
 /* Verbesserte Focus Styles für alle interaktiven Elemente */
+/* Blau für bessere Sichtbarkeit auf hellen Karten (WCAG 2.1 konform) */
 a:focus,
 button:focus,
 input:focus,
@@ -393,9 +408,9 @@ select:focus,
 .primary-btn:focus,
 .outline-btn:focus,
 .submit-btn:focus {
-  outline: 3px solid var(--accent);
+  outline: 3px solid var(--focus-color);
   outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--light), 0 0 0 5px var(--accent);
+  box-shadow: 0 0 0 2px var(--light), 0 0 0 5px var(--focus-color);
   border-radius: 4px;
 }
 
@@ -430,7 +445,7 @@ select:focus,
   transition: transform 0.2s ease;
   -webkit-tap-highlight-color: transparent;
   position: relative;
-  z-index: 1002;
+  z-index: var(--z-focus-ring);
 }
 
 /* Focus für FAQ Items */
@@ -747,7 +762,7 @@ input[type="checkbox"]:checked::after {
   padding: 20px 0; /* Erhöht von 3px auf 20px für mehr Höhe */
   transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   position: relative;
-  z-index: 100; /* keep header below the fullscreen overlay defined at 2000 */
+  z-index: var(--z-header); /* keep header below the fullscreen overlay */
 }
 
 #main-header.scrolled {
@@ -900,7 +915,7 @@ nav ul li a.nav-link.active::after {
   visibility: hidden;
   transform: translateX(-50%) translateY(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-  z-index: 1100;
+  z-index: var(--z-dropdown);
   list-style: none;
   margin: 0;
 }
@@ -955,19 +970,21 @@ nav ul li a.nav-link.active::after {
 }
 
 /* Primary and secondary buttons share the same slimmer baseline height */
+/* WCAG 2.1: Mindestens 44x44px Touch-Target */
 .header-buttons .cta-btn,
 .header-kontakt-btn {
   min-width: 150px;
-  height: 32px;
+  min-height: 44px; /* WCAG 2.1 Touch-Target Minimum */
+  height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   font-size: 0.92rem;
-  border-radius: 5px;
+  border-radius: 6px;
   transition: all 0.2s;
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: 0 18px;
   white-space: nowrap;
   line-height: 1;
 }
@@ -1084,7 +1101,7 @@ nav ul li a.nav-link.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Behind scroll indicator */
+  z-index: var(--z-card-overlay); /* Behind scroll indicator */
 
   /* Progressive Loading: Start with placeholder - Hellere Overlays für bessere Sichtbarkeit */
   background: radial-gradient(
@@ -1142,7 +1159,7 @@ nav ul li a.nav-link.active::after {
   transform: translateX(-100%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 1;
+  z-index: var(--z-card-overlay);
   pointer-events: none; /* Don't block clicks on scroll indicator */
 }
 
@@ -1165,7 +1182,9 @@ nav ul li a.nav-link.active::after {
 .hero-content-wrapper {
   padding: 130px 0 70px;
   position: relative;
-  z-index: 10; /* Above hero-background, allows scroll indicator to work */
+  z-index: var(
+    --z-content-above
+  ); /* Above hero-background, allows scroll indicator to work */
 }
 
 .hero-badge {
@@ -1178,7 +1197,7 @@ nav ul li a.nav-link.active::after {
   font-weight: 500;
   margin-bottom: 38px;
   position: relative;
-  z-index: 10;
+  z-index: var(--z-content-above);
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
 }
@@ -1640,7 +1659,7 @@ nav ul li a.nav-link.active::after {
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  z-index: 100;
+  z-index: var(--z-scroll-indicator);
   cursor: pointer;
   padding: 8px 0 0;
   margin-top: 35px; /* mehr Abstand zu Buttons auf Mobile */
@@ -1755,25 +1774,33 @@ nav ul li a.nav-link.active::after {
   opacity: 0;
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-  z-index: 1; /* Über dem Inhalt */
+  z-index: var(--z-card-overlay); /* Über dem Inhalt */
 }
 
+/* Card Hover Effects - Standard Cards (ohne spezielle Varianten) */
 .highlight-item:hover,
 .highlight-item:focus-within,
 .leistung-item:hover,
 .leistung-item:focus-within,
-.preis-card:hover,
-.preis-card:focus-within,
+.preis-card:not(.hot-deal):not(.featured):hover,
+.preis-card:not(.hot-deal):not(.featured):focus-within,
 .standort-container:hover,
 .standort-container:focus-within,
 .stelle-card:hover,
 .stelle-card:focus-within,
 .initiativ-card:hover,
 .initiativ-card:focus-within {
-  transform: translateY(
-    -14px
-  ) !important; /* !important um Überschreibungen zu verhindern */
-  box-shadow: var(--card-shadow-hover) !important;
+  transform: translateY(-14px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Hot Deal / Featured Cards - eigener Hover-Effekt */
+.preis-card.hot-deal:hover,
+.preis-card.hot-deal:focus-within,
+.preis-card.featured:hover,
+.preis-card.featured:focus-within {
+  transform: translateY(-16px) scale(1.02);
+  box-shadow: 0 20px 45px rgba(232, 140, 74, 0.35);
 }
 
 .highlight-item:hover::after,
@@ -2085,7 +2112,7 @@ nav ul li a.nav-link.active::after {
 .maps-overlay-link {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: var(--z-maps-overlay);
   display: block;
   background: transparent;
   cursor: pointer;
@@ -2176,7 +2203,7 @@ nav ul li a.nav-link.active::after {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 35px;
-  max-width: 1200px;
+  max-width: 1100px; /* Vereinheitlicht: gleiche Breite wie andere Sektionen */
   margin: 0 auto;
 }
 
@@ -2299,7 +2326,7 @@ nav ul li a.nav-link.active::after {
   text-transform: uppercase;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.35);
-  z-index: 10;
+  z-index: var(--z-content-above);
 }
 
 /* Dunkler Header wie im Flyer */
@@ -2480,7 +2507,7 @@ nav ul li a.nav-link.active::after {
   justify-content: space-between;
   align-items: center;
   transition: all 0.3s ease;
-  z-index: 5;
+  z-index: var(--z-faq-question);
 
   /* Button-Styling für semantische Buttons */
   background: none;
@@ -3887,7 +3914,7 @@ nav ul li a.nav-link.active::after {
   align-items: center;
   gap: 1em;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-card-overlay);
 }
 .bewertung-wert {
   font-size: 3.2rem;
@@ -3936,7 +3963,7 @@ nav ul li a.nav-link.active::after {
   gap: 0.8em;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-card-overlay);
 }
 
 /* Verbesserter Button mit hellerer Goldfarbe */
@@ -4632,7 +4659,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: var(--z-modal-overlay);
   backdrop-filter: blur(8px);
   animation: fadeIn 0.3s ease-out;
 }
@@ -4875,7 +4902,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000;
+  z-index: var(--z-modal-overlay);
   padding: 1rem;
   animation: fadeIn 0.3s ease;
 }
@@ -5900,7 +5927,7 @@ html {
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-card-overlay);
 }
 
 .city-logistiker-section h2 {
@@ -5932,7 +5959,7 @@ html {
   gap: 2rem;
   margin-top: 3rem;
   position: relative;
-  z-index: 1;
+  z-index: var(--z-card-overlay);
   max-width: 1100px; /* Vereinheitlicht: gleiche Breite wie andere Sektionen */
   margin-left: auto;
   margin-right: auto;

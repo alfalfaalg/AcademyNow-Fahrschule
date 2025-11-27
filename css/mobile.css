@@ -98,7 +98,8 @@
   #main-header .header-buttons .header-btn {
     flex: 1;
     min-width: 0;
-    height: 34px; /* 20% niedriger (42px * 0.8 = 33.6px) */
+    min-height: 44px; /* WCAG 2.1 Touch-Target Minimum */
+    height: 44px;
     font-size: 0.85rem; /* leicht kleiner für bessere Lesbarkeit */
     padding: 0 10px;
     display: flex;
