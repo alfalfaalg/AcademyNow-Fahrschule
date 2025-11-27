@@ -1692,7 +1692,7 @@ nav ul li a.nav-link.active::after {
 }
 
 .ueber-uns-text {
-  max-width: 900px;
+  max-width: 1100px; /* Vereinheitlicht: von 900px → 1100px */
   margin: 0 auto;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -1839,6 +1839,9 @@ nav ul li a.nav-link.active::after {
   gap: 30px;
   margin-top: 50px;
   margin-bottom: 40px;
+  max-width: 1100px; /* Vereinheitlicht: gleiche Breite wie andere Sektionen */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .leistungen-cta-wrap {
@@ -2054,7 +2057,7 @@ nav ul li a.nav-link.active::after {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
-  max-width: 1200px;
+  max-width: 1100px; /* Vereinheitlicht: von 1200px → 1100px */
   margin: 0 auto;
 }
 
@@ -5331,7 +5334,7 @@ html {
 
 /* --- Karriere Section --- */
 .karriere-content {
-  max-width: 900px;
+  max-width: 1100px; /* Vereinheitlicht: von 900px → 1100px */
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -5930,6 +5933,9 @@ html {
   margin-top: 3rem;
   position: relative;
   z-index: 1;
+  max-width: 1100px; /* Vereinheitlicht: gleiche Breite wie andere Sektionen */
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .city-logistiker-card {
