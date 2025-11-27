@@ -2,16 +2,25 @@
 
 ## Offene Aufgaben
 
-- **Sektions-Breiten vereinheitlichen:** Alle Sektionen (City Logistiker, Leistungen, Standorte, Karriere) sollen die gleiche max-width nutzen, damit sie optisch auf einer Linie sind.
+- **Sektions-Breiten vereinheitlichen:** ✅ ERLEDIGT - Alle Sektionen jetzt auf max-width: 1100px
 - Google Places API-Key produktiv freischalten (Billing + erlaubte Referrer), damit echte Profilbilder im Review-Slider laden.
-- Bergedorf Place ID in google-reviews.js eintragen sobald verfügbar.
+- **Bergedorf Place ID:** Manuell über Google Place ID Finder ermitteln und in google-reviews.js eintragen.
 - Asset-Optimierung: große JPG/PNG → WebP/AVIF; ungenutzte Bilder/Icons aufräumen.
 - JS/CSS-Light-Cleanup: unbenutzte Funktionen/Styles identifizieren und gefahrlos entfernen (keine Behaviour-Änderungen).
 - Form-Zustellung live prüfen (Kontakt-/Bewerbungs-Popup via Web3Forms).
+- **Button Padding vereinheitlichen:** Aktuell 13 verschiedene Werte → auf 3 Standard-Größen reduzieren (klein/mittel/groß).
 - CSS-Aufräumplan:
-  - Fokus-Ring auf kontrastreiches Blau (#0066cc) umstellen (statt Orange) für bessere Sichtbarkeit auf hellen Karten.
-  - Globale Hover-`!important` auf Karten durch spezifischere Selektoren ersetzen (Preis-/Standort-/Stellen-Karten, Hot-Deal/Featured sollen eigene Effekte behalten).
+  - ~~Fokus-Ring auf kontrastreiches Blau (#0066cc) umstellen~~ ✅ ERLEDIGT
+  - ~~Globale Hover-`!important` auf Karten durch spezifischere Selektoren ersetzen~~ ✅ ERLEDIGT
   - Mobile-Styles mittelfristig in einen zentralen `@media (max-width: 768px)`-Block zusammenziehen (styles.css vs. mobile.css) und doppelte Regeln streichen.
+
+## Erledigt (27.11.2025 - Code-Qualität Session)
+
+- **Focus Outline:** Orange → Blau (#0066cc) für besseren Kontrast auf hellen Karten
+- **Card Hover !important:** Entfernt, jetzt mit :not(.hot-deal):not(.featured) Selektoren
+- **Preise Container:** max-width 1200px → 1100px (einheitlich)
+- **Z-Index Hierarchie:** 22 Werte → 14 CSS-Variablen konsolidiert
+- **Header Buttons:** Touch-Target auf 44px erhöht (WCAG 2.1)
 
 ## Erledigt (27.11.2025 - UI-Verbesserungen Session)
 
