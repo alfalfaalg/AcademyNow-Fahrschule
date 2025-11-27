@@ -4212,7 +4212,7 @@ html {
      HERO - Kompakt und vollständig sichtbar
      ============================================================================ */
   .hero {
-    min-height: 100vh;
+    min-height: 70vh; /* GEÄNDERT von 100vh → 70vh (100vh blockierte Scrolling auf Mobile!) */
     height: auto;
     justify-content: flex-start;
     padding-top: 15px;
