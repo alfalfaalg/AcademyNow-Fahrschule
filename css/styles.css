@@ -75,8 +75,7 @@
 }
 
 /* Prevent horizontal scroll on all devices */
-html,
-body {
+html {
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -95,6 +94,7 @@ body {
   color: var(--text);
   background-color: var(--light);
   overflow-x: hidden;
+  max-width: 100vw;
   scroll-behavior: smooth;
 }
 
@@ -683,6 +683,8 @@ input[type="checkbox"]:checked::after {
   text-decoration: none;
   border: none;
   cursor: pointer;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .cta-btn:hover {
@@ -1788,11 +1790,9 @@ nav ul li a.nav-link.active::after {
   box-shadow: var(--card-shadow-hover);
 }
 
-/* Hot Deal / Featured Cards - eigener Hover-Effekt */
+/* Hot Deal Cards - eigener Hover-Effekt */
 .preis-card.hot-deal:hover,
-.preis-card.hot-deal:focus-within,
-.preis-card.featured:hover,
-.preis-card.featured:focus-within {
+.preis-card.hot-deal:focus-within {
   transform: translateY(-16px) scale(1.02);
   box-shadow: 0 20px 45px rgba(232, 140, 74, 0.35);
 }
@@ -1957,11 +1957,6 @@ nav ul li a.nav-link.active::after {
 ==================================*/
 .standorte-section {
   background: #f9f9f9;
-}
-
-.standorte-grid {
-  display: flex;
-  justify-content: center;
 }
 
 .standort-cards {
@@ -3661,8 +3656,7 @@ nav ul li a.nav-link.active::after {
 .scroll-indicator,
 .mobile-menu-btn,
 .primary-btn,
-.outline-btn,
-.cta-btn {
+.outline-btn {
   transform: translateZ(0);
   will-change: transform;
 }
