@@ -25,78 +25,6 @@ function updateClock() {
 // Cookie-Banner wird nun über js/cookie-banner.js initialisiert
 
 // =================================================================================
-// DEVELOPER LOGIN FUNKTIONEN
-// =================================================================================
-
-function setupDeveloperLogin() {
-  const devLink = document.getElementById("dev-link");
-  if (devLink) {
-    let attempts = parseInt(localStorage.getItem("loginAttempts") || "0");
-    const maxAttempts = 3;
-    devLink.addEventListener("click", function (e) {
-      e.preventDefault();
-      if (attempts >= maxAttempts) {
-        alert("Zu viele falsche Versuche. Zugriff dauerhaft verweigert.");
-        localStorage.setItem("blocked", "true");
-        return;
-      }
-      if (localStorage.getItem("blocked") === "true") {
-        alert(
-          "Ihr Zugriff wurde gesperrt. Bitte kontaktieren Sie den Administrator."
-        );
-        return;
-      }
-      const pw = prompt("Bitte Passwort eingeben:");
-      if (pw === "!!Projekt2025") {
-        sessionStorage.setItem("authed", "1");
-        localStorage.setItem("authed", "1");
-        localStorage.removeItem("blocked");
-        localStorage.removeItem("loginAttempts");
-        setTimeout(function () {
-          window.location.href = "index.html";
-        }, 100);
-      } else {
-        attempts++;
-        localStorage.setItem("loginAttempts", attempts.toString());
-        const remainingAttempts = maxAttempts - attempts;
-        if (remainingAttempts > 0) {
-          alert(
-            `Falsches Passwort! Noch ${remainingAttempts} Versuch(e) übrig.`
-          );
-        } else {
-          alert("Zu viele falsche Versuche. Zugriff verweigert.");
-          localStorage.setItem("blocked", "true");
-        }
-      }
-    });
-  }
-}
-
-// =================================================================================
-// AUTHENTIFIZIERUNGSFUNKTION
-// =================================================================================
-
-function checkAuthentication() {
-  if (
-    window.location.pathname.includes("index.html") ||
-    window.location.pathname.endsWith("/") ||
-    window.location.pathname === ""
-  ) {
-    const isAuthenticated =
-      sessionStorage.getItem("authed") === "1" ||
-      localStorage.getItem("authed") === "1";
-    if (!isAuthenticated) {
-      // window.location.replace('coming-soon.html');
-      return false;
-    } else {
-      sessionStorage.setItem("authed", "1");
-      return true;
-    }
-  }
-  return true;
-}
-
-// =================================================================================
 // INTERSECTION OBSERVER FÜR OPTIMIZED LOADING
 // =================================================================================
 
@@ -684,15 +612,12 @@ function initializeApp() {
         console.error("❌ Preise section not found");
       }
     });
-  } else {
-    console.error("❌ Scroll Indicator element not found");
-  }
-
-  // Authentifizierung prüfen
-  if (!document.body.classList.contains("coming-soon-page")) {
-    if (!checkAuthentication()) {
-      return;
-    }
+  } else if (
+    window.location.pathname === "/" ||
+    window.location.pathname.endsWith("index.html")
+  ) {
+    // Nur auf der Hauptseite warnen, da scrollIndicator nur dort existiert
+    console.warn("⚠️ Scroll Indicator element not found on index page");
   }
 
   // Lazy Loading für Maps
@@ -700,13 +625,6 @@ function initializeApp() {
 
   // Required Select Felder erst nach Nutzerinteraktion validieren
   initSelectValidationStates();
-
-  // "Coming Soon"-Funktionen
-  if (document.body.classList.contains("coming-soon-page")) {
-    setInterval(updateClock, 1000);
-    updateClock();
-    setupDeveloperLogin();
-  }
 
   // Kontaktformular Validierung - SICHER (nur 1x submission)
   // Unterstützt alle Form-IDs für Rückwärtskompatibilität
@@ -1090,7 +1008,9 @@ function initWhatsAppModal() {
 
     console.log("✅ WhatsApp Modal Events initialized");
   } else {
-    console.warn("⚠️ WhatsApp Modal nicht gefunden - Event Listeners nicht registriert");
+    console.warn(
+      "⚠️ WhatsApp Modal nicht gefunden - Event Listeners nicht registriert"
+    );
   }
 }
 
@@ -1241,7 +1161,9 @@ function validatePopupStep(stepNumber) {
   let errorMsg = "";
 
   // Clear previous errors
-  const errorElement = document.getElementById(`error-${getFieldName(stepNumber)}`);
+  const errorElement = document.getElementById(
+    `error-${getFieldName(stepNumber)}`
+  );
   if (errorElement) {
     errorElement.textContent = "";
   }
@@ -1323,7 +1245,7 @@ function getFieldName(stepNumber) {
     2: "email",
     3: "phone",
     4: "klasse",
-    5: "standort"
+    5: "standort",
   };
   return fieldNames[stepNumber] || "";
 }

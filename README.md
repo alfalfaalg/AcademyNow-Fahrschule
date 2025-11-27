@@ -2,14 +2,15 @@
 
 Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg mit vollständiger DSGVO-Konformität, PWA-Support und optimierten Hover-Effekten.
 
-**Stand:** 29. Oktober 2025
-**Version:** 2.0.1 (Kontakt-Popup only, kompakter Über-uns, Karten-Fixes)
+**Stand:** 27. November 2025
+**Version:** 2.0.3 (Telefonnummern korrigiert, Wartungsmodus vollständig entfernt)
 
 ---
 
 ## ✨ Features
 
 ### Kern-Features
+
 - 🎨 **Modernes Design** mit Premium-Schwarz/Orange Farbschema
 - 📱 **Vollständig responsive** für alle Geräte (Mobile-First)
 - 🔐 **DSGVO-konform** mit Google Consent Mode v2 + Cookie Yes
@@ -18,12 +19,14 @@ Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg m
 - 🔄 **bfcache-kompatibel** für blitzschnelle Back/Forward Navigation
 
 ### Technische Highlights
+
 - ✅ **Event Listener Guards** - Keine doppelten Form-Submissions
 - ✅ **Smooth Hover-Effekte** - Material Design cubic-bezier Transitions
 - ✅ **Google Reviews Integration** mit 6h Caching (Places API, gültiger Key nötig)
 - ✅ **Web3Forms** Integration für Kontakt-/Bewerbungs-Popups
 - ✅ **Google Tag Manager** + Consent Mode v2
-- ✅ **ID-Duplikate behoben** - Unique IDs über alle Seiten
+- ✅ **Einheitliche SVG-Icons** - Orange Kreis-Border Stil durchgängig
+- ✅ **3x2 Grid-Layout** für Führerscheinklassen (symmetrisch)
 
 ---
 
@@ -55,22 +58,21 @@ open http://localhost:8080
 ```
 📁 AcademyNow-Fahrschule/
 ├── 📄 index.html                 # Hauptseite (Startseite)
-├── 📄 ueber-uns.html             # (entfernt) frühere Über-uns-Seite
 ├── 📄 danke.html                 # Danke-Seite (nach Formular)
 ├── 📄 impressum.html             # Impressum
 ├── 📄 datenschutz.html           # Datenschutzerklärung
-├── 📄 coming-soon.html           # Coming Soon Seite
 ├── 📄 manifest.json              # PWA Manifest
 ├── 📄 sw.js                      # Service Worker
 │
 ├── 📁 css/
-│   └── styles.css                # Haupt-Stylesheet
+│   ├── styles.css                # Haupt-Stylesheet
+│   └── mobile.css                # Mobile-spezifische Styles
 │
 ├── 📁 js/
 │   ├── main.js                   # Haupt-JavaScript (Event Listener Guards)
 │   ├── google-reviews.js         # Google Reviews API Integration
-│   ├── pwa-install.js            # PWA Install Prompt Handler
-│   └── auth.js                   # Coming-Soon Authentifizierung
+│   ├── cookie-banner.js          # Cookie Consent Handler
+│   └── pwa-install.js            # PWA Install Prompt Handler
 │
 ├── 📁 images/
 │   ├── logo_neu.webp             # Hauptlogo
@@ -96,13 +98,13 @@ open http://localhost:8080
 
 ```css
 /* Premium-Schwarz (NEU - Logo-Update) */
---primary: #15171c;              /* Elegantes Anthrazit-Schwarz */
---primary-light: #1f2128;        /* Hover-Variante */
+--primary: #15171c; /* Elegantes Anthrazit-Schwarz */
+--primary-light: #1f2128; /* Hover-Variante */
 
 /* Orange-Akzente */
---accent: #e88c4a;               /* Wärme & Aktivierung */
---accent-dark: #c4742e;          /* CTA-Hover */
---accent-gold: #d1b17c;          /* Seriöser Goldton */
+--accent: #e88c4a; /* Wärme & Aktivierung */
+--accent-dark: #c4742e; /* CTA-Hover */
+--accent-gold: #d1b17c; /* Seriöser Goldton */
 
 /* Schatten */
 --card-shadow-base: 0 6px 20px rgba(0, 0, 0, 0.12);
@@ -120,8 +122,8 @@ open http://localhost:8080
 Alle interaktiven Elemente verwenden **Material Design** cubic-bezier:
 
 ```css
-transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-  box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s
+    cubic-bezier(0.4, 0, 0.2, 1);
 ```
 
 **Effekt:** Butterweiche "floating" Animation bei Hover
@@ -135,6 +137,7 @@ transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
 **Problem behoben:** Kontaktformular sendete 2-3 E-Mails pro Submission
 
 **Lösung:**
+
 ```javascript
 // Global Flag
 let isInitialized = false;
@@ -153,6 +156,7 @@ function initializeApp() {
 ```
 
 **Dateien:**
+
 - `/js/main.js` - Haupt-Initialisierung
 - `/js/google-reviews.js` - Reviews Guard
 - `/js/pwa-install.js` - PWA Prompt Guard
@@ -162,12 +166,13 @@ function initializeApp() {
 **Problem behoben:** App funktionierte nicht nach Browser Back/Forward
 
 **Lösung:**
+
 ```javascript
 // DOMContentLoaded feuert NICHT bei bfcache restore
-window.addEventListener("pageshow", function(event) {
+window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
     // Page aus bfcache wiederhergestellt
-    console.log('🔄 Page restored from bfcache');
+    console.log("🔄 Page restored from bfcache");
     // Refresh dynamic content
     loadGoogleReviews();
   }
@@ -177,10 +182,12 @@ window.addEventListener("pageshow", function(event) {
 ### Form ID-Struktur (🆕)
 
 **Unique IDs über alle Seiten:**
+
 - `index.html` → `id="kontaktForm-home"`
 - `ueber-uns.html` → `id="kontaktForm-ueber"`
 
 **Fallback-Support:**
+
 ```javascript
 const form =
   document.getElementById("kontaktForm-home") ||
@@ -203,7 +210,7 @@ gtag("consent", "default", {
   analytics_storage: "denied",
   functionality_storage: "granted",
   security_storage: "granted",
-  wait_for_update: 500
+  wait_for_update: 500,
 });
 ```
 
@@ -267,12 +274,14 @@ window.addEventListener("beforeinstallprompt", (e) => {
 ### Automatisierte Tests
 
 **Browser Test-Suite:**
+
 ```bash
 # Interaktive Tests im Browser öffnen
 open tests/TEST_FIXES.html
 ```
 
 **Console Validation:**
+
 ```bash
 # 1. Öffne http://localhost:8080
 # 2. DevTools Console öffnen (Cmd+Option+I)
@@ -281,6 +290,7 @@ open tests/TEST_FIXES.html
 ```
 
 **Erwartete Ausgabe:**
+
 ```
 🧪 AcademyNow Fix Validation Script
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -300,6 +310,7 @@ open tests/TEST_FIXES.html
 ### Manuelle Test-Szenarien
 
 #### Test 1: Formular Single-Submission
+
 1. Öffne `http://localhost:8080/index.html#kontakt`
 2. Fülle Formular aus (Name, E-Mail, Nachricht)
 3. Aktiviere Datenschutz-Checkbox
@@ -310,6 +321,7 @@ open tests/TEST_FIXES.html
    - ✅ Redirect zu danke.html
 
 #### Test 2: bfcache Navigation
+
 1. Öffne `http://localhost:8080/index.html`
 2. DevTools Console öffnen
 3. Sollte zeigen: `✅ Initializing AcademyNow App...`
@@ -321,6 +333,7 @@ open tests/TEST_FIXES.html
    - ✅ Keine doppelte Initialisierung
 
 #### Test 3: Google Reviews
+
 1. Öffne `http://localhost:8080/index.html`
 2. Network Tab öffnen
 3. Scrolle zu Google Reviews Bereich
@@ -332,6 +345,7 @@ open tests/TEST_FIXES.html
    - ✅ Reviews werden aktualisiert
 
 #### Test 4: PWA Install Prompt
+
 1. Öffne im Incognito/Private Mode
 2. Warte 10 Sekunden
 3. **Erwartung:** Install-Banner erscheint (wenn PWA-fähig)
@@ -342,6 +356,7 @@ open tests/TEST_FIXES.html
    - ✅ Console: `⏭️ PWA: Install prompt already shown this session`
 
 #### Test 5: Hover-Effekte (Smooth)
+
 1. Teste folgende Bereiche:
    - **Startseite → Standorte:** Hover über Standort-Cards
    - **Über uns → Highlights:** Hover über 3 Blöcke
@@ -392,7 +407,7 @@ open tests/TEST_FIXES.html
 ### Externe Services
 
 - **Web3Forms:** https://web3forms.com
-- **Google Tag Manager:** GTM-MSDGXD4L
+- **Google Tag Manager:** GTM-WWRGDHJ7
 - **Google Ads:** AW-17118954542
 - **Google Places API:** (Reviews Integration)
 - **Cookie Yes:** (Cookie-Banner Integration)
@@ -417,6 +432,7 @@ open tests/TEST_FIXES.html
 - 🌐 **Website:** www.academynow-fahrschule.de
 
 **Öffnungszeiten:**
+
 - Mo–Fr: 09:00 – 18:00
 - Sa: 10:00 – 14:00
 
@@ -470,6 +486,7 @@ open http://localhost:8080
 ✅ Alle kritischen Bugs behoben (Stand: 18.10.2025)
 
 **Letzte Fixes:**
+
 - ✅ Event Listener Duplikate
 - ✅ bfcache Inkompatibilität
 - ✅ ID-Duplikate über Seiten
@@ -493,6 +510,7 @@ Siehe [CHANGELOG.md](CHANGELOG.md) Sektion "Zukünftige Features"
 ### Code-Dokumentation
 
 Alle JavaScript-Funktionen sind inline dokumentiert:
+
 - `js/main.js` - Haupt-Logik mit Guards
 - `js/google-reviews.js` - API Integration
 - `js/pwa-install.js` - PWA Handling
@@ -501,6 +519,7 @@ Alle JavaScript-Funktionen sind inline dokumentiert:
 ### Test-Dateien
 
 Interaktive Tests im `/tests/` Verzeichnis:
+
 - `TEST_FIXES.html` - Browser Test-Suite
 - `validate-fixes.js` - Console Validation Script
 - `CACHE_CLEAR.html` - Cache-Clear Utility
@@ -525,6 +544,7 @@ Interaktive Tests im `/tests/` Verzeichnis:
 ### Features
 
 Alle verwendeten Features sind kompatibel:
+
 - `cubic-bezier()` Transitions
 - `pageshow` Event (bfcache)
 - `beforeinstallprompt` (PWA)

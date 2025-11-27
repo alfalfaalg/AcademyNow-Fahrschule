@@ -6,11 +6,63 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 
 ---
 
+## [2.0.3] - 2025-11-27
+
+### 🔧 Behoben
+
+- **Telefonnummern korrigiert:** Falsche Telefonnummern in allen HTML-Dateien korrigiert
+  - Hamburg Mitte: `040 982 591 350` → `(040) 982 591 50` ✓
+  - Bergedorf: `040 637 433 359` → `040/637 433 59` ✓
+  - Alle tel: Links und Schema.org Structured Data aktualisiert
+  - Verifiziert gegen offizielle Google Maps Einträge
+
+### 🗑️ Entfernt
+
+- **Wartungsmodus vollständig bereinigt:**
+  - Git-Status bereinigt (coming-soon.html, auth.js, stressed_male_web_dev.jpg als gelöscht markiert)
+  - Alle Referenzen aus Dokumentation entfernt
+  - Keine CSS/JS Referenzen mehr vorhanden
+
+---
+
+## [2.0.2] - 2025-11-26
+
+### 🗑️ Entfernt
+
+- **Wartungsmodus komplett entfernt:**
+  - `coming-soon.html` - Wartungsseite gelöscht
+  - `js/auth.js` - Authentifizierungs-Script gelöscht
+  - `images/stressed_male_web_dev.jpg` - Bild gelöscht
+  - Auth-Referenzen aus `index.html` und `main.js` entfernt
+
+### 🎨 Verbessert (Design)
+
+- **Button-Text:** Alle „Mehr erfahren" Buttons zu „Jetzt anmelden" umbenannt (6 Buttons)
+- **Führerscheinklassen-Grid:** 3×2 Symmetrie (statt 4+2) - CSS Grid auf `repeat(3, 1fr)` gesetzt
+- **CTA-Button Hervorhebung:** „Jetzt zum Antragsformular" mit Dashed Border, mehr Padding und subtiler Glow-Pulse-Animation
+- **Einheitliche Icons:**
+  - Über uns: Emojis (📍🕒✅) durch SVG-Icons mit Orange-Kreis-Border ersetzt
+  - Führerscheinklassen: Emojis (🚗🚙🏍️🌍🔄⚡) durch SVG-Icons mit Orange-Kreis-Border ersetzt
+  - Jetzt einheitlich mit Leistungen-Section
+
+### 🔧 Behoben
+
+- **Führerscheinklassen nicht sichtbar:** HTML-Kommentar-Verschachtelungsproblem behoben - Section war komplett auskommentiert
+- **JavaScript Console Warnings:** Scroll Indicator und WhatsApp Modal Warnungen auf falschen Seiten behoben
+
+### 📦 Geändert
+
+- Cache-Busting-Version auf `20251126-003` aktualisiert
+- TODO.md mit aktuellen Änderungen aktualisiert
+
+---
+
 ## [2.0.0] - 2025-10-18
 
 ## [2.0.1] - 2025-10-29
 
 ### Geändert
+
 - Über-uns-Abschnitt komprimiert, zentriert und um CTA ergänzt; Karriere-Karte mit Recruiting-Badge und Benefit-Grid aufgefrischt.
 - Kontaktsektion auf der Startseite entfernt, alle Kontakt-CTAs öffnen das Popup-Formular.
 - Standorte-Maps auf funktionierende Google-Maps-Embeds umgestellt.
@@ -20,6 +72,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🔧 Behoben (Critical Fixes)
 
 #### Event Listener Duplikate
+
 - **Problem:** Kontaktformular sendete 2-3 E-Mails pro Submission wegen mehrfacher Event Listener Registration
 - **Lösung:**
   - Global `isInitialized` Flag in `js/main.js`
@@ -29,6 +82,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 - **Dokumentation:** `tests/FIX_SUMMARY.md`
 
 #### bfcache Inkompatibilität
+
 - **Problem:** App funktionierte nicht nach Browser Back/Forward Navigation aus Cache
 - **Lösung:**
   - `pageshow` Event Listener mit `event.persisted` Check
@@ -37,6 +91,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 - **Dokumentation:** [MDN: bfcache](https://web.dev/bfcache/)
 
 #### ID-Duplikate über Seiten
+
 - **Problem:** `id="kontaktForm"` existierte in index.html UND ueber-uns.html
 - **Lösung:**
   - `index.html`: `id="kontaktForm-home"`
@@ -48,11 +103,13 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
   - `js/main.js` (Zeilen 643-646)
 
 #### Google Reviews Mehrfach-Ladungen
+
 - **Problem:** API wurde bei jeder DOMContentLoaded erneut aufgerufen
 - **Lösung:** `googleReviewsInitialized` Flag + pageshow Handler
 - **Dateien:** `js/google-reviews.js` (Zeilen 40-65)
 
 #### PWA Install Prompt Duplikate
+
 - **Problem:** `beforeinstallprompt` Event kann mehrfach feuern
 - **Lösung:** `installPromptShown` Session-Flag
 - **Dateien:** `js/pwa-install.js` (Zeilen 4-30)
@@ -60,6 +117,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🎨 Verbessert (UX Improvements)
 
 #### Hover-Effekte (Smooth Transitions)
+
 - **Problem:** Abgehackte Hover-Effekte bei Cards und Buttons
 - **Lösung:**
   - Alle Transitions auf Material Design `cubic-bezier(0.4, 0, 0.2, 1)` umgestellt
@@ -78,12 +136,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 📚 Dokumentation
 
 #### Neue Dateien
+
 - `tests/TEST_REPORT.md` - Automatisierte Test-Validierung (8/8 Tests bestanden)
 - `tests/FIX_SUMMARY.md` - Event Listener Fix Dokumentation
 - `tests/validate-fixes.js` - Browser Console Validation Script
 - `HOVER_FIX_SUMMARY.md` - Hover-Effekte Dokumentation
 
 #### Aktualisierte Dateien
+
 - `README.md` - Vollständig überarbeitet mit allen neuen Features
 - `tests/README.md` - Test-Verzeichnis Dokumentation
 
@@ -103,12 +163,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### ✨ Hinzugefügt
 
 #### Google Reviews Integration
+
 - Google Places API Integration mit 6-Stunden Caching
 - CORS Proxy über allorigins.win
 - Lazy Loading für Reviews Container
 - Responsive Review Cards
 
 #### DSGVO-Konformität
+
 - Google Consent Mode v2 implementiert
 - Cookie Yes Integration
 - FormSubmit.co für Kontaktformular
@@ -116,6 +178,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🎨 Design
 
 #### Logo-Update
+
 - Farbschema von Blau zu Premium-Schwarz/Orange geändert
 - CSS Variables aktualisiert:
   - `--primary: #15171c` (Anthrazit-Schwarz)
@@ -123,6 +186,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
   - `--accent-gold: #d1b17c` (Gold)
 
 #### Cards & Hover-Effekte
+
 - Einheitliche Card-Shadows
 - Hover-Lift Effekt: `translateY(-14px)`
 - Gradient-Overlays für Cards
@@ -134,6 +198,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🎨 Design-Verbesserungen
 
 #### SEO-Agentur Anforderungen
+
 - "Direkt anmelden" Button wiederhergestellt
 - Button-Größen vereinheitlicht (gleiche Breite/Höhe)
 - Grid-Layouts symmetrisch gemacht
@@ -141,6 +206,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 - Logo 10% vergrößert (140px → 154px)
 
 #### Google Bewertungsbox
+
 - 47% breiter (420px → 620px)
 - Eleganter Gradient-Hintergrund
 - Glanz-Effekt oben
@@ -149,6 +215,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 - Gradient-Button mit Hover-Effekt
 
 #### Mobile Optimierung
+
 - Header kompakt (8px padding)
 - Hero Section optimiert
 - SPEZIAL-ANGEBOT zentriert (60px Schrift)
@@ -158,12 +225,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🔧 Technisch
 
 #### CSS-Organisation
+
 - `mobile.css` wieder ausgelagert
 - Inline-Stiles entfernt
 - CSS-Version: `?v=2025-10-11`
 - `.gitignore` für Test-Screenshots erweitert
 
 #### Grid-Layouts
+
 - Desktop (>900px): 3 Spalten
 - Tablet (900-600px): 2 Spalten
 - Mobile (<600px): 1 Spalte
@@ -175,12 +244,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### ✨ Hinzugefügt
 
 #### PWA Features
+
 - Service Worker (`sw.js`) für Offline-Support
 - Manifest (`manifest.json`)
 - Install Prompt mit 10s Delay
 - Cache-First Strategie für Assets
 
 #### Navigation
+
 - Smooth Scroll zu Sektionen
 - Active State für Nav-Links
 - Mobile Burger-Menü
@@ -189,6 +260,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🔧 Behoben
 
 #### Formulare
+
 - Validierung für alle Pflichtfelder
 - FormSubmit.co Integration
 - Datenschutz-Checkbox Required
@@ -201,12 +273,14 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🎨 Design
 
 #### Hero-Bereich
+
 - Hero-Background mit Mercedes Fahrzeug
 - Gradient-Overlay für bessere Lesbarkeit
 - CTA-Buttons mit Icon-SVGs
 - Responsive Typography
 
 #### Sektionen
+
 - Leistungen Grid (3 Spalten)
 - Preiskarten mit HOT DEAL Badge
 - Standorte mit Google Maps
@@ -216,11 +290,13 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 📱 Responsive
 
 #### Breakpoints
+
 - Desktop: >992px
 - Tablet: 768-992px
 - Mobile: <768px
 
 #### Mobile-Optimierungen
+
 - Hamburger-Menü
 - Touch-optimierte Buttons (min 44px)
 - Optimierte Grid-Layouts
@@ -233,11 +309,13 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 🔒 DSGVO
 
 #### Cookie-Banner
+
 - Cookie Yes Integration
 - 3 Consent-Levels (Notwendig, Präferenzen, Statistiken)
 - GTM Blocking bis Consent
 
 #### Datenschutz
+
 - Datenschutz-Seite (`datenschutz.html`)
 - Impressum (`impressum.html`)
 - Footer-Links zu rechtlichen Seiten
@@ -245,7 +323,8 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### 📊 Analytics
 
 #### Google Tag Manager
-- GTM Container: GTM-MSDGXD4L
+
+- GTM Container: GTM-WWRGDHJ7
 - Google Ads: AW-17118954542
 - Consent Mode v2 Integration
 
@@ -256,18 +335,21 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ### ✨ Initial Release
 
 #### Basis-Features
+
 - `index.html` - Hauptseite
 - `ueber-uns.html` - Über uns & Karriere
 - `coming-soon.html` - Coming Soon mit Auth
 - `danke.html` - Danke-Seite
 
 #### Design-System
+
 - CSS Variables für Theming
 - Playfair Display (Headings)
 - Inter (Body Text)
 - Montserrat (Buttons)
 
 #### Komponenten
+
 - Header mit Navigation
 - Hero-Bereich
 - Leistungen-Grid
@@ -278,6 +360,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 - Footer
 
 #### Assets
+
 - Logo (WebP)
 - Favicons (alle Größen)
 - Hero-Background Bilder
@@ -288,18 +371,21 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ## 🔮 Zukünftige Features (Geplant)
 
 ### v2.1.0 (Q4 2025)
+
 - [ ] Online-Terminbuchung Integration
 - [ ] Live-Chat für Anfragen
 - [ ] Newsletter-Anmeldung
 - [ ] Video-Testimonials
 
 ### v2.2.0 (Q1 2026)
+
 - [ ] Fortschritts-Tracker für Fahrschüler
 - [ ] Theorie-Übungen online
 - [ ] Blog/News-Bereich für SEO
 - [ ] Multi-Language Support (Englisch, Türkisch)
 
 ### v2.3.0 (Q2 2026)
+
 - [ ] Mobile App (iOS/Android)
 - [ ] Erweiterte PWA-Features (Push Notifications)
 - [ ] Payment Integration für Online-Buchungen
@@ -310,6 +396,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ## 📊 Statistiken
 
 ### Code-Größe
+
 - **HTML:** ~6 Dateien, ~45KB total
 - **CSS:** styles.css (~4300 Zeilen, ~120KB)
 - **JavaScript:** ~5 Dateien, ~25KB total
@@ -317,14 +404,15 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 
 ### Performance-Verbesserungen
 
-| Metrik | v1.0 | v2.0 | Verbesserung |
-|--------|------|------|--------------|
-| Lighthouse Score | 85 | 95+ | +11.8% |
-| First Contentful Paint | 2.1s | 1.3s | -38% |
-| Time to Interactive | 3.8s | 2.4s | -37% |
-| Total Bundle Size | 420KB | 310KB | -26% |
+| Metrik                 | v1.0  | v2.0  | Verbesserung |
+| ---------------------- | ----- | ----- | ------------ |
+| Lighthouse Score       | 85    | 95+   | +11.8%       |
+| First Contentful Paint | 2.1s  | 1.3s  | -38%         |
+| Time to Interactive    | 3.8s  | 2.4s  | -37%         |
+| Total Bundle Size      | 420KB | 310KB | -26%         |
 
 ### Browser-Support
+
 - Chrome 90+ ✅
 - Firefox 88+ ✅
 - Safari 14+ ✅
@@ -336,6 +424,7 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ## 🐛 Bekannte Issues & Workarounds
 
 ### Behoben in v2.0
+
 - ✅ Event Listener Duplikate → Guards implementiert
 - ✅ bfcache Inkompatibilität → pageshow Event
 - ✅ Abgehackte Hover-Effekte → cubic-bezier Transitions
@@ -349,22 +438,28 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 ## 📝 Notizen zu Versionen
 
 ### Versionierung
+
 Dieses Projekt folgt [Semantic Versioning](https://semver.org/lang/de/):
+
 - **MAJOR** (X.0.0): Breaking Changes
 - **MINOR** (0.X.0): Neue Features (abwärtskompatibel)
 - **PATCH** (0.0.X): Bugfixes
 
 ### Cache-Busting
+
 CSS/JS Versionen in HTML-Dateien folgen Format:
+
 ```html
-<link rel="stylesheet" href="css/styles.css?v=2025-10-18">
+<link rel="stylesheet" href="css/styles.css?v=2025-10-18" />
 <script src="js/main.js?v=2025-10-18"></script>
 ```
 
 ### Service Worker
+
 Cache-Version in `sw.js`:
+
 ```javascript
-const CACHE_VERSION = 'v2025-10-14-duplicate-fix';
+const CACHE_VERSION = "v2025-10-14-duplicate-fix";
 ```
 
 ---
@@ -372,12 +467,14 @@ const CACHE_VERSION = 'v2025-10-14-duplicate-fix';
 ## 🙏 Credits & Dank
 
 **Entwickelt von:**
+
 - AcademyNow Team
 - Claude Code (Oktober 2025) - Event Listener & Hover-Fixes
 - SEO-Agentur - Optimierungen
 - Cookie Yes - DSGVO-Konformität
 
 **Externe Services:**
+
 - FormSubmit.co - Kontaktformular
 - Google Tag Manager - Analytics
 - Google Places API - Reviews
