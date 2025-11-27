@@ -13,62 +13,81 @@
 
 const CONFIG = {
   API_KEY: "HIER_API_KEY_EINTRAGEN",
-  PLACE_ID: "ChIJdz8GKc6PsUcRU3w9g2qJkwc",
   MAX_REVIEWS: 6,
   MIN_RATING: 4,
   LANGUAGE: "de",
+  // Standort-spezifische Place IDs
+  STANDORTE: {
+    mitte: {
+      PLACE_ID: "ChIJdz8GKc6PsUcRU3w9g2qJkwc",
+      MAPS_URL:
+        "https://www.google.de/maps/place/Fahrschule+Academy+Now/@53.5527523,10.0130196,21z/data=!4m8!3m7!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!9m1!1b1!16s%2Fg%2F11xdq0v924?entry=ttu",
+    },
+    bergedorf: {
+      // TODO: Bergedorf Place ID hier eintragen sobald verfügbar
+      PLACE_ID: "BERGEDORF_PLACE_ID_EINTRAGEN",
+      MAPS_URL:
+        "https://www.google.com/maps/search/Fahrschule+Academy+Now+Bergedorf+Chrysanderstraße+19+21029+Hamburg",
+    },
+  },
 };
 
+// Fallback URLs (für Abwärtskompatibilität)
 const MAPS_URL =
   "https://www.google.de/maps/place/Fahrschule+Academy+Now/@53.5527523,10.0130196,21z/data=!4m8!3m7!1s0x47b18fce29063f77:0x793896a833d7c53!8m2!3d53.552809!4d10.0129408!9m1!1b1!16s%2Fg%2F11xdq0v924?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D";
 
 const FALLBACK = {
-  summary: {
-    rating: 5.0,
-    user_ratings_total: 48,
+  mitte: {
+    summary: {
+      rating: 5.0,
+      user_ratings_total: 48,
+    },
+    reviews: [
+      {
+        author_name: "Elham",
+        author_url: MAPS_URL,
+        profile_photo_url: "",
+        rating: 5,
+        text: "Ich habe nur den Praxisunterricht gemacht und bin sehr zufrieden. Frau Filiz Cevik ist eine sehr gute, geduldige und freundliche Fahrlehrerin. Sie erklärt alles ruhig und verständlich, und man fühlt sich bei ihr sehr wohl.",
+        time: Math.floor(Date.now() / 1000) - 21 * 24 * 3600,
+        relative_time_description: "vor 3 Wochen",
+      },
+      {
+        author_name: "Aslan Simon",
+        author_url: MAPS_URL,
+        profile_photo_url: "",
+        rating: 5,
+        text: "Ich kann diese Fahrschule nur weiterempfehlen! Das Team ist kompetent, freundlich und hilfsbereit. Besonders das Jugendteam hat immer ein offenes Ohr und achtet wirklich auf jeden einzelnen Fahrschüler.",
+        time: Math.floor(Date.now() / 1000) - 120 * 24 * 3600,
+        relative_time_description: "vor 4 Monaten",
+      },
+      {
+        author_name: "Gabriel Türkmenel",
+        author_url: MAPS_URL,
+        profile_photo_url: "",
+        rating: 5,
+        text: "Mega Fahrschule! Super Team, geduldig, humorvoll und gleichzeitig professionell. Ich habe mich wohler gefühlt und wurde top auf die Prüfung vorbereitet. Klare Empfehlung!",
+        time: Math.floor(Date.now() / 1000) - 30 * 24 * 3600,
+        relative_time_description: "vor einem Monat",
+      },
+      {
+        author_name: "Deina Orellana",
+        author_url: MAPS_URL,
+        profile_photo_url: "",
+        rating: 5,
+        text: "Super nettes Team. Frau Filiz ist geduldig und entspannt. Meine erste Fahrstunde bei ihr war großartig, ich war sehr zufrieden und hatte richtig Spaß.",
+        time: Math.floor(Date.now() / 1000) - 21 * 24 * 3600,
+        relative_time_description: "vor 3 Wochen",
+      },
+    ],
   },
-  reviews: [
-    {
-      author_name: "Elham",
-      author_url: MAPS_URL,
-      profile_photo_url: "",
-      rating: 5,
-      text:
-        "Ich habe nur den Praxisunterricht gemacht und bin sehr zufrieden. Frau Filiz Cevik ist eine sehr gute, geduldige und freundliche Fahrlehrerin. Sie erklärt alles ruhig und verständlich, und man fühlt sich bei ihr sehr wohl.",
-      time: Math.floor(Date.now() / 1000) - 21 * 24 * 3600,
-      relative_time_description: "vor 3 Wochen",
+  bergedorf: {
+    summary: {
+      rating: 5.0,
+      user_ratings_total: 12,
     },
-    {
-      author_name: "Aslan Simon",
-      author_url: MAPS_URL,
-      profile_photo_url: "",
-      rating: 5,
-      text:
-        "Ich kann diese Fahrschule nur weiterempfehlen! Das Team ist kompetent, freundlich und hilfsbereit. Besonders das Jugendteam hat immer ein offenes Ohr und achtet wirklich auf jeden einzelnen Fahrschüler.",
-      time: Math.floor(Date.now() / 1000) - 120 * 24 * 3600,
-      relative_time_description: "vor 4 Monaten",
-    },
-    {
-      author_name: "Gabriel Türkmenel",
-      author_url: MAPS_URL,
-      profile_photo_url: "",
-      rating: 5,
-      text:
-        "Mega Fahrschule! Super Team, geduldig, humorvoll und gleichzeitig professionell. Ich habe mich wohler gefühlt und wurde top auf die Prüfung vorbereitet. Klare Empfehlung!",
-      time: Math.floor(Date.now() / 1000) - 30 * 24 * 3600,
-      relative_time_description: "vor einem Monat",
-    },
-    {
-      author_name: "Deina Orellana",
-      author_url: MAPS_URL,
-      profile_photo_url: "",
-      rating: 5,
-      text:
-        "Super nettes Team. Frau Filiz ist geduldig und entspannt. Meine erste Fahrstunde bei ihr war großartig, ich war sehr zufrieden und hatte richtig Spaß.",
-      time: Math.floor(Date.now() / 1000) - 21 * 24 * 3600,
-      relative_time_description: "vor 3 Wochen",
-    },
-  ],
+    reviews: [],
+  },
 };
 
 const CACHE = {
@@ -168,7 +187,10 @@ function storeCache(summary, reviews) {
         original_language: review.original_language,
         translated: review.translated,
       }));
-      localStorage.setItem(CACHE.REVIEWS_KEY, JSON.stringify(simplifiedReviews));
+      localStorage.setItem(
+        CACHE.REVIEWS_KEY,
+        JSON.stringify(simplifiedReviews)
+      );
     }
   } catch (error) {
     console.warn("⚠️ Konnte Google-Review-Cache nicht speichern:", error);
@@ -207,23 +229,37 @@ async function loadGoogleReviews() {
     return;
   }
 
+  // Lade Summaries für beide Standorte
+  await loadStandortSummaries();
+
+  // Lade Reviews für den Slider (Hamburg Mitte)
   const cacheState = loadCache();
-  if (cacheState.hasCache) {
-    updateReviewsSummary(cacheState.summary || {});
-    renderReviews(container, cacheState.reviews || []);
+  if (
+    cacheState.hasCache &&
+    cacheState.reviews &&
+    cacheState.reviews.length > 0
+  ) {
+    renderReviews(container, cacheState.reviews);
     if (cacheState.isFresh) {
       return; // Cache frisch genug – keine API-Anfrage nötig
     }
   }
 
+  // Wenn kein API-Key konfiguriert ist, Fallback verwenden
   if (CONFIG.API_KEY === "HIER_API_KEY_EINTRAGEN") {
-    console.warn("⚠️ Google Places API-Key noch nicht konfiguriert");
+    console.warn(
+      "⚠️ Google Places API-Key noch nicht konfiguriert - verwende Fallback"
+    );
+    renderReviews(container, FALLBACK.mitte.reviews);
     return;
   }
 
   try {
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${CONFIG.PLACE_ID}&fields=name,rating,reviews,user_ratings_total&reviews_sort=newest&language=${CONFIG.LANGUAGE}&key=${CONFIG.API_KEY}`;
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+    const placeId = CONFIG.STANDORTE.mitte.PLACE_ID;
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=name,rating,reviews,user_ratings_total&reviews_sort=newest&language=${CONFIG.LANGUAGE}&key=${CONFIG.API_KEY}`;
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(
+      url
+    )}`;
 
     const response = await fetch(proxyUrl);
     if (!response.ok) {
@@ -247,15 +283,65 @@ async function loadGoogleReviews() {
       .sort((a, b) => b.time - a.time)
       .slice(0, CONFIG.MAX_REVIEWS);
 
-    updateReviewsSummary(place);
+    // Wenn keine Reviews gefunden, Fallback verwenden
+    if (reviews.length === 0) {
+      reviews = FALLBACK.mitte.reviews;
+    }
+
     renderReviews(container, reviews);
     storeCache(place, reviews);
   } catch (error) {
     console.error("❌ Fehler beim Laden der Google Reviews:", error);
-    if (!cacheState.hasCache) {
-      // Fallback: echte deutsche Reviews eingebaut
-      updateReviewsSummary(FALLBACK.summary);
-      renderReviews(container, FALLBACK.reviews);
+    // Bei jedem Fehler: Fallback verwenden
+    renderReviews(container, FALLBACK.mitte.reviews);
+  }
+}
+
+// Lädt die Bewertungszusammenfassungen für beide Standorte
+async function loadStandortSummaries() {
+  const standorte = ["mitte", "bergedorf"];
+
+  for (const standort of standorte) {
+    const standortConfig = CONFIG.STANDORTE[standort];
+    const fallbackData = FALLBACK[standort];
+
+    // Prüfen ob Place ID konfiguriert ist
+    if (
+      !standortConfig?.PLACE_ID ||
+      standortConfig.PLACE_ID.includes("EINTRAGEN")
+    ) {
+      // Fallback verwenden
+      if (fallbackData?.summary) {
+        updateReviewsSummary(fallbackData.summary, standort);
+      }
+      continue;
+    }
+
+    try {
+      const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${standortConfig.PLACE_ID}&fields=rating,user_ratings_total&language=${CONFIG.LANGUAGE}&key=${CONFIG.API_KEY}`;
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        url
+      )}`;
+
+      const response = await fetch(proxyUrl);
+      if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+      const data = await response.json();
+      if (data.status !== "OK")
+        throw new Error(`Places API Error: ${data.status}`);
+
+      const place = {
+        rating: data.result.rating,
+        user_ratings_total: data.result.user_ratings_total,
+      };
+
+      updateReviewsSummary(place, standort);
+    } catch (error) {
+      console.warn(`⚠️ Fehler beim Laden der ${standort}-Bewertungen:`, error);
+      // Fallback verwenden
+      if (fallbackData?.summary) {
+        updateReviewsSummary(fallbackData.summary, standort);
+      }
     }
   }
 }
@@ -267,7 +353,8 @@ function createReviewCard(review, index) {
     review.profile_photo_url || "images/icons/user-avatar-placeholder.svg";
   const rating = review.rating || 0;
   const text = review.text || "";
-  const timeAgo = review.relative_time_description || getRelativeTime(review.time);
+  const timeAgo =
+    review.relative_time_description || getRelativeTime(review.time);
   const reviewUrl = review.author_url || MAPS_URL;
 
   const stars = Array.from({ length: 5 }, (_, i) => {
@@ -281,11 +368,12 @@ function createReviewCard(review, index) {
     `;
   }).join("");
 
-  const truncatedText =
-    text.length > 280 ? `${text.substring(0, 280)}…` : text;
+  const truncatedText = text.length > 280 ? `${text.substring(0, 280)}…` : text;
 
   return `
-    <div class="review-card" data-index="${index}" role="group" aria-label="Bewertung ${index + 1}">
+    <div class="review-card" data-index="${index}" role="group" aria-label="Bewertung ${
+    index + 1
+  }">
       <div class="review-header">
         <img src="${authorPhoto}" alt="${authorName}" class="review-avatar" loading="lazy">
         <div class="review-author-info">
@@ -330,7 +418,7 @@ function getRelativeTime(timestamp) {
   return "gerade eben";
 }
 
-function updateReviewsSummary(place) {
+function updateReviewsSummary(place, standort = null) {
   const rating = place?.rating ? Number(place.rating) : null;
   const ratingText = rating
     ? rating.toLocaleString("de-DE", {
@@ -346,25 +434,53 @@ function updateReviewsSummary(place) {
   const reviewCountText =
     reviewCount != null ? reviewCount.toLocaleString("de-DE") : "--";
 
-  document
-    .querySelectorAll(".google-rating-value")
-    .forEach((el) => (el.textContent = ratingText));
+  // Wenn ein Standort angegeben ist, nur diesen aktualisieren
+  if (standort) {
+    const card = document.querySelector(
+      `.google-summary-card[data-standort="${standort}"]`
+    );
+    if (card) {
+      const ratingEl = card.querySelector(".google-rating-value");
+      const countEl = card.querySelector(".google-review-count");
+      const starsContainerEl = card.querySelector(
+        ".bewertung-sterne-container"
+      );
+      const starsEl = card.querySelector(".google-stars");
 
-  document
-    .querySelectorAll(".google-review-count")
-    .forEach((el) => (el.textContent = reviewCountText));
-
-  document.querySelectorAll(".bewertung-sterne-container").forEach((el) => {
-    if (rating) {
-      el.setAttribute("aria-label", `Bewertung: ${ratingText} von 5 Sternen`);
+      if (ratingEl) ratingEl.textContent = ratingText;
+      if (countEl) countEl.textContent = reviewCountText;
+      if (starsContainerEl && rating) {
+        starsContainerEl.setAttribute(
+          "aria-label",
+          `Bewertung: ${ratingText} von 5 Sternen`
+        );
+      }
+      if (starsEl && rating) {
+        starsEl.innerHTML = createStarMarkup(rating);
+      }
     }
-  });
+  } else {
+    // Fallback: alle aktualisieren (Legacy-Verhalten)
+    document
+      .querySelectorAll(".google-rating-value")
+      .forEach((el) => (el.textContent = ratingText));
 
-  document.querySelectorAll(".google-stars").forEach((container) => {
-    if (rating) {
-      container.innerHTML = createStarMarkup(rating);
-    }
-  });
+    document
+      .querySelectorAll(".google-review-count")
+      .forEach((el) => (el.textContent = reviewCountText));
+
+    document.querySelectorAll(".bewertung-sterne-container").forEach((el) => {
+      if (rating) {
+        el.setAttribute("aria-label", `Bewertung: ${ratingText} von 5 Sternen`);
+      }
+    });
+
+    document.querySelectorAll(".google-stars").forEach((container) => {
+      if (rating) {
+        container.innerHTML = createStarMarkup(rating);
+      }
+    });
+  }
 
   const now = new Date();
   const formattedDate = now.toLocaleDateString("de-DE", {
@@ -432,7 +548,7 @@ function partialStarSvg(value) {
 function calculateSlidesPerView() {
   const width = reviewViewport?.offsetWidth || window.innerWidth || 1200;
   if (width >= 1200) return 3;
-  if (width >= 900) return 2;
+  if (width >= 768) return 2;
   return 1;
 }
 
@@ -511,8 +627,12 @@ function setupReviewSlider() {
     buildReviewDots();
   };
 
-  reviewPrevBtn?.addEventListener("click", () => goToReviewSlide(reviewSliderState.index - 1));
-  reviewNextBtn?.addEventListener("click", () => goToReviewSlide(reviewSliderState.index + 1));
+  reviewPrevBtn?.addEventListener("click", () =>
+    goToReviewSlide(reviewSliderState.index - 1)
+  );
+  reviewNextBtn?.addEventListener("click", () =>
+    goToReviewSlide(reviewSliderState.index + 1)
+  );
   window.addEventListener("resize", handleResize);
   updateReviewSlider(true);
 }
@@ -526,7 +646,7 @@ let googleReviewsInitialized = false;
 
 function initGoogleReviews() {
   if (googleReviewsInitialized) {
-    console.log('⏭️ Google Reviews already initialized');
+    console.log("⏭️ Google Reviews already initialized");
     return;
   }
 
@@ -542,9 +662,9 @@ if (document.readyState === "loading") {
 }
 
 // Refresh on bfcache restore
-window.addEventListener("pageshow", function(event) {
+window.addEventListener("pageshow", function (event) {
   if (event.persisted && googleReviewsInitialized) {
-    console.log('🔄 Google Reviews: Page restored from bfcache, refreshing...');
+    console.log("🔄 Google Reviews: Page restored from bfcache, refreshing...");
     // Force refresh reviews from cache or API
     loadGoogleReviews();
   }

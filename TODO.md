@@ -2,7 +2,9 @@
 
 ## Offene Aufgaben
 
+- **Sektions-Breiten vereinheitlichen:** Alle Sektionen (City Logistiker, Leistungen, Standorte, Karriere) sollen die gleiche max-width nutzen, damit sie optisch auf einer Linie sind.
 - Google Places API-Key produktiv freischalten (Billing + erlaubte Referrer), damit echte Profilbilder im Review-Slider laden.
+- Bergedorf Place ID in google-reviews.js eintragen sobald verfügbar.
 - Asset-Optimierung: große JPG/PNG → WebP/AVIF; ungenutzte Bilder/Icons aufräumen.
 - JS/CSS-Light-Cleanup: unbenutzte Funktionen/Styles identifizieren und gefahrlos entfernen (keine Behaviour-Änderungen).
 - Form-Zustellung live prüfen (Kontakt-/Bewerbungs-Popup via Web3Forms).
@@ -10,6 +12,30 @@
   - Fokus-Ring auf kontrastreiches Blau (#0066cc) umstellen (statt Orange) für bessere Sichtbarkeit auf hellen Karten.
   - Globale Hover-`!important` auf Karten durch spezifischere Selektoren ersetzen (Preis-/Standort-/Stellen-Karten, Hot-Deal/Featured sollen eigene Effekte behalten).
   - Mobile-Styles mittelfristig in einen zentralen `@media (max-width: 768px)`-Block zusammenziehen (styles.css vs. mobile.css) und doppelte Regeln streichen.
+
+## Erledigt (27.11.2025 - UI-Verbesserungen Session)
+
+- **City Logistiker Sektion:** Komplett neue Sektion mit 100% gefördert Badge
+  - 3-Spalten Layout (Info, Ablauf, CTA)
+  - Light Theme passend zum Rest der Seite
+  - Eyebrow "100% GEFÖRDERT" über dem Titel
+- **Über uns verbessert:**
+  - Statistiken-Bar (95% Bestehensquote, 6 Wochen, 2 Standorte, 100% Förderung)
+  - Section-Eyebrow hinzugefügt
+  - FA-Checkmarks statt Bullet Points
+  - Textanordnung: Intro zentriert, Haken-Liste linksbündig
+- **Bewertungen Dual-Standort:**
+  - Hamburg Mitte & Bergedorf nebeneinander
+  - Statische Fallback-Reviews (4 echte Bewertungen)
+  - Reviews Slider: 2 Cards auf Desktop sichtbar
+- **UI/UX Verbesserungen:**
+  - Footer: 220px Logo, Montserrat Schrift, Orange CI
+  - WhatsApp/Telefon Modals: Orange CI (statt Blau)
+  - Popup Icons: Font Awesome statt Emojis
+  - Karriere Benefits: Neues 4-Spalten Karten-Layout
+- **Technisch:**
+  - SW-Update-Prüfung: registration.waiting + 60s Intervall
+  - Cache v=20251127-006 | SW v2.4.1
 
 ## Erledigt (27.11.2025 - Cleanup Session 2)
 

@@ -3,7 +3,7 @@
 Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg mit vollständiger DSGVO-Konformität, PWA-Support und optimierten Hover-Effekten.
 
 **Stand:** 27. November 2025
-**Version:** 2.0.3 (Telefonnummern korrigiert, Wartungsmodus vollständig entfernt)
+**Version:** 2.1.0 (City Logistiker, Dual-Standort Bewertungen, UI-Verbesserungen)
 
 ---
 
@@ -23,9 +23,11 @@ Eine moderne, responsive Website für die **AcademyNow Fahrschule** in Hamburg m
 - ✅ **Event Listener Guards** - Keine doppelten Form-Submissions
 - ✅ **Smooth Hover-Effekte** - Material Design cubic-bezier Transitions
 - ✅ **Google Reviews Integration** mit 6h Caching (Places API, gültiger Key nötig)
+- ✅ **Dual-Standort Bewertungen** - Hamburg Mitte & Bergedorf separat
 - ✅ **Web3Forms** Integration für Kontakt-/Bewerbungs-Popups
 - ✅ **Google Tag Manager** + Consent Mode v2
-- ✅ **Einheitliche SVG-Icons** - Orange Kreis-Border Stil durchgängig
+- ✅ **Einheitliche SVG-Icons** - Font Awesome 6.4.0 durchgängig
+- ✅ **City Logistiker Sektion** - 100% geförderte Führerscheine
 - ✅ **3x2 Grid-Layout** für Führerscheinklassen (symmetrisch)
 
 ---

@@ -747,6 +747,11 @@ async function registerServiceWorker() {
         registration.scope
       );
 
+      // Check for waiting worker (update already downloaded)
+      if (registration.waiting) {
+        showUpdateNotification();
+      }
+
       // Handle updates
       registration.addEventListener("updatefound", () => {
         const newWorker = registration.installing;
@@ -760,6 +765,11 @@ async function registerServiceWorker() {
           }
         });
       });
+
+      // Periodisch nach Updates suchen (alle 60 Sekunden)
+      setInterval(() => {
+        registration.update();
+      }, 60000);
     } catch (error) {
       // console.log("❌ Service Worker registration failed:", error);
     }
