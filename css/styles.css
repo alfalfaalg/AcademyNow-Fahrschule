@@ -1549,8 +1549,6 @@ nav ul li a.nav-link.active::after {
   }
 }
 
-/* Entfernt - zusammengeführt in Haupt-Mobile Media Query */
-
 /* FREUNDE WERBEN FREUNDE Box */
 .freunde-werben-box {
   display: flex;
@@ -1641,13 +1639,9 @@ nav ul li a.nav-link.active::after {
   }
 }
 
-/* Entfernt - zusammengeführt in Haupt-Mobile Media Query */
-
 .extravaganz-offer .offer-desc {
   font-size: 0.95rem;
 }
-
-/* Anmelde-Button entfernt - nicht verwendet */
 
 /* Scroll-Indikator */
 .scroll-indicator {
@@ -1941,8 +1935,6 @@ nav ul li a.nav-link.active::after {
   /* Keine Transition mehr - Icon bewegt sich mit der ganzen Box */
 }
 
-/* Icon-Hover entfernt - bewegt sich bereits mit der gesamten Card */
-
 .leistung-titel {
   font-weight: 700;
   font-size: 1.3rem;
@@ -2008,8 +2000,6 @@ nav ul li a.nav-link.active::after {
   object-fit: cover;
   /* Keine Transition mehr - Bild bewegt sich mit der ganzen Card */
 }
-
-/* Bild-Zoom entfernt - bewegt sich bereits mit der gesamten Card */
 
 .standort-badge {
   position: absolute;
@@ -3619,8 +3609,6 @@ nav ul li a.nav-link.active::after {
   animation: fadeInDown 0.3s ease-out;
 }
 
-/* Header scroll optimization - transform entfernt (verursachte Bug) */
-
 /* Loading states */
 .loading-state {
   pointer-events: none;
@@ -3722,8 +3710,6 @@ nav ul li a.nav-link.active::after {
     font-size: 1.9rem;
   }
 }
-
-/* Alte Bewertungs-Styles entfernt - nicht mehr verwendet (ersetzt durch google-bewertungen-card) */
 
 /* Bewertungen Grid - 2 Blöcke nebeneinander */
 .bewertungen-grid {
