@@ -6,6 +6,48 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 
 ---
 
+## [2.1.0] - 2025-11-27
+
+### ✨ Neu
+
+- **City Logistiker Sektion:** Komplett neue Sektion für geförderte Führerscheine
+
+  - 3-Spalten Layout: Info (KEP-Fahrer), Ablauf & Voraussetzungen, CTA
+  - Light Theme mit hellem Hintergrund-Gradient
+  - Eyebrow-Badge "100% GEFÖRDERT" über dem Titel
+  - Font Awesome Icons durchgängig
+
+- **Über uns Statistiken-Bar:**
+
+  - 4-Spalten Grid mit dunklem Hintergrund
+  - 95% Bestehensquote, 6 Wochen Ø, 2 Standorte, 100% Förderung
+  - Section-Eyebrow "Ihre Vorteile bei Academy Now"
+
+- **Bewertungen Dual-Standort:**
+  - Hamburg Mitte & Bergedorf Cards nebeneinander
+  - API-Support für beide Standorte (Bergedorf Place ID noch offen)
+  - 4 statische Fallback-Reviews als HTML
+
+### 🎨 Verbessert
+
+- **Reviews Slider:** 2 Cards auf Desktop sichtbar (statt 1)
+- **Footer:** Logo 220px, Montserrat Schrift, Orange CI
+- **Modals (WhatsApp/Telefon):** Orange CI statt Blau (#e88c4a)
+- **Popup Icons:** Font Awesome Icons statt Emojis (📍 → fa-location-dot)
+- **Karriere Benefits:** Neues 4-Spalten Karten-Layout mit Icons
+- **Über uns Highlights:** FA-Checkmarks, linksbündige Liste
+- **About Text-Layout:** Intro zentriert (max-width 700px), Haken inline-flex
+
+### 🔧 Technisch
+
+- **Service Worker:** v2.4.1 mit verbesserter Update-Erkennung
+  - `registration.waiting` Check beim Start
+  - 60-Sekunden Update-Intervall
+- **google-reviews.js:** Dual-Standort CONFIG.STANDORTE Struktur
+- **Cache-Version:** v=20251127-006
+
+---
+
 ## [2.0.3] - 2025-11-27
 
 ### 🔧 Behoben

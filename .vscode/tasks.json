@@ -1,0 +1,17 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Git Commit & Push - Umfangreiche UI-Updates",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && git add . && git commit -m 'feat: Umfangreiche UI-Verbesserungen & neue City Logistiker Sektion\n\n## Neue Features\n- City Logistiker Sektion: Geförderte Führerscheine (KEP-Fahrer)\n  - Korrekte Inhalte von academy-now.de\n  - Heller Hintergrund passend zum Seitendesign\n  - 3-Spalten Layout mit Info, Ablauf & CTA\n\n- Über uns Sektion: Statistiken-Bar hinzugefügt\n  - 95% Bestehensquote\n  - 6 Wochen Durchschnittsausbildung\n  - 2 Standorte in Hamburg\n  - 100% Förderung möglich\n\n- Bewertungen: Zwei Standorte nebeneinander\n  - Hamburg Mitte & Bergedorf separate Cards\n  - API-Support für beide Standorte\n  - Statische Fallback-Reviews als Backup\n\n## UI/UX Verbesserungen\n- Footer: Logo 220px, Montserrat Schrift, Orange CI\n- WhatsApp/Telefon Modals: Orange CI statt Blau\n- Popup Icons: Font Awesome statt Emojis (📍 → fa-location-dot)\n- Karriere Benefits: Neues Karten-Layout\n- About Section: Section-Eyebrow, FA Checkmarks\n\n## Technische Änderungen\n- google-reviews.js: Dual-Standort API Unterstützung\n- Cache-busting: v=20251127-002\n- CSS: City-Logistiker Styles (Light Theme)\n\n## Fix\n- Reviews Slider: Statische HTML-Fallback Reviews' && git push",
+			"isBackground": false
+		},
+		{
+			"label": "Git Commit & Push - All Changes",
+			"type": "shell",
+			"command": "git add -A && git commit -m 'feat: UI-Verbesserungen - City Logistiker Eyebrow & About Text-Layout\n\n## Fixes\n- City Logistiker: Eyebrow (100% gefördert) über dem Titel\n  - display: flex + flex-direction: column auf .section-header\n- Über uns: Textanordnung verbessert\n  - Einleitungstext zentriert, max-width 700px\n  - Haken-Liste als inline-flex, linksbündig\n  - Einheitlicher Abstand und Ausrichtung\n\n## Alle Features dieser Session\n- City Logistiker Sektion (100% gefördert, Light Theme)\n- Über uns: Statistiken-Bar + Eyebrow + FA Checkmarks\n- Bewertungen: 2 Standorte (Mitte/Bergedorf)\n- Reviews Slider: 2 Cards sichtbar (Desktop)\n- Footer: 220px Logo, Montserrat, Orange CI\n- Modals: Orange CI + Font Awesome Icons\n- Karriere: Benefits Karten-Layout\n- SW-Update-Prüfung verbessert\n\nCache v=20251127-006 | SW v2.4.1' && git push",
+			"isBackground": false
+		}
+	]
+}
