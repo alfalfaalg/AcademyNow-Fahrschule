@@ -12,6 +12,12 @@
 			"type": "shell",
 			"command": "git add -A && git commit -m 'feat: UI-Verbesserungen - City Logistiker Eyebrow & About Text-Layout\n\n## Fixes\n- City Logistiker: Eyebrow (100% gefördert) über dem Titel\n  - display: flex + flex-direction: column auf .section-header\n- Über uns: Textanordnung verbessert\n  - Einleitungstext zentriert, max-width 700px\n  - Haken-Liste als inline-flex, linksbündig\n  - Einheitlicher Abstand und Ausrichtung\n\n## Alle Features dieser Session\n- City Logistiker Sektion (100% gefördert, Light Theme)\n- Über uns: Statistiken-Bar + Eyebrow + FA Checkmarks\n- Bewertungen: 2 Standorte (Mitte/Bergedorf)\n- Reviews Slider: 2 Cards sichtbar (Desktop)\n- Footer: 220px Logo, Montserrat, Orange CI\n- Modals: Orange CI + Font Awesome Icons\n- Karriere: Benefits Karten-Layout\n- SW-Update-Prüfung verbessert\n\nCache v=20251127-006 | SW v2.4.1' && git push",
 			"isBackground": false
+		},
+		{
+			"label": "Git Push to Origin",
+			"type": "shell",
+			"command": "git status && git push origin main",
+			"isBackground": false
 		}
 	]
 }
