@@ -646,7 +646,6 @@ let googleReviewsInitialized = false;
 
 function initGoogleReviews() {
   if (googleReviewsInitialized) {
-    console.log("⏭️ Google Reviews already initialized");
     return;
   }
 
@@ -664,7 +663,6 @@ if (document.readyState === "loading") {
 // Refresh on bfcache restore
 window.addEventListener("pageshow", function (event) {
   if (event.persisted && googleReviewsInitialized) {
-    console.log("🔄 Google Reviews: Page restored from bfcache, refreshing...");
     // Force refresh reviews from cache or API
     loadGoogleReviews();
   }
