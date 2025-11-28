@@ -694,24 +694,27 @@ input[type="checkbox"]:checked::after {
 }
 
 .primary-btn {
-  background: var(--accent);
-  color: var(--light); /* Weiß statt dunkel für bessere Lesbarkeit */
-  font-weight: 600;
+  background: linear-gradient(135deg, var(--accent) 0%, #f5a660 100%);
+  color: var(--light);
+  font-weight: 700;
   padding: 14px 28px;
-  border-radius: 5px;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  border: none;
+  box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.25);
+  letter-spacing: 0.3px;
 }
 
 .primary-btn:hover {
-  background: var(--accent-dark);
-  color: var(--light); /* Weiß bleibt auch bei Hover */
+  background: linear-gradient(135deg, var(--accent-dark) 0%, #e89850 100%);
+  color: var(--light);
   transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.3);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
 }
 
 .outline-btn {
@@ -1786,6 +1789,11 @@ nav ul li a.nav-link.active::after {
   box-shadow: var(--card-shadow-hover);
 }
 
+.leistung-item:hover,
+.leistung-item:focus-within {
+  border-color: var(--accent);
+}
+
 /* Hot Deal Cards - eigener Hover-Effekt */
 .preis-card.hot-deal:hover,
 .preis-card.hot-deal:focus-within {
@@ -1912,12 +1920,7 @@ nav ul li a.nav-link.active::after {
   /* Transition wird von der globalen Regel geerbt - KEINE doppelte Definition! */
 }
 
-.leistung-item:hover,
-.leistung-item:focus-within {
-  border-color: var(--accent);
-  /* transform und box-shadow werden von globaler Regel (Zeile 1719-1735) übernommen */
-  /* NICHT hier überschreiben, sonst wird die smooth transition zerstört! */
-}
+/* Hover-Effekt wird von globaler Regel (Zeile 1780-1795) übernommen */
 
 .leistung-icon {
   display: flex;
@@ -3663,9 +3666,10 @@ nav ul li a.nav-link.active::after {
   );
   pointer-events: none;
 }
-.google-bewertungen-card:hover {
-  box-shadow: 0 12px 45px rgba(10, 33, 74, 0.14);
-  transform: translateY(-3px);
+.google-bewertungen-card:hover,
+.google-bewertungen-card:focus-within {
+  box-shadow: 0 18px 50px rgba(10, 33, 74, 0.18);
+  transform: translateY(-14px);
   border-color: var(--accent-gold);
 }
 .google-bewertungen-header {
@@ -4271,9 +4275,10 @@ html {
   position: relative;
 }
 
-.review-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+.review-card:hover,
+.review-card:focus-within {
+  transform: translateY(-14px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 }
 
 .review-header {
