@@ -1,23 +1,4 @@
 // =================================================================================
-// FUNKTIONEN FÜR DIE "COMING SOON"-SEITE
-// =================================================================================
-
-function updateClock() {
-  const clockElement = document.getElementById("clock");
-  const dateElement = document.getElementById("date");
-  if (clockElement && dateElement) {
-    const now = new Date();
-    clockElement.textContent = now.toLocaleTimeString("de-DE");
-    dateElement.textContent = now.toLocaleDateString("de-DE", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
-}
-
-// =================================================================================
 // COOKIE BANNER FUNKTIONALITÄT
 // (ausgelagert nach js/cookie-banner.js)
 // =================================================================================
@@ -319,11 +300,8 @@ let isInitialized = false;
 function initializeApp() {
   // Prevent double initialization
   if (isInitialized) {
-    console.log("⏭️ App already initialized, skipping...");
     return;
   }
-
-  console.log("✅ Initializing AcademyNow App...");
 
   // Performance monitoring
   initPerformanceMonitoring();
@@ -676,9 +654,6 @@ function initializeApp() {
 
         // Alles OK - Formular wird nativ submittet (nur 1x!)
         formSubmitting = true;
-        console.log(
-          "✅ Form validation passed - submitting to: " + kontaktForm.action
-        );
 
         // Button disabled zur Sicherheit
         const submitBtn = kontaktForm.querySelector('button[type="submit"]');
@@ -706,7 +681,6 @@ function initializeApp() {
 
   // Mark app as initialized
   isInitialized = true;
-  console.log("✅ AcademyNow App initialized successfully");
 
   // =================================================================================
   // INITALISIERUNG ABGESCHLOSSEN
@@ -721,10 +695,7 @@ document.addEventListener("DOMContentLoaded", initializeApp);
 // =================================================================================
 window.addEventListener("pageshow", function (event) {
   if (event.persisted) {
-    // Page was restored from bfcache
-    console.log("🔄 Page restored from bfcache");
-
-    // Refresh dynamic content if needed
+    // Page was restored from bfcache - refresh dynamic content if needed
     const reviewsContainer = document.getElementById(
       "google-reviews-container"
     );
@@ -742,10 +713,6 @@ async function registerServiceWorker() {
   if ("serviceWorker" in navigator) {
     try {
       const registration = await navigator.serviceWorker.register("/sw.js");
-      console.log(
-        "✅ Service Worker registered successfully:",
-        registration.scope
-      );
 
       // Check for waiting worker (update already downloaded)
       if (registration.waiting) {
@@ -917,9 +884,6 @@ function showWhatsAppModal(event) {
   if (modal) {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden"; // Prevent background scrolling
-    console.log("📱 WhatsApp Modal geöffnet");
-  } else {
-    console.error("❌ WhatsApp Modal nicht gefunden!");
   }
   return false; // Prevent default link behavior
 }
@@ -930,7 +894,6 @@ function closeWhatsAppModal() {
   if (modal) {
     modal.style.display = "none";
     document.body.style.overflow = ""; // Re-enable scrolling (empty = browser default)
-    console.log("❌ WhatsApp Modal geschlossen");
   }
   return false;
 }
@@ -946,9 +909,6 @@ function showTelefonModal(event) {
   if (modal) {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden"; // Prevent background scrolling
-    console.log("📞 Telefon Modal geöffnet");
-  } else {
-    console.error("❌ Telefon Modal nicht gefunden!");
   }
   return false; // Prevent default link behavior
 }
@@ -959,7 +919,6 @@ function closeTelefonModal() {
   if (modal) {
     modal.style.display = "none";
     document.body.style.overflow = ""; // Re-enable scrolling (empty = browser default)
-    console.log("❌ Telefon Modal geschlossen");
   }
   return false;
 }
@@ -976,8 +935,6 @@ function openWhatsApp(standort) {
     phoneNumber = "4915561355146"; // Bergedorf
     standortName = "Bergedorf";
   }
-
-  console.log("📱 WhatsApp wird geöffnet für: " + standortName);
 
   // Modal schließen ZUERST
   closeWhatsAppModal();
@@ -1015,12 +972,7 @@ function initWhatsAppModal() {
         }
       }
     });
-
-    console.log("✅ WhatsApp Modal Events initialized");
   } else {
-    console.warn(
-      "⚠️ WhatsApp Modal nicht gefunden - Event Listeners nicht registriert"
-    );
   }
 }
 
@@ -1040,7 +992,6 @@ function openPopupForm() {
     currentPopupStep = 1;
     showPopupStep(1);
     updatePopupProgress(1);
-    console.log("✅ Popup-Formular geöffnet");
   }
   return false;
 }
@@ -1052,7 +1003,6 @@ function closePopupForm() {
     overlay.style.display = "none";
     document.body.style.overflow = ""; // Re-enable scrolling
     resetPopupForm();
-    console.log("❌ Popup-Formular geschlossen");
   }
   return false;
 }
@@ -1067,7 +1017,6 @@ function openKarriereModal() {
   if (modal) {
     modal.style.display = "flex";
     document.body.style.overflow = "hidden"; // Prevent background scrolling
-    console.log("✅ Karriere-Modal geöffnet");
   }
   return false;
 }
@@ -1079,7 +1028,6 @@ function closeKarriereModal() {
     modal.style.display = "none";
     document.body.style.overflow = ""; // Re-enable scrolling
     resetKarriereForm();
-    console.log("❌ Karriere-Modal geschlossen");
   }
   return false;
 }
@@ -1267,7 +1215,6 @@ function initPopupFormHandling() {
 
   if (form) {
     configureWeb3FormsRouting(form, standortSelect);
-    console.log("✅ Popup Form Web3Forms-Routing initialisiert");
   }
 }
 
@@ -1292,8 +1239,6 @@ function initPopupFormEvents() {
         }
       }
     });
-
-    console.log("✅ Popup Form Events initialisiert");
   }
 }
 
@@ -1325,8 +1270,6 @@ function initKarriereModalEvents() {
     if (form) {
       configureWeb3FormsRouting(form, standortSelect);
     }
-
-    console.log("✅ Karriere Modal Events initialisiert");
   }
 }
 

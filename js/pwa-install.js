@@ -10,8 +10,6 @@
 
     // Handle beforeinstallprompt event (can fire multiple times!)
     window.addEventListener("beforeinstallprompt", (e) => {
-      console.log('📱 PWA: beforeinstallprompt event fired');
-
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault();
 
@@ -20,7 +18,6 @@
 
       // Don't show prompt if already shown in this session
       if (installPromptShown) {
-        console.log('⏭️ PWA: Install prompt already shown this session');
         return;
       }
 
@@ -28,7 +25,6 @@
       setTimeout(() => {
         // Check if app is already installed
         if (window.matchMedia("(display-mode: standalone)").matches) {
-          console.log('✅ PWA: App already installed');
           return;
         }
 
