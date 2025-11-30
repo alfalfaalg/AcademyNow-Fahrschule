@@ -3,6 +3,7 @@ _STOCK_UNBENUTZT/
 
 # System Files
 .DS_Store
+**/.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100

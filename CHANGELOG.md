@@ -6,6 +6,48 @@ Das Format basiert auf [Keep a Changelog](https://keepachangelog.com/de/1.0.0/).
 
 ---
 
+## [2.2.0] - 2025-11-28
+
+### ✨ Neu
+
+- **Primary Buttons verbessert:** Gradient-Design statt Flat-Color
+  - Linear-Gradient (orange → helleres orange)
+  - Fetterer Font (600 → 700)
+  - Modernerer Border-Radius (5px → 8px)
+  - Box-Shadow für mehr Tiefe
+  - Bessere Letter-Spacing (0.3px)
+
+### 🔧 Behoben
+
+- **Leistungen-Karten Hover-Effekt:** Doppelte CSS-Regel überschrieb globalen Hover
+  - Jetzt einheitlicher -14px Lift-Effekt wie andere Karten
+- **Bewertungs-Karten Hover verstärkt:** -3px/-4px → -14px (einheitlich)
+  - Google-Bewertungen-Card und Review-Cards
+  - focus-within für Accessibility hinzugefügt
+
+### 🗑️ Entfernt
+
+- **Repository-Cleanup (4.06 MB):**
+  - final-review.png (4 MB Screenshot)
+  - favicon.ico (0 bytes, leer)
+  - .DS_Store Dateien (Mac system files)
+
+### 🔧 Optimiert
+
+- **Asset-Optimierung:** logo_neu.png gelöscht (-281 KB)
+  - images/ Ordner: 996 KB → 712 KB (-28.5%)
+- **Form-Zustellung:** redirect Feld zu Karriere-Formular hinzugefügt
+- **CSS-Cleanup:** 255 Zeilen Code entfernt
+  - Orphaned comments, duplicate rules, unused selectors
+  - Debug console.logs entfernt (Production-ready)
+
+### 📝 Dokumentation
+
+- README.md Datum aktualisiert (Oktober → November 2025)
+- .gitignore verbessert (**/.DS_Store hinzugefügt)
+
+---
+
 ## [2.1.0] - 2025-11-27
 
 ### ✨ Neu
