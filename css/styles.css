@@ -6007,15 +6007,17 @@ html {
 }
 
 .btn-city-logistiker.secondary {
-  background: rgba(255, 255, 255, 0.1);
+  background: #25d366;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid #25d366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
 }
 
 .btn-city-logistiker.secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #20bd5a;
+  border-color: #20bd5a;
   transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
 }
 
 /* Responsive City Logistiker */
