@@ -200,7 +200,7 @@
           "latitude": 53.5511,
           "longitude": 9.9937
         },
-        "openingHours": ["Mo-Fr 09:00-18:00", "Sa 10:00-14:00"],
+        "openingHours": ["Mo-Fr 09:00-18:00"],
         "priceRange": "€€",
         "serviceArea": {
           "@type": "GeoCircle",
@@ -602,6 +602,11 @@
                       City-Logistiker / KEP-Fahrer
                     </a>
                   </li>
+                  <li>
+                    <a href="#aufbauseminar" class="nav-link">
+                      Aufbauseminar
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li><a href="#standorte" class="nav-link">Standorte</a></li>
@@ -679,6 +684,8 @@
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
               </h1>
 
+              <!-- ANGEBOTE TEMPORÄR DEAKTIVIERT - Reaktivierbar -->
+              <!--
               <div class="hero-extravaganz-link">
                 <div class="hero-extravaganz">
                   <span class="hero-offer-top">BLACK WEEK</span
@@ -700,13 +707,13 @@
                 </div>
               </div>
 
-              <!-- Freunde werben Freunde Box -->
               <div class="freunde-werben-box">
                 <span class="freunde-werben-title">FREUNDE WERBEN FREUNDE</span>
                 <span class="freunde-werben-discount"
                   >30€ Rabatt auf eine Fahrstunde</span
                 >
               </div>
+              -->
 
               <!-- <p class="hero-description">
                 Mit uns kommst du ans Ziel! Unser erfahrenes Team bringt dich
@@ -1074,14 +1081,10 @@
 
           <div class="preise-container">
             <!-- Basis-Paket -->
-            <div class="preis-card featured hot-deal">
+            <div class="preis-card">
               <div class="preis-header">
                 <h3>Basis-Paket</h3>
-                <div class="preis-wrapper">
-                  <p class="preis">399€</p>
-                  <span class="old-price-badge">statt 499€</span>
-                </div>
-                <span class="rabatt-badge">🔥 Spezial-Angebot</span>
+                <p class="preis">499€</p>
               </div>
               <div class="preis-body">
                 <ul class="preis-features">
@@ -1670,7 +1673,7 @@
                   rel="noopener"
                   class="google-summary-cta"
                 >
-                  ★ Jetzt bewerten
+                  <i class="fa-brands fa-google"></i> Jetzt bewerten
                 </a>
               </div>
             </div>
@@ -1714,7 +1717,7 @@
                   rel="noopener"
                   class="google-summary-cta"
                 >
-                  ★ Jetzt bewerten
+                  <i class="fa-brands fa-google"></i> Jetzt bewerten
                 </a>
               </div>
             </div>
@@ -2300,6 +2303,84 @@
         </div>
       </section>
 
+      <!-- Aufbauseminar Sektion -->
+      <section id="aufbauseminar" class="section aufbauseminar-section">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-eyebrow">Punkteabbau & Sicherheit</div>
+            <h2>Aufbauseminar (ASF)</h2>
+            <div class="section-divider"></div>
+            <p class="section-description">
+              Professionelle Seminare für Fahranfänger in der Probezeit
+            </p>
+          </div>
+
+          <div class="aufbauseminar-content">
+            <div class="aufbauseminar-info">
+              <h3>Was ist ein Aufbauseminar?</h3>
+              <p>
+                Das Aufbauseminar für Fahranfänger (ASF) ist ein spezielles
+                Nachschulungsseminar für Fahranfänger in der Probezeit, die
+                durch Verkehrsverstöße aufgefallen sind.
+              </p>
+              <ul class="aufbauseminar-features">
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span
+                    >Für Fahranfänger in der Probezeit nach
+                    Verkehrsverstößen</span
+                  >
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>4 Sitzungen à 135 Minuten</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Eine Fahrprobe zwischen 2. und 3. Sitzung</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Anerkannt von allen Behörden in Hamburg</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Erfahrene und qualifizierte Moderatoren</span>
+                </li>
+                <li>
+                  <i class="fa-solid fa-check-circle"></i>
+                  <span>Schnelle Terminvergabe an beiden Standorten</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="aufbauseminar-cta">
+              <h3>Jetzt Termin vereinbaren</h3>
+              <p>
+                Kontaktieren Sie uns für eine schnelle Terminvergabe an einem
+                unserer beiden Standorte in Hamburg.
+              </p>
+              <div class="aufbauseminar-buttons">
+                <a
+                  href="#"
+                  onclick="showWhatsAppModal(event)"
+                  class="primary-btn"
+                >
+                  <i class="fa-brands fa-whatsapp"></i> WhatsApp Kontakt
+                </a>
+                <a
+                  href="#"
+                  onclick="showTelefonModal(event)"
+                  class="outline-btn"
+                >
+                  <i class="fa-solid fa-phone"></i> Jetzt anrufen
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Kontaktsektion entfernt – Popup-Formular wird genutzt -->
     </main>
 
@@ -2423,7 +2504,6 @@
                 </li>
                 <li class="footer-hours">
                   <span>Mo–Fr: 10:30 – 18:30</span>
-                  <span>Sa: 10:00 – 14:00</span>
                 </li>
               </ul>
             </div>
