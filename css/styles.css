@@ -1001,12 +1001,13 @@ nav ul li a.nav-link.active::after {
 }
 
 .header-kontakt-btn {
-  background: #fff;
-  color: #25d366;
+  background: #25d366;
+  color: #fff;
   border: 2px solid #25d366;
   gap: 8px;
   font-weight: 600;
   position: relative;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
 }
 
 .header-kontakt-btn .whatsapp-icon {
@@ -1016,7 +1017,7 @@ nav ul li a.nav-link.active::after {
   flex-shrink: 0;
   display: inline-block;
   vertical-align: middle;
-  fill: #25d366;
+  fill: #fff;
   transition: fill 0.2s;
 }
 
@@ -1026,9 +1027,11 @@ nav ul li a.nav-link.active::after {
 }
 
 .header-kontakt-btn:hover {
-  background: #25d366;
+  background: #20bd5a;
   color: #fff;
-  border-color: #25d366;
+  border-color: #20bd5a;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+  transform: translateY(-2px);
 }
 
 .header-kontakt-btn:hover .whatsapp-icon {
