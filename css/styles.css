@@ -1386,7 +1386,9 @@ nav ul li a.nav-link.active::after {
   font-size: 0.9em;
 }
 
-/* Klickbarer SOMMERANGEBOT Text ohne Button-Hintergrund */
+/* ANGEBOTE DEAKTIVIERT - START */
+/* Reaktivierbar: Einfach Kommentare entfernen */
+/*
 .hero-extravaganz-link {
   display: flex;
   flex-direction: column;
@@ -1452,7 +1454,6 @@ nav ul li a.nav-link.active::after {
   letter-spacing: 0.26em;
 }
 
-/* Mobile Break standardmäßig versteckt (Desktop) */
 .mobile-break {
   display: none;
 }
@@ -1487,11 +1488,7 @@ nav ul li a.nav-link.active::after {
 }
 
 .offer-price-old {
-  font-size: clamp(
-    2.6rem,
-    6vw,
-    3.4rem
-  ); /* Gleiche Größe wie .offer-price-new */
+  font-size: clamp(2.6rem, 6vw, 3.4rem);
   font-weight: 900;
   color: rgba(255, 255, 255, 0.72);
   text-decoration: line-through;
@@ -1510,19 +1507,11 @@ nav ul li a.nav-link.active::after {
 }
 
 .offer-new-price {
-  font-size: 1.5em; /* Noch größer von 1.3em */
+  font-size: 1.5em;
   font-weight: 900;
   text-shadow: 0 0 28px rgba(var(--accent-rgb), 0.6),
     0 0 42px rgba(var(--accent-gold-rgb), 0.5);
-  margin-top: 4px; /* Etwas Abstand zum alten Preis */
-}
-
-.hero-description {
-  max-width: 650px;
-  margin: 24px auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  text-align: center;
+  margin-top: 4px;
 }
 
 .extravaganz-offer .discount {
@@ -1554,7 +1543,6 @@ nav ul li a.nav-link.active::after {
   }
 }
 
-/* FREUNDE WERBEN FREUNDE Box */
 .freunde-werben-box {
   display: flex;
   flex-direction: column;
@@ -1587,53 +1575,6 @@ nav ul li a.nav-link.active::after {
   text-align: center;
 }
 
-@supports (-webkit-background-clip: text) or (background-clip: text) {
-  .brand-accent {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      rgba(255, 255, 255, 0.9) 35%,
-      var(--accent-gold) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .hero-extravaganz {
-    background: none;
-    -webkit-background-clip: initial;
-    -webkit-text-fill-color: var(--accent);
-    background-clip: initial;
-    color: var(--accent);
-  }
-
-  .offer-price-new {
-    background: linear-gradient(
-      90deg,
-      var(--accent-gold) 0%,
-      var(--accent) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .freunde-werben-title {
-    background: linear-gradient(
-      90deg,
-      rgba(var(--accent-gold-rgb), 0.95) 0%,
-      var(--accent) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
-}
-
 @keyframes pulseGlow {
   0%,
   100% {
@@ -1643,10 +1584,12 @@ nav ul li a.nav-link.active::after {
     box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.4);
   }
 }
+*/
+/* ANGEBOTE DEAKTIVIERT - END */
 
-.extravaganz-offer .offer-desc {
+/*.extravaganz-offer .offer-desc {
   font-size: 0.95rem;
-}
+}*/
 
 /* Scroll-Indikator */
 .scroll-indicator {
@@ -2553,7 +2496,100 @@ nav ul li a.nav-link.active::after {
 }
 
 /*==================================
-  10. KARRIERE SEKTION
+  10. AUFBAUSEMINAR SEKTION
+==================================*/
+.aufbauseminar-section {
+  background: #f9f9f9;
+}
+
+.aufbauseminar-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 50px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aufbauseminar-info h3 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 20px;
+}
+
+.aufbauseminar-info p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 25px;
+}
+
+.aufbauseminar-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aufbauseminar-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.aufbauseminar-features i {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.aufbauseminar-cta {
+  background: var(--light);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow-base);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aufbauseminar-cta h3 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 15px;
+}
+
+.aufbauseminar-cta p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 30px;
+}
+
+.aufbauseminar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .aufbauseminar-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .aufbauseminar-cta {
+    padding: 30px 25px;
+  }
+}
+
+/*==================================
+  11. KARRIERE SEKTION
 ==================================*/
 .karriere-section {
   background: linear-gradient(
@@ -3623,19 +3659,20 @@ nav ul li a.nav-link.active::after {
   margin: 10px auto 0;
   padding: 10px 16px;
   border-radius: 30px;
-  background: linear-gradient(135deg, #d1b17c 0%, #c8974f 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #f5a660 100%);
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  box-shadow: 0 12px 30px rgba(209, 177, 124, 0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-width: 240px;
   max-width: 320px;
 }
 
 .google-summary-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(209, 177, 124, 0.45);
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, var(--accent-dark) 0%, #e89850 100%);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
 }
 
 .google-bewertungen-card {
@@ -4068,9 +4105,8 @@ html {
     margin-top: 4px;
   }
 
-  /* ============================================================================
-     NEUERÖFFNUNGSANGEBOT
-     ============================================================================ */
+  /* ANGEBOTE DEAKTIVIERT - START (Media Query) */
+  /*
   .hero-extravaganz-link {
     margin: 15px auto 12px;
     padding: 20px 30px;
@@ -4078,32 +4114,25 @@ html {
   }
 
   .hero-extravaganz {
-    font-size: clamp(
-      1.8rem,
-      6.5vw,
-      2.8rem
-    ); /* Noch kleiner für vollständige Sichtbarkeit */
-    letter-spacing: 0.03em; /* Minimal für kompakte Darstellung */
+    font-size: clamp(1.8rem, 6.5vw, 2.8rem);
+    letter-spacing: 0.03em;
     line-height: 1.15;
     white-space: normal;
     text-align: center;
     margin: 0 auto 8px;
-    word-spacing: 0.05em; /* Reduziert */
-    max-width: 95%; /* Verhindert Überlauf */
+    word-spacing: 0.05em;
+    max-width: 95%;
     overflow-wrap: break-word;
   }
 
-  /* Bindestrich auf Mobile ausblenden */
   .hyphen {
     display: none;
   }
 
-  /* Mobile Break aktivieren für Umbruch */
   .mobile-break {
     display: block;
   }
 
-  /* Preise */
   .extravaganz-offer {
     gap: 4px;
   }
@@ -4131,9 +4160,6 @@ html {
     margin-top: 5px;
   }
 
-  /* ============================================================================
-     FREUNDE WERBEN FREUNDE
-     ============================================================================ */
   .freunde-werben-box {
     margin: 12px auto 0;
     padding: 14px 22px;
@@ -4148,6 +4174,8 @@ html {
   .freunde-werben-discount {
     font-size: 0.85rem;
   }
+  */
+  /* ANGEBOTE DEAKTIVIERT - END (Media Query) */
 
   /* ============================================================================
      HERO BUTTONS
@@ -4523,7 +4551,7 @@ html {
   align-items: center;
   gap: 1.25rem;
   padding: 1.5rem 1.75rem;
-  background: linear-gradient(135deg, #e88c4a 0%, #d4763a 100%);
+  background: linear-gradient(135deg, #25d366 0%, #20bd5a 100%);
   color: white;
   border: none;
   border-radius: 16px;
@@ -4531,7 +4559,7 @@ html {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 1rem;
   text-align: left;
-  box-shadow: 0 4px 15px rgba(232, 140, 74, 0.3);
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -4557,7 +4585,8 @@ html {
 
 .whatsapp-standort-btn:hover {
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 12px 35px rgba(232, 140, 74, 0.5);
+  background: linear-gradient(135deg, #20bd5a 0%, #1ba34f 100%);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
 }
 
 .whatsapp-standort-btn:active {
@@ -5566,7 +5595,7 @@ html {
   background: white;
   border-radius: 16px;
   padding: 28px 24px;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -5574,8 +5603,8 @@ html {
 }
 
 .fuehrerschein-card:hover {
-  border-color: var(--accent);
-  box-shadow: 0 8px 24px rgba(232, 140, 74, 0.2);
+  border-color: #cbd5e1;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
 
@@ -5583,9 +5612,42 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-size: 2.5rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+}
+
+/* Individuelle Icon-Farben für jede Karte */
+.fuehrerschein-card:nth-child(1) .fuehrerschein-icon {
+  background: rgba(232, 140, 74, 0.12);
+  color: #e88c4a;
+}
+
+.fuehrerschein-card:nth-child(2) .fuehrerschein-icon {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+.fuehrerschein-card:nth-child(3) .fuehrerschein-icon {
+  background: rgba(232, 140, 74, 0.12);
+  color: #e88c4a;
+}
+
+.fuehrerschein-card:nth-child(4) .fuehrerschein-icon {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+}
+
+.fuehrerschein-card:nth-child(5) .fuehrerschein-icon {
+  background: rgba(99, 102, 241, 0.12);
+  color: #6366f1;
+}
+
+.fuehrerschein-card:nth-child(6) .fuehrerschein-icon {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
 }
 
 .fuehrerschein-card h3 {
@@ -5602,13 +5664,14 @@ html {
 }
 
 .klassen-badge {
-  background: linear-gradient(135deg, var(--accent), #c67339);
-  color: white;
+  background: #f1f5f9;
+  color: #475569;
   padding: 4px 12px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  border: 1px solid #e2e8f0;
 }
 
 .fuehrerschein-card p {
@@ -5636,6 +5699,43 @@ html {
   background: var(--accent);
   color: white;
   transform: translateY(-2px);
+}
+
+/* Individuelle Button-Farben passend zu Icons */
+.fuehrerschein-card:nth-child(2) .secondary-btn {
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+.fuehrerschein-card:nth-child(2) .secondary-btn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.fuehrerschein-card:nth-child(4) .secondary-btn {
+  color: #10b981;
+  border-color: #10b981;
+}
+.fuehrerschein-card:nth-child(4) .secondary-btn:hover {
+  background: #10b981;
+  color: white;
+}
+
+.fuehrerschein-card:nth-child(5) .secondary-btn {
+  color: #6366f1;
+  border-color: #6366f1;
+}
+.fuehrerschein-card:nth-child(5) .secondary-btn:hover {
+  background: #6366f1;
+  color: white;
+}
+
+.fuehrerschein-card:nth-child(6) .secondary-btn {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+.fuehrerschein-card:nth-child(6) .secondary-btn:hover {
+  background: #ef4444;
+  color: white;
 }
 
 /* Mobile Responsive */

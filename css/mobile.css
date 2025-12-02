@@ -84,6 +84,13 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
   }
 
+  /* Dark Mode Support - Hamburger Menü sichtbar machen */
+  @media (prefers-color-scheme: dark) {
+    .hamburger-line {
+      background: var(--accent) !important; /* Orange #e88c4a */
+    }
+  }
+
   /* Buttons zweite Reihe */
   #main-header .header-buttons {
     grid-column: 1 / -1;
@@ -204,20 +211,21 @@
     margin-top: 4px;
   }
 
-  /* Neueröffnungsangebot kompakt */
+  /* ANGEBOTE DEAKTIVIERT - START (Mobile) */
+  /*
   .hero-extravaganz-link {
     margin: 15px auto 12px;
   }
 
   .hero-extravaganz {
     font-size: clamp(2.2rem, 8vw, 2.7rem);
-    font-weight: 800; /* Fetter für bessere Lesbarkeit auf Mobile */
+    font-weight: 800;
     letter-spacing: 0.04em;
-    line-height: 0.95; /* Engere Zeilenhöhe - alles näher zusammen */
+    line-height: 0.95;
     white-space: normal;
     text-align: center;
     margin: 0 auto 10px;
-    gap: 0px; /* Kein Gap mehr - alles direkt aneinander */
+    gap: 0px;
     max-width: 100%;
   }
 
@@ -227,41 +235,38 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin: 0; /* Keine zusätzlichen Abstände */
+    margin: 0;
   }
 
   .hero-offer-top {
     font-size: 0.86em;
     letter-spacing: 0.12em;
-    font-weight: 800; /* NEUERÖFFNUNGS fetter */
-    margin-bottom: -2px; /* NEUERÖFFNUNGS näher zum Bindestrich */
+    font-weight: 800;
+    margin-bottom: -2px;
   }
 
   .hero-offer-bottom {
     font-size: 1.1em;
     letter-spacing: 0.18em;
-    font-weight: 800; /* ANGEBOT fetter */
-    margin-top: -8px; /* ANGEBOT näher zum Bindestrich - wie Zeilen löschen */
+    font-weight: 800;
+    margin-top: -8px;
   }
 
-  /* Bindestrich auf Mobile ANZEIGEN (war vorher ausgeblendet) */
   .hyphen {
-    display: inline; /* Bindestrich wieder sichtbar machen */
+    display: inline;
   }
 
-  /* Mobile Break aktivieren für Umbruch */
   .mobile-break {
     display: block;
   }
 
-  /* Preise kompakter */
   .extravaganz-offer {
     gap: 4px;
   }
 
   .offer-label {
     font-size: 0.8rem;
-    font-weight: 700; /* GRUNDBETRAG fetter */
+    font-weight: 700;
   }
 
   .offer-price-row {
@@ -283,7 +288,6 @@
     margin-top: 5px;
   }
 
-  /* Freunde werben Box */
   .freunde-werben-box {
     margin: 12px auto 0;
     padding: 8px 16px;
@@ -298,6 +302,8 @@
   .freunde-werben-discount {
     font-size: 0.85rem;
   }
+  */
+  /* ANGEBOTE DEAKTIVIERT - END (Mobile) */
 
   /* Hero Buttons */
   .hero-buttons {
