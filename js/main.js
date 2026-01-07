@@ -714,9 +714,17 @@ async function registerServiceWorker() {
     try {
       const registration = await navigator.serviceWorker.register("/sw.js");
 
+      // Prüfen ob gerade ein Update angewendet wurde (nach Reload)
+      const updateJustApplied = localStorage.getItem("swUpdateApplied");
+      if (updateJustApplied) {
+        localStorage.removeItem("swUpdateApplied");
+        // console.log('✅ Service Worker Update wurde erfolgreich angewendet');
+        return; // Keine weitere Update-Prüfung nötig
+      }
+
       // Check for waiting worker (update already downloaded)
       if (registration.waiting) {
-        showUpdateNotification();
+        showUpdateNotification(registration);
       }
 
       // Handle updates
@@ -728,7 +736,7 @@ async function registerServiceWorker() {
             navigator.serviceWorker.controller
           ) {
             // New update available
-            showUpdateNotification();
+            showUpdateNotification(registration);
           }
         });
       });
@@ -743,7 +751,7 @@ async function registerServiceWorker() {
   }
 }
 
-function showUpdateNotification() {
+function showUpdateNotification(registration) {
   // Prüfen ob User das Update bereits gesehen hat (für diese Session)
   if (sessionStorage.getItem("updateNotificationShown") === "true") {
     // console.log('⏭️ Update notification already shown this session');
@@ -752,7 +760,9 @@ function showUpdateNotification() {
 
   // Markieren dass Notification angezeigt wurde
   sessionStorage.setItem("updateNotificationShown", "true");
-  sessionStorage.setItem("updateAvailable", "true");
+
+  // Speichere die Registration für updateApp()
+  window._swRegistration = registration;
 
   // console.log('🔔 Showing update notification (permanent until clicked)');
 
@@ -796,29 +806,48 @@ function showUpdateNotification() {
   document.body.appendChild(notification);
 }
 
-// Beim Page Load prüfen ob Update verfügbar ist
-function checkForPendingUpdate() {
-  if (
-    sessionStorage.getItem("updateAvailable") === "true" &&
-    sessionStorage.getItem("updateNotificationShown") !== "true"
-  ) {
-    // console.log('🔄 Pending update detected, showing notification again');
-    showUpdateNotification();
-  }
-}
+// Beim Page Load prüfen ob Update verfügbar ist - NICHT MEHR NÖTIG mit neuer Logik
+// function checkForPendingUpdate() { ... }
 
 function updateApp() {
   // console.log('🔄 User clicked update button - activating new Service Worker');
 
-  // SessionStorage leeren damit nach Reload keine Notification mehr erscheint
+  // Markiere dass Update angewendet wird (überlebt den Reload!)
+  localStorage.setItem("swUpdateApplied", "true");
+  
+  // SessionStorage leeren
   sessionStorage.removeItem("updateNotificationShown");
-  sessionStorage.removeItem("updateAvailable");
 
-  if (navigator.serviceWorker.controller) {
+  // Notification entfernen für bessere UX
+  const notification = document.getElementById("update-notification");
+  if (notification) {
+    notification.remove();
+  }
+
+  // Hole die gespeicherte Registration
+  const registration = window._swRegistration;
+  
+  if (registration && registration.waiting) {
+    // Warte auf Controller-Wechsel bevor Reload
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      window.location.reload();
+    });
+    
+    // Aktiviere den wartenden Service Worker
+    registration.waiting.postMessage({ type: "SKIP_WAITING" });
+  } else if (navigator.serviceWorker.controller) {
+    // Fallback: Sende an aktuellen Controller
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      window.location.reload();
+    });
     navigator.serviceWorker.controller.postMessage({ type: "SKIP_WAITING" });
-    window.location.reload();
+    
+    // Fallback Timeout falls controllerchange nicht feuert
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   } else {
-    // Fallback wenn kein Service Worker
+    // Kein Service Worker - einfach reloaden
     window.location.reload();
   }
 }
