@@ -1097,7 +1097,10 @@ nav ul li a.nav-link.active::after {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* WICHTIG: overflow: visible erlaubt Touch-Scrolling auf Mobile */
+  /* clip-path wird stattdessen für visuelle Begrenzung verwendet */
+  overflow: visible;
+  overflow-x: clip; /* Nur horizontal clippen */
   padding-top: 70px;
   padding-bottom: 45px;
   color: var(--light);
@@ -3863,8 +3866,11 @@ nav ul li a.nav-link.active::after {
 ==================================*/
 
 /* Globale Touch-Verbesserungen */
+/* WICHTIG: touch-action: auto erlaubt normales Scrollen auf iOS */
+/* manipulation kann auf manchen iOS-Geräten Scroll-Probleme verursachen */
 html {
-  touch-action: manipulation;
+  touch-action: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
 }
 
 /* Verbesserte Touch-Targets */
