@@ -1401,9 +1401,7 @@ nav ul li a.nav-link.active::after {
   font-weight: 800;
 }
 
-/* ANGEBOTE DEAKTIVIERT - START */
-/* Reaktivierbar: Einfach Kommentare entfernen */
-/*
+/* ANGEBOTE (Hero Angebotsphase) */
 .hero-extravaganz-link {
   display: flex;
   flex-direction: column;
@@ -1415,7 +1413,7 @@ nav ul li a.nav-link.active::after {
   border: none;
   backdrop-filter: none;
   transition: all 0.3s ease;
-  cursor: default;
+  cursor: pointer;
   max-width: none;
   width: 100%;
 }
@@ -1599,8 +1597,7 @@ nav ul li a.nav-link.active::after {
     box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.4);
   }
 }
-*/
-/* ANGEBOTE DEAKTIVIERT - END */
+/* ENDE ANGEBOTE (Hero Angebotsphase) */
 
 /*.extravaganz-offer .offer-desc {
   font-size: 0.95rem;
