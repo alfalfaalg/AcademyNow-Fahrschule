@@ -379,12 +379,12 @@
     <meta name="msapplication-TileImage" content="images/logo_favicon.png" />
 
     <!-- Safari Pinned Tab -->
-    <link rel="mask-icon" href="images/logo_mask.svg" color="#0A214A" />
+    <link rel="mask-icon" href="images/favicon-light.svg" color="#0A214A" />
 
     <!-- =================================================================================
        RESSOURCEN-OPTIMIERUNG (Preload, Preconnect)
        ================================================================================= -->
-    <link rel="preload" href="js/main.js?v=20251128-003" as="script" />
+    <link rel="preload" href="js/main.js?v=20260114-001" as="script" />
     <link
       rel="preload"
       href="images/heroBackground/mercedes-hero-optimized.jpg"
@@ -514,11 +514,11 @@
     />
 
     <!-- Haupt-Stylesheet - Preload für kritisches CSS -->
-    <link rel="preload" href="css/styles.css?v=20251128-003" as="style" />
-    <link rel="stylesheet" href="css/styles.css?v=20251128-003" />
+    <link rel="preload" href="css/styles.css?v=20260114-001" as="style" />
+    <link rel="stylesheet" href="css/styles.css?v=20260114-001" />
     <link
       rel="stylesheet"
-      href="css/mobile.css?v=20251128-003"
+      href="css/mobile.css?v=20260114-001"
       media="screen and (max-width: 768px)"
     />
 
@@ -699,17 +699,52 @@
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
               </h1>
 
+              <!-- Hero Angebots-Design (Black-Week-Look, Inhalt angepasst) -->
+              <a
+                class="hero-extravaganz-link"
+                href="#preise"
+                aria-label="Neujahrs-Angebot: Grundbetrag 299 Euro bis 30.01.2026"
+              >
+                <div class="hero-extravaganz">
+                  <span class="hero-offer-top">NEUJAHR</span
+                  ><span class="hyphen" aria-hidden="true" role="presentation"
+                    >-</span
+                  ><br class="mobile-break" /><span class="hero-offer-bottom"
+                    >ANGEBOT</span
+                  >
+                </div>
+                <div class="extravaganz-offer">
+                  <span class="offer-label">Grundbetrag</span>
+                  <div class="offer-price-row">
+                    <span class="offer-price-old">499€</span>
+                    <span class="offer-price-new">299€</span>
+                  </div>
+                  <span class="offer-period">Nur bis 30.01.2026</span>
+                </div>
+              </a>
+
+              <!-- Freunde werben Freunde Box (weiterhin sichtbar) -->
+              <div class="freunde-werben-box">
+                <span class="freunde-werben-title">FREUNDE WERBEN FREUNDE</span>
+                <span class="freunde-werben-discount"
+                  >30€ Rabatt auf eine Fahrstunde</span
+                >
+              </div>
+
+              <!-- Alternative Angebots-Badge (derzeit deaktiviert, falls nötig reaktivieren) -->
+              <!--
               <a
                 class="offer-badge-v2"
                 href="#preise"
-                aria-label="Winter-Angebot: Grundbetrag 299 Euro bis 30.01."
+                aria-label="Neujahrs-Angebot: Grundbetrag 299 Euro bis 30.01.2026"
               >
-                <span class="discount">Winter-Angebot · bis 30.01.</span>
+                <span class="discount">Neujahrs-Angebot · bis 30.01.2026</span>
                 <span class="offer-desc"
                   >Grundbetrag jetzt <strong>299&nbsp;€</strong> sichern</span
                 >
                 <span class="offer-desc">Plätze begrenzt – jetzt anfragen</span>
               </a>
+              -->
 
               <!-- <p class="hero-description">
                 Mit uns kommst du ans Ziel! Unser erfahrenes Team bringt dich
@@ -1080,7 +1115,11 @@
             <div class="preis-card">
               <div class="preis-header">
                 <h3>Basis-Paket</h3>
-                <p class="preis">499€</p>
+                <div class="preis-wrapper">
+                  <p class="preis">299€</p>
+                  <span class="old-price-badge">statt 499€</span>
+                </div>
+                <span class="rabatt-badge">🔥 Neujahrs-Angebot</span>
               </div>
               <div class="preis-body">
                 <ul class="preis-features">
@@ -3005,10 +3044,10 @@
       </div>
     </div>
 
-    <script src="js/main.js?v=20251128-003" defer></script>
+    <script src="js/main.js?v=20260114-001" defer></script>
     <!-- Eigener Cookie-Banner deaktiviert - Cookie Yes wird verwendet -->
     <!-- <script src="js/cookie-banner.js" defer></script> -->
-    <script src="js/google-reviews.js?v=20251128-003" defer></script>
-    <script src="js/pwa-install.js?v=20251128-003" defer></script>
+    <script src="js/google-reviews.js?v=20260114-001" defer></script>
+    <script src="js/pwa-install.js?v=20260114-001" defer></script>
   </body>
 </html>

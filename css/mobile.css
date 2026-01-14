@@ -214,8 +214,7 @@
     margin-top: 4px;
   }
 
-  /* ANGEBOTE DEAKTIVIERT - START (Mobile) */
-  /*
+  /* ANGEBOTE (Hero Angebotsphase) - Mobile */
   .hero-extravaganz-link {
     margin: 15px auto 12px;
   }
@@ -305,8 +304,7 @@
   .freunde-werben-discount {
     font-size: 0.85rem;
   }
-  */
-  /* ANGEBOTE DEAKTIVIERT - END (Mobile) */
+  /* ENDE ANGEBOTE (Hero Angebotsphase) - Mobile */
 
   /* Hero Buttons */
   .hero-buttons {

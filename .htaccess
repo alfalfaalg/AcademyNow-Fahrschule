@@ -61,6 +61,11 @@ RewriteRule ^(.+)\.html/$ https://academynow-fahrschule.de/$1.html [R=301,L]
 # Verzeichnis-Listing deaktivieren
 Options -Indexes
 
+# Lokale Ordner niemals ausliefern (falls versehentlich deployed)
+RewriteRule (^|/)\.docs(/|$) - [F,L]
+RewriteRule (^|/)\.tests(/|$) - [F,L]
+RewriteRule (^|/)\.vscode(/|$) - [F,L]
+
 # MIME-Type Sniffing verhindern
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
