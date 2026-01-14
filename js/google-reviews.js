@@ -12,7 +12,13 @@
  */
 
 const CONFIG = {
+  // WICHTIG: Niemals echte Keys ins Repo committen (GitHub Secret Scanning).
+  // Wenn du Live-Reviews per Places API willst, nutze dafür einen serverseitigen Proxy.
+  // Client-seitig ist ein Key immer öffentlich sichtbar.
   API_KEY: "HIER_API_KEY_EINTRAGEN",
+  // Sicherheitsmodus: Keine client-seitigen Places-API Calls (verhindert Key-Leaks).
+  // Stattdessen werden die statischen FALLBACK-Daten gerendert + Google-Link.
+  USE_PLACES_API: false,
   MAX_REVIEWS: 6,
   MIN_RATING: 4,
   LANGUAGE: "de",
@@ -242,6 +248,14 @@ async function loadGoogleReviews() {
     return;
   }
 
+  // Production default: no client-side Places API calls (prevents key leakage)
+  if (!CONFIG.USE_PLACES_API) {
+    updateReviewsSummary(FALLBACK.mitte.summary, "mitte");
+    updateReviewsSummary(FALLBACK.bergedorf.summary, "bergedorf");
+    renderReviews(container, FALLBACK.mitte.reviews);
+    return;
+  }
+
   // Lade Summaries für beide Standorte
   await loadStandortSummaries();
 
@@ -313,6 +327,12 @@ async function loadGoogleReviews() {
 // Lädt die Bewertungszusammenfassungen für beide Standorte
 async function loadStandortSummaries() {
   if (isLocalhostEnv()) {
+    updateReviewsSummary(FALLBACK.mitte.summary, "mitte");
+    updateReviewsSummary(FALLBACK.bergedorf.summary, "bergedorf");
+    return;
+  }
+
+  if (!CONFIG.USE_PLACES_API) {
     updateReviewsSummary(FALLBACK.mitte.summary, "mitte");
     updateReviewsSummary(FALLBACK.bergedorf.summary, "bergedorf");
     return;
