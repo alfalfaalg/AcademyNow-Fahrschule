@@ -708,10 +708,22 @@ input[type="checkbox"]:checked::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   text-align: center;
   border: none;
   box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.25);
   letter-spacing: 0.3px;
+}
+
+.primary-btn.whatsapp-btn {
+  background: #25d366;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+}
+
+.primary-btn.whatsapp-btn:hover {
+  background: #1ebe5b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
 }
 
 .primary-btn:hover {
@@ -733,6 +745,7 @@ input[type="checkbox"]:checked::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   text-align: center;
 }
 
@@ -2050,16 +2063,35 @@ nav ul li a.nav-link.active::after {
   position: absolute;
   inset: 0;
   z-index: var(--z-maps-overlay);
-  display: block;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
   background: transparent;
   cursor: pointer;
-  text-indent: -9999px;
+  text-decoration: none;
+  color: transparent;
+}
+
+.maps-overlay-link::after {
+  content: "Google Maps öffnen";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(15, 31, 61, 0.12);
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
 }
 
 .maps-overlay-link:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 3px;
-  text-indent: 0;
+  color: transparent;
 }
 
 /* Google Maps */
@@ -5614,6 +5646,13 @@ html {
   border-radius: 12px;
   margin-bottom: 8px;
   font-size: 1.6rem;
+  line-height: 1;
+}
+
+.fuehrerschein-icon i,
+.fuehrerschein-icon svg {
+  display: block;
+  line-height: 1;
 }
 
 /* Individuelle Icon-Farben für jede Karte */
