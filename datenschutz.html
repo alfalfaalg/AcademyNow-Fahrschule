@@ -23,12 +23,29 @@
     });
   </script>
   
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WWRGDHJ7');</script>
+  <!-- Google Tag Manager (skip on localhost to keep local testing clean) -->
+  <script>
+    (function () {
+      var host = window.location && window.location.hostname;
+      var isLocalhost =
+        host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+      if (isLocalhost) return;
+
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+    })();
+  </script>
   <!-- End Google Tag Manager -->
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,13 +62,18 @@
   <meta name="theme-color" content="#0A214A">
 
   <!-- In den HEAD-Bereich aller HTML-Dateien für bessere Performance -->
-  <link rel="preload" href="css/styles.css?v=2025-10-13-bugfix" as="style">
-  <link rel="preload" href="js/main.js" as="script">
+  <link rel="preload" href="css/styles.css?v=20251128-003" as="style">
+  <link rel="preload" href="js/main.js?v=20251128-003" as="script">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Meta-Tags, CSS, etc. wie in index.html -->
-  <link rel="stylesheet" href="css/styles.css?v=2025-10-13-bugfix">
+  <link rel="stylesheet" href="css/styles.css?v=20251128-003">
+  <link
+    rel="stylesheet"
+    href="css/mobile.css?v=20251128-003"
+    media="screen and (max-width: 768px)"
+  />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17118954542"></script>
@@ -61,6 +83,7 @@
     gtag('js', new Date());
     gtag('config', 'AW-17118954542');
   </script>
+  <script src="js/main.js?v=20251128-003" defer></script>
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -154,7 +177,6 @@
   
   <!-- Footer wie in index.html -->
   
-  <script src="js/main.js?v=20251126-001" defer></script>
   <!-- Eigener Cookie-Banner deaktiviert - Cookie Yes wird verwendet -->
   <!-- <script src="js/cookie-banner.js" defer></script> -->
   <script>

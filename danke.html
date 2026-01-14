@@ -23,18 +23,25 @@
       });
     </script>
 
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager (skip on localhost to keep local testing clean) -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+      (function () {
+        var host = window.location && window.location.hostname;
+        var isLocalhost =
+          host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+        if (isLocalhost) return;
+
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+      })();
     </script>
     <!-- End Google Tag Manager -->
 
@@ -62,10 +69,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/styles.css?v=20251125-002" />
+    <link rel="stylesheet" href="css/styles.css?v=20251128-003" />
     <link
       rel="stylesheet"
-      href="css/mobile.css?v=20251125-002"
+      href="css/mobile.css?v=20251128-003"
       media="screen and (max-width: 768px)"
     />
 
@@ -303,7 +310,7 @@
     </div>
   </body>
   <!-- Scripts -->
-  <script src="js/main.js?v=20251126-001" defer></script>
+  <script src="js/main.js?v=20251128-003" defer></script>
   <!-- Eigenes Cookie-Banner deaktiviert - CookieYes wird verwendet -->
   <!-- <script src="js/cookie-banner.js" defer></script> -->
 </html>
