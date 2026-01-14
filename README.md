@@ -279,7 +279,7 @@ window.addEventListener("beforeinstallprompt", (e) => {
 
 ```bash
 # Interaktive Tests im Browser öffnen
-open tests/TEST_FIXES.html
+open .tests/TEST_FIXES.html
 ```
 
 **Console Validation:**
@@ -287,7 +287,7 @@ open tests/TEST_FIXES.html
 ```bash
 # 1. Öffne http://localhost:8080
 # 2. DevTools Console öffnen (Cmd+Option+I)
-# 3. Kopiere Inhalt von tests/validate-fixes.js in Console
+# 3. Kopiere Inhalt von .tests/validate-fixes.js in Console
 # 4. Führe aus
 ```
 

@@ -36,6 +36,62 @@
 			"type": "shell",
 			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && git add -A && git commit -m \"fix: scroll debug + localhost QA hardening\"",
 			"isBackground": false
+		},
+		{
+			"label": "QA: asset existence scan",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && node -e \"const fs=require('fs'),path=require('path'); const html=['index.html','danke.html','datenschutz.html','impressum.html']; const css=['css/styles.css','css/mobile.css']; const attr=/\\b(?:src|href|content|srcset)\\s*=\\s*([\\\"'])(.*?)\\1/gi; const url=/url\\(([^)]+)\\)/gi; const skip=/^(https?:|data:|mailto:|tel:|javascript:|#)/i; const assets=new Set(); function add(raw,base){ if(!raw) return; raw=raw.trim(); if(!raw||skip.test(raw)) return; if(raw.includes(',')){ raw.split(',').forEach(p=>{p=p.trim(); if(!p) return; add(p.split(/\\s+/)[0],base);}); return; } raw=raw.split('#')[0].split('?')[0]; if(!raw) return; let rel=raw; if(rel.startsWith('/')) rel=rel.slice(1); const abs=path.resolve(base,rel); if(!abs.startsWith(process.cwd()+path.sep) && abs!==process.cwd()) return; assets.add(path.relative(process.cwd(),abs)); }\nfor(const f of html){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,'utf8'); const base=path.dirname(f); let m; while((m=attr.exec(txt))) add(m[2],base); }\nfor(const f of css){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,'utf8'); const base=path.dirname(f); let m; while((m=url.exec(txt))) add(m[1].trim().replace(/^['\\\"]|['\\\"]$/g,''),base); }\nconst missing=[...assets].filter(p=>!fs.existsSync(p)).sort(); console.log(`Found ${assets.size} local asset refs`); if(missing.length){ console.error('MISSING FILES:'); missing.forEach(p=>console.error(' - '+p)); process.exit(2);} console.log('OK: all referenced local assets exist.');\" && curl -sS -o /dev/null -w \"HTTP / => %{http_code}\\n\" http://localhost:8090/ && curl -sS -o /dev/null -w \"HTTP /index.html => %{http_code}\\n\" http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: asset existence scan v2",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && node -e 'const fs=require(\"fs\"),path=require(\"path\"); const html=[\"index.html\",\"danke.html\",\"datenschutz.html\",\"impressum.html\"]; const css=[\"css/styles.css\",\"css/mobile.css\"]; const attr=/\\\\b(?:src|href|content|srcset)\\\\s*=\\\\s*([\\\"\\x27])([^\\\"\\x27]*?)\\\\1/gi; const url=/url\\\\(([^)]+)\\\\)/gi; const skip=/^(https?:|data:|mailto:|tel:|javascript:|#)/i; const assets=new Set(); function add(raw,base){ if(!raw) return; raw=raw.trim(); if(!raw||skip.test(raw)) return; if(raw.includes(\",\")){ raw.split(\",\").forEach(p=>{p=p.trim(); if(!p) return; add(p.split(/\\\\s+/)[0],base);}); return; } raw=raw.split(\"#\")[0].split(\"?\")[0]; if(!raw) return; let rel=raw; if(rel.startsWith(\"/\")) rel=rel.slice(1); const abs=path.resolve(base,rel); if(!abs.startsWith(process.cwd()+path.sep) && abs!==process.cwd()) return; assets.add(path.relative(process.cwd(),abs)); }\nfor(const f of html){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,\"utf8\"); const base=path.dirname(f); let m; while((m=attr.exec(txt))) add(m[2],base); }\nfor(const f of css){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,\"utf8\"); const base=path.dirname(f); let m; while((m=url.exec(txt))) add(m[1].trim().replace(/^[\\\"\\x27]|[\\\"\\x27]$/g,\"\"),base); }\nconst missing=[...assets].filter(p=>!fs.existsSync(p)).sort(); console.log(\"Found \"+assets.size+\" local asset refs\"); if(missing.length){ console.error(\"MISSING FILES:\"); missing.forEach(p=>console.error(\" - \"+p)); process.exit(2);} console.log(\"OK: all referenced local assets exist.\");' && curl -sS -o /dev/null -w 'HTTP / => %{http_code}\\n' http://localhost:8090/ && curl -sS -o /dev/null -w 'HTTP /index.html => %{http_code}\\n' http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: asset existence scan v3",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && node -e 'const fs=require(\"fs\"),path=require(\"path\"); const html=[\"index.html\",\"danke.html\",\"datenschutz.html\",\"impressum.html\"]; const css=[\"css/styles.css\",\"css/mobile.css\"]; const attr=/\\b(?:src|href|content|srcset)\\s*=\\s*([\"\\x27])([^\"\\x27]*?)\\1/gi; const url=/url\\(([^)]+)\\)/gi; const skip=/^(https?:|data:|mailto:|tel:|javascript:|#)/i; const assets=new Set();\nfunction add(raw,base){ if(!raw) return; raw=raw.trim(); if(!raw||skip.test(raw)) return; if(raw.includes(\",\")){ raw.split(\",\").forEach(p=>{p=p.trim(); if(!p) return; add(p.split(/\\s+/)[0],base);}); return; } raw=raw.split(\"#\")[0].split(\"?\")[0]; if(!raw) return; let rel=raw; if(rel.startsWith(\"/\")) rel=rel.slice(1); const abs=path.resolve(base,rel); if(!abs.startsWith(process.cwd()+path.sep) && abs!==process.cwd()) return; assets.add(path.relative(process.cwd(),abs)); }\nfor(const f of html){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,\"utf8\"); const base=path.dirname(f); let m; while((m=attr.exec(txt))) add(m[2],base); }\nfor(const f of css){ if(!fs.existsSync(f)) continue; const txt=fs.readFileSync(f,\"utf8\"); const base=path.dirname(f); let m; while((m=url.exec(txt))) add(m[1].trim().replace(/^[\"\\x27]|[\"\\x27]$/g,\"\"),base); }\nconst missing=[...assets].filter(p=>!fs.existsSync(p)).sort(); console.log(\"Found \"+assets.size+\" local asset refs\"); if(missing.length){ console.error(\"MISSING FILES:\"); missing.forEach(p=>console.error(\" - \"+p)); process.exit(2);} console.log(\"OK: all referenced local assets exist.\");'",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: check referenced images exist",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && set -euo pipefail; missing=0; echo \"Scanning for images/* references...\"; while IFS= read -r p; do [ -z \"$p\" ] && continue; if [ ! -f \"$p\" ]; then echo \"MISSING: $p\"; missing=1; fi; done < <(rg -o \"images/[^\\\"\\)\\s>]+\" index.html danke.html datenschutz.html impressum.html css/styles.css css/mobile.css | sort -u); if [ \"$missing\" -ne 0 ]; then echo \"\\nSome referenced images are missing.\"; exit 2; fi; echo \"OK: all referenced images exist.\"; echo; echo \"Spot-check first 20 images over HTTP...\"; rg -o \"images/[^\\\"\\)\\s>]+\" index.html danke.html datenschutz.html impressum.html css/styles.css css/mobile.css | sort -u | head -n 20 | while IFS= read -r p; do code=$(curl -sS -o /dev/null -w \"%{http_code}\" \"http://localhost:8090/$p\" || true); echo \"$code $p\"; done; echo; echo \"Page HTTP checks:\"; curl -sS -o /dev/null -w \"HTTP / => %{http_code}\\n\" http://localhost:8090/; curl -sS -o /dev/null -w \"HTTP /index.html => %{http_code}\\n\" http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: check referenced images exist (grep)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && set -euo pipefail; missing=0; echo \"Scanning for images/* references...\"; imgs=$(grep -hEo 'images/[^\"\\)[:space:]>]+' index.html danke.html datenschutz.html impressum.html css/styles.css css/mobile.css | sort -u || true); if [ -z \"$imgs\" ]; then echo \"WARN: no images/* references found by grep pattern\"; else while IFS= read -r p; do [ -z \"$p\" ] && continue; if [ ! -f \"$p\" ]; then echo \"MISSING: $p\"; missing=1; fi; done <<< \"$imgs\"; fi; if [ \"$missing\" -ne 0 ]; then echo \"\\nSome referenced images are missing.\"; exit 2; fi; echo \"OK: referenced images exist on disk.\"; echo; echo \"Spot-check first 20 images over HTTP...\"; echo \"$imgs\" | head -n 20 | while IFS= read -r p; do [ -z \"$p\" ] && continue; code=$(curl -sS -o /dev/null -w \"%{http_code}\" \"http://localhost:8090/$p\" || true); echo \"$code $p\"; done; echo; echo \"Page HTTP checks:\"; curl -sS -o /dev/null -w \"HTTP / => %{http_code}\\n\" http://localhost:8090/; curl -sS -o /dev/null -w \"HTTP /index.html => %{http_code}\\n\" http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: check referenced images exist (grep v2)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && set -euo pipefail; missing=0; echo \"Scanning for images/* references...\"; imgs=$(grep -hEo \"images/[^\\\"\\)[:space:]>]+\" index.html danke.html datenschutz.html impressum.html css/styles.css css/mobile.css | sort -u || true); if [ -z \"$imgs\" ]; then echo \"WARN: no images/* references found by scan\"; else while IFS= read -r p; do [ -z \"$p\" ] && continue; if [ ! -f \"$p\" ]; then echo \"MISSING: $p\"; missing=1; fi; done <<< \"$imgs\"; fi; if [ \"$missing\" -ne 0 ]; then echo \"Some referenced images are missing.\"; exit 2; fi; echo \"OK: referenced images exist on disk.\"; echo \"Spot-check first 20 images over HTTP...\"; echo \"$imgs\" | head -n 20 | while IFS= read -r p; do [ -z \"$p\" ] && continue; code=$(curl -sS -o /dev/null -w \"%{http_code}\" \"http://localhost:8090/$p\" || true); echo \"$code $p\"; done; echo \"Page HTTP checks:\"; curl -sS -o /dev/null -w \"HTTP / => %{http_code}\\n\" http://localhost:8090/; curl -sS -o /dev/null -w \"HTTP /index.html => %{http_code}\\n\" http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "QA: check referenced images exist (zsh-safe)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule; missing=0; echo \"Scanning for images/* references...\"; imgs=$(grep -hEo \"images/[^\\\"\\)[:space:]>]+\" index.html danke.html datenschutz.html impressum.html css/styles.css css/mobile.css 2>/dev/null | sort -u || true); if [ -z \"$imgs\" ]; then echo \"WARN: no images/* references found by scan\"; else echo \"$imgs\" | while IFS= read -r p; do [ -z \"$p\" ] && continue; if [ ! -f \"$p\" ]; then echo \"MISSING: $p\"; missing=1; fi; done; fi; if [ \"$missing\" -ne 0 ]; then echo \"Some referenced images are missing.\"; exit 2; fi; echo \"OK: referenced images exist on disk.\"; echo \"Spot-check first 10 images over HTTP...\"; echo \"$imgs\" | head -n 10 | while IFS= read -r p; do [ -z \"$p\" ] && continue; code=$(curl -sS -o /dev/null -w \"%{http_code}\" \"http://localhost:8090/$p\" || true); echo \"$code $p\"; done; echo \"Page HTTP checks:\"; curl -sS -o /dev/null -w \"HTTP / => %{http_code}\\n\" http://localhost:8090/; curl -sS -o /dev/null -w \"HTTP /index.html => %{http_code}\\n\" http://localhost:8090/index.html",
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "test"
 		}
 	]
 }

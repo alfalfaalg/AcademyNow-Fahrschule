@@ -13,9 +13,14 @@ Thumbs.db
 
 # IDE Files
 .vscode/settings.json
+.vscode/
 *.swp
 *.swo
 *~
+
+# Local-only docs & workflow (nicht pushen)
+.docs/
+.tests/
 
 # Logs
 *.log
