@@ -2,14 +2,15 @@
 // SERVICE WORKER - ADVANCED CACHING STRATEGY
 // =================================================================================
 
-const CACHE_NAME = "academynow-fahrschule-v2.4.3";
-const STATIC_CACHE = "academynow-static-v13";
-const DYNAMIC_CACHE = "academynow-dynamic-v13";
+const CACHE_NAME = "academynow-fahrschule-v2.4.4";
+const STATIC_CACHE = "academynow-static-v14";
+const DYNAMIC_CACHE = "academynow-dynamic-v14";
 
 // Critical resources to cache immediately
 const STATIC_ASSETS = [
   "/",
   "/index.html",
+  "/favicon.ico",
   "/css/styles.css?v=20251128-003",
   "/css/mobile.css?v=20251128-003",
   "/js/main.js?v=20251128-003",
@@ -63,6 +64,12 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const { request } = event;
   const url = new URL(request.url);
+
+  // Local development: don't cache/intercept localhost requests.
+  // This prevents stale HTML/JS during local testing.
+  if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
+    return;
+  }
 
   // Skip non-http requests and chrome-extension requests
   if (

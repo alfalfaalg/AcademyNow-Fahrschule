@@ -17,12 +17,22 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-    <!-- CookieYes Cookie Consent Script -->
-    <script
-      id="cookieyes"
-      type="text/javascript"
-      src="https://cdn-cookieyes.com/client_data/835814/script.js"
-    ></script>
+    <!-- CookieYes Cookie Consent Script (skip on localhost to keep local testing clean) -->
+    <script>
+      (function () {
+        var host = window.location && window.location.hostname;
+        var isLocalhost =
+          host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+        if (isLocalhost) return;
+
+        var s = document.createElement("script");
+        s.id = "cookieyes";
+        s.type = "text/javascript";
+        s.src = "https://cdn-cookieyes.com/client_data/835814/script.js";
+        s.async = true;
+        document.head.appendChild(s);
+      })();
+    </script>
     <!-- End CookieYes -->
 
     <!-- Google Consent Mode v2 - Default (vor GTM!) -->
@@ -45,18 +55,25 @@
       });
     </script>
 
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager (skip on localhost to keep local testing clean) -->
     <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+      (function () {
+        var host = window.location && window.location.hostname;
+        var isLocalhost =
+          host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+        if (isLocalhost) return;
+
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WWRGDHJ7");
+      })();
     </script>
     <!-- End Google Tag Manager -->
 
@@ -604,7 +621,9 @@
                   </li>
                 </ul>
               </li>
-              <li><a href="#aufbauseminar" class="nav-link">Aufbauseminar</a></li>
+              <li>
+                <a href="#aufbauseminar" class="nav-link">Aufbauseminar</a>
+              </li>
               <li><a href="#standorte" class="nav-link">Standorte</a></li>
               <li><a href="#fuhrpark" class="nav-link">Fuhrpark</a></li>
               <li><a href="#faq" class="nav-link">FAQ</a></li>
@@ -680,36 +699,17 @@
                 <span class="brand-accent">FÜHRERSCHEIN OHNE UMWEGE</span>
               </h1>
 
-              <!-- ANGEBOTE TEMPORÄR DEAKTIVIERT - Reaktivierbar -->
-              <!--
-              <div class="hero-extravaganz-link">
-                <div class="hero-extravaganz">
-                  <span class="hero-offer-top">BLACK WEEK</span
-                  ><span class="hyphen" aria-hidden="true" role="presentation"
-                    >-</span
-                  ><br class="mobile-break" /><span class="hero-offer-bottom"
-                    >SPECIAL</span
-                  >
-                </div>
-                <div class="extravaganz-offer">
-                  <span class="offer-label">Grundbetrag</span>
-                  <div class="offer-price-row">
-                    <span class="offer-price-old">100%</span>
-                    <span class="offer-price-new">-50%</span>
-                  </div>
-                  <span class="offer-period"
-                    >Nur Black Week: 24.11 – 28.11</span
-                  >
-                </div>
-              </div>
-
-              <div class="freunde-werben-box">
-                <span class="freunde-werben-title">FREUNDE WERBEN FREUNDE</span>
-                <span class="freunde-werben-discount"
-                  >30€ Rabatt auf eine Fahrstunde</span
+              <a
+                class="offer-badge-v2"
+                href="#preise"
+                aria-label="Winter-Angebot: Grundbetrag 299 Euro bis 30.01."
+              >
+                <span class="discount">Winter-Angebot · bis 30.01.</span>
+                <span class="offer-desc"
+                  >Grundbetrag jetzt <strong>299&nbsp;€</strong> sichern</span
                 >
-              </div>
-              -->
+                <span class="offer-desc">Plätze begrenzt – jetzt anfragen</span>
+              </a>
 
               <!-- <p class="hero-description">
                 Mit uns kommst du ans Ziel! Unser erfahrenes Team bringt dich

@@ -163,6 +163,120 @@ function setSelectPristine(select) {
 }
 
 // =================================================================================
+// GLOBAL SCROLL SAFETY (verhindert steckenbleibende Scroll-Sperren auf Mobile)
+// =================================================================================
+
+function ensureBodyScrollUnlocked() {
+  const navActive = document
+    .getElementById("main-navigation")
+    ?.classList.contains("active");
+
+  const modalSelectors = [
+    "#whatsapp-modal",
+    "#telefon-modal",
+    "#popup-form-overlay",
+    "#karriere-modal",
+  ];
+
+  const modalOpen = modalSelectors.some((selector) => {
+    const el = document.querySelector(selector);
+    return el && getComputedStyle(el).display !== "none";
+  });
+
+  if (!navActive && !modalOpen) {
+    document.body.style.overflow = "";
+  }
+}
+
+function isScrollDebugEnabled() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return (
+      params.has("debugScroll") ||
+      window.localStorage.getItem("debugScroll") === "1"
+    );
+  } catch {
+    return false;
+  }
+}
+
+function initScrollDebug() {
+  if (!isScrollDebugEnabled()) {
+    return;
+  }
+  if (window.__scrollDebugInitialized) {
+    return;
+  }
+  window.__scrollDebugInitialized = true;
+
+  const debugEl = document.createElement("div");
+  debugEl.id = "scroll-debug";
+  debugEl.style.cssText =
+    "position:fixed;left:8px;bottom:8px;z-index:2147483647;" +
+    "background:rgba(0,0,0,.78);color:#fff;" +
+    "font:12px/1.35 -apple-system,BlinkMacSystemFont,'Inter',Arial,sans-serif;" +
+    "padding:8px 10px;border-radius:10px;" +
+    "max-width:calc(100vw - 16px);" +
+    "box-shadow:0 8px 24px rgba(0,0,0,.35);" +
+    "pointer-events:none;white-space:pre-wrap;";
+  debugEl.textContent = "ScrollDebug: ON (disable by removing ?debugScroll)";
+  document.body.appendChild(debugEl);
+
+  const safeClassList = (el) => {
+    try {
+      return el && el.classList && el.classList.length
+        ? "." + Array.from(el.classList).slice(0, 4).join(".")
+        : "";
+    } catch {
+      return "";
+    }
+  };
+
+  const describeEl = (el) => {
+    if (!el) return "<null>";
+    const id = el.id ? `#${el.id}` : "";
+    const cls = safeClassList(el);
+    const tag = (el.tagName || "").toLowerCase() || "?";
+    return `${tag}${id}${cls}`;
+  };
+
+  const buildStack = (el) => {
+    const parts = [];
+    let cur = el;
+    for (let i = 0; i < 6 && cur; i++) {
+      const style = window.getComputedStyle(cur);
+      parts.push(
+        `${describeEl(cur)} { pe:${style.pointerEvents}, vis:${style.visibility}, op:${style.opacity}, pos:${style.position} }`
+      );
+      cur = cur.parentElement;
+    }
+    return parts.join("\n");
+  };
+
+  const update = (label, x, y) => {
+    const el = document.elementFromPoint(x, y);
+    const bodyOverflow = window.getComputedStyle(document.body).overflow;
+    const navActive = document
+      .getElementById("main-navigation")
+      ?.classList.contains("active");
+    debugEl.textContent =
+      `${label} @ ${Math.round(x)},${Math.round(y)}\n` +
+      `elementFromPoint: ${describeEl(el)}\n` +
+      `body.overflow: ${bodyOverflow} | navActive: ${navActive ? "yes" : "no"}\n` +
+      buildStack(el);
+  };
+
+  const onTouch = (e) => {
+    const t = e.touches && e.touches[0];
+    if (!t) return;
+    update(e.type, t.clientX, t.clientY);
+  };
+
+  document.addEventListener("touchstart", onTouch, { passive: true });
+  document.addEventListener("touchmove", onTouch, { passive: true });
+}
+
+// =================================================================================
 // PERFORMANCE MONITORING
 // =================================================================================
 
@@ -312,9 +426,6 @@ function initializeApp() {
   // Initialize Intersection Observer
   initIntersectionObserver();
 
-  // Check for pending updates
-  checkForPendingUpdate();
-
   // Service Worker Registration (only once)
   registerServiceWorker();
 
@@ -383,6 +494,17 @@ function initializeApp() {
         menuBtn.setAttribute("aria-label", "Menü öffnen");
         document.body.style.overflow = "";
       }
+    });
+
+    // Falls nach Orientation-Change/Resize noch aktiv: sauber schließen
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 768 && navOverlay.classList.contains("active")) {
+        navOverlay.classList.remove("active");
+        menuBtn.classList.remove("active");
+        menuBtn.setAttribute("aria-expanded", false);
+        menuBtn.setAttribute("aria-label", "Menü öffnen");
+      }
+      ensureBodyScrollUnlocked();
     });
   }
 
@@ -679,12 +801,26 @@ function initializeApp() {
   // Initialize Karriere Modal
   initKarriereModalEvents();
 
+  // Mobile: defensiv stuck scroll-locks lösen (z.B. iOS/BFCACHE/unterbrochene close-events)
+  if ("ontouchstart" in window && !window.__scrollUnlockTouchHook) {
+    window.__scrollUnlockTouchHook = true;
+    document.addEventListener("touchstart", ensureBodyScrollUnlocked, {
+      passive: true,
+    });
+  }
+
+  // Optional: Scroll/Tap Debug (nur wenn explizit aktiviert)
+  initScrollDebug();
+
   // Mark app as initialized
   isInitialized = true;
 
   // =================================================================================
   // INITALISIERUNG ABGESCHLOSSEN
   // =================================================================================
+
+  // Falls Scroll-Sperren aus vorherigen Views bestehen (bfcache/Modal): lösen
+  ensureBodyScrollUnlocked();
 }
 
 // Call initialization on DOMContentLoaded
@@ -694,6 +830,8 @@ document.addEventListener("DOMContentLoaded", initializeApp);
 // BFCACHE COMPATIBILITY - Handle page restore from cache
 // =================================================================================
 window.addEventListener("pageshow", function (event) {
+  ensureBodyScrollUnlocked();
+
   if (event.persisted) {
     // Page was restored from bfcache - refresh dynamic content if needed
     const reviewsContainer = document.getElementById(
@@ -814,7 +952,7 @@ function updateApp() {
 
   // Markiere dass Update angewendet wird (überlebt den Reload!)
   localStorage.setItem("swUpdateApplied", "true");
-  
+
   // SessionStorage leeren
   sessionStorage.removeItem("updateNotificationShown");
 
@@ -826,13 +964,13 @@ function updateApp() {
 
   // Hole die gespeicherte Registration
   const registration = window._swRegistration;
-  
+
   if (registration && registration.waiting) {
     // Warte auf Controller-Wechsel bevor Reload
     navigator.serviceWorker.addEventListener("controllerchange", () => {
       window.location.reload();
     });
-    
+
     // Aktiviere den wartenden Service Worker
     registration.waiting.postMessage({ type: "SKIP_WAITING" });
   } else if (navigator.serviceWorker.controller) {
@@ -841,7 +979,7 @@ function updateApp() {
       window.location.reload();
     });
     navigator.serviceWorker.controller.postMessage({ type: "SKIP_WAITING" });
-    
+
     // Fallback Timeout falls controllerchange nicht feuert
     setTimeout(() => {
       window.location.reload();
@@ -955,14 +1093,15 @@ function closeTelefonModal() {
 // WhatsApp Chat mit gewähltem Standort öffnen
 function openWhatsApp(standort) {
   let phoneNumber;
-  let standortName;
 
   if (standort === "mitte") {
     phoneNumber = "4917631065840"; // Hamburg Mitte
-    standortName = "Hamburg Mitte";
   } else if (standort === "bergedorf") {
     phoneNumber = "4915561355146"; // Bergedorf
-    standortName = "Bergedorf";
+  }
+
+  if (!phoneNumber) {
+    return false;
   }
 
   // Modal schließen ZUERST
@@ -1001,7 +1140,6 @@ function initWhatsAppModal() {
         }
       }
     });
-  } else {
   }
 }
 

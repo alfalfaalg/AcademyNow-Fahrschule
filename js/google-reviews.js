@@ -108,6 +108,11 @@ let reviewPrevBtn = null;
 let reviewNextBtn = null;
 let reviewViewport = null;
 
+function isLocalhostEnv() {
+  const host = window.location && window.location.hostname;
+  return host === "localhost" || host === "127.0.0.1" || host === "0.0.0.0";
+}
+
 function renderReviews(container, reviews) {
   if (!container) return;
   setupReviewSlider();
@@ -229,6 +234,14 @@ async function loadGoogleReviews() {
     return;
   }
 
+  // Local dev: avoid CORS/proxy issues and keep console clean
+  if (isLocalhostEnv()) {
+    updateReviewsSummary(FALLBACK.mitte.summary, "mitte");
+    updateReviewsSummary(FALLBACK.bergedorf.summary, "bergedorf");
+    renderReviews(container, FALLBACK.mitte.reviews);
+    return;
+  }
+
   // Lade Summaries für beide Standorte
   await loadStandortSummaries();
 
@@ -299,6 +312,12 @@ async function loadGoogleReviews() {
 
 // Lädt die Bewertungszusammenfassungen für beide Standorte
 async function loadStandortSummaries() {
+  if (isLocalhostEnv()) {
+    updateReviewsSummary(FALLBACK.mitte.summary, "mitte");
+    updateReviewsSummary(FALLBACK.bergedorf.summary, "bergedorf");
+    return;
+  }
+
   const standorte = ["mitte", "bergedorf"];
 
   for (const standort of standorte) {

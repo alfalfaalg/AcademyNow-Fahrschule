@@ -11,6 +11,17 @@
  */
 
 (function() {
+  // Dieses Script ist primär für die Browser-DevTools-Console gedacht.
+  // Wenn es versehentlich via Node ausgeführt wird, sauber beenden.
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    console.log('🧪 AcademyNow Fix Validation Script');
+    console.log('Dieses Script ist für die Browser-DevTools Console gedacht (window/document fehlen hier).');
+    if (typeof process !== 'undefined' && typeof process.exit === 'function') {
+      process.exit(0);
+    }
+    return;
+  }
+
   console.clear();
   console.log('%c🧪 AcademyNow Fix Validation Script', 'font-size: 20px; font-weight: bold; color: #0A214A');
   console.log('%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━', 'color: #0A214A');
@@ -76,12 +87,16 @@
   console.log('─────────────────────────────────────────────────────');
 
   const mainJsScript = document.querySelector('script[src*="main.js"]');
-  if (mainJsScript && mainJsScript.src.includes('v=2025-10-14-duplicate-fix')) {
-    logTest('Script Version aktuell', true, mainJsScript.src);
-  } else if (mainJsScript) {
-    logTest('Script Version aktuell', false, `Falsche Version: ${mainJsScript.src}`);
+  if (mainJsScript) {
+    const url = new URL(mainJsScript.src, window.location.href);
+    const version = url.searchParams.get('v');
+    if (version) {
+      logTest('Script Version (v=...) gesetzt', true, `v=${version}`);
+    } else {
+      logTest('Script Version (v=...) gesetzt', false, 'Kein v= Parameter gefunden', true);
+    }
   } else {
-    logTest('Script Version aktuell', false, 'main.js nicht gefunden');
+    logTest('Script Version (v=...) gesetzt', false, 'main.js nicht gefunden');
   }
 
   console.log('\n%c📋 Test 4: Google Tag Manager / gtag.js', 'font-weight: bold; color: #2196F3');

@@ -18,6 +18,24 @@
 			"type": "shell",
 			"command": "git status && git push origin main",
 			"isBackground": false
+		},
+		{
+			"label": "Git Status + Last Commit (no push)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && git status -sb && echo '---' && git --no-pager log -5 --oneline",
+			"isBackground": false
+		},
+		{
+			"label": "Git Status Only (no push)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && git status -sb",
+			"isBackground": false
+		},
+		{
+			"label": "Git Commit (no push)",
+			"type": "shell",
+			"command": "cd /Users/idris/_Coding_01/AcademyNowProject-Fahrschule && git add -A && git commit -m \"fix: scroll debug + localhost QA hardening\"",
+			"isBackground": false
 		}
 	]
 }
