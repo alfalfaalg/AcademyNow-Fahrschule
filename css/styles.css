@@ -2085,7 +2085,7 @@ nav ul li a.nav-link.active::after {
   color: var(--primary);
   font-weight: 700;
   font-size: 0.9rem;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
 }
 
 .maps-overlay-link:focus-visible {

@@ -1,0 +1,45 @@
+name: Deploy to Hostinger (Webhook)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hostinger-deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Validate webhook secret
+        env:
+          HOSTINGER_DEPLOY_WEBHOOK_URL: ${{ secrets.HOSTINGER_DEPLOY_WEBHOOK_URL }}
+        run: |
+          if [ -z "$HOSTINGER_DEPLOY_WEBHOOK_URL" ]; then
+            echo "Missing secret HOSTINGER_DEPLOY_WEBHOOK_URL"
+            echo "Add it in GitHub: Settings → Secrets and variables → Actions → New repository secret"
+            exit 1
+          fi
+
+      - name: Trigger Hostinger deploy webhook
+        env:
+          HOSTINGER_DEPLOY_WEBHOOK_URL: ${{ secrets.HOSTINGER_DEPLOY_WEBHOOK_URL }}
+        run: |
+          set -euo pipefail
+          echo "Triggering Hostinger deploy webhook..."
+
+          # Hostinger webhooks accept GET; we send POST first and fall back to GET.
+          # We also retry in case Hostinger is temporarily busy.
+          curl -fsS --retry 5 --retry-all-errors --max-time 20 \
+            -X POST "$HOSTINGER_DEPLOY_WEBHOOK_URL" \
+            -H 'Content-Type: application/json' \
+            -d '{"event":"push","ref":"refs/heads/main"}' \
+          || curl -fsS --retry 5 --retry-all-errors --max-time 20 \
+            "$HOSTINGER_DEPLOY_WEBHOOK_URL"
+
+          echo "Hostinger deploy triggered."
